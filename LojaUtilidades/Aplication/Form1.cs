@@ -69,5 +69,12 @@ namespace Aplication
             txt_data.Text = DateTime.Today.ToString();
             txt_Hora.Text = DateTime.Now.TimeOfDay.ToString();
         }
+
+        private void btn_Produto_Click(object sender, EventArgs e)
+        {
+            Form_Produtos fr_Produtos = new Form_Produtos();
+            fr_Produtos.ShowDialog();
+
+        }
     }
 }

@@ -36,7 +36,6 @@ namespace Aplication
             this.btn_Estoque = new System.Windows.Forms.Button();
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Sair = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Titulo_Aplicacao = new System.Windows.Forms.Label();
             this.label_data = new System.Windows.Forms.Label();
@@ -90,6 +89,7 @@ namespace Aplication
             this.btn_Produto.TabIndex = 1;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
+            this.btn_Produto.Click += new System.EventHandler(this.btn_Produto_Click);
             this.btn_Produto.MouseLeave += new System.EventHandler(this.btn_Produto_MouseLeave);
             this.btn_Produto.MouseHover += new System.EventHandler(this.btn_Produto_MouseHover);
             // 
@@ -148,15 +148,6 @@ namespace Aplication
             this.btn_Sair.MouseLeave += new System.EventHandler(this.btn_Sair_MouseLeave);
             this.btn_Sair.MouseHover += new System.EventHandler(this.btn_Sair_MouseHover);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(802, 26);
-            this.panel1.TabIndex = 1;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.panel3);
@@ -166,9 +157,9 @@ namespace Aplication
             this.panel2.Controls.Add(this.label_data);
             this.panel2.Controls.Add(this.Titulo_Aplicacao);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(200, 26);
+            this.panel2.Location = new System.Drawing.Point(200, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(802, 542);
+            this.panel2.Size = new System.Drawing.Size(802, 568);
             this.panel2.TabIndex = 2;
             // 
             // Titulo_Aplicacao
@@ -203,8 +194,8 @@ namespace Aplication
             // 
             // txt_data
             // 
-            this.txt_data.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_data.ForeColor = System.Drawing.Color.DimGray;
+            this.txt_data.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_data.ForeColor = System.Drawing.Color.Black;
             this.txt_data.Location = new System.Drawing.Point(212, 109);
             this.txt_data.Mask = "00/00/0000";
             this.txt_data.Name = "txt_data";
@@ -248,7 +239,6 @@ namespace Aplication
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 568);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form_Principal";
@@ -273,7 +263,6 @@ namespace Aplication
         private System.Windows.Forms.Button btn_Estoque;
         private System.Windows.Forms.Button btn_Sair;
         private System.Windows.Forms.Button btn_Vendas;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Titulo_Aplicacao;
         private System.Windows.Forms.Label label_horario;
