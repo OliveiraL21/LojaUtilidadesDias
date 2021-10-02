@@ -76,5 +76,17 @@ namespace Aplication
             fr_Produtos.ShowDialog();
 
         }
+
+        private void btn_Estoque_Click(object sender, EventArgs e)
+        {
+            Form_Estoque form_Estoque = new Form_Estoque();
+            form_Estoque.ShowDialog();
+        }
+
+        private void btn_Vendas_Click(object sender, EventArgs e)
+        {
+            Form_Vendas form_Vendas = new Form_Vendas();
+            form_Vendas.ShowDialog();
+        }
     }
 }

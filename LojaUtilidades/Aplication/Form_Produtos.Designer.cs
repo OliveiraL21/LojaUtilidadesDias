@@ -32,27 +32,26 @@ namespace Aplication
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Produtos));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_Menu = new System.Windows.Forms.Panel();
+            this.btn_Sair = new System.Windows.Forms.Button();
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Estoque = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_Sair = new System.Windows.Forms.Button();
             this.txt_Produto = new System.Windows.Forms.TextBox();
             this.label_Produto = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dgv_Produtos = new System.Windows.Forms.DataGridView();
-            this.Cod_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label_Quantidade = new System.Windows.Forms.Label();
             this.txt_Quantidade = new System.Windows.Forms.TextBox();
             this.btn_Cadastrar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
             this.btn_Deletar = new System.Windows.Forms.Button();
+            this.dgv_Produtos = new System.Windows.Forms.DataGridView();
+            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Produtos)).BeginInit();
@@ -72,6 +71,23 @@ namespace Aplication
             this.panel_Menu.Size = new System.Drawing.Size(200, 586);
             this.panel_Menu.TabIndex = 0;
             // 
+            // btn_Sair
+            // 
+            this.btn_Sair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(0)))), ((int)(((byte)(39)))));
+            this.btn_Sair.FlatAppearance.BorderSize = 0;
+            this.btn_Sair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Sair.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Sair.ForeColor = System.Drawing.Color.White;
+            this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
+            this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Sair.Location = new System.Drawing.Point(0, 530);
+            this.btn_Sair.Name = "btn_Sair";
+            this.btn_Sair.Size = new System.Drawing.Size(200, 55);
+            this.btn_Sair.TabIndex = 8;
+            this.btn_Sair.Text = "Sair";
+            this.btn_Sair.UseVisualStyleBackColor = false;
+            this.btn_Sair.Click += new System.EventHandler(this.btn_Sair_Click);
+            // 
             // btn_Vendas
             // 
             this.btn_Vendas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(0)))), ((int)(((byte)(39)))));
@@ -87,6 +103,7 @@ namespace Aplication
             this.btn_Vendas.TabIndex = 7;
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = false;
+            this.btn_Vendas.Click += new System.EventHandler(this.btn_Vendas_Click);
             // 
             // btn_Estoque
             // 
@@ -129,23 +146,6 @@ namespace Aplication
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // btn_Sair
-            // 
-            this.btn_Sair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(0)))), ((int)(((byte)(39)))));
-            this.btn_Sair.FlatAppearance.BorderSize = 0;
-            this.btn_Sair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Sair.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sair.ForeColor = System.Drawing.Color.White;
-            this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
-            this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 530);
-            this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(200, 55);
-            this.btn_Sair.TabIndex = 8;
-            this.btn_Sair.Text = "Sair";
-            this.btn_Sair.UseVisualStyleBackColor = false;
-            this.btn_Sair.Click += new System.EventHandler(this.btn_Sair_Click);
-            // 
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -182,64 +182,6 @@ namespace Aplication
             this.textBox1.Size = new System.Drawing.Size(157, 27);
             this.textBox1.TabIndex = 3;
             // 
-            // dgv_Produtos
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Produtos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_Produtos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_Produtos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Produtos.BackgroundColor = System.Drawing.Color.Silver;
-            this.dgv_Produtos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_Produtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_Produtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Produtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Cod_Produto,
-            this.Produto,
-            this.Valor,
-            this.Quantidade});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Produtos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_Produtos.Location = new System.Drawing.Point(594, 35);
-            this.dgv_Produtos.Name = "dgv_Produtos";
-            this.dgv_Produtos.Size = new System.Drawing.Size(546, 539);
-            this.dgv_Produtos.TabIndex = 5;
-            // 
-            // Cod_Produto
-            // 
-            this.Cod_Produto.HeaderText = "Cod_Produto";
-            this.Cod_Produto.Name = "Cod_Produto";
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.Name = "Quantidade";
-            // 
             // label_Quantidade
             // 
             this.label_Quantidade.AutoSize = true;
@@ -264,7 +206,7 @@ namespace Aplication
             this.btn_Cadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Cadastrar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Cadastrar.ForeColor = System.Drawing.Color.White;
-            this.btn_Cadastrar.Location = new System.Drawing.Point(309, 220);
+            this.btn_Cadastrar.Location = new System.Drawing.Point(221, 241);
             this.btn_Cadastrar.Name = "btn_Cadastrar";
             this.btn_Cadastrar.Size = new System.Drawing.Size(157, 40);
             this.btn_Cadastrar.TabIndex = 8;
@@ -277,7 +219,7 @@ namespace Aplication
             this.btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Editar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Editar.ForeColor = System.Drawing.Color.White;
-            this.btn_Editar.Location = new System.Drawing.Point(309, 287);
+            this.btn_Editar.Location = new System.Drawing.Point(408, 241);
             this.btn_Editar.Name = "btn_Editar";
             this.btn_Editar.Size = new System.Drawing.Size(157, 40);
             this.btn_Editar.TabIndex = 9;
@@ -290,24 +232,71 @@ namespace Aplication
             this.btn_Deletar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Deletar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Deletar.ForeColor = System.Drawing.Color.White;
-            this.btn_Deletar.Location = new System.Drawing.Point(309, 357);
+            this.btn_Deletar.Location = new System.Drawing.Point(309, 322);
             this.btn_Deletar.Name = "btn_Deletar";
             this.btn_Deletar.Size = new System.Drawing.Size(157, 40);
             this.btn_Deletar.TabIndex = 10;
             this.btn_Deletar.Text = "Deletar";
             this.btn_Deletar.UseVisualStyleBackColor = false;
             // 
+            // dgv_Produtos
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Produtos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_Produtos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Produtos.BackgroundColor = System.Drawing.Color.CadetBlue;
+            this.dgv_Produtos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_Produtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Produtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Cod_Prod,
+            this.Produto,
+            this.Valor,
+            this.Quantidade});
+            this.dgv_Produtos.Location = new System.Drawing.Point(609, 12);
+            this.dgv_Produtos.Name = "dgv_Produtos";
+            this.dgv_Produtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Produtos.Size = new System.Drawing.Size(531, 562);
+            this.dgv_Produtos.TabIndex = 17;
+            // 
+            // Cod_Prod
+            // 
+            this.Cod_Prod.HeaderText = "Cod_Prod";
+            this.Cod_Prod.Name = "Cod_Prod";
+            // 
+            // Produto
+            // 
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.Name = "Quantidade";
+            // 
             // Form_Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1152, 586);
+            this.Controls.Add(this.dgv_Produtos);
             this.Controls.Add(this.btn_Deletar);
             this.Controls.Add(this.btn_Editar);
             this.Controls.Add(this.btn_Cadastrar);
             this.Controls.Add(this.label_Quantidade);
             this.Controls.Add(this.txt_Quantidade);
-            this.Controls.Add(this.dgv_Produtos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label_Produto);
@@ -337,15 +326,15 @@ namespace Aplication
         private System.Windows.Forms.Label label_Produto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dgv_Produtos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.Label label_Quantidade;
         private System.Windows.Forms.TextBox txt_Quantidade;
         private System.Windows.Forms.Button btn_Cadastrar;
         private System.Windows.Forms.Button btn_Editar;
         private System.Windows.Forms.Button btn_Deletar;
+        private System.Windows.Forms.DataGridView dgv_Produtos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Prod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
     }
 }

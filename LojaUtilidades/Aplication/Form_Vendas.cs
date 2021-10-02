@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace Aplication
 {
-    public partial class Form_Produtos : Form
+    public partial class Form_Vendas : Form
     {
-        public Form_Produtos()
+        public Form_Vendas()
         {
             InitializeComponent();
+        }
+
+        private void btn_Produto_Click(object sender, EventArgs e)
+        {
+            Form_Produtos form_Produtos = new Form_Produtos();
+            form_Produtos.ShowDialog();
+            Close();
         }
 
         private void btn_Sair_Click(object sender, EventArgs e)
@@ -24,9 +31,7 @@ namespace Aplication
 
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
-            Form_Vendas form_Vendas = new Form_Vendas();
-            form_Vendas.ShowDialog();
-            Close();
+            ShowDialog();
         }
     }
 }
