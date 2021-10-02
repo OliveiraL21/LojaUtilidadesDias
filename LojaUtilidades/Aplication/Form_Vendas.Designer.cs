@@ -40,18 +40,18 @@ namespace Aplication
             this.btn_Produto = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgv_Vendas = new System.Windows.Forms.DataGridView();
+            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Produto = new System.Windows.Forms.TextBox();
             this.txt_Quantidade = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_Total = new System.Windows.Forms.TextBox();
             this.label_total = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_finalizar_Vendas = new System.Windows.Forms.Button();
             this.btn_Imprimir = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_Calcular = new System.Windows.Forms.Button();
             this.panel_menu.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -100,6 +100,8 @@ namespace Aplication
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = false;
             this.btn_Sair.Click += new System.EventHandler(this.btn_Sair_Click);
+            this.btn_Sair.MouseLeave += new System.EventHandler(this.btn_Sair_MouseLeave);
+            this.btn_Sair.MouseHover += new System.EventHandler(this.btn_Sair_MouseHover);
             // 
             // btn_Vendas
             // 
@@ -117,6 +119,8 @@ namespace Aplication
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = false;
             this.btn_Vendas.Click += new System.EventHandler(this.btn_Vendas_Click);
+            this.btn_Vendas.MouseLeave += new System.EventHandler(this.btn_Vendas_MouseLeave);
+            this.btn_Vendas.MouseHover += new System.EventHandler(this.btn_Vendas_MouseHover);
             // 
             // btn_Estoque
             // 
@@ -133,6 +137,9 @@ namespace Aplication
             this.btn_Estoque.TabIndex = 6;
             this.btn_Estoque.Text = "Estoque";
             this.btn_Estoque.UseVisualStyleBackColor = false;
+            this.btn_Estoque.Click += new System.EventHandler(this.btn_Estoque_Click);
+            this.btn_Estoque.MouseLeave += new System.EventHandler(this.btn_Estoque_MouseLeave);
+            this.btn_Estoque.MouseHover += new System.EventHandler(this.btn_Estoque_MouseHover);
             // 
             // btn_Produto
             // 
@@ -149,6 +156,8 @@ namespace Aplication
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
             this.btn_Produto.Click += new System.EventHandler(this.btn_Produto_Click);
+            this.btn_Produto.MouseLeave += new System.EventHandler(this.btn_Produto_MouseLeave);
+            this.btn_Produto.MouseHover += new System.EventHandler(this.btn_Produto_MouseHover);
             // 
             // pictureBox1
             // 
@@ -168,8 +177,8 @@ namespace Aplication
             this.dgv_Vendas.BackgroundColor = System.Drawing.Color.CadetBlue;
             this.dgv_Vendas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HotTrack;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -180,11 +189,26 @@ namespace Aplication
             this.Cod_Prod,
             this.Produto,
             this.Valor});
-            this.dgv_Vendas.Location = new System.Drawing.Point(499, 34);
+            this.dgv_Vendas.Location = new System.Drawing.Point(499, 45);
             this.dgv_Vendas.Name = "dgv_Vendas";
             this.dgv_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas.Size = new System.Drawing.Size(625, 501);
+            this.dgv_Vendas.Size = new System.Drawing.Size(625, 527);
             this.dgv_Vendas.TabIndex = 1;
+            // 
+            // Cod_Prod
+            // 
+            this.Cod_Prod.HeaderText = "Cod_Prod";
+            this.Cod_Prod.Name = "Cod_Prod";
+            // 
+            // Produto
+            // 
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor";
+            this.Valor.Name = "Valor";
             // 
             // label1
             // 
@@ -222,21 +246,6 @@ namespace Aplication
             this.label2.TabIndex = 4;
             this.label2.Text = "Quantidade";
             // 
-            // Cod_Prod
-            // 
-            this.Cod_Prod.HeaderText = "Cod_Prod";
-            this.Cod_Prod.Name = "Cod_Prod";
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            // 
             // txt_Total
             // 
             this.txt_Total.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -258,16 +267,34 @@ namespace Aplication
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btn_finalizar_Vendas);
             this.panel2.Controls.Add(this.btn_Imprimir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(200, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(936, 31);
+            this.panel2.Size = new System.Drawing.Size(936, 39);
             this.panel2.TabIndex = 8;
+            // 
+            // btn_finalizar_Vendas
+            // 
+            this.btn_finalizar_Vendas.FlatAppearance.BorderSize = 0;
+            this.btn_finalizar_Vendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_finalizar_Vendas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_finalizar_Vendas.ForeColor = System.Drawing.Color.Black;
+            this.btn_finalizar_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_finalizar_Vendas.Image")));
+            this.btn_finalizar_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_finalizar_Vendas.Location = new System.Drawing.Point(158, 3);
+            this.btn_finalizar_Vendas.Name = "btn_finalizar_Vendas";
+            this.btn_finalizar_Vendas.Size = new System.Drawing.Size(201, 33);
+            this.btn_finalizar_Vendas.TabIndex = 1;
+            this.btn_finalizar_Vendas.Text = "Finalizar Venda";
+            this.btn_finalizar_Vendas.UseVisualStyleBackColor = true;
+            this.btn_finalizar_Vendas.MouseLeave += new System.EventHandler(this.btn_finalizar_Vendas_MouseLeave);
+            this.btn_finalizar_Vendas.MouseHover += new System.EventHandler(this.btn_finalizar_Vendas_MouseHover);
             // 
             // btn_Imprimir
             // 
+            this.btn_Imprimir.BackColor = System.Drawing.Color.White;
             this.btn_Imprimir.FlatAppearance.BorderSize = 0;
             this.btn_Imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Imprimir.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,25 +303,12 @@ namespace Aplication
             this.btn_Imprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Imprimir.Location = new System.Drawing.Point(10, 3);
             this.btn_Imprimir.Name = "btn_Imprimir";
-            this.btn_Imprimir.Size = new System.Drawing.Size(142, 23);
+            this.btn_Imprimir.Size = new System.Drawing.Size(142, 33);
             this.btn_Imprimir.TabIndex = 0;
             this.btn_Imprimir.Text = "Imprimir";
-            this.btn_Imprimir.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(158, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Finalizar Venda";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Imprimir.UseVisualStyleBackColor = false;
+            this.btn_Imprimir.MouseLeave += new System.EventHandler(this.btn_Imprimir_MouseLeave);
+            this.btn_Imprimir.MouseHover += new System.EventHandler(this.btn_Imprimir_MouseHover);
             // 
             // btn_Calcular
             // 
@@ -359,7 +373,7 @@ namespace Aplication
         private System.Windows.Forms.TextBox txt_Total;
         private System.Windows.Forms.Label label_total;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_finalizar_Vendas;
         private System.Windows.Forms.Button btn_Imprimir;
         private System.Windows.Forms.Button btn_Calcular;
     }

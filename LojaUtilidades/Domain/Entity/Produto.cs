@@ -9,9 +9,11 @@ namespace Domain.Entity
 {
    public class Produto
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public double Valor { get; set; }
         public int Quantidade { get; set; }
+
+        public Venda Venda { get; set; }
     }
 }

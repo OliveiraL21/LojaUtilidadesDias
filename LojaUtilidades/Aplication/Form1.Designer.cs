@@ -152,6 +152,7 @@ namespace Aplication
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.txt_Hora);
             this.panel2.Controls.Add(this.txt_data);
@@ -228,12 +229,13 @@ namespace Aplication
             // Titulo_Aplicacao
             // 
             this.Titulo_Aplicacao.AutoSize = true;
-            this.Titulo_Aplicacao.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titulo_Aplicacao.Location = new System.Drawing.Point(148, 6);
+            this.Titulo_Aplicacao.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.Titulo_Aplicacao.Location = new System.Drawing.Point(98, 6);
             this.Titulo_Aplicacao.Name = "Titulo_Aplicacao";
-            this.Titulo_Aplicacao.Size = new System.Drawing.Size(533, 38);
+            this.Titulo_Aplicacao.Size = new System.Drawing.Size(606, 43);
             this.Titulo_Aplicacao.TabIndex = 0;
             this.Titulo_Aplicacao.Text = "Loja Utilidades e Cosméticos Dias";
+            this.Titulo_Aplicacao.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form_Principal
             // 

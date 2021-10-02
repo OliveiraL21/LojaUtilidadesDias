@@ -8,6 +8,8 @@ namespace Domain.Entity
 {
     public class Venda
     {
+        public int Id { get; set; }
+
         private DateTime _dataVenda;
 
         public DateTime DataVenda
@@ -16,8 +18,10 @@ namespace Domain.Entity
             set { _dataVenda = DateTime.Now; }
         }
 
-        public Guid ProdutoId { get; set; }
+        public int ProdutoId { get; set; }
         public IEnumerable<Produto> Produtos { get; set; }
+
+
     }
 
 }
