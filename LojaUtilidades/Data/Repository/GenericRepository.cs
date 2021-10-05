@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces;
+﻿using Domain.Entity;
+using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,41 +9,96 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly MyContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly DbSet<T> _dataSet;
         public GenericRepository(MyContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>();
+            _dataSet = context.Set<T>();
         }
         public async Task<bool> DeleteAsync(int id)
         {
             try
             {
-                var result = await _dbSet.SingleOrDefault(p => p.)
+                var result = await _dataSet.SingleOrDefaultAsync(p => p.Id.Equals(id));
+                if(result != null)
+                {
+                    _dataSet.Remove(result);
+                    await _context.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception)
+            {
+                throw;
             }
         }
 
-        public Task<T> InsertAsync(T item)
+        public async Task<T> InsertAsync(T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _dataSet.Add(item);
+                await _context.SaveChangesAsync();
+
+            }
+            catch
+            {
+                throw;
+            }
+            return item;
         }
 
-        public Task<IEnumerable<T>> SelectAllAsync()
+        public async Task<IEnumerable<T>> SelectAllAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _dataSet.ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public Task<T> SelectAsync(Guid id)
+        public async Task<T> SelectAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _dataSet.SingleOrDefaultAsync(p => p.Id.Equals(id));
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public Task<T> UpdateAsync(T item)
+        public async Task<T> UpdateAsync(T item)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var result = await _dataSet.SingleOrDefaultAsync(p => p.Id.Equals(item.Id));
+                if(result == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    _context.Entry(result).CurrentValues.SetValues(item);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            return item;
         }
     }
 }

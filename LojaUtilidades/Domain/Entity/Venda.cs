@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity
 {
-    public class Venda
+    public class Venda : BaseEntity
     {
-        public int Id { get; set; }
 
         private DateTime _dataVenda;
 
