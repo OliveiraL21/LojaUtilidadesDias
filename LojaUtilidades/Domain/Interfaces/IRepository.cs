@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<T> where T : class
     {
-        Task<IEnumerable<TEntity>> SelectAllAsync();
-        Task<TEntity> SelectAsync(Guid id);
-        Task<TEntity> InsertAsync(TEntity item);
-        Task<TEntity> UpdateAsync(TEntity item);
-        Task<bool> DeleteAsync(Guid id);
+        Task<IEnumerable<T>> SelectAllAsync();
+        Task<T> SelectAsync(int id);
+        Task<T> InsertAsync(T item);
+        Task<T> UpdateAsync(T item);
+        Task<bool> DeleteAsync(int id);
     }
 }
