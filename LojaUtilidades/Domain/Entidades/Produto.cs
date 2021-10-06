@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entity
+namespace Domain.Entidades
 {
-   public class Produto : BaseEntity
+    public class Produto : BaseEntity
     {
         public string Nome { get; set; }
         public double Valor { get; set; }

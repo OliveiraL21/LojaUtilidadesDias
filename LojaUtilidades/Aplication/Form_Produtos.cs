@@ -77,5 +77,10 @@ namespace Aplication
             form_Estoque.ShowDialog();
             Close();
         }
+
+        private void btn_Cadastrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
