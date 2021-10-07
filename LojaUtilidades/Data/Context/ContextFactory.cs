@@ -12,7 +12,7 @@ namespace Data.Context
     {
         public MyContext CreateDbContext(string[] args)
         {
-            var connectionString = "Server=localhost;Port=3306;DataBase=dbDesafioLuxFacta;Uid=root;Pwd=lucas123";
+            var connectionString = "Server=localhost;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=lucas123";
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
             optionsBuilder.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 26)));
 
