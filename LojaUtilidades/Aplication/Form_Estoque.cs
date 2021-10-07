@@ -10,19 +10,12 @@ using System.Windows.Forms;
 
 namespace Aplication
 {
-    public partial class Form_Principal : Form
+    public partial class Form_Estoque : Form
     {
-        public Form_Principal()
+        public Form_Estoque()
         {
             InitializeComponent();
         }
-
-        private void btn_Sair_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-
         private void btn_Produto_MouseHover(object sender, EventArgs e)
         {
             btn_Produto.BackColor = Color.DarkMagenta;
@@ -62,29 +55,27 @@ namespace Aplication
         {
             btn_Sair.BackColor = Color.FromArgb(41, 0, 39);
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            txt_data.Text = DateTime.Today.ToString();
-            txt_hora.Text = DateTime.Now.TimeOfDay.ToString();
-        }
-
         private void btn_Produto_Click(object sender, EventArgs e)
         {
             Form_Produtos form_Produtos = new Form_Produtos();
             form_Produtos.ShowDialog();
         }
 
+        private void btn_Sair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
             Form_Vendas form_Vendas = new Form_Vendas();
             form_Vendas.ShowDialog();
+            Close();
         }
 
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
-            Form_Estoque form_Estoque = new Form_Estoque();
-            form_Estoque.ShowDialog();
+            MessageBox.Show("O formulário de Estoque já está aberto", "Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
