@@ -1,4 +1,8 @@
-﻿using Domain.Interfaces.Services.Produtos;
+﻿using Data.Context;
+using Data.Implementation;
+using Domain.Interfaces.Services.Produtos;
+using Domain.Repository;
+using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +17,8 @@ namespace Aplication
 {
     public partial class Form_Principal : Form
     {
-        private readonly IProdutoService _service;
         public Form_Principal()
-        {
-            
+        { 
             InitializeComponent();
         }
 
@@ -74,7 +76,7 @@ namespace Aplication
 
         private void btn_Produto_Click(object sender, EventArgs e)
         {
-            Form_Produtos form_Produtos = new Form_Produtos(_service);
+            Form_Produtos form_Produtos = new Form_Produtos();
             form_Produtos.ShowDialog();
         }
 

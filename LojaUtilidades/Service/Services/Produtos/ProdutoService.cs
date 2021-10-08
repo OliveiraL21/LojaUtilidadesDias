@@ -3,6 +3,7 @@ using Data.Implementation;
 using Domain.Entidades;
 using Domain.Interfaces.Services.Produtos;
 using Domain.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,10 @@ namespace Service.Services.Produtos
         public ProdutoService(IProdutoRepository repository) 
         {
             _repository = repository;
+        }
+        public ProdutoService()
+        {
+            _repository = new ProdutoImplementation(new MyContext(new DbContextOptions<MyContext>()));
         }
 
         public async Task<bool> Delete(int id)

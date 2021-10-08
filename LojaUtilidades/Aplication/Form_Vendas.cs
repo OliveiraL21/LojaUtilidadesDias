@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Interfaces.Services.Produtos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Aplication
 {
     public partial class Form_Vendas : Form
     {
+        private readonly IProdutoService _service;
         public Form_Vendas()
         {
             InitializeComponent();

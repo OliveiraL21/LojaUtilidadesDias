@@ -23,10 +23,10 @@ namespace Aplication
         //private static readonly MyContext context = new MyContext(_context);
         //private static readonly IProdutoRepository _repository = new ProdutoImplementation(context);
         private readonly IProdutoService _service;
-        public Form_Produtos(IProdutoService service)
+        public Form_Produtos()
         {
-            _service = service;
             InitializeComponent();
+            _service = new ProdutoService();
         }
         private void btn_Sair_Click(object sender, EventArgs e)
         {
