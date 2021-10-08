@@ -25,6 +25,7 @@ namespace Data.Implementation
             {
                 var result = await _dataSet.SingleOrDefaultAsync(p => p.Nome == nome);
                
+               
                 return result;
                 
             }
