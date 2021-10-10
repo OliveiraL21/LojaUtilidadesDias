@@ -29,7 +29,7 @@ namespace Aplication
             var services = new ServiceCollection();
             ConfigureServices(services);
             
-            using(var service = Application.Get)
+            
             Application.Run(new Form_Principal());
         }
 
