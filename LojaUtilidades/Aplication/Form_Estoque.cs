@@ -1,4 +1,7 @@
-﻿using Domain.Interfaces.Services.Produtos;
+﻿using Data.Context;
+using Domain.Interfaces.Services.Produtos;
+using Microsoft.EntityFrameworkCore;
+using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +17,12 @@ namespace Aplication
     public partial class Form_Estoque : Form
     {
         private readonly IProdutoService _service;
+        
+        
         public Form_Estoque()
         {
             InitializeComponent();
+            _service = new ProdutoService();
         }
         private void btn_Produto_MouseHover(object sender, EventArgs e)
         {
@@ -86,14 +92,45 @@ namespace Aplication
             try
             {
                 var result = await _service.SelectByName(nome);
+                
+             
                 if (result != null)
                 {
-                   
+                    dgv_Estoque.Rows[0].Cells[0].Value = result.Id;
+                    dgv_Estoque.Rows[0].Cells[1].Value = result.Nome;
+                    dgv_Estoque.Rows[0].Cells[2].Value = result.Valor;
+                    dgv_Estoque.Rows[0].Cells[3].Value = result.Quantidade;
+                    
                 }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show($"Erro ao encontrar o produto  {ex.Message}", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private async void btn_Deletar_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(dgv_Estoque.Rows[0].Cells[0].Value.ToString());
+            try
+            {
+                var result = await _service.Delete(id);
+                if(result == true)
+                {
+                    MessageBox.Show("Produto deletado com sucesso !", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao tentar excluir {ex.Message}", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgv_Estoque_DoubleClick(object sender, EventArgs e)
+        {
+            txt_Produto.Text = dgv_Estoque.Rows[0].Cells[1].Value.ToString();
+            txt_Valor.Text = dgv_Estoque.Rows[0].Cells[2].Value.ToString();
+            txt_Quantidade.Text = dgv_Estoque.Rows[0].Cells[3].Value.ToString();
         }
     }
 }

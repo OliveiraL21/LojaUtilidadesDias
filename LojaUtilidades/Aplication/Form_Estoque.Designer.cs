@@ -30,18 +30,19 @@ namespace Aplication
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Estoque));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_Sair = new System.Windows.Forms.Button();
             this.btn_Estoque = new System.Windows.Forms.Button();
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
-            this.dgv_Produtos = new System.Windows.Forms.DataGridView();
+            this.dgv_Estoque = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +58,7 @@ namespace Aplication
             this.btn_Consultar = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Produtos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Estoque)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_Menu
@@ -162,54 +163,62 @@ namespace Aplication
             this.btn_Produto.MouseLeave += new System.EventHandler(this.btn_Produto_MouseLeave);
             this.btn_Produto.MouseHover += new System.EventHandler(this.btn_Produto_MouseHover);
             // 
-            // dgv_Produtos
+            // dgv_Estoque
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Produtos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgv_Produtos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Produtos.BackgroundColor = System.Drawing.Color.CadetBlue;
-            this.dgv_Produtos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgv_Produtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Produtos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Estoque.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_Estoque.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_Estoque.BackgroundColor = System.Drawing.Color.CadetBlue;
+            this.dgv_Estoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Estoque.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_Estoque.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_Estoque.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Produto,
             this.Valor,
             this.Quantidade});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Produtos.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgv_Produtos.GridColor = System.Drawing.Color.Black;
-            this.dgv_Produtos.Location = new System.Drawing.Point(654, 71);
-            this.dgv_Produtos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgv_Produtos.Name = "dgv_Produtos";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Produtos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgv_Produtos.RowHeadersWidth = 51;
-            this.dgv_Produtos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Produtos.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgv_Produtos.RowTemplate.Height = 25;
-            this.dgv_Produtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Produtos.Size = new System.Drawing.Size(743, 859);
-            this.dgv_Produtos.TabIndex = 13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Estoque.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_Estoque.GridColor = System.Drawing.Color.Black;
+            this.dgv_Estoque.Location = new System.Drawing.Point(655, 73);
+            this.dgv_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgv_Estoque.Name = "dgv_Estoque";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Estoque.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_Estoque.RowHeadersWidth = 51;
+            this.dgv_Estoque.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Estoque.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_Estoque.RowTemplate.Height = 25;
+            this.dgv_Estoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_Estoque.Size = new System.Drawing.Size(743, 859);
+            this.dgv_Estoque.TabIndex = 13;
+            this.dgv_Estoque.DoubleClick += new System.EventHandler(this.dgv_Estoque_DoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Cod_Prod";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
             // 
             // Produto
             // 
@@ -253,6 +262,7 @@ namespace Aplication
             this.btn_Deletar.TabIndex = 23;
             this.btn_Deletar.Text = "Deletar";
             this.btn_Deletar.UseVisualStyleBackColor = false;
+            this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
             // 
             // btn_Editar
             // 
@@ -355,7 +365,7 @@ namespace Aplication
             this.Controls.Add(this.txt_Produto);
             this.Controls.Add(this.label_Produto);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgv_Produtos);
+            this.Controls.Add(this.dgv_Estoque);
             this.Controls.Add(this.panel_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -364,7 +374,7 @@ namespace Aplication
             this.Text = "Form_Estoque";
             this.panel_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Produtos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_Estoque)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,10 +388,7 @@ namespace Aplication
         private System.Windows.Forms.Button btn_Estoque;
         private System.Windows.Forms.Button btn_Vendas;
         private System.Windows.Forms.Button btn_Produto;
-        private System.Windows.Forms.DataGridView dgv_Produtos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridView dgv_Estoque;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Deletar;
         private System.Windows.Forms.Button btn_Editar;
@@ -392,5 +399,9 @@ namespace Aplication
         private System.Windows.Forms.TextBox txt_Produto;
         private System.Windows.Forms.Label label_Produto;
         private System.Windows.Forms.Button btn_Consultar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
     }
 }
