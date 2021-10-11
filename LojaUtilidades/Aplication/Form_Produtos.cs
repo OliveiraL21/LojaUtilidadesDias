@@ -109,7 +109,8 @@ namespace Aplication
                 var result = await _service.Post(produto);
                 if (result != null)
                 {
-                    MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgv_Produtos.Rows.Add(result);
                 }
                 else
                 {
