@@ -79,5 +79,21 @@ namespace Aplication
         {
             MessageBox.Show("O formulário de Estoque já está aberto", "Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private async void btn_Consultar_Click(object sender, EventArgs e)
+        {
+            var nome = txt_Produto.Text;
+            try
+            {
+                var result = await _service.SelectByName(nome);
+                if (result != null)
+                {
+                   
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao encontrar o produto  {ex.Message}", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

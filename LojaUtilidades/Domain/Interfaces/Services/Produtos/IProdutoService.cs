@@ -15,5 +15,7 @@ namespace Domain.Interfaces.Services.Produtos
         Task<IEnumerable<ProdutoEntity>> GetAll();
         Task<bool> Delete(int id);
         Task<ProdutoEntity> Put(ProdutoEntity produto);
+        Task<bool> DeleteByName(string nome);
+        Task<ProdutoEntity> SelectByName(string nome);
     }
 }

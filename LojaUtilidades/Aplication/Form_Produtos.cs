@@ -109,7 +109,8 @@ namespace Aplication
                 var result = await _service.Post(produto);
                 if (result != null)
                 {
-                    MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
                 else
                 {
@@ -119,6 +120,59 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao cadastrar o produto {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btn_Editar_Click(object sender, EventArgs e)
+        {
+            var nome = txt_Produto.Text;
+            var valor = double.Parse(txt_Valor.Text);
+            var quantidade = int.Parse(txt_Quantidade.Text);
+            var produto = new ProdutoEntity()
+            {
+                Nome = nome,
+                Valor = valor,
+                Quantidade = quantidade
+            };
+            try
+            {
+                var result = await _service.Put(produto);
+                if(result != null)
+                {
+                    MessageBox.Show("Produto alterado com sucesso !", "Atualização efetuada com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao cadastrar o produto {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void Form_Produtos_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await _service.GetAll();
+                dgv_Produtos.DataSource = result;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao encontrar os produtos {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btn_Deletar_Click(object sender, EventArgs e)
+        {
+            var nome = txt_Produto.Text;
+            try
+            {  
+                var result = await _service.DeleteByName(nome);
+                MessageBox.Show("Produto deletado com sucesso", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao deletar o produto {ex.Message}", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -93,5 +93,45 @@ namespace Service.Services.Produtos
             }
         }
 
+        public async Task<bool> DeleteByName(string nome)
+        {
+            try
+            {
+                var result = await _repository.DeleteByName(nome);
+                if(result == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+              
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<ProdutoEntity> SelectByName(string nome)
+        {
+            try
+            {
+                var result = await _repository.SelectByName(nome);
+                if(result != null)
+                {
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

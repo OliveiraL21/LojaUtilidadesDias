@@ -26,20 +26,8 @@ namespace Aplication
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var services = new ServiceCollection();
-            ConfigureServices(services);
-            
-            
             Application.Run(new Form_Principal());
         }
 
-        public static void ConfigureServices(ServiceCollection service)
-        {
-            service.AddDbContext<MyContext>(options => options.UseMySql("Server=localhost;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=lucas123",
-                new MySqlServerVersion(new Version(8,0,26))
-                ));
-            service.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            service.AddTransient<IProdutoRepository, ProdutoImplementation>();
-        }
     }
 }

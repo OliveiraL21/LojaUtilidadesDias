@@ -10,5 +10,6 @@ namespace Domain.Repository
     public interface IProdutoRepository : IRepository<ProdutoEntity>
     {
         Task<ProdutoEntity> SelectByName(string nome);
+        Task<bool> DeleteByName(string nome);
     }
 }
