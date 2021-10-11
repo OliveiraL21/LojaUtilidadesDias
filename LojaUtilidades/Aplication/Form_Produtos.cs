@@ -149,18 +149,7 @@ namespace Aplication
             }
         }
 
-        private async void Form_Produtos_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                var result = await _service.GetAll();
-                dgv_Produtos.DataSource = result;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show($"Erro ao encontrar os produtos {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private async void btn_Deletar_Click(object sender, EventArgs e)
         {

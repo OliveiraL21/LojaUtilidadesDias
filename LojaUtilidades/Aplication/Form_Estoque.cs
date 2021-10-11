@@ -1,4 +1,5 @@
 ﻿using Data.Context;
+using Domain.Entidades;
 using Domain.Interfaces.Services.Produtos;
 using Microsoft.EntityFrameworkCore;
 using Service.Services.Produtos;
@@ -128,9 +129,67 @@ namespace Aplication
 
         private void dgv_Estoque_DoubleClick(object sender, EventArgs e)
         {
+            txt_Id.Text = dgv_Estoque.Rows[0].Cells[0].Value.ToString();
             txt_Produto.Text = dgv_Estoque.Rows[0].Cells[1].Value.ToString();
             txt_Valor.Text = dgv_Estoque.Rows[0].Cells[2].Value.ToString();
             txt_Quantidade.Text = dgv_Estoque.Rows[0].Cells[3].Value.ToString();
+        }
+
+        private async void btn_Editar_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(txt_Id.Text);
+            var nome = txt_Produto.Text;
+            var valor = double.Parse(txt_Valor.Text);
+            var quantidade = int.Parse(txt_Quantidade.Text);
+            var produto = new ProdutoEntity()
+            {
+                Id = id,
+                Nome = nome,
+                Valor = valor,
+                Quantidade = quantidade
+            };
+
+            try
+            {
+                var result = await _service.Put(produto);
+                if(result != null)
+                {
+                    MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao tentar editar o produt {ex.Message}", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void Form_Estoque_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await _service.GetAll();
+                if(result == null)
+                {
+                    MessageBox.Show("Erro ao baixar a lista de produtos ", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int i = 0;
+                    foreach (var produto in result)
+                    {
+                        dgv_Estoque.Rows.[i].Cells[0].Value = produto.Id;
+                        dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
+                        dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
+                        dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
+                        i++;
+                    }
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao baixar a lista de produtos {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
