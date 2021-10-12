@@ -19,9 +19,7 @@ namespace Aplication
 {
     public partial class Form_Produtos : Form
     {
-        //private static readonly DbContextOptions<MyContext> _context = new DbContextOptions<MyContext>();
-        //private static readonly MyContext context = new MyContext(_context);
-        //private static readonly IProdutoRepository _repository = new ProdutoImplementation(context);
+     
         private readonly IProdutoService _service;
         public Form_Produtos()
         {
@@ -110,6 +108,10 @@ namespace Aplication
                 if (result != null)
                 {
                     MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgv_Produtos.Rows[0].Cells[0].Value = result.Id;
+                    dgv_Produtos.Rows[0].Cells[1].Value = result.Nome;
+                    dgv_Produtos.Rows[0].Cells[2].Value = result.Valor;
+                    dgv_Produtos.Rows[0].Cells[3].Value = result.Quantidade;
                     
                 }
                 else

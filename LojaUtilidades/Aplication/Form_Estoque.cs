@@ -177,7 +177,7 @@ namespace Aplication
                     int i = 0;
                     foreach (var produto in result)
                     {
-                        dgv_Estoque.Rows.[i].Cells[0].Value = produto.Id;
+                        dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
                         dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
                         dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
                         dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
