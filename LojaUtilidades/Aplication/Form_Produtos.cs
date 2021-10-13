@@ -26,6 +26,7 @@ namespace Aplication
             InitializeComponent();
             _service = new ProdutoService();
         }
+        #region Front-End
         private void btn_Sair_Click(object sender, EventArgs e)
         {
             Close();
@@ -90,7 +91,7 @@ namespace Aplication
         {
             MessageBox.Show("O formulário de Produtos já está aberto","Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
+#endregion
         private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             var nome = txt_Produto.Text;
@@ -105,13 +106,19 @@ namespace Aplication
             try
             {
                 var result = await _service.Post(produto);
+                
                 if (result != null)
                 {
                     MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  
+         
                     dgv_Produtos.Rows[0].Cells[0].Value = result.Id;
                     dgv_Produtos.Rows[0].Cells[1].Value = result.Nome;
                     dgv_Produtos.Rows[0].Cells[2].Value = result.Valor;
                     dgv_Produtos.Rows[0].Cells[3].Value = result.Quantidade;
+                    
+                    
+                    
                     
                 }
                 else
@@ -123,31 +130,46 @@ namespace Aplication
             {
                 MessageBox.Show($"Erro ao cadastrar o produto {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                txt_Id.Text = "";
+                txt_Produto.Text = "";
+                txt_Valor.Text = "";
+                txt_Quantidade.Text = "";
+            }
         }
 
         private async void btn_Editar_Click(object sender, EventArgs e)
         {
+            var id = int.Parse(txt_Id.Text);
             var nome = txt_Produto.Text;
             var valor = double.Parse(txt_Valor.Text);
             var quantidade = int.Parse(txt_Quantidade.Text);
             var produto = new ProdutoEntity()
             {
+                Id = id,
                 Nome = nome,
                 Valor = valor,
                 Quantidade = quantidade
             };
+
             try
             {
                 var result = await _service.Put(produto);
-                if(result != null)
+                if (result != null)
                 {
-                    MessageBox.Show("Produto alterado com sucesso !", "Atualização efetuada com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+                    MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var consulta = await _service.Get(result.Id);
+                    dgv_Produtos.Rows[0].Cells[0].Value = consulta.Id;
+                    dgv_Produtos.Rows[0].Cells[1].Value = consulta.Nome;
+                    dgv_Produtos.Rows[0].Cells[2].Value = consulta.Valor;
+                    dgv_Produtos.Rows[0].Cells[3].Value = consulta.Quantidade;
                 }
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao cadastrar o produto {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar editar o produto {ex.Message}", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -165,6 +187,14 @@ namespace Aplication
             {
                 MessageBox.Show($"Erro ao deletar o produto {ex.Message}", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgv_Produtos_DoubleClick(object sender, EventArgs e)
+        {
+            txt_Id.Text = dgv_Produtos.Rows[0].Cells[0].Value.ToString();
+            txt_Produto.Text = dgv_Produtos.Rows[0].Cells[1].Value.ToString();
+            txt_Valor.Text = dgv_Produtos.Rows[0].Cells[2].Value.ToString();
+            txt_Quantidade.Text = dgv_Produtos.Rows[0].Cells[3].Value.ToString();
         }
     }
 }
