@@ -1,4 +1,5 @@
 ﻿using Domain.Interfaces.Services.Produtos;
+using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +18,9 @@ namespace Aplication
         public Form_Vendas()
         {
             InitializeComponent();
+            _service = new ProdutoService();
         }
-
+        #region Front-End
         private void btn_Produto_MouseHover(object sender, EventArgs e)
         {
             btn_Produto.BackColor = Color.DarkMagenta;
@@ -82,6 +84,30 @@ namespace Aplication
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
             MessageBox.Show("O formulário de Vendas já está aberto", "Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        #endregion
+
+        private async void btn_Consultar_Click(object sender, EventArgs e)
+        {
+            var nome = txt_Produto.Text;
+            try
+            {
+                var result = await _service.SelectByName(nome);
+                if(result != null)
+                {
+                    dgv_Produtos.Rows.Add();
+                    dgv_Produtos.Rows[^1].Cells[0].Value = result.Nome;
+                    dgv_Produtos.Rows[^1].Cells[1].Value = result.Valor.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Produto não encontrado !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
