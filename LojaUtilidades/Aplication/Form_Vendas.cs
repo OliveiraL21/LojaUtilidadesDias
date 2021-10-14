@@ -143,5 +143,10 @@ namespace Aplication
         {
             dgv_Vendas.Rows.Clear();
         }
+
+        private void btn_Deletar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
