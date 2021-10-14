@@ -15,6 +15,7 @@ namespace Aplication
     public partial class Form_Vendas : Form
     {
         public int i = 0;
+        public double Total = 0;
         private readonly IProdutoService _service;
         public Form_Vendas()
         {
@@ -113,18 +114,34 @@ namespace Aplication
                     MessageBox.Show("Produto não encontrado !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show($"Produto não encontrado ! {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txt_Produto.Text = "";
+                txt_Quantidade.Text = "";
+                
             }
         }
 
         private void btn_Calcular_Click(object sender, EventArgs e)
         {
-            for(int x = 0; x < dgv_Vendas.Rows.Count; x++)
+            int quantidade;
+            double valor;
+            for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
             {
-                var total = double.Parse(dgv_Vendas.Rows[x].Cells[1].Value.ToString()) * double.Parse(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[1].Value.ToString());
+                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                Total = Total + (valor * quantidade);
             }
+            txt_Total.Text = Total.ToString();
+        }
+
+        private void btn_Limpar_Click(object sender, EventArgs e)
+        {
+            dgv_Vendas.Rows.Clear();
         }
     }
 }
