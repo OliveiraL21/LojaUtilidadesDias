@@ -147,13 +147,15 @@ namespace Aplication
 
         private void btn_Deletar_Click(object sender, EventArgs e)
         {
-            dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
+           
             if(!string.IsNullOrEmpty(txt_Total.Text))
             {
                 var total = Convert.ToDouble(txt_Total.Text);
                 var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[1].Value.ToString());
-                var valorFinal = total - itemExcluido;
+                var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
+                var valorFinal = total - (itemExcluido * itemExcluidoQtd);
                 txt_Total.Text = valorFinal.ToString();
+                dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
             }
             else if(string.IsNullOrEmpty(txt_Total.Text))
             {
