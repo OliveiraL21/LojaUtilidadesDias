@@ -14,6 +14,7 @@ namespace Aplication
 {
     public partial class Form_Vendas : Form
     {
+        public int i = 0;
         private readonly IProdutoService _service;
         public Form_Vendas()
         {
@@ -89,15 +90,23 @@ namespace Aplication
 
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_Produto.Text) || string.IsNullOrEmpty(txt_Quantidade.Text))
+            {
+                MessageBox.Show("digite o nome de um produto e/ou sua quantidade de venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             var nome = txt_Produto.Text;
+            var quantidade = int.Parse(txt_Quantidade.Text);
             try
             {
                 var result = await _service.SelectByName(nome);
                 if(result != null)
                 {
-                    dgv_Produtos.Rows.Add();
-                    dgv_Produtos.Rows[^1].Cells[0].Value = result.Nome;
-                    dgv_Produtos.Rows[^1].Cells[1].Value = result.Valor.ToString();
+                    dgv_Vendas.Rows.Add();
+                    dgv_Vendas.Rows[i].Cells[0].Value = result.Nome;
+                    dgv_Vendas.Rows[i].Cells[1].Value = result.Valor.ToString();
+                    dgv_Vendas.Rows[i].Cells[2].Value = quantidade;
+                    i++;
+                    
                 }
                 else
                 {
@@ -107,6 +116,14 @@ namespace Aplication
             catch
             {
 
+            }
+        }
+
+        private void btn_Calcular_Click(object sender, EventArgs e)
+        {
+            for(int x = 0; x < dgv_Vendas.Rows.Count; x++)
+            {
+                var total = double.Parse(dgv_Vendas.Rows[x].Cells[1].Value.ToString()) * double.Parse(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
             }
         }
     }
