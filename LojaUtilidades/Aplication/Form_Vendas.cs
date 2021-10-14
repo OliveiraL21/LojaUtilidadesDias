@@ -142,11 +142,12 @@ namespace Aplication
         private void btn_Limpar_Click(object sender, EventArgs e)
         {
             dgv_Vendas.Rows.Clear();
+            txt_Total.Text = "";
         }
 
         private void btn_Deletar_Click(object sender, EventArgs e)
         {
-
+            dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
         }
     }
 }
