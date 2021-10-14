@@ -148,6 +148,17 @@ namespace Aplication
         private void btn_Deletar_Click(object sender, EventArgs e)
         {
             dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
+            if(!string.IsNullOrEmpty(txt_Total.Text))
+            {
+                var total = Convert.ToDouble(txt_Total.Text);
+                var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[1].Value.ToString());
+                var valorFinal = total - itemExcluido;
+                txt_Total.Text = valorFinal.ToString();
+            }
+            else if(string.IsNullOrEmpty(txt_Total.Text))
+            {
+                MessageBox.Show("Por favor calcule o valor total da venda antes !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
