@@ -112,6 +112,10 @@ namespace Aplication
             {
                 MessageBox.Show($"Erro ao encontrar o produto  {ex.Message}", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            txt_Id.Text = "";
+            txt_Produto.Text = "";
+            txt_Valor.Text = "";
+            txt_Quantidade.Text = "";
         }
 
         private async void btn_Deletar_Click(object sender, EventArgs e)
@@ -128,6 +132,13 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar excluir {ex.Message}", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txt_Id.Text = "";
+                txt_Produto.Text = "";
+                txt_Valor.Text = "";
+                txt_Quantidade.Text = "";
             }
         }
 
@@ -165,6 +176,13 @@ namespace Aplication
             catch(Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar editar o produto {ex.Message}", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txt_Id.Text = "";
+                txt_Produto.Text = "";
+                txt_Valor.Text = "";
+                txt_Quantidade.Text = "";
             }
         }
 
@@ -231,6 +249,13 @@ namespace Aplication
             catch(Exception ex)
             {
                 MessageBox.Show($"Erro ao baixar a lista de produtos {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txt_Id.Text = "";
+                txt_Produto.Text = "";
+                txt_Valor.Text = "";
+                txt_Quantidade.Text = "";
             }
         }
     }

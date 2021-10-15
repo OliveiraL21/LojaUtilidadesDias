@@ -1,4 +1,5 @@
-﻿using Domain.Interfaces.Services.Produtos;
+﻿using Domain.Entidades;
+using Domain.Interfaces.Services.Produtos;
 using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
@@ -103,9 +104,10 @@ namespace Aplication
                 if(result != null)
                 {
                     dgv_Vendas.Rows.Add();
-                    dgv_Vendas.Rows[i].Cells[0].Value = result.Nome;
-                    dgv_Vendas.Rows[i].Cells[1].Value = result.Valor.ToString();
-                    dgv_Vendas.Rows[i].Cells[2].Value = quantidade;
+                    dgv_Vendas.Rows[i].Cells[0].Value = result.Id;
+                    dgv_Vendas.Rows[i].Cells[1].Value = result.Nome;
+                    dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
+                    dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
                     i++;
                     
                 }
@@ -132,8 +134,8 @@ namespace Aplication
             double valor;
             for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
             {
-                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[1].Value.ToString());
-                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
                 Total = Total + (valor * quantidade);
             }
             txt_Total.Text = Total.ToString();
@@ -151,8 +153,8 @@ namespace Aplication
             if(!string.IsNullOrEmpty(txt_Total.Text))
             {
                 var total = Convert.ToDouble(txt_Total.Text);
-                var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[1].Value.ToString());
-                var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
+                var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
+                var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[3].Value.ToString());
                 var valorFinal = total - (itemExcluido * itemExcluidoQtd);
                 txt_Total.Text = valorFinal.ToString();
                 dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
@@ -162,5 +164,36 @@ namespace Aplication
                 MessageBox.Show("Por favor calcule o valor total da venda antes !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                
+                for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+                {
+                    var result = await _service.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
+                    var quantidade = result.Quantidade - Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
+                    result.Quantidade = quantidade;
+                    await _service.Put(result);
+                }
+                MessageBox.Show("Venda Finalizada com Sucesso !", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao finalizar a venda {ex.Message} !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txt_Produto.Text = "";
+                txt_Quantidade.Text = "";
+                txt_Total.Text = "";
+                dgv_Vendas.Rows.Clear();
+                    
+            }
+        }
+
+      
     }
 }

@@ -42,6 +42,7 @@ namespace Aplication
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
             this.dgv_Vendas = new System.Windows.Forms.DataGridView();
+            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +58,7 @@ namespace Aplication
             this.btn_Deletar = new System.Windows.Forms.Button();
             this.btn_Limpar = new System.Windows.Forms.Button();
             this.btn_Consultar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Finalizar_Venda = new System.Windows.Forms.Button();
             this.btn_Imprimir = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,7 +101,7 @@ namespace Aplication
             this.btn_Sair.Location = new System.Drawing.Point(0, 631);
             this.btn_Sair.Name = "btn_Sair";
             this.btn_Sair.Size = new System.Drawing.Size(197, 70);
-            this.btn_Sair.TabIndex = 4;
+            this.btn_Sair.TabIndex = 8;
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = true;
             this.btn_Sair.Click += new System.EventHandler(this.btn_Sair_Click);
@@ -118,7 +119,7 @@ namespace Aplication
             this.btn_Estoque.Location = new System.Drawing.Point(0, 385);
             this.btn_Estoque.Name = "btn_Estoque";
             this.btn_Estoque.Size = new System.Drawing.Size(197, 70);
-            this.btn_Estoque.TabIndex = 3;
+            this.btn_Estoque.TabIndex = 7;
             this.btn_Estoque.Text = "Estoque";
             this.btn_Estoque.UseVisualStyleBackColor = true;
             this.btn_Estoque.Click += new System.EventHandler(this.btn_Estoque_Click);
@@ -136,7 +137,7 @@ namespace Aplication
             this.btn_Vendas.Location = new System.Drawing.Point(3, 295);
             this.btn_Vendas.Name = "btn_Vendas";
             this.btn_Vendas.Size = new System.Drawing.Size(197, 70);
-            this.btn_Vendas.TabIndex = 2;
+            this.btn_Vendas.TabIndex = 6;
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = true;
             this.btn_Vendas.Click += new System.EventHandler(this.btn_Vendas_Click);
@@ -154,7 +155,7 @@ namespace Aplication
             this.btn_Produto.Location = new System.Drawing.Point(0, 198);
             this.btn_Produto.Name = "btn_Produto";
             this.btn_Produto.Size = new System.Drawing.Size(197, 70);
-            this.btn_Produto.TabIndex = 1;
+            this.btn_Produto.TabIndex = 5;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
             this.btn_Produto.Click += new System.EventHandler(this.btn_Produto_Click);
@@ -179,6 +180,7 @@ namespace Aplication
             this.dgv_Vendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_Vendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Vendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Cod_Prod,
             this.Produto,
             this.Valor,
             this.Quantidade});
@@ -191,7 +193,7 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Vendas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Vendas.GridColor = System.Drawing.Color.Black;
-            this.dgv_Vendas.Location = new System.Drawing.Point(613, 158);
+            this.dgv_Vendas.Location = new System.Drawing.Point(612, 152);
             this.dgv_Vendas.Name = "dgv_Vendas";
             this.dgv_Vendas.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -210,6 +212,12 @@ namespace Aplication
             this.dgv_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Vendas.Size = new System.Drawing.Size(652, 406);
             this.dgv_Vendas.TabIndex = 12;
+            // 
+            // Cod_Prod
+            // 
+            this.Cod_Prod.HeaderText = "Cod_Prod";
+            this.Cod_Prod.Name = "Cod_Prod";
+            this.Cod_Prod.ReadOnly = true;
             // 
             // Produto
             // 
@@ -258,7 +266,7 @@ namespace Aplication
             this.txt_Total.Location = new System.Drawing.Point(217, 394);
             this.txt_Total.Name = "txt_Total";
             this.txt_Total.Size = new System.Drawing.Size(128, 31);
-            this.txt_Total.TabIndex = 16;
+            this.txt_Total.TabIndex = 3;
             // 
             // txt_Quantidade
             // 
@@ -266,7 +274,7 @@ namespace Aplication
             this.txt_Quantidade.Location = new System.Drawing.Point(217, 311);
             this.txt_Quantidade.Name = "txt_Quantidade";
             this.txt_Quantidade.Size = new System.Drawing.Size(136, 31);
-            this.txt_Quantidade.TabIndex = 15;
+            this.txt_Quantidade.TabIndex = 2;
             // 
             // txt_Produto
             // 
@@ -274,7 +282,7 @@ namespace Aplication
             this.txt_Produto.Location = new System.Drawing.Point(217, 201);
             this.txt_Produto.Name = "txt_Produto";
             this.txt_Produto.Size = new System.Drawing.Size(360, 31);
-            this.txt_Produto.TabIndex = 14;
+            this.txt_Produto.TabIndex = 1;
             // 
             // label_Produto
             // 
@@ -295,7 +303,7 @@ namespace Aplication
             this.btn_Calcular.Location = new System.Drawing.Point(217, 475);
             this.btn_Calcular.Name = "btn_Calcular";
             this.btn_Calcular.Size = new System.Drawing.Size(128, 50);
-            this.btn_Calcular.TabIndex = 19;
+            this.btn_Calcular.TabIndex = 4;
             this.btn_Calcular.Text = "Calcular";
             this.btn_Calcular.UseVisualStyleBackColor = false;
             this.btn_Calcular.Click += new System.EventHandler(this.btn_Calcular_Click);
@@ -316,7 +324,7 @@ namespace Aplication
             this.panel1.Controls.Add(this.btn_Deletar);
             this.panel1.Controls.Add(this.btn_Limpar);
             this.panel1.Controls.Add(this.btn_Consultar);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btn_Finalizar_Venda);
             this.panel1.Controls.Add(this.btn_Imprimir);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(200, 0);
@@ -335,7 +343,7 @@ namespace Aplication
             this.btn_Deletar.Location = new System.Drawing.Point(896, 3);
             this.btn_Deletar.Name = "btn_Deletar";
             this.btn_Deletar.Size = new System.Drawing.Size(177, 52);
-            this.btn_Deletar.TabIndex = 26;
+            this.btn_Deletar.TabIndex = 13;
             this.btn_Deletar.Text = "Deletar";
             this.btn_Deletar.UseVisualStyleBackColor = true;
             this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
@@ -351,7 +359,7 @@ namespace Aplication
             this.btn_Limpar.Location = new System.Drawing.Point(657, 3);
             this.btn_Limpar.Name = "btn_Limpar";
             this.btn_Limpar.Size = new System.Drawing.Size(234, 52);
-            this.btn_Limpar.TabIndex = 25;
+            this.btn_Limpar.TabIndex = 12;
             this.btn_Limpar.Text = "Limpar Lista";
             this.btn_Limpar.UseVisualStyleBackColor = true;
             this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
@@ -367,25 +375,26 @@ namespace Aplication
             this.btn_Consultar.Location = new System.Drawing.Point(0, 2);
             this.btn_Consultar.Name = "btn_Consultar";
             this.btn_Consultar.Size = new System.Drawing.Size(205, 49);
-            this.btn_Consultar.TabIndex = 24;
+            this.btn_Consultar.TabIndex = 9;
             this.btn_Consultar.Text = "Consultar";
             this.btn_Consultar.UseVisualStyleBackColor = true;
             this.btn_Consultar.Click += new System.EventHandler(this.btn_Consultar_Click);
             // 
-            // button1
+            // btn_Finalizar_Venda
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(420, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(216, 52);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Finalizar Venda";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Finalizar_Venda.FlatAppearance.BorderSize = 0;
+            this.btn_Finalizar_Venda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Finalizar_Venda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Finalizar_Venda.ForeColor = System.Drawing.Color.White;
+            this.btn_Finalizar_Venda.Image = ((System.Drawing.Image)(resources.GetObject("btn_Finalizar_Venda.Image")));
+            this.btn_Finalizar_Venda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Finalizar_Venda.Location = new System.Drawing.Point(420, 2);
+            this.btn_Finalizar_Venda.Name = "btn_Finalizar_Venda";
+            this.btn_Finalizar_Venda.Size = new System.Drawing.Size(216, 52);
+            this.btn_Finalizar_Venda.TabIndex = 11;
+            this.btn_Finalizar_Venda.Text = "Finalizar Venda";
+            this.btn_Finalizar_Venda.UseVisualStyleBackColor = true;
+            this.btn_Finalizar_Venda.Click += new System.EventHandler(this.btn_Finalizar_Venda_Click);
             // 
             // btn_Imprimir
             // 
@@ -398,7 +407,7 @@ namespace Aplication
             this.btn_Imprimir.Location = new System.Drawing.Point(210, 3);
             this.btn_Imprimir.Name = "btn_Imprimir";
             this.btn_Imprimir.Size = new System.Drawing.Size(205, 49);
-            this.btn_Imprimir.TabIndex = 22;
+            this.btn_Imprimir.TabIndex = 10;
             this.btn_Imprimir.Text = "Imprimir";
             this.btn_Imprimir.UseVisualStyleBackColor = true;
             // 
@@ -450,13 +459,14 @@ namespace Aplication
         private System.Windows.Forms.Button btn_Calcular;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Finalizar_Venda;
         private System.Windows.Forms.Button btn_Imprimir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.Button btn_Consultar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.Button btn_Limpar;
         private System.Windows.Forms.Button btn_Deletar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Prod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
     }
 }

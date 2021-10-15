@@ -19,7 +19,7 @@ namespace Aplication
 {
     public partial class Form_Produtos : Form
     {
-     
+        int i = 0;
         private readonly IProdutoService _service;
         public Form_Produtos()
         {
@@ -110,12 +110,13 @@ namespace Aplication
                 if (result != null)
                 {
                     MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                  
-         
-                    dgv_Produtos.Rows[0].Cells[0].Value = result.Id;
-                    dgv_Produtos.Rows[0].Cells[1].Value = result.Nome;
-                    dgv_Produtos.Rows[0].Cells[2].Value = result.Valor;
-                    dgv_Produtos.Rows[0].Cells[3].Value = result.Quantidade;
+
+                    dgv_Produtos.Rows.Add();
+                    dgv_Produtos.Rows[i].Cells[0].Value = result.Id;
+                    dgv_Produtos.Rows[i].Cells[1].Value = result.Nome;
+                    dgv_Produtos.Rows[i].Cells[2].Value = result.Valor;
+                    dgv_Produtos.Rows[i].Cells[3].Value = result.Quantidade;
+                    i++;
                     
                     
                     
@@ -160,10 +161,11 @@ namespace Aplication
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     var consulta = await _service.Get(result.Id);
-                    dgv_Produtos.Rows[0].Cells[0].Value = consulta.Id;
-                    dgv_Produtos.Rows[0].Cells[1].Value = consulta.Nome;
-                    dgv_Produtos.Rows[0].Cells[2].Value = consulta.Valor;
-                    dgv_Produtos.Rows[0].Cells[3].Value = consulta.Quantidade;
+                    dgv_Produtos.Rows[i].Cells[0].Value = consulta.Id;
+                    dgv_Produtos.Rows[i].Cells[1].Value = consulta.Nome;
+                    dgv_Produtos.Rows[i].Cells[2].Value = consulta.Valor;
+                    dgv_Produtos.Rows[i].Cells[3].Value = consulta.Quantidade;
+                    i++;
                 }
 
             }
@@ -171,30 +173,64 @@ namespace Aplication
             {
                 MessageBox.Show($"Erro ao tentar editar o produto {ex.Message}", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                txt_Id.Text = "";
+                txt_Produto.Text = "";
+                txt_Valor.Text = "";
+                txt_Quantidade.Text = "";
+            }
         }
 
-       
+
 
         private async void btn_Deletar_Click(object sender, EventArgs e)
         {
             var nome = txt_Produto.Text;
             try
-            {  
+            {
                 var result = await _service.DeleteByName(nome);
                 MessageBox.Show("Produto deletado com sucesso", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao deletar o produto {ex.Message}", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+            finally
+            {
+                var list = await _service.GetAll();
+                if (list == null)
+                {
+                    MessageBox.Show("Erro ao baixar a lista de produtos ", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int i = 0;
+                    dgv_Produtos.Rows.Clear();
+                    foreach (var produto in list)
+                    {
+                        dgv_Produtos.Rows.Add();
+                        dgv_Produtos.Rows[i].Cells[0].Value = produto.Id;
+                        dgv_Produtos.Rows[i].Cells[1].Value = produto.Nome;
+                        dgv_Produtos.Rows[i].Cells[2].Value = produto.Valor;
+                        dgv_Produtos.Rows[i].Cells[3].Value = produto.Quantidade;
 
+                        i++;
+                    }
+                    txt_Id.Text = "";
+                    txt_Produto.Text = "";
+                    txt_Valor.Text = "";
+                    txt_Quantidade.Text = "";
+                }
+            }
+        }
         private void dgv_Produtos_DoubleClick(object sender, EventArgs e)
         {
-            txt_Id.Text = dgv_Produtos.Rows[0].Cells[0].Value.ToString();
-            txt_Produto.Text = dgv_Produtos.Rows[0].Cells[1].Value.ToString();
-            txt_Valor.Text = dgv_Produtos.Rows[0].Cells[2].Value.ToString();
-            txt_Quantidade.Text = dgv_Produtos.Rows[0].Cells[3].Value.ToString();
+            txt_Id.Text = dgv_Produtos.SelectedRows[0].Cells[0].Value.ToString();
+            txt_Produto.Text = dgv_Produtos.SelectedRows[0].Cells[1].Value.ToString();
+            txt_Valor.Text = dgv_Produtos.SelectedRows[0].Cells[2].Value.ToString();
+            txt_Quantidade.Text = dgv_Produtos.SelectedRows[0].Cells[3].Value.ToString();
         }
     }
 }

@@ -47,8 +47,9 @@ namespace Aplication
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_Deletar = new System.Windows.Forms.Button();
+            this.btn_Atualizar = new System.Windows.Forms.Button();
             this.btn_Editar = new System.Windows.Forms.Button();
+            this.btn_Deletar = new System.Windows.Forms.Button();
             this.label_Quantidade = new System.Windows.Forms.Label();
             this.label_Valor = new System.Windows.Forms.Label();
             this.txt_Valor = new System.Windows.Forms.TextBox();
@@ -58,10 +59,10 @@ namespace Aplication
             this.btn_Consultar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Id = new System.Windows.Forms.TextBox();
-            this.btn_Atualizar = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Estoque)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_Menu
@@ -191,7 +192,7 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Estoque.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Estoque.GridColor = System.Drawing.Color.Black;
-            this.dgv_Estoque.Location = new System.Drawing.Point(573, 55);
+            this.dgv_Estoque.Location = new System.Drawing.Point(573, 59);
             this.dgv_Estoque.Name = "dgv_Estoque";
             this.dgv_Estoque.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -208,7 +209,7 @@ namespace Aplication
             this.dgv_Estoque.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Estoque.RowTemplate.Height = 25;
             this.dgv_Estoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Estoque.Size = new System.Drawing.Size(650, 644);
+            this.dgv_Estoque.Size = new System.Drawing.Size(650, 640);
             this.dgv_Estoque.TabIndex = 13;
             this.dgv_Estoque.DoubleClick += new System.EventHandler(this.dgv_Estoque_DoubleClick);
             // 
@@ -244,45 +245,71 @@ namespace Aplication
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btn_Atualizar);
+            this.panel1.Controls.Add(this.btn_Editar);
+            this.panel1.Controls.Add(this.btn_Deletar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1034, 47);
+            this.panel1.Size = new System.Drawing.Size(1034, 53);
             this.panel1.TabIndex = 14;
             // 
-            // btn_Deletar
+            // btn_Atualizar
             // 
-            this.btn_Deletar.BackColor = System.Drawing.Color.DarkBlue;
-            this.btn_Deletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Deletar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Deletar.ForeColor = System.Drawing.Color.White;
-            this.btn_Deletar.Location = new System.Drawing.Point(218, 528);
-            this.btn_Deletar.Name = "btn_Deletar";
-            this.btn_Deletar.Size = new System.Drawing.Size(123, 50);
-            this.btn_Deletar.TabIndex = 23;
-            this.btn_Deletar.Text = "Deletar";
-            this.btn_Deletar.UseVisualStyleBackColor = false;
-            this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
+            this.btn_Atualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Atualizar.FlatAppearance.BorderSize = 0;
+            this.btn_Atualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Atualizar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Atualizar.ForeColor = System.Drawing.Color.White;
+            this.btn_Atualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Atualizar.Image")));
+            this.btn_Atualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Atualizar.Location = new System.Drawing.Point(373, -1);
+            this.btn_Atualizar.Name = "btn_Atualizar";
+            this.btn_Atualizar.Size = new System.Drawing.Size(179, 53);
+            this.btn_Atualizar.TabIndex = 27;
+            this.btn_Atualizar.Text = "Atualizar";
+            this.btn_Atualizar.UseVisualStyleBackColor = false;
+            this.btn_Atualizar.Click += new System.EventHandler(this.btn_Atualizar_Click);
             // 
             // btn_Editar
             // 
-            this.btn_Editar.BackColor = System.Drawing.Color.DarkBlue;
+            this.btn_Editar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Editar.FlatAppearance.BorderSize = 0;
             this.btn_Editar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Editar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Editar.ForeColor = System.Drawing.Color.White;
-            this.btn_Editar.Location = new System.Drawing.Point(218, 445);
+            this.btn_Editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Editar.Image")));
+            this.btn_Editar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Editar.Location = new System.Drawing.Point(-1, -1);
             this.btn_Editar.Name = "btn_Editar";
-            this.btn_Editar.Size = new System.Drawing.Size(123, 50);
+            this.btn_Editar.Size = new System.Drawing.Size(186, 50);
             this.btn_Editar.TabIndex = 22;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = false;
             this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
             // 
+            // btn_Deletar
+            // 
+            this.btn_Deletar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Deletar.FlatAppearance.BorderSize = 0;
+            this.btn_Deletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Deletar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Deletar.ForeColor = System.Drawing.Color.White;
+            this.btn_Deletar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Deletar.Image")));
+            this.btn_Deletar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Deletar.Location = new System.Drawing.Point(191, -1);
+            this.btn_Deletar.Name = "btn_Deletar";
+            this.btn_Deletar.Size = new System.Drawing.Size(176, 53);
+            this.btn_Deletar.TabIndex = 23;
+            this.btn_Deletar.Text = "Deletar";
+            this.btn_Deletar.UseVisualStyleBackColor = false;
+            this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
+            // 
             // label_Quantidade
             // 
             this.label_Quantidade.AutoSize = true;
             this.label_Quantidade.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Quantidade.Location = new System.Drawing.Point(218, 330);
+            this.label_Quantidade.Location = new System.Drawing.Point(218, 441);
             this.label_Quantidade.Name = "label_Quantidade";
             this.label_Quantidade.Size = new System.Drawing.Size(123, 23);
             this.label_Quantidade.TabIndex = 20;
@@ -292,7 +319,7 @@ namespace Aplication
             // 
             this.label_Valor.AutoSize = true;
             this.label_Valor.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Valor.Location = new System.Drawing.Point(218, 225);
+            this.label_Valor.Location = new System.Drawing.Point(218, 304);
             this.label_Valor.Name = "label_Valor";
             this.label_Valor.Size = new System.Drawing.Size(59, 23);
             this.label_Valor.TabIndex = 19;
@@ -301,7 +328,7 @@ namespace Aplication
             // txt_Valor
             // 
             this.txt_Valor.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Valor.Location = new System.Drawing.Point(218, 251);
+            this.txt_Valor.Location = new System.Drawing.Point(218, 346);
             this.txt_Valor.Name = "txt_Valor";
             this.txt_Valor.Size = new System.Drawing.Size(128, 31);
             this.txt_Valor.TabIndex = 18;
@@ -309,7 +336,7 @@ namespace Aplication
             // txt_Quantidade
             // 
             this.txt_Quantidade.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Quantidade.Location = new System.Drawing.Point(218, 361);
+            this.txt_Quantidade.Location = new System.Drawing.Point(218, 488);
             this.txt_Quantidade.Name = "txt_Quantidade";
             this.txt_Quantidade.Size = new System.Drawing.Size(128, 31);
             this.txt_Quantidade.TabIndex = 17;
@@ -317,7 +344,7 @@ namespace Aplication
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Produto.Location = new System.Drawing.Point(218, 156);
+            this.txt_Produto.Location = new System.Drawing.Point(218, 219);
             this.txt_Produto.Name = "txt_Produto";
             this.txt_Produto.Size = new System.Drawing.Size(326, 31);
             this.txt_Produto.TabIndex = 16;
@@ -326,7 +353,7 @@ namespace Aplication
             // 
             this.label_Produto.AutoSize = true;
             this.label_Produto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Produto.Location = new System.Drawing.Point(218, 130);
+            this.label_Produto.Location = new System.Drawing.Point(218, 177);
             this.label_Produto.Name = "label_Produto";
             this.label_Produto.Size = new System.Drawing.Size(81, 23);
             this.label_Produto.TabIndex = 15;
@@ -338,7 +365,7 @@ namespace Aplication
             this.btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Consultar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Consultar.ForeColor = System.Drawing.Color.White;
-            this.btn_Consultar.Location = new System.Drawing.Point(371, 445);
+            this.btn_Consultar.Location = new System.Drawing.Point(218, 582);
             this.btn_Consultar.Name = "btn_Consultar";
             this.btn_Consultar.Size = new System.Drawing.Size(123, 50);
             this.btn_Consultar.TabIndex = 24;
@@ -350,7 +377,7 @@ namespace Aplication
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(218, 56);
+            this.label1.Location = new System.Drawing.Point(218, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(186, 23);
             this.label1.TabIndex = 26;
@@ -359,25 +386,11 @@ namespace Aplication
             // txt_Id
             // 
             this.txt_Id.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Id.Location = new System.Drawing.Point(218, 87);
+            this.txt_Id.Location = new System.Drawing.Point(218, 118);
             this.txt_Id.Name = "txt_Id";
             this.txt_Id.ReadOnly = true;
             this.txt_Id.Size = new System.Drawing.Size(123, 31);
             this.txt_Id.TabIndex = 25;
-            // 
-            // btn_Atualizar
-            // 
-            this.btn_Atualizar.BackColor = System.Drawing.Color.DarkBlue;
-            this.btn_Atualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Atualizar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Atualizar.ForeColor = System.Drawing.Color.White;
-            this.btn_Atualizar.Location = new System.Drawing.Point(371, 528);
-            this.btn_Atualizar.Name = "btn_Atualizar";
-            this.btn_Atualizar.Size = new System.Drawing.Size(123, 50);
-            this.btn_Atualizar.TabIndex = 27;
-            this.btn_Atualizar.Text = "Atualizar";
-            this.btn_Atualizar.UseVisualStyleBackColor = false;
-            this.btn_Atualizar.Click += new System.EventHandler(this.btn_Atualizar_Click);
             // 
             // Form_Estoque
             // 
@@ -385,12 +398,9 @@ namespace Aplication
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1234, 709);
-            this.Controls.Add(this.btn_Atualizar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Id);
             this.Controls.Add(this.btn_Consultar);
-            this.Controls.Add(this.btn_Deletar);
-            this.Controls.Add(this.btn_Editar);
             this.Controls.Add(this.label_Quantidade);
             this.Controls.Add(this.label_Valor);
             this.Controls.Add(this.txt_Valor);
@@ -408,6 +418,7 @@ namespace Aplication
             this.panel_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Estoque)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
