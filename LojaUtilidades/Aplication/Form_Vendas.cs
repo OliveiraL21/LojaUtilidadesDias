@@ -16,6 +16,10 @@ namespace Aplication
     public partial class Form_Vendas : Form
     {
         public int i = 0;
+        public int X = 0;
+        public int Y = 0;
+        public int largura = 0;
+        public int altura = 0;
         public double Total = 0;
         private readonly IProdutoService _service;
         public Form_Vendas()
@@ -194,6 +198,82 @@ namespace Aplication
             }
         }
 
-      
+        private void btn_Imprimir_Click(object sender, EventArgs e)
+        {
+             X = printDocument1.DefaultPageSettings.Bounds.X;
+             Y = printDocument1.DefaultPageSettings.Bounds.Y;
+             largura = printDocument1.DefaultPageSettings.Bounds.Width;
+             altura = printDocument1.DefaultPageSettings.Bounds.Height;
+            printDialog1.Document = printDocument1;
+
+
+            if (printDialog1.ShowDialog() != DialogResult.Cancel)
+            {
+                largura = printDocument1.DefaultPageSettings.Bounds.Width;
+                altura = printDocument1.DefaultPageSettings.Bounds.Height;
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+
+            }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            ProdutoEntity produto = new ProdutoEntity();
+            // declaração das variaveis
+            string Titulo = "Loja Utilidade e Cosmeticos Dias";
+            string Subtitulo = "Cnpj: 29.936.014/0001-01";
+            Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
+            Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
+            Brush PincelPreto = new SolidBrush(Color.Black);
+
+
+            List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
+            Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);
+            StringFormat formatoTitulo = new StringFormat();
+            formatoTitulo.Alignment = StringAlignment.Far;
+            formatoTitulo.LineAlignment = StringAlignment.Far;
+
+            //inserindo titulo e cabeçalho
+            e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + 100, Y + 50);
+            e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
+
+            // variaveis de index
+            int index = 100;
+            int index2 = 300;
+
+            //desenhando cabeçalho
+            e.Graphics.DrawString("Produto".PadRight(30) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
+
+            //Desenhando Produtos
+            for (int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+            {
+                if (dgv_Vendas.Rows[x] == null || dgv_Vendas.Rows[x].Cells[x].Value == null)
+                {
+                    MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //ATRIBUINDO A UM OBJ OS DADOS DA GRID
+                produto.Nome = dgv_Vendas.Rows.SharedRow(x).Cells[1].Value.ToString();
+                produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(x).Cells[2].Value.ToString());
+                produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(x).Cells[3].Value.ToString());
+                produtoImprimir.Add(produto);
+
+
+                e.Graphics.DrawString(produtoImprimir[x].Nome.ToString().PadRight(30) + produtoImprimir[x].Valor.ToString("C2").PadRight(30) + produtoImprimir[x].Quantidade.ToString().PadRight(30), LetraProdutos, PincelPreto, X + index, Y + index2);
+                index2 += 100;
+
+            }
+
+            if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
+            {
+                MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                printPreviewDialog1.Close();
+            }
+            else
+            {
+                double total = double.Parse(txt_Total.Text);
+                e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
+            }
+        }
     }
 }
