@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Entidades
 {
-   public class VendasEntity : BaseEntity
+   public class VendaEntity : BaseEntity
     {
         public DateTime Data_Venda { get; set; }
-        
+        public double Valor { get; set; }
+        public int ItemVendaId { get; set; }
+        public IEnumerable<ItemVendaEntity> ItensVendas { get; set; }
+
     }
 }
