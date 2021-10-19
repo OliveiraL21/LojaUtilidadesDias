@@ -15,6 +15,8 @@ namespace Data.Mapeamento
         {
             builder.ToTable("Venda");
             builder.HasKey(v => v.Id);
+
+            builder.Property();
         }
     }
 }
