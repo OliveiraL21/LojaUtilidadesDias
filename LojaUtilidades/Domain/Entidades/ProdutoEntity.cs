@@ -11,7 +11,7 @@ namespace Domain.Entidades
         public string Nome { get; set; }
         public double Valor { get; set; }
         public int Quantidade { get; set; }
-        public int ItemVendaId { get; set; }
-        public ItemVendaEntity ItemVenda { get; set; }
+        //public int ItemVendaId { get; set; }
+        //public ItemVendaEntity ItemVenda { get; set; }
     }
 }
