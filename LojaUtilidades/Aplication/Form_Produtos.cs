@@ -94,13 +94,13 @@ namespace Aplication
 #endregion
         private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
-            var id = int.Parse(txt_Id.Text);
+           
             var nome = txt_Produto.Text;
             var valor = double.Parse(txt_Valor.Text);
             var quantidade = int.Parse(txt_Quantidade.Text);
             var produto = new ProdutoEntity()
             {
-                Id = id,
+                
                 Nome = nome,
                 Valor = valor,
                 Quantidade = quantidade
