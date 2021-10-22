@@ -96,7 +96,7 @@ namespace Aplication
 
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_Produto.Text) || string.IsNullOrEmpty(txt_Quantidade.Text))
+            if (string.IsNullOrEmpty(txt_Produto.Text))
             {
                 MessageBox.Show("digite o nome de um produto e/ou sua quantidade de venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -113,6 +113,12 @@ namespace Aplication
                     dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
                     dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
                     i++;
+                    ItemVendaEntity item = new ItemVendaEntity()
+                    {
+                        Quantidade = quantidade,
+                        Produto = result,
+                        ProdutoId = result.Id
+                    };
                     
                 }
                 else
