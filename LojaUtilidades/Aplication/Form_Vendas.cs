@@ -21,11 +21,15 @@ namespace Aplication
         public int largura = 0;
         public int altura = 0;
         public double Total = 0;
+        private readonly ItemVendaEntity item;
+        private readonly VendaEntity venda;
         private readonly IProdutoService _service;
         public Form_Vendas()
         {
             InitializeComponent();
             _service = new ProdutoService();
+            item = new ItemVendaEntity();
+            venda = new VendaEntity();
         }
         #region Front-End
         private void btn_Produto_MouseHover(object sender, EventArgs e)
@@ -113,13 +117,19 @@ namespace Aplication
                     dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
                     dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
                     i++;
-                    ItemVendaEntity item = new ItemVendaEntity()
-                    {
-                        Quantidade = quantidade,
-                        Produto = result,
-                        ProdutoId = result.Id
-                    };
-                    
+
+
+                    item.Quantidade = quantidade;
+                    item.Produto = result;
+                    item.ProdutoId = result.Id;
+
+
+                   venda.Data_da_Venda = DateTime.Today;
+                   venda.Hora_Venda = DateTime.Today.TimeOfDay;
+                   venda.Valor = double.Parse(txt_Total.Text);
+                   venda.ItemVendaId = item.Id;
+                   venda.ItensVenda.Append(item);
+                   
                 }
                 else
                 {
