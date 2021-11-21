@@ -12,6 +12,7 @@ namespace Data.Context
     public class MyContext : DbContext
     {
         public DbSet<ProdutoEntity>Produtos { get; set; }
+        public DbSet<VendaEntity> Vendas { get; set; }
         public MyContext()
         {
 

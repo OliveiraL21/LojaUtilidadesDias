@@ -1,6 +1,10 @@
-﻿using Domain.Entidades;
+﻿using Data.Context;
+using Data.Repositorios;
+using Domain.Entidades;
 using Domain.Interfaces.Services.Produtos;
+using Domain.Interfaces.Services.Venda;
 using Service.Services.Produtos;
+using Service.Services.Venda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,10 +28,12 @@ namespace Aplication
         private readonly ItemVendaEntity item;
         private readonly VendaEntity venda;
         private readonly IProdutoService _service;
+        private readonly IVendaService _vendaService;
         public Form_Vendas()
         {
             InitializeComponent();
             _service = new ProdutoService();
+            _vendaService = new VendasService();
             item = new ItemVendaEntity();
             venda = new VendaEntity();
         }
@@ -126,9 +132,11 @@ namespace Aplication
 
                    venda.Data_da_Venda = DateTime.Today;
                    venda.Hora_Venda = DateTime.Today.TimeOfDay;
-                   venda.Valor = double.Parse(txt_Total.Text);
                    venda.ItemVendaId = item.Id;
                    venda.ItensVenda.Append(item);
+
+               
+                    
                    
                 }
                 else
@@ -198,7 +206,9 @@ namespace Aplication
                     result.Quantidade = quantidade;
                     await _service.Put(result);
                 }
-                MessageBox.Show("Venda Finalizada com Sucesso !", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                venda.Valor = double.Parse(txt_Total.Text);
+                var vendaResult = await _vendaService.PostAsync(venda);
+                MessageBox.Show($"Venda Finalizada com Sucesso ! {vendaResult.Hora_Venda.ToString()} {vendaResult.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
