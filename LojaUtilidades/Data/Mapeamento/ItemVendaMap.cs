@@ -13,12 +13,11 @@ namespace Data.Mapeamento
     {
         public void Configure(EntityTypeBuilder<ItemVendaEntity> builder)
         {
-            builder.ToTable("ItemDeVenda");
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.Quantidade).IsRequired();
-
-            builder.HasOne(i => i.Produto).WithOne(p => p.ItemVenda);
-            builder.HasOne(i => i.Venda).WithMany(v => v.ItensVendas).HasForeignKey(v => v.VendaId);
+            builder.ToTable("Item-Venda");
+            builder.HasKey(i => i.Id);
+            builder.Property(i => i.Quantidade).IsRequired();
+            //builder.HasOne(i => i.Produto).WithOne(p => p.ItemVenda).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(i => i.Venda).WithMany(v => v.ItensVenda).HasForeignKey(i => i.VendaId);
         }
     }
 }

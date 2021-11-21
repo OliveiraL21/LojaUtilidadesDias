@@ -27,7 +27,7 @@ namespace Aplication
             Close();
         }
 
-
+        #region cores-Houver-btn-menu
         private void btn_Produto_MouseHover(object sender, EventArgs e)
         {
             btn_Produto.BackColor = Color.DarkMagenta;
@@ -67,11 +67,13 @@ namespace Aplication
         {
             btn_Sair.BackColor = Color.FromArgb(41, 0, 39);
         }
+        #endregion
 
         private void Form1_Load(object sender, EventArgs e)
         {
             txt_data.Text = DateTime.Today.ToString();
             txt_hora.Text = DateTime.Now.TimeOfDay.ToString();
+
         }
 
         private void btn_Produto_Click(object sender, EventArgs e)
