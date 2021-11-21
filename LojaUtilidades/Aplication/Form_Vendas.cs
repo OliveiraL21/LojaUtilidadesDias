@@ -1,6 +1,10 @@
-﻿using Domain.Entidades;
+﻿using Data.Context;
+using Data.Repositorios;
+using Domain.Entidades;
 using Domain.Interfaces.Services.Produtos;
+using Domain.Interfaces.Services.Venda;
 using Service.Services.Produtos;
+using Service.Services.Venda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,11 +25,17 @@ namespace Aplication
         public int largura = 0;
         public int altura = 0;
         public double Total = 0;
+        private readonly ItemVendaEntity item;
+        private readonly VendaEntity venda;
         private readonly IProdutoService _service;
+        private readonly IVendaService _vendaService;
         public Form_Vendas()
         {
             InitializeComponent();
             _service = new ProdutoService();
+            _vendaService = new VendasService();
+            item = new ItemVendaEntity();
+            venda = new VendaEntity();
         }
         #region Front-End
         private void btn_Produto_MouseHover(object sender, EventArgs e)
@@ -96,7 +106,7 @@ namespace Aplication
 
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_Produto.Text) || string.IsNullOrEmpty(txt_Quantidade.Text))
+            if (string.IsNullOrEmpty(txt_Produto.Text))
             {
                 MessageBox.Show("digite o nome de um produto e/ou sua quantidade de venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -113,7 +123,23 @@ namespace Aplication
                     dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
                     dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
                     i++;
+
+
+                    item.Quantidade = quantidade;
+                    item.Produto = result;
+                    item.ProdutoId = result.Id;
+
+
+                   venda.Data_da_Venda = DateTime.Today;
+                   venda.Hora_Venda = DateTime.Today.TimeOfDay;
+                   venda.ItemVendaId = item.Id;
+                   venda.ItensVenda.Append(item);
+                   item.Venda = venda;
+                  
+
+               
                     
+                   
                 }
                 else
                 {
@@ -182,7 +208,9 @@ namespace Aplication
                     result.Quantidade = quantidade;
                     await _service.Put(result);
                 }
-                MessageBox.Show("Venda Finalizada com Sucesso !", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                venda.Valor = double.Parse(txt_Total.Text);
+                var vendaResult = await _vendaService.PostAsync(venda);
+                MessageBox.Show($"Venda Finalizada com Sucesso ! {vendaResult.Hora_Venda.ToString()} {vendaResult.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
