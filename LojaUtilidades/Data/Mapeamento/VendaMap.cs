@@ -16,7 +16,9 @@ namespace Data.Mapeamento
             builder.ToTable("Venda");
             builder.HasKey(v => v.Id);
 
-            builder.Property();
+            builder.Property(v => v.Data_Venda).IsRequired().HasColumnName("Data da Venda");
+            builder.HasMany(v => v.ItensVendas).WithOne(i => i.Venda).HasForeignKey(i=> i.VendaId);
+            
         }
     }
 }
