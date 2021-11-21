@@ -134,6 +134,8 @@ namespace Aplication
                    venda.Hora_Venda = DateTime.Today.TimeOfDay;
                    venda.ItemVendaId = item.Id;
                    venda.ItensVenda.Append(item);
+                   item.Venda = venda;
+                  
 
                
                     
