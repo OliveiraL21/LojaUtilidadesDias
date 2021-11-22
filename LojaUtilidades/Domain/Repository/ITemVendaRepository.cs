@@ -9,6 +9,6 @@ namespace Domain.Repository
 {
    public interface ITemVendaRepository
     {
-        public Task<ItemVendaEntity> GetByName();
+        public IList<ItemVendaEntity> GetByName(ItemVendaEntity itemVenda);
     }
 }
