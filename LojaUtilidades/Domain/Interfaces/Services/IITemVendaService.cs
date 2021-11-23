@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces.Services
 {
-    public interface IITemVendaService
+    public interface IITemVendaService 
     {
         public Task<ItemVendaEntity> Post(ItemVendaEntity item);
         public Task<ItemVendaEntity> GetById(int id);
