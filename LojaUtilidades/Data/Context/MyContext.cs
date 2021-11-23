@@ -32,5 +32,7 @@ namespace Data.Context
             modelBuilder.Entity<ItemVendaEntity>(new ItemVendaMap().Configure);
             modelBuilder.Entity<VendaEntity>(new VendaMap().Configure);
         }
+
+       
     }
 }
