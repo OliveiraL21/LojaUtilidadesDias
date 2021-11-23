@@ -129,26 +129,6 @@ namespace Aplication
                     dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
                     i++;
 
-
-                    item.Quantidade = quantidade;
-                    item.Produto = result;
-                    item.ProdutoId = result.Id;
-                    await _itemService.Post(item);
-                   
-                    
-
-
-                   venda.Data_da_Venda = DateTime.Today;
-                   venda.Hora_Venda = DateTime.Today.TimeOfDay;
-                   venda.ItemVendaId = item.Id;
-                   venda.ItensVenda.Append(item);
-                   item.Venda = venda;
-                   
-
-
-
-
-
                 }
                 else
                 {
@@ -216,12 +196,30 @@ namespace Aplication
                     var quantidade = result.Quantidade - Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
                     result.Quantidade = quantidade;
                     await _service.Put(result);
+
+
+                    item.Quantidade = quantidade;
+                    item.Produto = result;
+                    item.ProdutoId = result.Id;
+
+
+                    venda.Data_da_Venda = DateTime.Today;
+                    venda.Hora_Venda = DateTime.Today.TimeOfDay;
+                    await _itemService.Post(item);
+
+
+                    venda.ItemVendaId = item.Id;
+                    venda.ItensVenda.Append(item);
+                    await _vendaService.PostAsync(venda);
+
+                    item.Venda = venda;
+                    item.VendaId = venda.Id;
+                    await _itemService.Put(item);
+
                 }
-                venda.Valor = double.Parse(txt_Total.Text);
-                var vendaResult = await _vendaService.PostAsync(venda);
-                item.VendaId = venda.Id;
-                await _itemService.Put(item);
-                MessageBox.Show($"Venda Finalizada com Sucesso ! {vendaResult.Hora_Venda.ToString()} {vendaResult.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                
+                MessageBox.Show($"Venda Finalizada com Sucesso ! {venda.Hora_Venda.ToString()} {venda.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
