@@ -1,8 +1,10 @@
 ﻿using Data.Context;
 using Data.Repositorios;
 using Domain.Entidades;
+using Domain.Interfaces.Services;
 using Domain.Interfaces.Services.Produtos;
 using Domain.Interfaces.Services.Venda;
+using Service.Services.ItensVendas;
 using Service.Services.Produtos;
 using Service.Services.Venda;
 using System;
@@ -29,11 +31,14 @@ namespace Aplication
         private readonly VendaEntity venda;
         private readonly IProdutoService _service;
         private readonly IVendaService _vendaService;
+        private readonly IITemVendaService _itemService;
         public Form_Vendas()
         {
             InitializeComponent();
             _service = new ProdutoService();
             _vendaService = new VendasService();
+            _itemService = new ItemsVendasService();
+         
             item = new ItemVendaEntity();
             venda = new VendaEntity();
         }
@@ -128,6 +133,9 @@ namespace Aplication
                     item.Quantidade = quantidade;
                     item.Produto = result;
                     item.ProdutoId = result.Id;
+                    await _itemService.Post(item);
+                   
+                    
 
 
                    venda.Data_da_Venda = DateTime.Today;
@@ -135,11 +143,12 @@ namespace Aplication
                    venda.ItemVendaId = item.Id;
                    venda.ItensVenda.Append(item);
                    item.Venda = venda;
-                  
-
-               
-                    
                    
+
+
+
+
+
                 }
                 else
                 {
@@ -210,6 +219,8 @@ namespace Aplication
                 }
                 venda.Valor = double.Parse(txt_Total.Text);
                 var vendaResult = await _vendaService.PostAsync(venda);
+                item.VendaId = venda.Id;
+                await _itemService.Put(item);
                 MessageBox.Show($"Venda Finalizada com Sucesso ! {vendaResult.Hora_Venda.ToString()} {vendaResult.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)

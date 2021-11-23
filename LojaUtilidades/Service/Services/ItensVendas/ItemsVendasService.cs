@@ -1,5 +1,9 @@
-﻿using Domain.Entidades;
+﻿using Data.Context;
+using Data.Implementation;
+using Domain.Entidades;
 using Domain.Interfaces.Services;
+using Domain.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +14,20 @@ namespace Service.Services.ItensVendas
 {
     public class ItemsVendasService : IITemVendaService
     {
-        private readonly IITemVendaService _repository;
-        public ItemsVendasService(IITemVendaService repository)
+        private readonly ITemVendaRepository _repository;
+        public ItemsVendasService(ITemVendaRepository repository)
         {
             _repository = repository;
+        }
+        public ItemsVendasService()
+        {
+            _repository = new ITemVendaImplementation(new MyContext(new DbContextOptions<MyContext>()));
         }
         public async Task<bool> Delete(int id)
         {
             try
             {
-                var result = await _repository.Delete(id);
+                var result = await _repository.DeleteAsync(id);
                 return false;
             }
             catch
@@ -28,24 +36,42 @@ namespace Service.Services.ItensVendas
             }
         }
 
-        public Task<IEnumerable<ItemVendaEntity>> GetAll()
+        public async Task<IEnumerable<ItemVendaEntity>> GetAll()
         {
-            throw new NotImplementedException();
+            var result = await _repository.SelectAllAsynck();
+
+            if (result == null)
+                return null;
+
+            return result;
+
         }
 
-        public Task<ItemVendaEntity> GetById(int id)
+        public async Task<ItemVendaEntity> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await _repository.SelectAsync(id);
+            if (result == null)
+                return null;
+
+            return result;
         }
 
-        public Task<ItemVendaEntity> Post(ItemVendaEntity item)
+        public async Task<ItemVendaEntity> Post(ItemVendaEntity item)
         {
-            throw new NotImplementedException();
+            var result = await _repository.InsertAsync(item);
+            if (result == null)
+                return null;
+
+            return result;
         }
 
-        public Task<ItemVendaEntity> Put(ItemVendaEntity item)
+        public async Task<ItemVendaEntity> Put(ItemVendaEntity item)
         {
-            throw new NotImplementedException();
+            var result = await _repository.UpdateAsync(item);
+            if (result == null)
+                return null;
+
+            return result;
         }
     }
 }

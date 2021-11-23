@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Repository
 {
-   public interface ITemVendaRepository
+   public interface ITemVendaRepository :IRepository<ItemVendaEntity>
     {
         public IList<ItemVendaEntity> GetByName(ItemVendaEntity itemVenda);
     }
