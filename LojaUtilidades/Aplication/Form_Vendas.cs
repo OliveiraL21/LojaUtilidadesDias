@@ -198,24 +198,7 @@ namespace Aplication
                     await _service.Put(result);
 
 
-                    item.Quantidade = quantidade;
-                    item.Produto = result;
-                    item.ProdutoId = result.Id;
-
-
-                    venda.Data_da_Venda = DateTime.Today;
-                    venda.Hora_Venda = DateTime.Today.TimeOfDay;
-                    await _itemService.Post(item);
-
-
-                    venda.ItemVendaId = item.Id;
-                    venda.ItensVenda.Append(item);
-                    await _vendaService.PostAsync(venda);
-
-                    item.Venda = venda;
-                    item.VendaId = venda.Id;
-                    await _itemService.Put(item);
-
+                    
                 }
 
                 
