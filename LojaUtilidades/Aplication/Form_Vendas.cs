@@ -201,6 +201,18 @@ namespace Aplication
                     
                 }
 
+                if(txt_Total.Text == "")
+                {
+                    MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                VendaEntity vendaObj = new VendaEntity()
+                {
+                    Data_da_Venda = DateTime.Now.Date,
+                    Hora_Venda = DateTime.Now,
+                    Valor = int.Parse(txt_Total.Text)
+                };
+                await _vendaService.PostAsync(vendaObj);
+
                 
                 MessageBox.Show($"Venda Finalizada com Sucesso ! {venda.Hora_Venda.ToString()} {venda.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

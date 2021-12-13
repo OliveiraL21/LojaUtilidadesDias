@@ -22,83 +22,48 @@ namespace Data.Repositorios
         }
         public async Task<bool> DeleteAsync(int id)
         {
-            try
+            var result = await _dataSet.SingleOrDefaultAsync(p => p.Id == id);
+            if (result != null)
             {
-                var result = await _dataSet.SingleOrDefaultAsync(p => p.Id == id);
-                if(result != null)
-                {
-                    _dataSet.Remove(result);
-                    _context.SaveChanges();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                _dataSet.Remove(result);
+                _context.SaveChanges();
+                return true;
             }
-            catch
+            else
             {
-                throw;
+                return false;
             }
         }
 
         public async Task<T> InsertAsync(T entidade)
         {
-            try
-            {
-                _dataSet.Add(entidade);
-                await _context.SaveChangesAsync();
-                return entidade;
-            }
-            catch
-            {
-                throw;
-            }
+            _dataSet.Add(entidade);
+            await _context.SaveChangesAsync();
+            return entidade;
         }
 
         public async Task<IEnumerable<T>> SelectAllAsynck()
         {
-            try
-            {
-                var result = await _dataSet.ToListAsync();
-                return result;
-            }
-            catch
-            {
-                throw;
-            }
+            var result = await _dataSet.ToListAsync();
+            return result;
         }
 
         public async Task<T> SelectAsync(int id)
         {
-            try
-            {
-                var result = await _dataSet.SingleOrDefaultAsync(p => p.Id == id);
-                return result;
-            }
-            catch
-            {
-                throw;
-            }
+            var result = await _dataSet.SingleOrDefaultAsync(p => p.Id == id);
+            return result;
         }
 
         public async Task<T> UpdateAsync(T entidade)
         {
-            try
+            var result = await _dataSet.SingleOrDefaultAsync(p => p.Id.Equals(entidade.Id));
+            if (result == null)
             {
-                var result = await _dataSet.SingleOrDefaultAsync(p => p.Id.Equals(entidade.Id));
-                if (result == null)
-                {
-                    return null;
-                }
-                _context.Entry(result).CurrentValues.SetValues(entidade);
-                await _context.SaveChangesAsync();
-                return entidade;
+                return null;
             }
-            catch
-            {
-                throw;
-            }
+            _context.Entry(result).CurrentValues.SetValues(entidade);
+            await _context.SaveChangesAsync();
+            return entidade;
         }
     }
 }

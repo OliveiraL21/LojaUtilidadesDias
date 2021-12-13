@@ -17,6 +17,7 @@ namespace Data.Mapeamento
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Quantidade).IsRequired();
             builder.HasOne(i => i.Venda).WithMany(v => v.ItensVenda).HasForeignKey(i => i.VendaId);
+            //builder.HasOne(i => i.Produto).WithOne();
         }
     }
 }
