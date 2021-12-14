@@ -188,7 +188,8 @@ namespace Aplication
                 for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
                 {
                     var result = await _service.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
-                    var quantidade = result.Quantidade - Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
+                    int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
+                    var quantidade = result.Quantidade - quantidadeDgv;
                     result.Quantidade = quantidade;
                     await _service.Put(result);
 
@@ -204,7 +205,8 @@ namespace Aplication
                 {
                     Data_da_Venda = DateTime.Now,
                     Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
-                    Hora_Venda = DateTime.Now.TimeOfDay
+                    Hora_Venda = DateTime.Now.TimeOfDay,
+                    
                    
                 };
                

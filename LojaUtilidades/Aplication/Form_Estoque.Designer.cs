@@ -75,16 +75,18 @@ namespace Aplication
             this.panel_Menu.Controls.Add(this.btn_Produto);
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
+            this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(200, 709);
+            this.panel_Menu.Size = new System.Drawing.Size(229, 945);
             this.panel_Menu.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(197, 175);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 233);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -97,9 +99,10 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 639);
+            this.btn_Sair.Location = new System.Drawing.Point(0, 852);
+            this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(197, 70);
+            this.btn_Sair.Size = new System.Drawing.Size(225, 93);
             this.btn_Sair.TabIndex = 4;
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = true;
@@ -115,10 +118,11 @@ namespace Aplication
             this.btn_Estoque.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque.Image")));
             this.btn_Estoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque.Location = new System.Drawing.Point(0, 385);
+            this.btn_Estoque.Location = new System.Drawing.Point(0, 513);
+            this.btn_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Estoque.Name = "btn_Estoque";
-            this.btn_Estoque.Size = new System.Drawing.Size(197, 70);
-            this.btn_Estoque.TabIndex = 3;
+            this.btn_Estoque.Size = new System.Drawing.Size(225, 93);
+            this.btn_Estoque.TabIndex = 11;
             this.btn_Estoque.Text = "Estoque";
             this.btn_Estoque.UseVisualStyleBackColor = true;
             this.btn_Estoque.Click += new System.EventHandler(this.btn_Estoque_Click);
@@ -133,10 +137,11 @@ namespace Aplication
             this.btn_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Vendas.Image")));
             this.btn_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Vendas.Location = new System.Drawing.Point(3, 295);
+            this.btn_Vendas.Location = new System.Drawing.Point(3, 393);
+            this.btn_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Vendas.Name = "btn_Vendas";
-            this.btn_Vendas.Size = new System.Drawing.Size(197, 70);
-            this.btn_Vendas.TabIndex = 2;
+            this.btn_Vendas.Size = new System.Drawing.Size(225, 93);
+            this.btn_Vendas.TabIndex = 10;
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = true;
             this.btn_Vendas.Click += new System.EventHandler(this.btn_Vendas_Click);
@@ -151,10 +156,11 @@ namespace Aplication
             this.btn_Produto.ForeColor = System.Drawing.Color.White;
             this.btn_Produto.Image = ((System.Drawing.Image)(resources.GetObject("btn_Produto.Image")));
             this.btn_Produto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Produto.Location = new System.Drawing.Point(0, 198);
+            this.btn_Produto.Location = new System.Drawing.Point(0, 264);
+            this.btn_Produto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Produto.Name = "btn_Produto";
-            this.btn_Produto.Size = new System.Drawing.Size(197, 70);
-            this.btn_Produto.TabIndex = 1;
+            this.btn_Produto.Size = new System.Drawing.Size(225, 93);
+            this.btn_Produto.TabIndex = 9;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
             this.btn_Produto.Click += new System.EventHandler(this.btn_Produto_Click);
@@ -192,7 +198,8 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Estoque.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Estoque.GridColor = System.Drawing.Color.Black;
-            this.dgv_Estoque.Location = new System.Drawing.Point(573, 59);
+            this.dgv_Estoque.Location = new System.Drawing.Point(655, 79);
+            this.dgv_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_Estoque.Name = "dgv_Estoque";
             this.dgv_Estoque.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -209,8 +216,8 @@ namespace Aplication
             this.dgv_Estoque.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Estoque.RowTemplate.Height = 25;
             this.dgv_Estoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Estoque.Size = new System.Drawing.Size(650, 640);
-            this.dgv_Estoque.TabIndex = 13;
+            this.dgv_Estoque.Size = new System.Drawing.Size(743, 853);
+            this.dgv_Estoque.TabIndex = 8;
             this.dgv_Estoque.DoubleClick += new System.EventHandler(this.dgv_Estoque_DoubleClick);
             // 
             // Id
@@ -249,9 +256,10 @@ namespace Aplication
             this.panel1.Controls.Add(this.btn_Editar);
             this.panel1.Controls.Add(this.btn_Deletar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(200, 0);
+            this.panel1.Location = new System.Drawing.Point(229, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1034, 53);
+            this.panel1.Size = new System.Drawing.Size(1181, 70);
             this.panel1.TabIndex = 14;
             // 
             // btn_Atualizar
@@ -263,10 +271,11 @@ namespace Aplication
             this.btn_Atualizar.ForeColor = System.Drawing.Color.White;
             this.btn_Atualizar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Atualizar.Image")));
             this.btn_Atualizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Atualizar.Location = new System.Drawing.Point(373, -1);
+            this.btn_Atualizar.Location = new System.Drawing.Point(426, -1);
+            this.btn_Atualizar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Atualizar.Name = "btn_Atualizar";
-            this.btn_Atualizar.Size = new System.Drawing.Size(179, 53);
-            this.btn_Atualizar.TabIndex = 27;
+            this.btn_Atualizar.Size = new System.Drawing.Size(205, 71);
+            this.btn_Atualizar.TabIndex = 7;
             this.btn_Atualizar.Text = "Atualizar";
             this.btn_Atualizar.UseVisualStyleBackColor = false;
             this.btn_Atualizar.Click += new System.EventHandler(this.btn_Atualizar_Click);
@@ -281,9 +290,10 @@ namespace Aplication
             this.btn_Editar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Editar.Image")));
             this.btn_Editar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Editar.Location = new System.Drawing.Point(-1, -1);
+            this.btn_Editar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Editar.Name = "btn_Editar";
-            this.btn_Editar.Size = new System.Drawing.Size(186, 50);
-            this.btn_Editar.TabIndex = 22;
+            this.btn_Editar.Size = new System.Drawing.Size(213, 67);
+            this.btn_Editar.TabIndex = 5;
             this.btn_Editar.Text = "Editar";
             this.btn_Editar.UseVisualStyleBackColor = false;
             this.btn_Editar.Click += new System.EventHandler(this.btn_Editar_Click);
@@ -297,10 +307,11 @@ namespace Aplication
             this.btn_Deletar.ForeColor = System.Drawing.Color.White;
             this.btn_Deletar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Deletar.Image")));
             this.btn_Deletar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Deletar.Location = new System.Drawing.Point(191, -1);
+            this.btn_Deletar.Location = new System.Drawing.Point(218, -1);
+            this.btn_Deletar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Deletar.Name = "btn_Deletar";
-            this.btn_Deletar.Size = new System.Drawing.Size(176, 53);
-            this.btn_Deletar.TabIndex = 23;
+            this.btn_Deletar.Size = new System.Drawing.Size(201, 71);
+            this.btn_Deletar.TabIndex = 6;
             this.btn_Deletar.Text = "Deletar";
             this.btn_Deletar.UseVisualStyleBackColor = false;
             this.btn_Deletar.Click += new System.EventHandler(this.btn_Deletar_Click);
@@ -309,9 +320,9 @@ namespace Aplication
             // 
             this.label_Quantidade.AutoSize = true;
             this.label_Quantidade.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Quantidade.Location = new System.Drawing.Point(218, 441);
+            this.label_Quantidade.Location = new System.Drawing.Point(249, 588);
             this.label_Quantidade.Name = "label_Quantidade";
-            this.label_Quantidade.Size = new System.Drawing.Size(123, 23);
+            this.label_Quantidade.Size = new System.Drawing.Size(152, 28);
             this.label_Quantidade.TabIndex = 20;
             this.label_Quantidade.Text = "Quantidade";
             // 
@@ -319,43 +330,46 @@ namespace Aplication
             // 
             this.label_Valor.AutoSize = true;
             this.label_Valor.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Valor.Location = new System.Drawing.Point(218, 304);
+            this.label_Valor.Location = new System.Drawing.Point(249, 405);
             this.label_Valor.Name = "label_Valor";
-            this.label_Valor.Size = new System.Drawing.Size(59, 23);
+            this.label_Valor.Size = new System.Drawing.Size(74, 28);
             this.label_Valor.TabIndex = 19;
             this.label_Valor.Text = "Valor";
             // 
             // txt_Valor
             // 
             this.txt_Valor.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Valor.Location = new System.Drawing.Point(218, 346);
+            this.txt_Valor.Location = new System.Drawing.Point(249, 461);
+            this.txt_Valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Valor.Name = "txt_Valor";
-            this.txt_Valor.Size = new System.Drawing.Size(128, 31);
-            this.txt_Valor.TabIndex = 18;
+            this.txt_Valor.Size = new System.Drawing.Size(146, 37);
+            this.txt_Valor.TabIndex = 2;
             // 
             // txt_Quantidade
             // 
             this.txt_Quantidade.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Quantidade.Location = new System.Drawing.Point(218, 488);
+            this.txt_Quantidade.Location = new System.Drawing.Point(249, 651);
+            this.txt_Quantidade.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Quantidade.Name = "txt_Quantidade";
-            this.txt_Quantidade.Size = new System.Drawing.Size(128, 31);
-            this.txt_Quantidade.TabIndex = 17;
+            this.txt_Quantidade.Size = new System.Drawing.Size(146, 37);
+            this.txt_Quantidade.TabIndex = 3;
             // 
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Produto.Location = new System.Drawing.Point(218, 219);
+            this.txt_Produto.Location = new System.Drawing.Point(249, 292);
+            this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Produto.Name = "txt_Produto";
-            this.txt_Produto.Size = new System.Drawing.Size(326, 31);
-            this.txt_Produto.TabIndex = 16;
+            this.txt_Produto.Size = new System.Drawing.Size(372, 37);
+            this.txt_Produto.TabIndex = 1;
             // 
             // label_Produto
             // 
             this.label_Produto.AutoSize = true;
             this.label_Produto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Produto.Location = new System.Drawing.Point(218, 177);
+            this.label_Produto.Location = new System.Drawing.Point(249, 236);
             this.label_Produto.Name = "label_Produto";
-            this.label_Produto.Size = new System.Drawing.Size(81, 23);
+            this.label_Produto.Size = new System.Drawing.Size(100, 28);
             this.label_Produto.TabIndex = 15;
             this.label_Produto.Text = "Produto";
             // 
@@ -365,10 +379,11 @@ namespace Aplication
             this.btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Consultar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Consultar.ForeColor = System.Drawing.Color.White;
-            this.btn_Consultar.Location = new System.Drawing.Point(218, 582);
+            this.btn_Consultar.Location = new System.Drawing.Point(249, 776);
+            this.btn_Consultar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Consultar.Name = "btn_Consultar";
-            this.btn_Consultar.Size = new System.Drawing.Size(123, 50);
-            this.btn_Consultar.TabIndex = 24;
+            this.btn_Consultar.Size = new System.Drawing.Size(141, 67);
+            this.btn_Consultar.TabIndex = 4;
             this.btn_Consultar.Text = "Consultar";
             this.btn_Consultar.UseVisualStyleBackColor = false;
             this.btn_Consultar.Click += new System.EventHandler(this.btn_Consultar_Click);
@@ -377,27 +392,28 @@ namespace Aplication
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(218, 71);
+            this.label1.Location = new System.Drawing.Point(249, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 23);
+            this.label1.Size = new System.Drawing.Size(232, 28);
             this.label1.TabIndex = 26;
             this.label1.Text = "Codigo do Produto";
             // 
             // txt_Id
             // 
             this.txt_Id.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Id.Location = new System.Drawing.Point(218, 118);
+            this.txt_Id.Location = new System.Drawing.Point(249, 157);
+            this.txt_Id.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Id.Name = "txt_Id";
             this.txt_Id.ReadOnly = true;
-            this.txt_Id.Size = new System.Drawing.Size(123, 31);
+            this.txt_Id.Size = new System.Drawing.Size(140, 37);
             this.txt_Id.TabIndex = 25;
             // 
             // Form_Estoque
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1234, 709);
+            this.ClientSize = new System.Drawing.Size(1410, 945);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Id);
             this.Controls.Add(this.btn_Consultar);
@@ -411,6 +427,7 @@ namespace Aplication
             this.Controls.Add(this.dgv_Estoque);
             this.Controls.Add(this.panel_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Estoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Estoque";
