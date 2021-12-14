@@ -72,8 +72,8 @@ namespace Data.Migrations
                     b.Property<DateTime>("Data_da_Venda")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Hora_Venda")
-                        .HasColumnType("longtext");
+                    b.Property<TimeSpan>("Hora_Venda")
+                        .HasColumnType("time(6)");
 
                     b.Property<double>("Valor")
                         .HasColumnType("double");

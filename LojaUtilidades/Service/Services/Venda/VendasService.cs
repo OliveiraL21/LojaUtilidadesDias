@@ -29,15 +29,9 @@ namespace Service.Services.Venda
 
         public async Task<IEnumerable<VendaEntity>> GetAllAsync()
         {
-            try
-            {
-                var result = await _repository.SelectAllAsynck();
-                return result;
-            }
-            catch
-            {
-                throw;
-            }
+            var result = await _repository.SelectAllAsynck();
+            return result;
+            
         }
 
 

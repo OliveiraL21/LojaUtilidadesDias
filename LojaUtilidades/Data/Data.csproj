@@ -13,8 +13,8 @@
   <ItemGroup>
     <Compile Include="Migrations\20211213221951_intial.cs" />
     <Compile Include="Migrations\20211213221951_intial.Designer.cs" />
-    <Compile Include="Migrations\20211213233706_change-HoraVendaToString.cs" />
-    <Compile Include="Migrations\20211213233706_change-HoraVendaToString.Designer.cs" />
+    <Compile Include="Migrations\20211214133630_venda-change.cs" />
+    <Compile Include="Migrations\20211214133630_venda-change.Designer.cs" />
     <Compile Include="Migrations\MyContextModelSnapshot.cs" />
   </ItemGroup>
 

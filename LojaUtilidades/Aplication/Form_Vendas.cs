@@ -21,14 +21,11 @@ namespace Aplication
 {
     public partial class Form_Vendas : Form
     {
-        public int i = 0;
-        public int X = 0;
-        public int Y = 0;
-        public int largura = 0;
-        public int altura = 0;
-        public double Total = 0;
-        private readonly ItemVendaEntity item;
-        private readonly VendaEntity venda;
+        private int i = 0;
+        private int X = 0;
+        private int Y = 0;
+        private int largura = 0;
+        private int altura = 0;
         private readonly IProdutoService _service;
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
@@ -38,9 +35,6 @@ namespace Aplication
             _service = new ProdutoService();
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
-         
-            item = new ItemVendaEntity();
-            venda = new VendaEntity();
         }
         #region Front-End
         private void btn_Produto_MouseHover(object sender, EventArgs e)
@@ -151,13 +145,14 @@ namespace Aplication
         {
             int quantidade;
             double valor;
+            double Total = 0;
             for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
             {
                 valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
                 quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
-                Total = Total + (valor * quantidade);
+                Total += (valor * quantidade);
             }
-            txt_Total.Text = Total.ToString();
+            txt_Total.Text = Total.ToString("C2");
         }
 
         private void btn_Limpar_Click(object sender, EventArgs e)
@@ -208,14 +203,15 @@ namespace Aplication
                 VendaEntity vendaObj = new VendaEntity()
                 {
                     Data_da_Venda = DateTime.Now,
-                    Hora_Venda = DateTime.Now.TimeOfDay.ToString(),
-                    Valor = int.Parse(txt_Total.Text)
+                    Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
+                    Hora_Venda = DateTime.Now.TimeOfDay
+                   
                 };
                
                 await _vendaService.PostAsync(vendaObj);
 
                 
-                MessageBox.Show($"Venda Finalizada com Sucesso ! {venda.Hora_Venda.ToString()} {venda.ItensVenda.ToList().ToString()}", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {

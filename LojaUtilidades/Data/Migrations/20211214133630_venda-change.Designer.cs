@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20211213233706_change-HoraVendaToString")]
-    partial class changeHoraVendaToString
+    [Migration("20211214133630_venda-change")]
+    partial class vendachange
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,8 +74,8 @@ namespace Data.Migrations
                     b.Property<DateTime>("Data_da_Venda")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Hora_Venda")
-                        .HasColumnType("longtext");
+                    b.Property<TimeSpan>("Hora_Venda")
+                        .HasColumnType("time(6)");
 
                     b.Property<double>("Valor")
                         .HasColumnType("double");
