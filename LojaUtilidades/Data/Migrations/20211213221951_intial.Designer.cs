@@ -3,14 +3,16 @@ using System;
 using Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20211213221951_intial")]
+    partial class intial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,8 +74,8 @@ namespace Data.Migrations
                     b.Property<DateTime>("Data_da_Venda")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Hora_Venda")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Hora_Venda")
+                        .HasColumnType("int");
 
                     b.Property<double>("Valor")
                         .HasColumnType("double");

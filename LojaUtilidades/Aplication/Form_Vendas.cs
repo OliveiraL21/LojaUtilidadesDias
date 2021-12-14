@@ -207,10 +207,11 @@ namespace Aplication
                 }
                 VendaEntity vendaObj = new VendaEntity()
                 {
-                    Data_da_Venda = DateTime.Now.Date,
-                    Hora_Venda = DateTime.Now,
+                    Data_da_Venda = DateTime.Now,
+                    Hora_Venda = DateTime.Now.TimeOfDay.ToString(),
                     Valor = int.Parse(txt_Total.Text)
                 };
+               
                 await _vendaService.PostAsync(vendaObj);
 
                 
@@ -226,6 +227,7 @@ namespace Aplication
                 txt_Quantidade.Text = "";
                 txt_Total.Text = "";
                 dgv_Vendas.Rows.Clear();
+                
                     
             }
         }
