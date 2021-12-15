@@ -159,6 +159,7 @@ namespace Aplication
         {
             dgv_Vendas.Rows.Clear();
             txt_Total.Text = "";
+            i = 0;
         }
 
         private void btn_Deletar_Click(object sender, EventArgs e)
@@ -166,11 +167,11 @@ namespace Aplication
            
             if(!string.IsNullOrEmpty(txt_Total.Text))
             {
-                var total = Convert.ToDouble(txt_Total.Text);
+                var total = Convert.ToDouble(txt_Total.Text.Trim('R', '$'));
                 var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
                 var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[3].Value.ToString());
                 var valorFinal = total - (itemExcluido * itemExcluidoQtd);
-                txt_Total.Text = valorFinal.ToString();
+                txt_Total.Text = valorFinal.ToString("C2");
                 dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
             }
             else if(string.IsNullOrEmpty(txt_Total.Text))
@@ -192,6 +193,7 @@ namespace Aplication
                     var quantidade = result.Quantidade - quantidadeDgv;
                     result.Quantidade = quantidade;
                     await _service.Put(result);
+                   
 
 
                     
@@ -206,6 +208,10 @@ namespace Aplication
                     Data_da_Venda = DateTime.Now,
                     Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
                     Hora_Venda = DateTime.Now.TimeOfDay,
+                    //ItensVenda = new ItemVendaEntity()
+                    //{
+                    //    ProdutoId = 
+                    //}
                     
                    
                 };
@@ -225,6 +231,7 @@ namespace Aplication
                 txt_Quantidade.Text = "";
                 txt_Total.Text = "";
                 dgv_Vendas.Rows.Clear();
+                i = 0;
                 
                     
             }
@@ -278,7 +285,7 @@ namespace Aplication
             e.Graphics.DrawString("Produto".PadRight(30) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
 
             //Desenhando Produtos
-            for (int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+            for (int x = 0; x <= dgv_Vendas.Rows.Count; x++)
             {
                 if (dgv_Vendas.Rows[x] == null || dgv_Vendas.Rows[x].Cells[x].Value == null)
                 {
@@ -303,7 +310,7 @@ namespace Aplication
             }
             else
             {
-                double total = double.Parse(txt_Total.Text);
+                double total = double.Parse(txt_Total.Text.Trim('R', '$'));
                 e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
             }
         }

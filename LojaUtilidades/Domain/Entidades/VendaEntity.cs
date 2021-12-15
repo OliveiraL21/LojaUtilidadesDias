@@ -8,6 +8,6 @@ namespace Domain.Entidades
         public DateTime Data_da_Venda { get; set; }
         public TimeSpan Hora_Venda { get; set; }
         public double Valor { get; set; }
-        public IEnumerable<ItemVendaEntity> ItensVenda { get; set; }
+        public IList<ItemVendaEntity> ItensVenda { get; set; }
     }
 }
