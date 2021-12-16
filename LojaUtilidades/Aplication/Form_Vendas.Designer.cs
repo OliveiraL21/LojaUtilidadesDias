@@ -81,7 +81,7 @@ namespace Aplication
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
             this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(229, 935);
+            this.panel_Menu.Size = new System.Drawing.Size(229, 987);
             this.panel_Menu.TabIndex = 2;
             // 
             // pictureBox1
@@ -103,7 +103,7 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 841);
+            this.btn_Sair.Location = new System.Drawing.Point(3, 890);
             this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Sair.Name = "btn_Sair";
             this.btn_Sair.Size = new System.Drawing.Size(225, 93);
@@ -202,7 +202,7 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Vendas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Vendas.GridColor = System.Drawing.Color.Black;
-            this.dgv_Vendas.Location = new System.Drawing.Point(699, 203);
+            this.dgv_Vendas.Location = new System.Drawing.Point(665, 214);
             this.dgv_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_Vendas.Name = "dgv_Vendas";
             this.dgv_Vendas.ReadOnly = true;
@@ -220,7 +220,7 @@ namespace Aplication
             this.dgv_Vendas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Vendas.RowTemplate.Height = 25;
             this.dgv_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas.Size = new System.Drawing.Size(745, 541);
+            this.dgv_Vendas.Size = new System.Drawing.Size(911, 628);
             this.dgv_Vendas.TabIndex = 12;
             // 
             // Cod_Prod
@@ -295,7 +295,7 @@ namespace Aplication
             this.txt_Produto.Location = new System.Drawing.Point(248, 268);
             this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_Produto.Name = "txt_Produto";
-            this.txt_Produto.Size = new System.Drawing.Size(411, 37);
+            this.txt_Produto.Size = new System.Drawing.Size(374, 37);
             this.txt_Produto.TabIndex = 1;
             // 
             // label_Produto
@@ -345,7 +345,7 @@ namespace Aplication
             this.panel1.Location = new System.Drawing.Point(229, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1229, 73);
+            this.panel1.Size = new System.Drawing.Size(1373, 73);
             this.panel1.TabIndex = 21;
             // 
             // btn_Deletar
@@ -456,7 +456,7 @@ namespace Aplication
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1458, 935);
+            this.ClientSize = new System.Drawing.Size(1602, 987);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_Calcular);
