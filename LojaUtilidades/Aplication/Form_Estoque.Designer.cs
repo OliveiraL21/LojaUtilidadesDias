@@ -77,7 +77,7 @@ namespace Aplication
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
             this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(229, 945);
+            this.panel_Menu.Size = new System.Drawing.Size(229, 987);
             this.panel_Menu.TabIndex = 3;
             // 
             // pictureBox1
@@ -216,7 +216,7 @@ namespace Aplication
             this.dgv_Estoque.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Estoque.RowTemplate.Height = 25;
             this.dgv_Estoque.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Estoque.Size = new System.Drawing.Size(743, 853);
+            this.dgv_Estoque.Size = new System.Drawing.Size(922, 853);
             this.dgv_Estoque.TabIndex = 8;
             this.dgv_Estoque.DoubleClick += new System.EventHandler(this.dgv_Estoque_DoubleClick);
             // 
@@ -259,7 +259,7 @@ namespace Aplication
             this.panel1.Location = new System.Drawing.Point(229, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1181, 70);
+            this.panel1.Size = new System.Drawing.Size(1373, 70);
             this.panel1.TabIndex = 14;
             // 
             // btn_Atualizar
@@ -413,7 +413,7 @@ namespace Aplication
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1410, 945);
+            this.ClientSize = new System.Drawing.Size(1602, 987);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Id);
             this.Controls.Add(this.btn_Consultar);

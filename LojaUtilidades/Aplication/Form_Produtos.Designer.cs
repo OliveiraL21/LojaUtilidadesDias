@@ -76,7 +76,7 @@ namespace Aplication
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
             this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(229, 947);
+            this.panel_Menu.Size = new System.Drawing.Size(229, 987);
             this.panel_Menu.TabIndex = 1;
             // 
             // pictureBox1
@@ -98,7 +98,7 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(3, 848);
+            this.btn_Sair.Location = new System.Drawing.Point(1, 894);
             this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Sair.Name = "btn_Sair";
             this.btn_Sair.Size = new System.Drawing.Size(225, 93);
@@ -304,7 +304,7 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Produtos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Produtos.GridColor = System.Drawing.Color.Black;
-            this.dgv_Produtos.Location = new System.Drawing.Point(670, 188);
+            this.dgv_Produtos.Location = new System.Drawing.Point(804, 178);
             this.dgv_Produtos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_Produtos.Name = "dgv_Produtos";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -321,7 +321,7 @@ namespace Aplication
             this.dgv_Produtos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Produtos.RowTemplate.Height = 25;
             this.dgv_Produtos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Produtos.Size = new System.Drawing.Size(646, 571);
+            this.dgv_Produtos.Size = new System.Drawing.Size(777, 714);
             this.dgv_Produtos.TabIndex = 7;
             this.dgv_Produtos.DoubleClick += new System.EventHandler(this.dgv_Produtos_DoubleClick);
             // 
@@ -359,7 +359,7 @@ namespace Aplication
             this.panel1.Location = new System.Drawing.Point(229, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1117, 70);
+            this.panel1.Size = new System.Drawing.Size(1373, 70);
             this.panel1.TabIndex = 12;
             // 
             // label1
@@ -387,7 +387,7 @@ namespace Aplication
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1346, 947);
+            this.ClientSize = new System.Drawing.Size(1602, 987);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_Id);
             this.Controls.Add(this.panel1);

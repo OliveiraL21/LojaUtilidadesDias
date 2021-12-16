@@ -1226,7 +1226,7 @@
   <data name="btn_Imprimir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3UAAAN1AHvkboVAAAHa0lE
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAA3QAAAN0AEQbD0HAAAHa0lE
         QVRoQ82aWUxUVxjHcXvS1/rcJkpBEQUUrbh0cUFUbFAcAWVxQ2AQHByFYRnUiAszgJEm2sXoQ402NX2r
         2mrTPjRN2nRJ1Lp1UQRFW9lxQ/j3/13voAxnmHtx1H7JLzMM53zn/z/z3XPPvXeCBhuoiQiCm1RFjCRT
         yCZynJwnLQReyGcXiLSxkWgyEu5JzBWlZ30JwUGFYWQ8cZBT5DbpJt6ifSFtpY/0lRzMFSk59VFeQEhy
@@ -1292,5 +1292,8 @@
   </data>
   <metadata name="printDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>319, 17</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>47</value>
   </metadata>
 </root>
