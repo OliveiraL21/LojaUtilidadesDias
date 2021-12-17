@@ -107,7 +107,12 @@ namespace Aplication
         {
             if (string.IsNullOrEmpty(txt_Produto.Text))
             {
-                MessageBox.Show("digite o nome de um produto e/ou sua quantidade de venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("digite o nome de um produto !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+            if (string.IsNullOrEmpty(txt_Quantidade.Text))
+            {
+                MessageBox.Show("Digite quantos produtos serão vendidos !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             var nome = txt_Produto.Text;
             var quantidade = int.Parse(txt_Quantidade.Text);
@@ -258,61 +263,68 @@ namespace Aplication
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            ProdutoEntity produto = new ProdutoEntity();
-            // declaração das variaveis
-            string Titulo = "Loja Utilidade e Cosmeticos Dias";
-            string Subtitulo = "Cnpj: 29.936.014/0001-01";
-            Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
-            Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
-            Brush PincelPreto = new SolidBrush(Color.Black);
+
+            #region declaração de variaveis
+            //ProdutoEntity produto = new ProdutoEntity();
+            //// VARIAEIS DO TITULO
+            //string Titulo = "Loja Utilidade e Cosmeticos Dias";
+            //string Subtitulo = "Cnpj: 29.936.014/0001-01";
+            //Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
+            //Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
+            //Brush PincelPreto = new SolidBrush(Color.Black);
+
+            //// VARIAVEIS PARA IMPRIMIR OS PRODUTOS
+            //List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
+            //Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);
+            //StringFormat formatoTitulo = new StringFormat();
+            //formatoTitulo.Alignment = StringAlignment.Far;
+            //formatoTitulo.LineAlignment = StringAlignment.Far;
+            //int index = 60;
+            //int index2 = 300;
+            #endregion
+
+            #region inserindo titulo e subtitulo na pagina
+            //e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + 100, Y + 50);
+            //e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
+            #endregion
 
 
-            List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
-            Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);
-            StringFormat formatoTitulo = new StringFormat();
-            formatoTitulo.Alignment = StringAlignment.Far;
-            formatoTitulo.LineAlignment = StringAlignment.Far;
+            #region Desenhando cabeçalho
+            //e.Graphics.DrawString("Produto".PadRight(30) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
+            #endregion
 
-            //inserindo titulo e cabeçalho
-            e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + 100, Y + 50);
-            e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
-
-            // variaveis de index
-            int index = 100;
-            int index2 = 300;
-
-            //desenhando cabeçalho
-            e.Graphics.DrawString("Produto".PadRight(30) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
-
-            //Desenhando Produtos
-            for (int x = 0; x <= dgv_Vendas.Rows.Count; x++)
-            {
-                if (dgv_Vendas.Rows[x] == null || dgv_Vendas.Rows[x].Cells[x].Value == null)
-                {
-                    MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                //ATRIBUINDO A UM OBJ OS DADOS DA GRID
-                produto.Nome = dgv_Vendas.Rows.SharedRow(x).Cells[1].Value.ToString();
-                produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(x).Cells[2].Value.ToString());
-                produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(x).Cells[3].Value.ToString());
-                produtoImprimir.Add(produto);
+            #region Desenhando os produtos
+            //for (int contador = 0; contador <= dgv_Vendas.Rows.Count -2 ; contador++)
+            //{
+            //    if (dgv_Vendas.Rows[contador] == null)
+            //    {
+            //        MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //    //ATRIBUINDO A UM OBJ OS DADOS DA GRID
+            //    produto.Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString();
+            //    produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(contador).Cells[2].Value.ToString());
+            //    produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(contador).Cells[3].Value.ToString());
+            //    produtoImprimir.Add(produto);
 
 
-                e.Graphics.DrawString(produtoImprimir[x].Nome.ToString().PadRight(30) + produtoImprimir[x].Valor.ToString("C2").PadRight(30) + produtoImprimir[x].Quantidade.ToString().PadRight(30), LetraProdutos, PincelPreto, X + index, Y + index2);
-                index2 += 100;
+            //    e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString().PadRight(30) + produtoImprimir[contador].Valor.ToString("C2").PadRight(30) + produtoImprimir[contador].Quantidade.ToString().PadRight(25), LetraProdutos, PincelPreto, X + index, Y + index2);
+            //    index2 += 90;
+                
+            //}
 
-            }
+            //if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
+            //{
+            //    MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    printPreviewDialog1.Close();
+            //}
+            //else
+            //{
+            //    double total = double.Parse(txt_Total.Text.Trim('R', '$'));
+            //    e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
+            //}
+            #endregion
 
-            if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
-            {
-                MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                printPreviewDialog1.Close();
-            }
-            else
-            {
-                double total = double.Parse(txt_Total.Text.Trim('R', '$'));
-                e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
-            }
+
         }
     }
 }

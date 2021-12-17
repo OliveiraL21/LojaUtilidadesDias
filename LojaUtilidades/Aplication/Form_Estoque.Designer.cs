@@ -99,7 +99,7 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 852);
+            this.btn_Sair.Location = new System.Drawing.Point(0, 894);
             this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Sair.Name = "btn_Sair";
             this.btn_Sair.Size = new System.Drawing.Size(225, 93);
