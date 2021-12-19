@@ -265,63 +265,63 @@ namespace Aplication
         {
 
             #region declaração de variaveis
-            //ProdutoEntity produto = new ProdutoEntity();
-            //// VARIAEIS DO TITULO
-            //string Titulo = "Loja Utilidade e Cosmeticos Dias";
-            //string Subtitulo = "Cnpj: 29.936.014/0001-01";
-            //Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
-            //Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
-            //Brush PincelPreto = new SolidBrush(Color.Black);
+            ProdutoEntity produto = new ProdutoEntity();
+            // VARIAEIS DO TITULO
+            string Titulo = "Loja Utilidade e Cosmeticos Dias";
+            string Subtitulo = "Cnpj: 29.936.014/0001-01";
+            Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
+            Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
+            Brush PincelPreto = new SolidBrush(Color.Black);
 
             //// VARIAVEIS PARA IMPRIMIR OS PRODUTOS
-            //List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
-            //Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);
-            //StringFormat formatoTitulo = new StringFormat();
-            //formatoTitulo.Alignment = StringAlignment.Far;
-            //formatoTitulo.LineAlignment = StringAlignment.Far;
-            //int index = 60;
-            //int index2 = 300;
+            List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
+            Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);
+            StringFormat formatoTitulo = new StringFormat();
+            formatoTitulo.Alignment = StringAlignment.Far;
+            formatoTitulo.LineAlignment = StringAlignment.Far;
+            int index = 60;
+            int index2 = 300;
             #endregion
 
             #region inserindo titulo e subtitulo na pagina
-            //e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + 100, Y + 50);
-            //e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
+            e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + 100, Y + 50);
+            e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
             #endregion
 
 
             #region Desenhando cabeçalho
-            //e.Graphics.DrawString("Produto".PadRight(30) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
+            e.Graphics.DrawString("Produto".PadRight(35) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
             #endregion
 
             #region Desenhando os produtos
-            //for (int contador = 0; contador <= dgv_Vendas.Rows.Count -2 ; contador++)
-            //{
-            //    if (dgv_Vendas.Rows[contador] == null)
-            //    {
-            //        MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    //ATRIBUINDO A UM OBJ OS DADOS DA GRID
-            //    produto.Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString();
-            //    produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(contador).Cells[2].Value.ToString());
-            //    produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(contador).Cells[3].Value.ToString());
-            //    produtoImprimir.Add(produto);
+            for (int contador = 0; contador <= dgv_Vendas.Rows.Count - 2; contador++)
+            {
+                if (dgv_Vendas.Rows[contador] == null)
+                {
+                    MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                //ATRIBUINDO A UM OBJ OS DADOS DA GRID
+                produto.Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString();
+                produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(contador).Cells[2].Value.ToString());
+                produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(contador).Cells[3].Value.ToString());
+                produtoImprimir.Add(produto);
 
 
-            //    e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString().PadRight(30) + produtoImprimir[contador].Valor.ToString("C2").PadRight(30) + produtoImprimir[contador].Quantidade.ToString().PadRight(25), LetraProdutos, PincelPreto, X + index, Y + index2);
-            //    index2 += 90;
-                
-            //}
+                e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString().PadRight(40) + produtoImprimir[contador].Valor.ToString("C2").PadRight(40) + produtoImprimir[contador].Quantidade.ToString().PadRight(25), LetraProdutos, PincelPreto, X + index, Y + index2);
+                index2 += 90;
 
-            //if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
-            //{
-            //    MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    printPreviewDialog1.Close();
-            //}
-            //else
-            //{
-            //    double total = double.Parse(txt_Total.Text.Trim('R', '$'));
-            //    e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
-            //}
+            }
+
+            if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
+            {
+                MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                printPreviewDialog1.Close();
+            }
+            else
+            {
+                double total = double.Parse(txt_Total.Text.Trim('R', '$'));
+                e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
+            }
             #endregion
 
 
