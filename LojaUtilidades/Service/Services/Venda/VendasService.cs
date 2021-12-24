@@ -48,7 +48,7 @@ namespace Service.Services.Venda
         }
 
         public async Task<VendaEntity> PostAsync(VendaEntity venda)
-        {
+        { 
             var result = await _repository.InsertAsync(venda);
             return result;
         }

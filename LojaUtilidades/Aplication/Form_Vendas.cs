@@ -26,13 +26,13 @@ namespace Aplication
         private int Y = 0;
         private int largura = 0;
         private int altura = 0;
-        private readonly IProdutoService _service;
+        private readonly IProdutoService _produtoService;
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
         public Form_Vendas()
         {
             InitializeComponent();
-            _service = new ProdutoService();
+            _produtoService = new ProdutoService();
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
         }
@@ -118,7 +118,7 @@ namespace Aplication
             var quantidade = int.Parse(txt_Quantidade.Text);
             try
             {
-                var result = await _service.SelectByName(nome);
+                var result = await _produtoService.SelectByName(nome);
                 if(result != null)
                 {
                     dgv_Vendas.Rows.Add();
@@ -187,42 +187,42 @@ namespace Aplication
 
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
-            
+            var itemVenda = new ItemVendaEntity();
+            Random rd = new Random();
+            if (txt_Total.Text == "")
+            {
+                MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            VendaEntity vendaObj = new VendaEntity()
+            {
+                Id = rd.Next(1000), 
+                Data_da_Venda = DateTime.Now,
+                Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
+                Hora_Venda = DateTime.Now.TimeOfDay,
+            };
+
+            await _vendaService.PostAsync(vendaObj);
             try
             {
                 
                 for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
                 {
-                    var result = await _service.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
+                    var result = await _produtoService.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
                     int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
                     var quantidade = result.Quantidade - quantidadeDgv;
                     result.Quantidade = quantidade;
-                    await _service.Put(result);
-                   
+                    await _produtoService.Put(result);
+
+                    itemVenda.Id = rd.Next(1000);
+                    itemVenda.ProdutoId = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value);
+                    itemVenda.Quantidade = quantidadeDgv;
+                    itemVenda.VendaId = vendaObj.Id;
+                    await _itemService.Post(itemVenda);
 
 
-                    
+
+
                 }
-
-                if(txt_Total.Text == "")
-                {
-                    MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                VendaEntity vendaObj = new VendaEntity()
-                {
-                    Data_da_Venda = DateTime.Now,
-                    Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
-                    Hora_Venda = DateTime.Now.TimeOfDay,
-                    //ItensVenda = new ItemVendaEntity()
-                    //{
-                    //    ProdutoId = 
-                    //}
-                    
-                   
-                };
-               
-                await _vendaService.PostAsync(vendaObj);
-
                 
                 MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
