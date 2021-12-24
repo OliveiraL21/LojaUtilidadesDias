@@ -188,6 +188,7 @@ namespace Aplication
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
             var itemVenda = new ItemVendaEntity();
+            List<ItemVendaEntity> listItens = new List<ItemVendaEntity>();
             Random rd = new Random();
             if (txt_Total.Text == "")
             {
@@ -195,13 +196,13 @@ namespace Aplication
             }
             VendaEntity vendaObj = new VendaEntity()
             {
-                Id = rd.Next(1000), 
+                
                 Data_da_Venda = DateTime.Now,
                 Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
                 Hora_Venda = DateTime.Now.TimeOfDay,
             };
 
-            await _vendaService.PostAsync(vendaObj);
+            var venda = await _vendaService.PostAsync(vendaObj);
             try
             {
                 
@@ -213,17 +214,18 @@ namespace Aplication
                     result.Quantidade = quantidade;
                     await _produtoService.Put(result);
 
-                    itemVenda.Id = rd.Next(1000);
+                    //itemVenda.Id = rd.Next(1000);
                     itemVenda.ProdutoId = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value);
                     itemVenda.Quantidade = quantidadeDgv;
-                    itemVenda.VendaId = vendaObj.Id;
-                    await _itemService.Post(itemVenda);
+                    itemVenda.VendaId = venda.Id;
+                    listItens.Add(itemVenda);
 
 
 
 
                 }
-                
+
+                await _itemService(listItens);
                 MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)

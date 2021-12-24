@@ -56,6 +56,10 @@ namespace Service.Services.ItensVendas
             return result;
         }
 
+        public async Task PostRange(List<ItemVendaEntity> listaItems)
+        {
+            await _repository.
+        }
         public async Task<ItemVendaEntity> Post(ItemVendaEntity item)
         {
             var result = await _repository.InsertAsync(item);

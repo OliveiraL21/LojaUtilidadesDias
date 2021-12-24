@@ -34,9 +34,14 @@ namespace Data.Repositorios
                 return false;
             }
         }
-
+        public async Task InsertRangeAsync(List<T> listaEntidades)
+        {
+            _dataSet.AddRange(listaEntidades);
+            await _context.SaveChangesAsync();
+        }
         public async Task<T> InsertAsync(T entidade)
         {
+           
             _dataSet.Add(entidade);
             await _context.SaveChangesAsync();
             return entidade;
