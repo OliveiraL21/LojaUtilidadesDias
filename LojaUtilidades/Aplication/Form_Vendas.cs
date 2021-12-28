@@ -223,10 +223,11 @@ namespace Aplication
                     listItens.Add(itemVenda);
                 }
 
-                foreach(var item in listItens)
-                {
-                    await _itemService.Post(item);
-                }
+                await _itemService
+                //foreach(var item in listItens)
+                //{
+                //    await _itemService.Post(item);
+                //}
                 MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)

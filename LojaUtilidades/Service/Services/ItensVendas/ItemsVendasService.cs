@@ -15,9 +15,11 @@ namespace Service.Services.ItensVendas
     public class ItemsVendasService : IITemVendaService
     {
         private readonly ITemVendaRepository _repository;
-        public ItemsVendasService(ITemVendaRepository repository)
+        private readonly MyContext _context;
+        public ItemsVendasService(ITemVendaRepository repository, MyContext context)
         {
             _repository = repository;
+            _context = context;
         }
         public ItemsVendasService()
         {
@@ -56,9 +58,11 @@ namespace Service.Services.ItensVendas
             return result;
         }
 
-        public async Task PostRange(List<ItemVendaEntity> listItens)
+        public async Task<List<ItemVendaEntity>> PostRange(List<ItemVendaEntity> listItens)
         {
-            await _repository.(listItens);
+            _context.AddRange(listItens);
+            await _context.SaveChangesAsync();
+            return listItens;
         }
         public async Task<ItemVendaEntity> Post(ItemVendaEntity item)
         {
