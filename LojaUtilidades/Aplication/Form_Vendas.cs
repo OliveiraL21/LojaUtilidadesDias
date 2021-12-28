@@ -29,12 +29,14 @@ namespace Aplication
         private readonly IProdutoService _produtoService;
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
+        private readonly MyContext _context;
         public Form_Vendas()
         {
             InitializeComponent();
             _produtoService = new ProdutoService();
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
+            _context = new MyContext();
         }
         #region Front-End
         private void btn_Produto_MouseHover(object sender, EventArgs e)
@@ -193,58 +195,63 @@ namespace Aplication
             if (txt_Total.Text == "")
             {
                 MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            VendaEntity vendaObj = new VendaEntity()
-            {
-                
-                Data_da_Venda = DateTime.Now,
-                Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
-                Hora_Venda = DateTime.Now.TimeOfDay,
-            };
 
-            var venda = await _vendaService.PostAsync(vendaObj);
-            try
+            }
+            else
             {
-                
-                for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+                VendaEntity vendaObj = new VendaEntity()
                 {
-                    var result = await _produtoService.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
-                    int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
-                    var quantidade = result.Quantidade - quantidadeDgv;
-                    result.Quantidade = quantidade;
-                    await _produtoService.Put(result);
 
-                    itemVenda.Id = rd.Next(1000);
-                    itemVenda.ProdutoId = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value);
-                    itemVenda.Quantidade = quantidadeDgv;
-                    itemVenda.VendaId = venda.Id;
-                    itemVenda.Venda = venda;
-                    itemVenda.Produto = result;
-                    listItens.Add(itemVenda);
+                    Data_da_Venda = DateTime.Now,
+                    Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
+                    Hora_Venda = DateTime.Now.TimeOfDay,
+                };
+
+                var venda = await _vendaService.PostAsync(vendaObj);
+                try
+                {
+
+                    for (int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+                    {
+                        var result = await _produtoService.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
+                        int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
+                        var quantidade = result.Quantidade - quantidadeDgv;
+                        result.Quantidade = quantidade;
+                        await _produtoService.Put(result);
+
+
+                        listItens.Add(new ItemVendaEntity()
+                        {
+                            ProdutoId = result.Id,
+                            Produto = result,
+                            VendaId = venda.Id,
+                            Venda = venda,
+                            Quantidade = quantidadeDgv
+                        });
+                    }
+                    _context.ItensVendas.AttachRange(listItens);
+                    _context.ItensVendas.AddRange(listItens);
+                    _context.SaveChanges();
+
+                    MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao finalizar a venda {ex.InnerException.Message} !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                await _itemService
-                //foreach(var item in listItens)
-                //{
-                //    await _itemService.Post(item);
-                //}
-                MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                finally
+                {
+                    txt_Produto.Text = "";
+                    txt_Quantidade.Text = "";
+                    txt_Total.Text = "";
+                    dgv_Vendas.Rows.Clear();
+                    i = 0;
+
+
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show($"Erro ao finalizar a venda {ex.InnerException.Message} !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-              
-            }
-            finally
-            {
-                txt_Produto.Text = "";
-                txt_Quantidade.Text = "";
-                txt_Total.Text = "";
-                dgv_Vendas.Rows.Clear();
-                i = 0;
-                
-                    
-            }
+           
         }
 
         private void btn_Imprimir_Click(object sender, EventArgs e)

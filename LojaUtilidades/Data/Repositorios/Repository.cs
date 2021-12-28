@@ -35,7 +35,6 @@ namespace Data.Repositorios
             }
         }
 
-        
         public async Task<T> InsertAsync(T entidade)
         {
            
