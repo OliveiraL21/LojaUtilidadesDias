@@ -214,23 +214,25 @@ namespace Aplication
                     result.Quantidade = quantidade;
                     await _produtoService.Put(result);
 
-                    //itemVenda.Id = rd.Next(1000);
+                    itemVenda.Id = rd.Next(1000);
                     itemVenda.ProdutoId = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value);
                     itemVenda.Quantidade = quantidadeDgv;
                     itemVenda.VendaId = venda.Id;
+                    itemVenda.Venda = venda;
+                    itemVenda.Produto = result;
                     listItens.Add(itemVenda);
-
-
-
-
                 }
 
-                await _itemService(listItens);
+                foreach(var item in listItens)
+                {
+                    await _itemService.Post(item);
+                }
                 MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
-                MessageBox.Show($"Erro ao finalizar a venda {ex.Message} !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao finalizar a venda {ex.InnerException.Message} !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              
             }
             finally
             {

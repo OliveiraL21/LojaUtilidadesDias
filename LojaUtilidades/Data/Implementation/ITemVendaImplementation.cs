@@ -21,6 +21,7 @@ namespace Data.Implementation
             _dataSet = context.Set<ItemVendaEntity>();
         }
 
+        
         public  IList<ItemVendaEntity> GetByName(ItemVendaEntity itemVenda)
         {
             var NomeProduto = itemVenda.Produto.Nome;
