@@ -189,9 +189,7 @@ namespace Aplication
 
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
-            var itemVenda = new ItemVendaEntity();
             List<ItemVendaEntity> listItens = new List<ItemVendaEntity>();
-            Random rd = new Random();
             if (txt_Total.Text == "")
             {
                 MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);

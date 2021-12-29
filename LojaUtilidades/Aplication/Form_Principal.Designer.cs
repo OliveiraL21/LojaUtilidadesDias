@@ -31,6 +31,7 @@ namespace Aplication
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Principal));
             this.panel_Menu = new System.Windows.Forms.Panel();
+            this.btn_Estoque_Vendas = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_Sair = new System.Windows.Forms.Button();
             this.btn_Estoque = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@ namespace Aplication
             // panel_Menu
             // 
             this.panel_Menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(0)))), ((int)(((byte)(39)))));
+            this.panel_Menu.Controls.Add(this.btn_Estoque_Vendas);
             this.panel_Menu.Controls.Add(this.pictureBox1);
             this.panel_Menu.Controls.Add(this.btn_Sair);
             this.panel_Menu.Controls.Add(this.btn_Estoque);
@@ -63,8 +65,25 @@ namespace Aplication
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
             this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(229, 987);
+            this.panel_Menu.Size = new System.Drawing.Size(247, 987);
             this.panel_Menu.TabIndex = 0;
+            // 
+            // btn_Estoque_Vendas
+            // 
+            this.btn_Estoque_Vendas.FlatAppearance.BorderSize = 0;
+            this.btn_Estoque_Vendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Estoque_Vendas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Estoque_Vendas.ForeColor = System.Drawing.Color.White;
+            this.btn_Estoque_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque_Vendas.Image")));
+            this.btn_Estoque_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(4, 595);
+            this.btn_Estoque_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque_Vendas.Name = "btn_Estoque_Vendas";
+            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(284, 93);
+            this.btn_Estoque_Vendas.TabIndex = 5;
+            this.btn_Estoque_Vendas.Text = "Estoque de Vendas";
+            this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
+            this.btn_Estoque_Vendas.Click += new System.EventHandler(this.btn_Estoque_Vendas_Click);
             // 
             // pictureBox1
             // 
@@ -72,7 +91,7 @@ namespace Aplication
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(225, 233);
+            this.pictureBox1.Size = new System.Drawing.Size(241, 235);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -104,7 +123,7 @@ namespace Aplication
             this.btn_Estoque.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque.Image")));
             this.btn_Estoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque.Location = new System.Drawing.Point(0, 513);
+            this.btn_Estoque.Location = new System.Drawing.Point(1, 494);
             this.btn_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Estoque.Name = "btn_Estoque";
             this.btn_Estoque.Size = new System.Drawing.Size(225, 93);
@@ -206,10 +225,10 @@ namespace Aplication
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(229, 0);
+            this.panel1.Location = new System.Drawing.Point(247, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1373, 66);
+            this.panel1.Size = new System.Drawing.Size(1355, 66);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox3
@@ -293,6 +312,7 @@ namespace Aplication
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btn_Estoque_Vendas;
     }
 }
 
