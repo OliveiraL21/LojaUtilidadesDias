@@ -41,9 +41,9 @@ namespace Service.Services.Venda
             return result;
         }
 
-        public IEnumerable<VendaEntity> GetByDate(DateTime data)
+        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
         {
-            var result =  _repository.GetByDate(data);
+            var result =  _repository.GetByDate(venda);
             return result;
         }
 

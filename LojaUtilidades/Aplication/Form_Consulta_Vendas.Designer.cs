@@ -29,11 +29,11 @@ namespace Aplication
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Consulta_Vendas));
             this.dgv_Vendas_Consulta = new System.Windows.Forms.DataGridView();
             this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,19 +65,19 @@ namespace Aplication
             // dgv_Vendas_Consulta
             // 
             this.dgv_Vendas_Consulta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas_Consulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Vendas_Consulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Vendas_Consulta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_Vendas_Consulta.BackgroundColor = System.Drawing.Color.CadetBlue;
             this.dgv_Vendas_Consulta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas_Consulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Vendas_Consulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_Vendas_Consulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Vendas_Consulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cod_Prod,
@@ -86,34 +86,33 @@ namespace Aplication
             this.Quantidade,
             this.Cod_Venda,
             this.dataGridViewTextBoxColumn1});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Vendas_Consulta.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Vendas_Consulta.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Vendas_Consulta.GridColor = System.Drawing.Color.Black;
-            this.dgv_Vendas_Consulta.Location = new System.Drawing.Point(294, 308);
-            this.dgv_Vendas_Consulta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgv_Vendas_Consulta.Location = new System.Drawing.Point(257, 231);
             this.dgv_Vendas_Consulta.Name = "dgv_Vendas_Consulta";
             this.dgv_Vendas_Consulta.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas_Consulta.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Vendas_Consulta.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_Vendas_Consulta.RowHeadersWidth = 51;
             this.dgv_Vendas_Consulta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas_Consulta.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Vendas_Consulta.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Vendas_Consulta.RowTemplate.Height = 25;
             this.dgv_Vendas_Consulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(1290, 675);
+            this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(1129, 506);
             this.dgv_Vendas_Consulta.TabIndex = 13;
             // 
             // Cod_Prod
@@ -163,10 +162,9 @@ namespace Aplication
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.btn_Limpar);
             this.panel1.Controls.Add(this.btn_Consultar);
-            this.panel1.Location = new System.Drawing.Point(247, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(216, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1337, 73);
+            this.panel1.Size = new System.Drawing.Size(1170, 55);
             this.panel1.TabIndex = 22;
             // 
             // btn_Limpar
@@ -177,10 +175,9 @@ namespace Aplication
             this.btn_Limpar.ForeColor = System.Drawing.Color.White;
             this.btn_Limpar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Limpar.Image")));
             this.btn_Limpar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Limpar.Location = new System.Drawing.Point(247, 0);
-            this.btn_Limpar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Limpar.Location = new System.Drawing.Point(216, 0);
             this.btn_Limpar.Name = "btn_Limpar";
-            this.btn_Limpar.Size = new System.Drawing.Size(267, 69);
+            this.btn_Limpar.Size = new System.Drawing.Size(234, 52);
             this.btn_Limpar.TabIndex = 12;
             this.btn_Limpar.Text = "Limpar Lista";
             this.btn_Limpar.UseVisualStyleBackColor = true;
@@ -193,21 +190,21 @@ namespace Aplication
             this.btn_Consultar.ForeColor = System.Drawing.Color.White;
             this.btn_Consultar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Consultar.Image")));
             this.btn_Consultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Consultar.Location = new System.Drawing.Point(0, 4);
-            this.btn_Consultar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Consultar.Location = new System.Drawing.Point(0, 3);
             this.btn_Consultar.Name = "btn_Consultar";
-            this.btn_Consultar.Size = new System.Drawing.Size(234, 65);
+            this.btn_Consultar.Size = new System.Drawing.Size(205, 49);
             this.btn_Consultar.TabIndex = 9;
             this.btn_Consultar.Text = "Consultar";
             this.btn_Consultar.UseVisualStyleBackColor = true;
+            this.btn_Consultar.Click += new System.EventHandler(this.btn_Consultar_Click);
             // 
             // Data_Da_Venda
             // 
             this.Data_Da_Venda.AutoSize = true;
             this.Data_Da_Venda.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Data_Da_Venda.Location = new System.Drawing.Point(288, 143);
+            this.Data_Da_Venda.Location = new System.Drawing.Point(252, 107);
             this.Data_Da_Venda.Name = "Data_Da_Venda";
-            this.Data_Da_Venda.Size = new System.Drawing.Size(182, 27);
+            this.Data_Da_Venda.Size = new System.Drawing.Size(153, 23);
             this.Data_Da_Venda.TabIndex = 23;
             this.Data_Da_Venda.Text = "Data da Venda";
             // 
@@ -215,28 +212,30 @@ namespace Aplication
             // 
             this.lbl_Produto.AutoSize = true;
             this.lbl_Produto.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Produto.Location = new System.Drawing.Point(288, 206);
+            this.lbl_Produto.Location = new System.Drawing.Point(252, 154);
             this.lbl_Produto.Name = "lbl_Produto";
-            this.lbl_Produto.Size = new System.Drawing.Size(98, 27);
+            this.lbl_Produto.Size = new System.Drawing.Size(81, 23);
             this.lbl_Produto.TabIndex = 24;
             this.lbl_Produto.Text = "Produto";
             // 
             // txt_Data_Venda
             // 
             this.txt_Data_Venda.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Data_Venda.Location = new System.Drawing.Point(494, 137);
+            this.txt_Data_Venda.Location = new System.Drawing.Point(432, 103);
+            this.txt_Data_Venda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Data_Venda.Mask = "00/00/0000";
             this.txt_Data_Venda.Name = "txt_Data_Venda";
-            this.txt_Data_Venda.Size = new System.Drawing.Size(183, 38);
+            this.txt_Data_Venda.Size = new System.Drawing.Size(161, 32);
             this.txt_Data_Venda.TabIndex = 25;
             this.txt_Data_Venda.ValidatingType = typeof(System.DateTime);
             // 
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Produto.Location = new System.Drawing.Point(392, 200);
+            this.txt_Produto.Location = new System.Drawing.Point(343, 150);
+            this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Produto.Name = "txt_Produto";
-            this.txt_Produto.Size = new System.Drawing.Size(298, 38);
+            this.txt_Produto.Size = new System.Drawing.Size(261, 32);
             this.txt_Produto.TabIndex = 26;
             // 
             // panel_Menu
@@ -250,9 +249,8 @@ namespace Aplication
             this.panel_Menu.Controls.Add(this.btn_Produto);
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
-            this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(247, 995);
+            this.panel_Menu.Size = new System.Drawing.Size(216, 746);
             this.panel_Menu.TabIndex = 27;
             // 
             // btn_Estoque_Vendas
@@ -263,10 +261,9 @@ namespace Aplication
             this.btn_Estoque_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque_Vendas.Image")));
             this.btn_Estoque_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(0, 602);
-            this.btn_Estoque_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(0, 452);
             this.btn_Estoque_Vendas.Name = "btn_Estoque_Vendas";
-            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(284, 93);
+            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(248, 70);
             this.btn_Estoque_Vendas.TabIndex = 5;
             this.btn_Estoque_Vendas.Text = "Estoque de Vendas";
             this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
@@ -275,9 +272,8 @@ namespace Aplication
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(241, 235);
+            this.pictureBox1.Size = new System.Drawing.Size(211, 176);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -290,10 +286,9 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 890);
-            this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Sair.Location = new System.Drawing.Point(0, 668);
             this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(241, 101);
+            this.btn_Sair.Size = new System.Drawing.Size(211, 76);
             this.btn_Sair.TabIndex = 4;
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = true;
@@ -307,10 +302,9 @@ namespace Aplication
             this.btn_Estoque.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque.Image")));
             this.btn_Estoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque.Location = new System.Drawing.Point(0, 486);
-            this.btn_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque.Location = new System.Drawing.Point(0, 364);
             this.btn_Estoque.Name = "btn_Estoque";
-            this.btn_Estoque.Size = new System.Drawing.Size(244, 93);
+            this.btn_Estoque.Size = new System.Drawing.Size(214, 70);
             this.btn_Estoque.TabIndex = 3;
             this.btn_Estoque.Text = "Estoque";
             this.btn_Estoque.UseVisualStyleBackColor = true;
@@ -324,10 +318,9 @@ namespace Aplication
             this.btn_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Vendas.Image")));
             this.btn_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Vendas.Location = new System.Drawing.Point(0, 385);
-            this.btn_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Vendas.Location = new System.Drawing.Point(0, 289);
             this.btn_Vendas.Name = "btn_Vendas";
-            this.btn_Vendas.Size = new System.Drawing.Size(241, 93);
+            this.btn_Vendas.Size = new System.Drawing.Size(211, 70);
             this.btn_Vendas.TabIndex = 2;
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = true;
@@ -341,10 +334,9 @@ namespace Aplication
             this.btn_Produto.ForeColor = System.Drawing.Color.White;
             this.btn_Produto.Image = ((System.Drawing.Image)(resources.GetObject("btn_Produto.Image")));
             this.btn_Produto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Produto.Location = new System.Drawing.Point(0, 264);
-            this.btn_Produto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Produto.Location = new System.Drawing.Point(0, 198);
             this.btn_Produto.Name = "btn_Produto";
-            this.btn_Produto.Size = new System.Drawing.Size(241, 93);
+            this.btn_Produto.Size = new System.Drawing.Size(211, 70);
             this.btn_Produto.TabIndex = 1;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
@@ -352,10 +344,10 @@ namespace Aplication
             // 
             // Form_Consulta_Vendas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1602, 995);
+            this.ClientSize = new System.Drawing.Size(1402, 746);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.txt_Produto);
             this.Controls.Add(this.txt_Data_Venda);
@@ -364,6 +356,7 @@ namespace Aplication
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgv_Vendas_Consulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_Consulta_Vendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Consulta_Vendas";

@@ -21,17 +21,10 @@ namespace Data.Implementation
             _dataSet = context.Set<VendaEntity>();
         }
 
-        public IEnumerable<VendaEntity> GetByDate(DateTime data)
+        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
         {
-            try
-            {
-                var result =  _context.Vendas.OrderBy(v => v.Data_da_Venda == data);
-                return result;
-            }
-            catch
-            {
-                throw;
-            }
+
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -88,6 +89,15 @@ namespace Aplication
         {
             Form_Consulta_Vendas form_estoque_vendas = new Form_Consulta_Vendas();
             form_estoque_vendas.ShowDialog();
+        }
+
+        private void btn_Consultar_Click(object sender, EventArgs e)
+        {
+            var venda = new VendaEntity()
+            {
+                Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text)
+            };
+            
         }
     }
 }
