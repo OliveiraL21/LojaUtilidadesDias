@@ -11,7 +11,7 @@ namespace Domain.Interfaces.Services.Venda
     {
         public Task<VendaEntity> PostAsync(VendaEntity venda);
         public Task<VendaEntity> GetAsync(int id);
-        public IEnumerable<VendaEntity> GetByDate(DateTime data);
+        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
         public Task<IEnumerable<VendaEntity>> GetAllAsync();
         public Task<VendaEntity> PutAsync(VendaEntity venda);
         public Task<bool> Delete(int id);

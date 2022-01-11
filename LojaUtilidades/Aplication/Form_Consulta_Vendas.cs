@@ -1,4 +1,6 @@
 ﻿using Domain.Entidades;
+using Domain.Interfaces.Services.Venda;
+using Service.Services.Venda;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,11 @@ namespace Aplication
 {
     public partial class Form_Consulta_Vendas : Form
     {
+        private readonly IVendaService _vendaService;
         public Form_Consulta_Vendas()
         {
             InitializeComponent();
+            _vendaService = new VendasService();
         }
 
         #region Front-End
@@ -96,8 +100,19 @@ namespace Aplication
             var venda = new VendaEntity()
             {
                 Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text)
+
             };
-            
+
+           var vendas =  _vendaService.GetByDate(venda);
+
+            int index = 0;
+
+           foreach(var item in vendas)
+            {
+                dgv_Vendas_Consulta.Rows[index].Cells[index].Value = item;
+                index++;
+            }
+           
         }
     }
 }
