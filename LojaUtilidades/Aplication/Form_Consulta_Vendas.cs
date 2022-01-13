@@ -107,10 +107,21 @@ namespace Aplication
 
             int index = 0;
 
-           foreach(var item in vendas)
+            
+           foreach(var Venda in vendas)
             {
-                dgv_Vendas_Consulta.Rows[index].Cells[index].Value = item;
+                foreach (var item in Venda.ItensVenda)
+                { 
+                    dgv_Vendas_Consulta.Rows[index].Cells[0].Value = item.ProdutoId;
+                    dgv_Vendas_Consulta.Rows[index].Cells[1].Value = item.Produto.Nome;
+                    dgv_Vendas_Consulta.Rows[index].Cells[2].Value = item.Quantidade;
+                    dgv_Vendas_Consulta.Rows[index].Cells[3].Value = Venda.Valor;
+                    dgv_Vendas_Consulta.Rows[index].Cells[4].Value = Venda.Id;
+                    dgv_Vendas_Consulta.Rows[index].Cells[5].Value = Venda.Data_da_Venda.ToString("dd/MM/yyyy");
+                    dgv_Vendas_Consulta.Rows[index].Cells[6].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
+                }
                 index++;
+
             }
            
         }

@@ -27,12 +27,12 @@ namespace Data.Implementation
             var produtos = _context.Produtos.ToList();
 
 
-            var result = _dataSet.Where(v => v.Data_da_Venda == venda.Data_da_Venda)
-                .Include(it => it.ItensVenda.Where(i => i.VendaId == venda.Id))
-                .Include(it => it.ItensVenda.Where(i => i.ProdutoId == i.Produto.Id).ToList()); 
+            var result = _dataSet.Include(v => v.ItensVenda).ThenInclude(it => it.Produto);
+            result.Where(v => v.Data_da_Venda == venda.Data_da_Venda).ToList();
+             
 
             return result;
-            
+
         }
     }
 }

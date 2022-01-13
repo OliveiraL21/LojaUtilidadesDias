@@ -36,12 +36,6 @@ namespace Aplication
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Consulta_Vendas));
             this.dgv_Vendas_Consulta = new System.Windows.Forms.DataGridView();
-            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cod_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Limpar = new System.Windows.Forms.Button();
             this.btn_Consultar = new System.Windows.Forms.Button();
@@ -56,6 +50,13 @@ namespace Aplication
             this.btn_Estoque = new System.Windows.Forms.Button();
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
+            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cod_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hora_Da_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas_Consulta)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel_Menu.SuspendLayout();
@@ -82,10 +83,11 @@ namespace Aplication
             this.dgv_Vendas_Consulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cod_Prod,
             this.Produto,
-            this.Valor,
             this.Quantidade,
+            this.Total,
             this.Cod_Venda,
-            this.dataGridViewTextBoxColumn1});
+            this.dataGridViewTextBoxColumn1,
+            this.Hora_Da_Venda});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -115,48 +117,6 @@ namespace Aplication
             this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(1129, 506);
             this.dgv_Vendas_Consulta.TabIndex = 13;
             // 
-            // Cod_Prod
-            // 
-            this.Cod_Prod.HeaderText = "Cod_Prod";
-            this.Cod_Prod.MinimumWidth = 6;
-            this.Cod_Prod.Name = "Cod_Prod";
-            this.Cod_Prod.ReadOnly = true;
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.MinimumWidth = 6;
-            this.Produto.Name = "Produto";
-            this.Produto.ReadOnly = true;
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.MinimumWidth = 6;
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.MinimumWidth = 6;
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            // 
-            // Cod_Venda
-            // 
-            this.Cod_Venda.HeaderText = "Cod_Venda";
-            this.Cod_Venda.MinimumWidth = 6;
-            this.Cod_Venda.Name = "Cod_Venda";
-            this.Cod_Venda.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Data da Venda";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -164,7 +124,7 @@ namespace Aplication
             this.panel1.Controls.Add(this.btn_Consultar);
             this.panel1.Location = new System.Drawing.Point(216, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1170, 55);
+            this.panel1.Size = new System.Drawing.Size(1186, 55);
             this.panel1.TabIndex = 22;
             // 
             // btn_Limpar
@@ -342,6 +302,54 @@ namespace Aplication
             this.btn_Produto.UseVisualStyleBackColor = true;
             this.btn_Produto.Click += new System.EventHandler(this.btn_Produto_Click);
             // 
+            // Cod_Prod
+            // 
+            this.Cod_Prod.HeaderText = "Cod_Prod";
+            this.Cod_Prod.MinimumWidth = 6;
+            this.Cod_Prod.Name = "Cod_Prod";
+            this.Cod_Prod.ReadOnly = true;
+            // 
+            // Produto
+            // 
+            this.Produto.HeaderText = "Produto";
+            this.Produto.MinimumWidth = 6;
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.MinimumWidth = 6;
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Cod_Venda
+            // 
+            this.Cod_Venda.HeaderText = "Cod_Venda";
+            this.Cod_Venda.MinimumWidth = 6;
+            this.Cod_Venda.Name = "Cod_Venda";
+            this.Cod_Venda.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Data da Venda";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Hora_Da_Venda
+            // 
+            this.Hora_Da_Venda.HeaderText = "Horário";
+            this.Hora_Da_Venda.Name = "Hora_Da_Venda";
+            this.Hora_Da_Venda.ReadOnly = true;
+            // 
             // Form_Consulta_Vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -374,12 +382,6 @@ namespace Aplication
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Limpar;
         private System.Windows.Forms.Button btn_Consultar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Prod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Venda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label Data_Da_Venda;
         private System.Windows.Forms.Label lbl_Produto;
         private System.Windows.Forms.MaskedTextBox txt_Data_Venda;
@@ -391,5 +393,12 @@ namespace Aplication
         private System.Windows.Forms.Button btn_Estoque;
         private System.Windows.Forms.Button btn_Vendas;
         private System.Windows.Forms.Button btn_Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Prod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Venda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hora_Da_Venda;
     }
 }
