@@ -24,8 +24,9 @@ namespace Data.Implementation
         public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
         {
             var result = _dataSet.Include(v => v.ItensVenda)
-                .ThenInclude(it => it.Produto)
-                .Where(v => v.Data_da_Venda == venda.Data_da_Venda)
+                .ThenInclude(it => it.Produto);
+
+                result.Where(v => v.Data_da_Venda == venda.Data_da_Venda)
                 .ToList() ;
              
 
