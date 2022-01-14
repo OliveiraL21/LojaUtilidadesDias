@@ -85,7 +85,8 @@ namespace Aplication
 
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("O formulário de Vendas já está aberto", "Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form_Vendas formVenda = new Form_Vendas();
+            formVenda.ShowDialog();
         }
         #endregion
 
@@ -107,11 +108,12 @@ namespace Aplication
 
             int index = 0;
 
-            
-           foreach(var Venda in vendas)
+            foreach (var Venda in vendas)
             {
+               
                 foreach (var item in Venda.ItensVenda)
-                { 
+                {
+                    dgv_Vendas_Consulta.Rows.Add();
                     dgv_Vendas_Consulta.Rows[index].Cells[0].Value = item.ProdutoId;
                     dgv_Vendas_Consulta.Rows[index].Cells[1].Value = item.Produto.Nome;
                     dgv_Vendas_Consulta.Rows[index].Cells[2].Value = item.Quantidade;
@@ -119,11 +121,12 @@ namespace Aplication
                     dgv_Vendas_Consulta.Rows[index].Cells[4].Value = Venda.Id;
                     dgv_Vendas_Consulta.Rows[index].Cells[5].Value = Venda.Data_da_Venda.ToString("dd/MM/yyyy");
                     dgv_Vendas_Consulta.Rows[index].Cells[6].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
+                    index++;
                 }
-                index++;
+                
 
             }
-           
+
         }
     }
 }

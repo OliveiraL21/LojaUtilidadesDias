@@ -63,23 +63,21 @@ namespace Aplication
             this.panel_Menu.Controls.Add(this.btn_Produto);
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
-            this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(247, 987);
+            this.panel_Menu.Size = new System.Drawing.Size(216, 740);
             this.panel_Menu.TabIndex = 0;
             // 
             // btn_Estoque_Vendas
             // 
             this.btn_Estoque_Vendas.FlatAppearance.BorderSize = 0;
             this.btn_Estoque_Vendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Estoque_Vendas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Estoque_Vendas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Estoque_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque_Vendas.Image")));
             this.btn_Estoque_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(4, 595);
-            this.btn_Estoque_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(4, 446);
             this.btn_Estoque_Vendas.Name = "btn_Estoque_Vendas";
-            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(284, 93);
+            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(212, 69);
             this.btn_Estoque_Vendas.TabIndex = 5;
             this.btn_Estoque_Vendas.Text = "Estoque de Vendas";
             this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
@@ -89,9 +87,8 @@ namespace Aplication
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(241, 235);
+            this.pictureBox1.Size = new System.Drawing.Size(211, 176);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -100,14 +97,13 @@ namespace Aplication
             // 
             this.btn_Sair.FlatAppearance.BorderSize = 0;
             this.btn_Sair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Sair.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Sair.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 890);
-            this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Sair.Location = new System.Drawing.Point(0, 668);
             this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(225, 93);
+            this.btn_Sair.Size = new System.Drawing.Size(216, 69);
             this.btn_Sair.TabIndex = 4;
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = true;
@@ -119,14 +115,13 @@ namespace Aplication
             // 
             this.btn_Estoque.FlatAppearance.BorderSize = 0;
             this.btn_Estoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Estoque.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Estoque.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Estoque.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque.Image")));
             this.btn_Estoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque.Location = new System.Drawing.Point(1, 494);
-            this.btn_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque.Location = new System.Drawing.Point(1, 370);
             this.btn_Estoque.Name = "btn_Estoque";
-            this.btn_Estoque.Size = new System.Drawing.Size(225, 93);
+            this.btn_Estoque.Size = new System.Drawing.Size(212, 69);
             this.btn_Estoque.TabIndex = 3;
             this.btn_Estoque.Text = "Estoque";
             this.btn_Estoque.UseVisualStyleBackColor = true;
@@ -138,14 +133,13 @@ namespace Aplication
             // 
             this.btn_Vendas.FlatAppearance.BorderSize = 0;
             this.btn_Vendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Vendas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Vendas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Vendas.Image")));
             this.btn_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Vendas.Location = new System.Drawing.Point(3, 393);
-            this.btn_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Vendas.Location = new System.Drawing.Point(3, 295);
             this.btn_Vendas.Name = "btn_Vendas";
-            this.btn_Vendas.Size = new System.Drawing.Size(225, 93);
+            this.btn_Vendas.Size = new System.Drawing.Size(213, 69);
             this.btn_Vendas.TabIndex = 2;
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = true;
@@ -157,14 +151,13 @@ namespace Aplication
             // 
             this.btn_Produto.FlatAppearance.BorderSize = 0;
             this.btn_Produto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Produto.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Produto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Produto.ForeColor = System.Drawing.Color.White;
             this.btn_Produto.Image = ((System.Drawing.Image)(resources.GetObject("btn_Produto.Image")));
             this.btn_Produto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Produto.Location = new System.Drawing.Point(0, 264);
-            this.btn_Produto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Produto.Location = new System.Drawing.Point(0, 198);
             this.btn_Produto.Name = "btn_Produto";
-            this.btn_Produto.Size = new System.Drawing.Size(225, 93);
+            this.btn_Produto.Size = new System.Drawing.Size(216, 69);
             this.btn_Produto.TabIndex = 1;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
@@ -176,21 +169,20 @@ namespace Aplication
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(669, 132);
+            this.label1.Location = new System.Drawing.Point(585, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 32);
+            this.label1.Size = new System.Drawing.Size(53, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "Data";
             // 
             // txt_data
             // 
             this.txt_data.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_data.Location = new System.Drawing.Point(754, 125);
-            this.txt_data.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_data.Location = new System.Drawing.Point(660, 94);
             this.txt_data.Mask = "00/00/0000";
             this.txt_data.Name = "txt_data";
             this.txt_data.ReadOnly = true;
-            this.txt_data.Size = new System.Drawing.Size(348, 39);
+            this.txt_data.Size = new System.Drawing.Size(305, 33);
             this.txt_data.TabIndex = 2;
             this.txt_data.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_data.ValidatingType = typeof(System.DateTime);
@@ -198,12 +190,11 @@ namespace Aplication
             // txt_hora
             // 
             this.txt_hora.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_hora.Location = new System.Drawing.Point(754, 200);
-            this.txt_hora.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txt_hora.Location = new System.Drawing.Point(660, 150);
             this.txt_hora.Mask = "00:00";
             this.txt_hora.Name = "txt_hora";
             this.txt_hora.ReadOnly = true;
-            this.txt_hora.Size = new System.Drawing.Size(348, 39);
+            this.txt_hora.Size = new System.Drawing.Size(305, 33);
             this.txt_hora.TabIndex = 4;
             this.txt_hora.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_hora.ValidatingType = typeof(System.DateTime);
@@ -212,9 +203,9 @@ namespace Aplication
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(669, 203);
+            this.label2.Location = new System.Drawing.Point(585, 152);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 32);
+            this.label2.Size = new System.Drawing.Size(57, 25);
             this.label2.TabIndex = 3;
             this.label2.Text = "Hora";
             // 
@@ -225,19 +216,17 @@ namespace Aplication
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(247, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(216, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1355, 66);
+            this.panel1.Size = new System.Drawing.Size(1186, 50);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(341, -1);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(298, -1);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(89, 66);
+            this.pictureBox3.Size = new System.Drawing.Size(78, 50);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
@@ -247,9 +236,9 @@ namespace Aplication
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(436, 4);
+            this.label3.Location = new System.Drawing.Point(382, 3);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(499, 48);
+            this.label3.Size = new System.Drawing.Size(396, 38);
             this.label3.TabIndex = 7;
             this.label3.Text = "Utilidades e Cosméticos Dias";
             // 
@@ -258,20 +247,19 @@ namespace Aplication
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(278, 291);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(243, 218);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1285, 669);
+            this.pictureBox2.Size = new System.Drawing.Size(1124, 502);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
             // Form_Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1602, 987);
+            this.ClientSize = new System.Drawing.Size(1402, 740);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txt_hora);
@@ -280,7 +268,6 @@ namespace Aplication
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Principal";
