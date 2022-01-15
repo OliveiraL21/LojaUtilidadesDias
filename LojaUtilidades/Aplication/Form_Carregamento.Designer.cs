@@ -74,9 +74,9 @@ namespace Aplication
             // panel2
             // 
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(4, 429);
+            this.panel2.Location = new System.Drawing.Point(0, 429);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(829, 25);
+            this.panel2.Size = new System.Drawing.Size(833, 25);
             this.panel2.TabIndex = 2;
             // 
             // panel3
@@ -90,7 +90,7 @@ namespace Aplication
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 30;
+            this.timer1.Interval = 15;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form_Carregamento

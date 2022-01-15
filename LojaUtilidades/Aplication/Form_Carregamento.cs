@@ -19,9 +19,9 @@ namespace Aplication
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            panel2.Width += 3;
+            panel3.Width += 3;
             timer1.Start();
-            if(panel2.Width >= this.Width)
+            if(panel3.Width >= this.Width)
             {
                 timer1.Stop();
                 Form_Principal principal = new Form_Principal();
