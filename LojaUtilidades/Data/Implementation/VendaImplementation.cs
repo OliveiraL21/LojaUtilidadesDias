@@ -31,10 +31,15 @@ namespace Data.Implementation
         }
         public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
         {
-            var result = _dataSet.Include(v => v.ItensVenda)
-                                  .ThenInclude(it => it.Produto);
+            var result = _dataSet.Where(v => v.Data_da_Venda == venda.Data_da_Venda).Include(v => v.ItensVenda).ThenInclude(it => it.Produto).ToList();
 
-            result.Where(v => v.Data_da_Venda == venda.Data_da_Venda).ToList();
+            return result;
+        }
+
+        public IEnumerable<VendaEntity> GetByProductName(VendaEntity venda)
+        {
+            var result = _dataSet.Include(v => v.ItensVenda)
+                .ThenInclude(it => it.Produto.Nome).ToList();
 
             return result;
         }

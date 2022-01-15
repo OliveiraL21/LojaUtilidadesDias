@@ -13,6 +13,7 @@ namespace Domain.Interfaces.Services.Venda
         public Task<VendaEntity> GetAsync(int id);
         public IEnumerable<VendaEntity> GetVendas();
         public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
+        public IEnumerable<VendaEntity> GetByProductName(VendaEntity venda);
         public Task<IEnumerable<VendaEntity>> GetAllAsync();
         public Task<VendaEntity> PutAsync(VendaEntity venda);
         public Task<bool> Delete(int id);

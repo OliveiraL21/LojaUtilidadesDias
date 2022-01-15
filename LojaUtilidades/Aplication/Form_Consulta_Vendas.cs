@@ -142,7 +142,7 @@ namespace Aplication
 
         private void btn_Enviar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_Data_Venda.Text) || string.IsNullOrEmpty(txt_Produto.Text))
+            if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
             {
                 MessageBox.Show("Digite uma data ou um produto para continuar com a consulta expecifica", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -162,6 +162,19 @@ namespace Aplication
             else if(string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
             {
                 //chama o metodo para buscar vendas pelo nome do produto
+                //VendaEntity venda = new VendaEntity()
+                //{
+                //   ItensVenda = 
+                //    {
+                //      new ItemVendaEntity()
+                //      {
+                //          Produto = new ProdutoEntity (){Nome = txt_Produto.Text}
+                //      }
+                //    }
+                //};
+
+                //var vendas = _vendaService.GetByProductName(venda);
+                //DataGridViewFill(vendas);
             }
             else
             {

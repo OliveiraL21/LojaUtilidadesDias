@@ -11,5 +11,6 @@ namespace Domain.Repository
     {
         public IEnumerable<VendaEntity> GetVendas();
         public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
+        public IEnumerable<VendaEntity> GetByProductName(VendaEntity venda);
     }
 }

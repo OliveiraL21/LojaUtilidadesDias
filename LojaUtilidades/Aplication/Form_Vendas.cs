@@ -217,7 +217,7 @@ namespace Aplication
                 VendaEntity vendaObj = new VendaEntity()
                 {
 
-                    Data_da_Venda = DateTime.Now,
+                    Data_da_Venda = DateTime.Now.Date,
                     Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
                     Hora_Venda = DateTime.Now.TimeOfDay,
                 };
