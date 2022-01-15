@@ -21,17 +21,22 @@ namespace Data.Implementation
             _dataSet = context.Set<VendaEntity>();
         }
 
-        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
+        public IEnumerable<VendaEntity> GetVendas()
         {
             var result = _dataSet.Include(v => v.ItensVenda)
-                .ThenInclude(it => it.Produto);
-
-                result.Where(v => v.Data_da_Venda == venda.Data_da_Venda)
-                .ToList() ;
-             
+                .ThenInclude(it => it.Produto).ToList();
 
             return result;
 
+        }
+        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
+        {
+            var result = _dataSet.Include(v => v.ItensVenda)
+                                  .ThenInclude(it => it.Produto);
+
+            result.Where(v => v.Data_da_Venda == venda.Data_da_Venda).ToList();
+
+            return result;
         }
     }
 }

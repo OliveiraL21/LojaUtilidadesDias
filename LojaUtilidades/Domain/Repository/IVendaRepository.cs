@@ -9,6 +9,7 @@ namespace Domain.Repository
 {
     public interface IVendaRepository : IRepository<VendaEntity>
     {
+        public IEnumerable<VendaEntity> GetVendas();
         public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
     }
 }

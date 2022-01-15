@@ -106,21 +106,14 @@ namespace Aplication
             form_estoque_vendas.ShowDialog();
         }
 
-        private void btn_Consultar_Click(object sender, EventArgs e)
+        private void DataGridViewFill(IEnumerable<VendaEntity> vendas)
         {
-            var venda = new VendaEntity()
-            {
-                Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text)
-
-            };
-
-           var vendas =  _vendaService.GetByDate(venda);
-
+            dgv_Vendas_Consulta.Rows.Clear();
             int index = 0;
 
             foreach (var Venda in vendas)
             {
-               
+
                 foreach (var item in Venda.ItensVenda)
                 {
                     dgv_Vendas_Consulta.Rows.Add();
@@ -133,17 +126,50 @@ namespace Aplication
                     dgv_Vendas_Consulta.Rows[index].Cells[6].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
                     index++;
                 }
-                
-
             }
+        }
+        private void btn_Consultar_Click(object sender, EventArgs e)
+        {
+            IEnumerable<VendaEntity> vendas = _vendaService.GetVendas();
+            DataGridViewFill(vendas);
 
         }
 
         private void btn_Estoque_Vendas_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("A pagina de vendas estoque já está aberta !","Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("A pagina de vendas estoque já está aberta !", "Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-      
+        private void btn_Enviar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txt_Data_Venda.Text) || string.IsNullOrEmpty(txt_Produto.Text))
+            {
+                MessageBox.Show("Digite uma data ou um produto para continuar com a consulta expecifica", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if(!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
+            {
+                //chama o metodo para buscar vendas por data
+                txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                VendaEntity venda = new VendaEntity()
+                {
+                    Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text)
+                };
+                var vendas = _vendaService.GetByDate(venda);
+                DataGridViewFill(vendas);
+                txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            }
+            else if(string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+            {
+                //chama o metodo para buscar vendas pelo nome do produto
+            }
+            else
+            {
+                var vendas = _vendaService.GetVendas();
+                DataGridViewFill(vendas);
+            }
+        }
+
+        
     }
 }

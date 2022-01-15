@@ -57,6 +57,7 @@ namespace Aplication
             this.btn_Estoque = new System.Windows.Forms.Button();
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
+            this.btn_Enviar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas_Consulta)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel_Menu.SuspendLayout();
@@ -235,6 +236,7 @@ namespace Aplication
             this.txt_Data_Venda.Name = "txt_Data_Venda";
             this.txt_Data_Venda.Size = new System.Drawing.Size(161, 32);
             this.txt_Data_Venda.TabIndex = 25;
+            this.txt_Data_Venda.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txt_Data_Venda.ValidatingType = typeof(System.DateTime);
             // 
             // txt_Produto
@@ -243,7 +245,7 @@ namespace Aplication
             this.txt_Produto.Location = new System.Drawing.Point(343, 150);
             this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Produto.Name = "txt_Produto";
-            this.txt_Produto.Size = new System.Drawing.Size(261, 32);
+            this.txt_Produto.Size = new System.Drawing.Size(250, 32);
             this.txt_Produto.TabIndex = 26;
             // 
             // panel_Menu
@@ -361,12 +363,27 @@ namespace Aplication
             this.btn_Produto.MouseLeave += new System.EventHandler(this.btn_Produto_MouseLeave);
             this.btn_Produto.MouseHover += new System.EventHandler(this.btn_Produto_MouseHover);
             // 
+            // btn_Enviar
+            // 
+            this.btn_Enviar.BackColor = System.Drawing.Color.DarkBlue;
+            this.btn_Enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Enviar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Enviar.ForeColor = System.Drawing.Color.White;
+            this.btn_Enviar.Location = new System.Drawing.Point(610, 145);
+            this.btn_Enviar.Name = "btn_Enviar";
+            this.btn_Enviar.Size = new System.Drawing.Size(119, 41);
+            this.btn_Enviar.TabIndex = 28;
+            this.btn_Enviar.Text = "Enviar";
+            this.btn_Enviar.UseVisualStyleBackColor = false;
+            this.btn_Enviar.Click += new System.EventHandler(this.btn_Enviar_Click);
+            // 
             // Form_Consulta_Vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1402, 746);
+            this.Controls.Add(this.btn_Enviar);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.txt_Produto);
             this.Controls.Add(this.txt_Data_Venda);
@@ -411,5 +428,6 @@ namespace Aplication
         private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Venda;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora_Da_Venda;
+        private System.Windows.Forms.Button btn_Enviar;
     }
 }
