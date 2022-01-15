@@ -63,6 +63,16 @@ namespace Aplication
             btn_Sair.BackColor = Color.FromArgb(41, 0, 39);
         }
 
+        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
+        }
+
+        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
+
         private void btn_Produto_Click(object sender, EventArgs e)
         {
             Form_Produtos form_Produtos = new();
@@ -128,5 +138,12 @@ namespace Aplication
             }
 
         }
+
+        private void btn_Estoque_Vendas_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("A pagina de vendas estoque já está aberta !","Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+      
     }
 }

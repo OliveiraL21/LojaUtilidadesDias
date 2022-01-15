@@ -91,12 +91,29 @@ namespace Aplication
             Close();
         }
 
+        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
+        }
+
+        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
+
+
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
             Close();
             Form_Estoque form_Estoque = new Form_Estoque();
             form_Estoque.ShowDialog();
            
+        }
+
+        private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
+        {
+            Form_Consulta_Vendas consulta_Vendas = new Form_Consulta_Vendas();
+            consulta_Vendas.ShowDialog();
         }
 
         private void btn_Vendas_Click(object sender, EventArgs e)
@@ -336,5 +353,7 @@ namespace Aplication
 
 
         }
+
+        
     }
 }

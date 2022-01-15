@@ -24,7 +24,7 @@ namespace Aplication
 
         private void btn_Sair_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         #region cores-Houver-btn-menu
@@ -99,5 +99,16 @@ namespace Aplication
             Form_Consulta_Vendas form_estoque_vendas = new Form_Consulta_Vendas();
             form_estoque_vendas.ShowDialog();
         }
+
+        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
+        }
+
+        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
+
     }
 }

@@ -73,6 +73,17 @@ namespace Aplication
             btn_Sair.BackColor = Color.FromArgb(41, 0, 39);
         }
 
+        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
+        }
+
+        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
+
+
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
             Form_Estoque form_Estoque = new Form_Estoque();
@@ -233,6 +244,12 @@ namespace Aplication
             txt_Produto.Text = dgv_Produtos.SelectedRows[0].Cells[1].Value.ToString();
             txt_Valor.Text = dgv_Produtos.SelectedRows[0].Cells[2].Value.ToString();
             txt_Quantidade.Text = dgv_Produtos.SelectedRows[0].Cells[3].Value.ToString();
+        }
+
+        private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
+        {
+            Form_Consulta_Vendas form_Consulta_Venda = new Form_Consulta_Vendas();
+            form_Consulta_Venda.ShowDialog();
         }
     }
 }

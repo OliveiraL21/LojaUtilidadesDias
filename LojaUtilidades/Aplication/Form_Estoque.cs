@@ -65,6 +65,17 @@ namespace Aplication
         {
             btn_Sair.BackColor = Color.FromArgb(41, 0, 39);
         }
+
+        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
+        }
+
+        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
+
         private void btn_Produto_Click(object sender, EventArgs e)
         {
             Form_Produtos form_Produtos = new Form_Produtos();
@@ -88,8 +99,53 @@ namespace Aplication
         {
             MessageBox.Show("O formulário de Estoque já está aberto", "Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
+        {
+            Form_Consulta_Vendas form_Consulta_Vendas = new Form_Consulta_Vendas();
+            form_Consulta_Vendas.ShowDialog();
+        }
         #endregion
 
+        private async void AtualizarItensGrid()
+        {
+            try
+            {
+                var result = await _service.GetAll();
+                if (result == null)
+                {
+                    MessageBox.Show("Erro ao baixar a lista de produtos ", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int i = 0;
+                    dgv_Estoque.Rows.Clear();
+                    foreach (var produto in result)
+                    {
+                        dgv_Estoque.Rows.Add();
+                        dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
+                        dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
+                        dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
+                        dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
+
+                        i++;
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao baixar a lista de produtos {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                txt_Id.Text = "";
+                txt_Produto.Text = "";
+                txt_Valor.Text = "";
+                txt_Quantidade.Text = "";
+            }
+        }
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
             var nome = txt_Produto.Text;
@@ -171,7 +227,7 @@ namespace Aplication
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                
+                AtualizarItensGrid();
             }
             catch(Exception ex)
             {
@@ -219,44 +275,12 @@ namespace Aplication
             }
         }
 
-        private async void btn_Atualizar_Click(object sender, EventArgs e)
+        private  void btn_Atualizar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                var result = await _service.GetAll();
-                if (result == null)
-                {
-                    MessageBox.Show("Erro ao baixar a lista de produtos ", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    int i = 0;
-                    dgv_Estoque.Rows.Clear();
-                    foreach (var produto in result)
-                    {
-                        dgv_Estoque.Rows.Add();
-                        dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
-                        dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
-                        dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
-                        dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
-
-                        i++;
-                    }
-
-                }
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show($"Erro ao baixar a lista de produtos {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                txt_Id.Text = "";
-                txt_Produto.Text = "";
-                txt_Valor.Text = "";
-                txt_Quantidade.Text = "";
-            }
+            AtualizarItensGrid();
         }
+
+       
+        
     }
 }

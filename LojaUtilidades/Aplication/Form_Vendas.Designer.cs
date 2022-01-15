@@ -99,6 +99,9 @@ namespace Aplication
             this.btn_Estoque_Vendas.TabIndex = 22;
             this.btn_Estoque_Vendas.Text = "Estoque de Vendas";
             this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
+            this.btn_Estoque_Vendas.Click += new System.EventHandler(this.btn_Estoque_Vendas_Click);
+            this.btn_Estoque_Vendas.MouseLeave += new System.EventHandler(this.btn_Estoque_Vendas_MouseLeave);
+            this.btn_Estoque_Vendas.MouseHover += new System.EventHandler(this.btn_Estoque_Vendas_MouseHover);
             // 
             // pictureBox1
             // 
