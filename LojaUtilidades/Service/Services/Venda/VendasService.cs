@@ -52,9 +52,9 @@ namespace Service.Services.Venda
             var result = _repository.GetByDate(venda);
             return result;
         }
-        public IEnumerable<VendaEntity> GetByProductName(VendaEntity venda)
+        public IEnumerable<VendaEntity> GetByProductName(string produto)
         {
-            var result = _repository.GetByProductName(venda);
+            var result = _repository.GetByProductName(produto);
             return result;
         }
         public async Task<VendaEntity> PostAsync(VendaEntity venda)

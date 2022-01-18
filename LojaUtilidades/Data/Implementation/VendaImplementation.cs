@@ -36,10 +36,10 @@ namespace Data.Implementation
             return result;
         }
 
-        public IEnumerable<VendaEntity> GetByProductName(VendaEntity venda)
+        public IEnumerable<VendaEntity> GetByProductName(string produto)
         {
             var result = _dataSet.Include(v => v.ItensVenda)
-                .ThenInclude(it => it.Produto.Nome).ToList();
+                                 .ThenInclude(it => it.Produto).ToList();
 
             return result;
         }

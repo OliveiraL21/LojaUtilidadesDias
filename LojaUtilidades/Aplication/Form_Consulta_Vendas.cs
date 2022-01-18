@@ -162,19 +162,9 @@ namespace Aplication
             else if(string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
             {
                 //chama o metodo para buscar vendas pelo nome do produto
-                //VendaEntity venda = new VendaEntity()
-                //{
-                //   ItensVenda = 
-                //    {
-                //      new ItemVendaEntity()
-                //      {
-                //          Produto = new ProdutoEntity (){Nome = txt_Produto.Text}
-                //      }
-                //    }
-                //};
-
-                //var vendas = _vendaService.GetByProductName(venda);
-                //DataGridViewFill(vendas);
+              
+                var vendas = _vendaService.GetByProductName(txt_Produto.Text);
+                DataGridViewFill(vendas);
             }
             else
             {

@@ -337,6 +337,10 @@ namespace Aplication
                 e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString().PadRight(40) + produtoImprimir[contador].Valor.ToString("C2").PadRight(40) + produtoImprimir[contador].Quantidade.ToString().PadRight(25), LetraProdutos, PincelPreto, X + index, Y + index2);
                 index2 += 90;
 
+                if(produtoImprimir.Count > 0)
+                {
+                    e.HasMorePages = true;
+                }
             }
 
             if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
