@@ -211,7 +211,7 @@ namespace Aplication
             // 
             this.Data_Da_Venda.AutoSize = true;
             this.Data_Da_Venda.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Data_Da_Venda.Location = new System.Drawing.Point(264, 106);
+            this.Data_Da_Venda.Location = new System.Drawing.Point(252, 107);
             this.Data_Da_Venda.Name = "Data_Da_Venda";
             this.Data_Da_Venda.Size = new System.Drawing.Size(153, 23);
             this.Data_Da_Venda.TabIndex = 23;
@@ -221,16 +221,16 @@ namespace Aplication
             // 
             this.lbl_Produto.AutoSize = true;
             this.lbl_Produto.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Produto.Location = new System.Drawing.Point(337, 157);
+            this.lbl_Produto.Location = new System.Drawing.Point(252, 154);
             this.lbl_Produto.Name = "lbl_Produto";
-            this.lbl_Produto.Size = new System.Drawing.Size(80, 23);
+            this.lbl_Produto.Size = new System.Drawing.Size(81, 23);
             this.lbl_Produto.TabIndex = 24;
-            this.lbl_Produto.Text = "Código";
+            this.lbl_Produto.Text = "Produto";
             // 
             // txt_Data_Venda
             // 
             this.txt_Data_Venda.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Data_Venda.Location = new System.Drawing.Point(423, 101);
+            this.txt_Data_Venda.Location = new System.Drawing.Point(432, 103);
             this.txt_Data_Venda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Data_Venda.Mask = "00/00/0000";
             this.txt_Data_Venda.Name = "txt_Data_Venda";
@@ -242,10 +242,10 @@ namespace Aplication
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Produto.Location = new System.Drawing.Point(423, 152);
+            this.txt_Produto.Location = new System.Drawing.Point(343, 150);
             this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Produto.Name = "txt_Produto";
-            this.txt_Produto.Size = new System.Drawing.Size(161, 32);
+            this.txt_Produto.Size = new System.Drawing.Size(250, 32);
             this.txt_Produto.TabIndex = 26;
             // 
             // panel_Menu
@@ -369,7 +369,7 @@ namespace Aplication
             this.btn_Enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Enviar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Enviar.ForeColor = System.Drawing.Color.White;
-            this.btn_Enviar.Location = new System.Drawing.Point(601, 143);
+            this.btn_Enviar.Location = new System.Drawing.Point(610, 145);
             this.btn_Enviar.Name = "btn_Enviar";
             this.btn_Enviar.Size = new System.Drawing.Size(119, 41);
             this.btn_Enviar.TabIndex = 28;

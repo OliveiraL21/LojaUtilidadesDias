@@ -36,12 +36,10 @@ namespace Data.Implementation
             return result;
         }
 
-        public IEnumerable<VendaEntity>GetByIdVenda(VendaEntity venda)
+        public IEnumerable<VendaEntity> GetByProductName(string produto)
         {
-            var result =  _dataSet.Include(v => v.ItensVenda)
-                                  .ThenInclude(it => it.Produto)
-                                  .Where(v => v.Id == venda.Id)
-                                  .ToList();
+            var result = _dataSet.Include(v => v.ItensVenda)
+                                 .ThenInclude(it => it.Produto).ToList();
 
             return result;
         }

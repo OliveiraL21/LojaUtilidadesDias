@@ -52,12 +52,6 @@ namespace Service.Services.Venda
             var result = _repository.GetByDate(venda);
             return result;
         }
-        public IEnumerable<VendaEntity> GetByIdVenda(VendaEntity venda)
-        {
-            var result = _repository.GetByIdVenda(venda);
-
-            return result;
-        }
         public IEnumerable<VendaEntity> GetByProductName(string produto)
         {
             var result = _repository.GetByProductName(produto);
