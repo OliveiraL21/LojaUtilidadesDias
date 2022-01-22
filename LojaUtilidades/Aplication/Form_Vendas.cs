@@ -22,10 +22,6 @@ namespace Aplication
     public partial class Form_Vendas : Form
     {
         private int i = 0;
-        private int X = 0;
-        private int Y = 0;
-        private int largura = 0;
-        private int altura = 0;
         private readonly IProdutoService _produtoService;
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
@@ -294,12 +290,7 @@ namespace Aplication
             #region declaração de variaveis
             ProdutoEntity produto = new ProdutoEntity();
             // VARIAEIS DO TITULO
-            string Titulo = "Loja Utilidade e Cosmeticos Dias";
-            string Subtitulo = "Cnpj: 29.936.014/0001-01";
-            Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
-            Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
-            Brush PincelPreto = new SolidBrush(Color.Black);
-
+           
             //// VARIAVEIS PARA IMPRIMIR OS PRODUTOS
             List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
             Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);

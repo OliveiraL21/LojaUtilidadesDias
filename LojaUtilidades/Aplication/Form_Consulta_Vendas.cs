@@ -161,9 +161,12 @@ namespace Aplication
             }
             else if(string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
             {
-                //chama o metodo para buscar vendas pelo nome do produto
-              
-                var vendas = _vendaService.GetByProductName(txt_Produto.Text);
+                //chama o metodo para buscar vendas pelo id da venda
+                VendaEntity venda = new VendaEntity()
+                {
+                    Id = Convert.ToInt32(txt_Produto.Text)
+                };
+                var vendas = _vendaService.GetByIdVenda(venda);
                 DataGridViewFill(vendas);
             }
             else
