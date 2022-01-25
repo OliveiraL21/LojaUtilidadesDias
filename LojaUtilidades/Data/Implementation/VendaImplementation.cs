@@ -45,5 +45,10 @@ namespace Data.Implementation
 
             return result;
         }
+
+        public IEnumerable<VendaEntity> GetByProductName(string produto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
