@@ -58,7 +58,14 @@ namespace Service.Services.Venda
             return result;
         }
         public async Task<VendaEntity> PostAsync(VendaEntity venda)
-        { 
+        {
+            Random random = new Random();
+            venda.NumeroVenda = random.Next(1000, 10000);
+            var vendas = await _repository.SelectAllAsynck();
+            if(vendas.Any( v => v.NumeroVenda == venda.NumeroVenda))
+            {
+                venda.NumeroVenda = random.Next(1000, 10000);
+            }
             var result = await _repository.InsertAsync(venda);
             return result;
         }
