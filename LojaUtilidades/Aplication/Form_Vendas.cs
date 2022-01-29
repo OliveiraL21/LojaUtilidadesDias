@@ -24,8 +24,6 @@ namespace Aplication
         private int i = 0;
         private int X = 0;
         private int Y = 0;
-        private int largura = 0;
-        private int altura = 0;
         private readonly IProdutoService _produtoService;
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
@@ -271,10 +269,11 @@ namespace Aplication
 
         private void btn_Imprimir_Click(object sender, EventArgs e)
         {
+            int largura = printDocument1.DefaultPageSettings.Bounds.Width;
+            int altura = printDocument1.DefaultPageSettings.Bounds.Width;
+
              X = printDocument1.DefaultPageSettings.Bounds.X;
              Y = printDocument1.DefaultPageSettings.Bounds.Y;
-             largura = printDocument1.DefaultPageSettings.Bounds.Width;
-             altura = printDocument1.DefaultPageSettings.Bounds.Height;
             printDialog1.Document = printDocument1;
 
 
@@ -290,6 +289,8 @@ namespace Aplication
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            int largura = printDocument1.DefaultPageSettings.Bounds.Width;
+            int altura = printDocument1.DefaultPageSettings.Bounds.Width;
 
             #region declaração de variaveis
             ProdutoEntity produto = new ProdutoEntity();
@@ -298,28 +299,29 @@ namespace Aplication
             string Subtitulo = "Cnpj: 29.936.014/0001-01";
             Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
             Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
+            Font LetraMenu = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
             Brush PincelPreto = new SolidBrush(Color.Black);
 
             //// VARIAVEIS PARA IMPRIMIR OS PRODUTOS
             List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
-            Font LetraProdutos = new Font("Arial", 16, FontStyle.Regular, GraphicsUnit.Point);
+            Font LetraProdutos = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Point);
             StringFormat formatoTitulo = new StringFormat();
             formatoTitulo.Alignment = StringAlignment.Far;
             formatoTitulo.LineAlignment = StringAlignment.Far;
-            int index = 60;
+            int index = 100;
             int index2 = 300;
             #endregion
 
             #region inserindo titulo e subtitulo na pagina
-            e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + 100, Y + 50);
+            e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + index, Y + 50 );
             e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
             #endregion
 
 
             #region Desenhando cabeçalho
-            e.Graphics.DrawString("Produto".PadRight(35) + "Valor".PadRight(30) + "Quantidade", LetraProdutos, PincelPreto, X + index, Y + 200);
+            e.Graphics.DrawString("Produto\t\t" + "Valor\t\t" + "Quantidade", LetraMenu, PincelPreto, X + 100, Y + 200);
             #endregion
-
+            int controleImpressao = 0;
             #region Desenhando os produtos
             for (int contador = 0; contador <= dgv_Vendas.Rows.Count - 2; contador++)
             {
@@ -334,14 +336,12 @@ namespace Aplication
                 produtoImprimir.Add(produto);
 
 
-                e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString().PadRight(40) + produtoImprimir[contador].Valor.ToString("C2").PadRight(40) + produtoImprimir[contador].Quantidade.ToString().PadRight(25), LetraProdutos, PincelPreto, X + index, Y + index2);
+                e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString()+ "\t" + produtoImprimir[contador].Valor.ToString("C2") + "\t" + produtoImprimir[contador].Quantidade.ToString(), LetraProdutos, PincelPreto, X + index, Y + index2);
                 index2 += 90;
-
-                if(produtoImprimir.Count > 0)
-                {
-                    e.HasMorePages = true;
-                }
+                controleImpressao += 1;
             }
+
+
 
             if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
             {
@@ -358,6 +358,21 @@ namespace Aplication
 
         }
 
-        
+        private List<ProdutoEntity> GetProdutosGrid()
+        {
+            List<ProdutoEntity> produtos = new List<ProdutoEntity>();
+            foreach(var produto in dgv_Vendas.Rows)
+            {
+                if (dgv_Vendas.Rows == null)
+                {
+                    MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                produtos.Add(produto as ProdutoEntity);
+            }
+            return produtos;
+        }
+
+       
     }
 }

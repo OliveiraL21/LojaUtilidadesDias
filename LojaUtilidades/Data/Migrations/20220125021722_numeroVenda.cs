@@ -6,9 +6,7 @@ namespace Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropIndex(
-                name: "IX_ItemVenda_ProdutoId",
-                table: "ItemVenda");
+            
 
             migrationBuilder.AddColumn<int>(
                 name: "NumeroVenda",
@@ -23,11 +21,7 @@ namespace Data.Migrations
                 column: "NumeroVenda",
                 unique: true);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_ItemVenda_ProdutoId",
-                table: "ItemVenda",
-                column: "ProdutoId",
-                unique: true);
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -36,18 +30,13 @@ namespace Data.Migrations
                 name: "IX_Venda_NumeroVenda",
                 table: "Venda");
 
-            migrationBuilder.DropIndex(
-                name: "IX_ItemVenda_ProdutoId",
-                table: "ItemVenda");
+           
 
             migrationBuilder.DropColumn(
                 name: "NumeroVenda",
                 table: "Venda");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_ItemVenda_ProdutoId",
-                table: "ItemVenda",
-                column: "ProdutoId");
+           
         }
     }
 }
