@@ -1,4 +1,5 @@
-﻿using Data.Context;
+﻿using Aplication.Impressão;
+using Data.Context;
 using Data.Repositorios;
 using Domain.Entidades;
 using Domain.Interfaces.Services;
@@ -311,49 +312,50 @@ namespace Aplication
             int index = 100;
             int index2 = 300;
             #endregion
-
-            #region inserindo titulo e subtitulo na pagina
-            e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + index, Y + 50 );
-            e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
-            #endregion
-
-
-            #region Desenhando cabeçalho
-            e.Graphics.DrawString("Produto\t\t" + "Valor\t\t" + "Quantidade", LetraMenu, PincelPreto, X + 100, Y + 200);
-            #endregion
-            int controleImpressao = 0;
-            #region Desenhando os produtos
-            for (int contador = 0; contador <= dgv_Vendas.Rows.Count - 2; contador++)
-            {
-                if (dgv_Vendas.Rows[contador] == null)
-                {
-                    MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                //ATRIBUINDO A UM OBJ OS DADOS DA GRID
-                produto.Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString();
-                produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(contador).Cells[2].Value.ToString());
-                produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(contador).Cells[3].Value.ToString());
-                produtoImprimir.Add(produto);
+            Print print = new Print();
+            print.ImprimirVenda(produtoImprimir, sender, e);
+            //#region inserindo titulo e subtitulo na pagina
+            //e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + index, Y + 50 );
+            //e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
+            //#endregion
 
 
-                e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString()+ "\t" + produtoImprimir[contador].Valor.ToString("C2") + "\t" + produtoImprimir[contador].Quantidade.ToString(), LetraProdutos, PincelPreto, X + index, Y + index2);
-                index2 += 90;
-                controleImpressao += 1;
-            }
+            //#region Desenhando cabeçalho
+            //e.Graphics.DrawString("Produto\t\t" + "Valor\t\t" + "Quantidade", LetraMenu, PincelPreto, X + 100, Y + 200);
+            //#endregion
+            //int controleImpressao = 0;
+            //#region Desenhando os produtos
+            //for (int contador = 0; contador <= dgv_Vendas.Rows.Count - 2; contador++)
+            //{
+            //    if (dgv_Vendas.Rows[contador] == null)
+            //    {
+            //        MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //    //ATRIBUINDO A UM OBJ OS DADOS DA GRID
+            //    produto.Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString();
+            //    produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(contador).Cells[2].Value.ToString());
+            //    produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(contador).Cells[3].Value.ToString());
+            //    produtoImprimir.Add(produto);
+
+
+            //    e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString()+ "\t" + produtoImprimir[contador].Valor.ToString("C2") + "\t" + produtoImprimir[contador].Quantidade.ToString(), LetraProdutos, PincelPreto, X + index, Y + index2);
+            //    index2 += 90;
+            //    controleImpressao += 1;
+            //}
 
 
 
-            if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
-            {
-                MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                printPreviewDialog1.Close();
-            }
-            else
-            {
-                double total = double.Parse(txt_Total.Text.Trim('R', '$'));
-                e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
-            }
-            #endregion
+            //if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
+            //{
+            //    MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    printPreviewDialog1.Close();
+            //}
+            //else
+            //{
+            //    double total = double.Parse(txt_Total.Text.Trim('R', '$'));
+            //    e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
+            //}
+            //#endregion
 
 
         }

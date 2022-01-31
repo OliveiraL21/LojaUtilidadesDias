@@ -17,8 +17,8 @@ namespace Aplication.Impressão
         public Brush pincelPreto = new SolidBrush(Color.Black);
         public int contador = 100;
         public int contador2 = 100;
-        public int x = 0;
-        public int y = 0;
+        public int x = 100;
+        public int y = 50;
         public void ImprimirVenda(List<ProdutoEntity> produtos, object sender, PrintPageEventArgs e)
         {
             string empresa = "Cosméticos e Utilidades Dias";
@@ -26,10 +26,14 @@ namespace Aplication.Impressão
 
             Graphics graphics = e.Graphics;
 
-            graphics.DrawString(empresa, letraTitulo, pincelPreto, x + (contador - 50), y + contador2);
-
+            graphics.DrawString(empresa, letraTitulo, pincelPreto, x + contador, y + contador2);
             contador2 += 50;
             graphics.DrawString(cnpj, letraMenu, pincelPreto, x + contador, y + contador2);
+            contador2 += 50;
+            graphics.DrawString("Data da venda: 31/01/2022", letraMenu, pincelPreto, x + contador, y + contador2);
+            contador2 += 50;
+            graphics.DrawString("Hora da venda: 13:22", letraMenu, pincelPreto, x + contador, y + contador2);
+            
         }
     }
 }
