@@ -121,21 +121,49 @@ namespace Aplication
         }
         #endregion
 
-        private async void btn_Consultar_Click(object sender, EventArgs e)
+        private List<ProdutoEntity> GetProdutoGrid()
         {
-            if (string.IsNullOrEmpty(txt_Produto.Text))
-            {
-                MessageBox.Show("digite o nome de um produto !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-            if (string.IsNullOrEmpty(txt_Quantidade.Text))
-            {
-                MessageBox.Show("Digite quantos produtos serão vendidos !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            var nome = txt_Produto.Text;
-            var quantidade = int.Parse(txt_Quantidade.Text);
             try
             {
+                List<ProdutoEntity> produtos = new List<ProdutoEntity>();
+
+                for (int contador = 0; contador < dgv_Vendas.Rows.Count; contador++)
+                {
+                    var produto = new ProdutoEntity()
+                    {
+                        Id = Convert.ToInt32(dgv_Vendas.Rows[contador].Cells[0].Value),
+                        Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString(),
+                        Valor = Convert.ToDouble(dgv_Vendas.Rows[contador].Cells[2].Value),
+                        Quantidade = Convert.ToInt32(dgv_Vendas.Rows[contador].Cells[3].Value)
+                    };
+                    produtos.Add(produto);
+                }
+                return produtos;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+        private async void btn_Consultar_Click(object sender, EventArgs e)
+        {
+         
+            try
+            {
+
+                if (string.IsNullOrEmpty(txt_Produto.Text))
+                {
+                    MessageBox.Show("digite o nome de um produto !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                if (string.IsNullOrEmpty(txt_Quantidade.Text))
+                {
+                    MessageBox.Show("Digite quantos produtos serão vendidos !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                var nome = txt_Produto.Text;
+                var quantidade = int.Parse(txt_Quantidade.Text);
+
+
                 var result = await _produtoService.SelectByName(nome);
                 if(result != null)
                 {
@@ -166,40 +194,63 @@ namespace Aplication
 
         private void btn_Calcular_Click(object sender, EventArgs e)
         {
-            int quantidade;
-            double valor;
-            double Total = 0;
-            for(int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+            try
             {
-                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
-                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
-                Total += (valor * quantidade);
+                int quantidade;
+                double valor;
+                double Total = 0;
+                for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
+                {
+                    valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                    quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
+                    Total += (valor * quantidade);
+                }
+                txt_Total.Text = Total.ToString("C2");
             }
-            txt_Total.Text = Total.ToString("C2");
+            catch (Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         private void btn_Limpar_Click(object sender, EventArgs e)
         {
-            dgv_Vendas.Rows.Clear();
-            txt_Total.Text = "";
-            i = 0;
+            try
+            {
+                dgv_Vendas.Rows.Clear();
+                txt_Total.Text = "";
+                i = 0;
+            }
+            catch
+            {
+                throw;
+            }
+           
         }
 
         private void btn_Deletar_Click(object sender, EventArgs e)
         {
-           
-            if(!string.IsNullOrEmpty(txt_Total.Text))
+            try
             {
-                var total = Convert.ToDouble(txt_Total.Text.Trim('R', '$'));
-                var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
-                var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[3].Value.ToString());
-                var valorFinal = total - (itemExcluido * itemExcluidoQtd);
-                txt_Total.Text = valorFinal.ToString("C2");
-                dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
+                if (!string.IsNullOrEmpty(txt_Total.Text))
+                {
+                    var total = Convert.ToDouble(txt_Total.Text.Trim('R', '$'));
+                    var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
+                    var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[3].Value.ToString());
+                    var valorFinal = total - (itemExcluido * itemExcluidoQtd);
+                    txt_Total.Text = valorFinal.ToString("C2");
+                    i = dgv_Vendas.SelectedRows[0].Index;
+                    dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
+                }
+                else if (string.IsNullOrEmpty(txt_Total.Text))
+                {
+                    MessageBox.Show("Por favor calcule o valor total da venda antes !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else if(string.IsNullOrEmpty(txt_Total.Text))
+            catch
             {
-                MessageBox.Show("Por favor calcule o valor total da venda antes !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
             }
         }
 
@@ -270,111 +321,53 @@ namespace Aplication
 
         private void btn_Imprimir_Click(object sender, EventArgs e)
         {
-            int largura = printDocument1.DefaultPageSettings.Bounds.Width;
-            int altura = printDocument1.DefaultPageSettings.Bounds.Width;
-
-             X = printDocument1.DefaultPageSettings.Bounds.X;
-             Y = printDocument1.DefaultPageSettings.Bounds.Y;
-            printDialog1.Document = printDocument1;
-
-
-            if (printDialog1.ShowDialog() != DialogResult.Cancel)
+            try
             {
-                largura = printDocument1.DefaultPageSettings.Bounds.Width;
-                altura = printDocument1.DefaultPageSettings.Bounds.Height;
-                printPreviewDialog1.Document = printDocument1;
-                printPreviewDialog1.ShowDialog();
+                int largura = printDocument1.DefaultPageSettings.Bounds.Width;
+                int altura = printDocument1.DefaultPageSettings.Bounds.Width;
 
+                X = printDocument1.DefaultPageSettings.Bounds.X;
+                Y = printDocument1.DefaultPageSettings.Bounds.Y;
+                printDialog1.Document = printDocument1;
+
+
+                if (printDialog1.ShowDialog() != DialogResult.Cancel)
+                {
+                    largura = printDocument1.DefaultPageSettings.Bounds.Width;
+                    altura = printDocument1.DefaultPageSettings.Bounds.Height;
+                    printPreviewDialog1.Document = printDocument1;
+                    printPreviewDialog1.ShowDialog();
+
+                }
             }
+            catch
+            {
+                throw;
+            }
+            
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            int largura = printDocument1.DefaultPageSettings.Bounds.Width;
-            int altura = printDocument1.DefaultPageSettings.Bounds.Width;
-
-            #region declaração de variaveis
-            ProdutoEntity produto = new ProdutoEntity();
-            // VARIAEIS DO TITULO
-            string Titulo = "Loja Utilidade e Cosmeticos Dias";
-            string Subtitulo = "Cnpj: 29.936.014/0001-01";
-            Font LetraTitulo = new Font("Calibri", 32, FontStyle.Bold, GraphicsUnit.Point);
-            Font LetraSubtitulo = new Font("Calibri", 26, FontStyle.Regular, GraphicsUnit.Point);
-            Font LetraMenu = new Font("Arial", 14, FontStyle.Regular, GraphicsUnit.Point);
-            Brush PincelPreto = new SolidBrush(Color.Black);
-
-            //// VARIAVEIS PARA IMPRIMIR OS PRODUTOS
-            List<ProdutoEntity> produtoImprimir = new List<ProdutoEntity>();
-            Font LetraProdutos = new Font("Arial", 12, FontStyle.Regular, GraphicsUnit.Point);
-            StringFormat formatoTitulo = new StringFormat();
-            formatoTitulo.Alignment = StringAlignment.Far;
-            formatoTitulo.LineAlignment = StringAlignment.Far;
-            int index = 100;
-            int index2 = 300;
-            #endregion
-            Print print = new Print();
-            print.ImprimirVenda(produtoImprimir, sender, e);
-            //#region inserindo titulo e subtitulo na pagina
-            //e.Graphics.DrawString(Titulo, LetraTitulo, PincelPreto, X + index, Y + 50 );
-            //e.Graphics.DrawString(Subtitulo, LetraSubtitulo, PincelPreto, X + 100, Y + 100);
-            //#endregion
-
-
-            //#region Desenhando cabeçalho
-            //e.Graphics.DrawString("Produto\t\t" + "Valor\t\t" + "Quantidade", LetraMenu, PincelPreto, X + 100, Y + 200);
-            //#endregion
-            //int controleImpressao = 0;
-            //#region Desenhando os produtos
-            //for (int contador = 0; contador <= dgv_Vendas.Rows.Count - 2; contador++)
-            //{
-            //    if (dgv_Vendas.Rows[contador] == null)
-            //    {
-            //        MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //    //ATRIBUINDO A UM OBJ OS DADOS DA GRID
-            //    produto.Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString();
-            //    produto.Valor = Convert.ToDouble(dgv_Vendas.Rows.SharedRow(contador).Cells[2].Value.ToString());
-            //    produto.Quantidade = Convert.ToInt32(dgv_Vendas.Rows.SharedRow(contador).Cells[3].Value.ToString());
-            //    produtoImprimir.Add(produto);
-
-
-            //    e.Graphics.DrawString(produtoImprimir[contador].Nome.ToString()+ "\t" + produtoImprimir[contador].Valor.ToString("C2") + "\t" + produtoImprimir[contador].Quantidade.ToString(), LetraProdutos, PincelPreto, X + index, Y + index2);
-            //    index2 += 90;
-            //    controleImpressao += 1;
-            //}
-
-
-
-            //if (string.IsNullOrEmpty(txt_Total.Text) || txt_Total.Text == "0")
-            //{
-            //    MessageBox.Show("Calcule o Valor total da venda", "Erro calculo do total da venda", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    printPreviewDialog1.Close();
-            //}
-            //else
-            //{
-            //    double total = double.Parse(txt_Total.Text.Trim('R', '$'));
-            //    e.Graphics.DrawString("Total: " + total.ToString("C2"), LetraProdutos, PincelPreto, X + index, Y + index2);
-            //}
-            //#endregion
-
-
-        }
-
-        private List<ProdutoEntity> GetProdutosGrid()
-        {
-            List<ProdutoEntity> produtos = new List<ProdutoEntity>();
-            foreach(var produto in dgv_Vendas.Rows)
+            try
             {
-                if (dgv_Vendas.Rows == null)
-                {
-                    MessageBox.Show("Insira um produto na tabela de vendas", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                produtos.Add(produto as ProdutoEntity);
+                List<ProdutoEntity> produtos = new List<ProdutoEntity>();
+                Print print = new Print();
+                produtos = GetProdutoGrid();
+                var total = txt_Total.Text.Trim('R').Trim('$');
+                print.ImprimirVenda(produtos, Convert.ToDouble(total), sender, e);
             }
-            return produtos;
+            catch
+            {
+                throw;
+            }
+         
+            
         }
 
-       
+        private void Form_Vendas_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
