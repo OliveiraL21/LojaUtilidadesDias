@@ -108,25 +108,32 @@ namespace Aplication
 
         private void DataGridViewFill(IEnumerable<VendaEntity> vendas)
         {
-            dgv_Vendas_Consulta.Rows.Clear();
-            int index = 0;
-
-            foreach (var Venda in vendas)
+            try
             {
+                dgv_Vendas_Consulta.Rows.Clear();
+                int index = 0;
 
-                foreach (var item in Venda.ItensVenda)
+                foreach (var Venda in vendas)
                 {
-                    dgv_Vendas_Consulta.Rows.Add();
-                    dgv_Vendas_Consulta.Rows[index].Cells[0].Value = item.ProdutoId;
-                    dgv_Vendas_Consulta.Rows[index].Cells[1].Value = item.Produto.Nome;
-                    dgv_Vendas_Consulta.Rows[index].Cells[2].Value = item.Quantidade;
-                    dgv_Vendas_Consulta.Rows[index].Cells[3].Value = Venda.Valor;
-                    dgv_Vendas_Consulta.Rows[index].Cells[4].Value = Venda.Id;
-                    dgv_Vendas_Consulta.Rows[index].Cells[5].Value = Venda.Data_da_Venda.ToString("dd/MM/yyyy");
-                    dgv_Vendas_Consulta.Rows[index].Cells[6].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
-                    index++;
+
+                    foreach (var item in Venda.ItensVenda)
+                    {
+                        dgv_Vendas_Consulta.Rows.Add();
+                        dgv_Vendas_Consulta.Rows[index].Cells[0].Value = Venda.NumeroVenda;
+                        dgv_Vendas_Consulta.Rows[index].Cells[1].Value = item.Produto.Nome;
+                        dgv_Vendas_Consulta.Rows[index].Cells[2].Value = item.Quantidade;
+                        dgv_Vendas_Consulta.Rows[index].Cells[3].Value = Venda.Valor;
+                        dgv_Vendas_Consulta.Rows[index].Cells[4].Value = Venda.Data_da_Venda.ToString("dd/MM/yyyy");
+                        dgv_Vendas_Consulta.Rows[index].Cells[5].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
+                        index++;
+                    }
                 }
             }
+            catch
+            {
+                throw;
+            }
+           
         }
         private void btn_Consultar_Click(object sender, EventArgs e)
         {

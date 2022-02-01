@@ -22,6 +22,16 @@ namespace Service.Services.Venda
         {
             _repository = new VendaImplementation(new MyContext());
         }
+
+        private int GenerateVendaNumber()
+        {
+            var result = _repository.GetAllNumberVenda().Last();
+            
+            int number = result.NumeroVenda;
+            number += 1;
+            return number;
+            
+        }
         public async Task<bool> Delete(int id)
         {
             return await _repository.DeleteAsync(id);
@@ -59,13 +69,8 @@ namespace Service.Services.Venda
         }
         public async Task<VendaEntity> PostAsync(VendaEntity venda)
         {
-            Random random = new Random();
-            venda.NumeroVenda = random.Next(1000, 10000);
-            var vendas = await _repository.SelectAllAsynck();
-            if(vendas.Any( v => v.NumeroVenda == venda.NumeroVenda))
-            {
-                venda.NumeroVenda = random.Next(1000, 10000);
-            }
+
+            venda.NumeroVenda = GenerateVendaNumber();
             var result = await _repository.InsertAsync(venda);
             return result;
         }

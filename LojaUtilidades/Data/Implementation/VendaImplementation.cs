@@ -44,6 +44,17 @@ namespace Data.Implementation
             return result;
         }
 
-        
+        public List<VendaEntity> GetAllNumberVenda()
+        {
+            try
+            {
+                var result = _dataSet.ToList();
+                return result;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
