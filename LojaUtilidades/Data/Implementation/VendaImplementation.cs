@@ -23,7 +23,7 @@ namespace Data.Implementation
 
         public IEnumerable<VendaEntity> GetVendas()
         {
-            var result = _dataSet.Include(v => v.ItensVenda)
+            var result = _dataSet.AsNoTracking().Include(v => v.ItensVenda)
                 .ThenInclude(it => it.Produto).ToList();
 
             return result;
@@ -36,10 +36,10 @@ namespace Data.Implementation
             return result;
         }
 
-        public IEnumerable<VendaEntity> GetByProductName(string produto)
+        public IEnumerable<VendaEntity> GetByNumber(VendaEntity venda)
         {
-            var result = _dataSet.Include(v => v.ItensVenda)
-                                 .ThenInclude(it => it.Produto).ToList();
+            var result = _dataSet.AsNoTracking().Include(v => v.ItensVenda)
+                                 .ThenInclude(it => it.Produto).Where(v => v.NumeroVenda == venda.NumeroVenda).ToList();
 
             return result;
         }

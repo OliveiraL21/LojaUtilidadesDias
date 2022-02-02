@@ -176,14 +176,16 @@ namespace Aplication
 
         private async void btn_Deletar_Click(object sender, EventArgs e)
         {
-            var id = int.Parse(dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString());
+         
             try
             {
+                var id = int.Parse(dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString());
                 var result = await _service.Delete(id);
                 if(result == true)
                 {
                     MessageBox.Show("Produto deletado com sucesso !", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+                AtualizarItensGrid();
             }
             catch (Exception ex)
             {

@@ -106,6 +106,11 @@ namespace Aplication
             form_estoque_vendas.ShowDialog();
         }
 
+        private void btn_Estoque_Vendas_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show("A pagina de vendas estoque já está aberta !", "Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void DataGridViewFill(IEnumerable<VendaEntity> vendas)
         {
             try
@@ -137,47 +142,59 @@ namespace Aplication
         }
         private void btn_Consultar_Click(object sender, EventArgs e)
         {
+            DatagridViewCler();
             IEnumerable<VendaEntity> vendas = _vendaService.GetVendas();
             DataGridViewFill(vendas);
 
         }
 
-        private void btn_Estoque_Vendas_Click_1(object sender, EventArgs e)
+       private void DatagridViewCler()
         {
-            MessageBox.Show("A pagina de vendas estoque já está aberta !", "Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           
+            dgv_Vendas_Consulta.Rows.Clear();
         }
 
         private void btn_Enviar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
+            try
             {
-                MessageBox.Show("Digite uma data ou um produto para continuar com a consulta expecifica", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if(!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
-            {
-                //chama o metodo para buscar vendas por data
-                txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                VendaEntity venda = new VendaEntity()
+                DatagridViewCler();
+                VendaEntity venda = new VendaEntity();
+                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
                 {
-                    Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text)
-                };
-                var vendas = _vendaService.GetByDate(venda);
-                DataGridViewFill(vendas);
-                txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                    MessageBox.Show("Digite uma data ou um produto para continuar com a consulta expecifica", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
+                {
+                    //chama o metodo para buscar vendas por data
+                    txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+
+
+                    venda.Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text);
+
+                    var vendas = _vendaService.GetByDate(venda);
+                    DataGridViewFill(vendas);
+                    txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                }
+                else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+                {
+                    //chama o metodo para buscar vendas pelo numero da venda
+                    venda.NumeroVenda = Convert.ToInt32(txt_Produto.Text);
+                    var vendas = _vendaService.GetByNumber(venda);
+                    DataGridViewFill(vendas);
+                }
+                else
+                {
+                    var vendas = _vendaService.GetVendas();
+                    DataGridViewFill(vendas);
+                }
             }
-            else if(string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+            catch
             {
-                //chama o metodo para buscar vendas pelo nome do produto
-              
-                var vendas = _vendaService.GetByProductName(txt_Produto.Text);
-                DataGridViewFill(vendas);
+                throw;
             }
-            else
-            {
-                var vendas = _vendaService.GetVendas();
-                DataGridViewFill(vendas);
-            }
+            
         }
 
         

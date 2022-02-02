@@ -92,7 +92,7 @@ namespace Aplication
             this.btn_Estoque_Vendas.Name = "btn_Estoque_Vendas";
             this.btn_Estoque_Vendas.Size = new System.Drawing.Size(218, 69);
             this.btn_Estoque_Vendas.TabIndex = 11;
-            this.btn_Estoque_Vendas.Text = "Estoque de Vendas";
+            this.btn_Estoque_Vendas.Text = "Consultar Vendas";
             this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
             this.btn_Estoque_Vendas.Click += new System.EventHandler(this.btn_Estoque_Vendas_Click);
             this.btn_Estoque_Vendas.MouseLeave += new System.EventHandler(this.btn_Estoque_Vendas_MouseLeave);
@@ -284,6 +284,7 @@ namespace Aplication
             // 
             // dgv_Produtos
             // 
+            this.dgv_Produtos.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgv_Produtos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Produtos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;

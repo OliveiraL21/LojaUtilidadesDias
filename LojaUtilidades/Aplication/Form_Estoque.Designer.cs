@@ -93,7 +93,7 @@ namespace Aplication
             this.btn_Estoque_Vendas.Name = "btn_Estoque_Vendas";
             this.btn_Estoque_Vendas.Size = new System.Drawing.Size(206, 69);
             this.btn_Estoque_Vendas.TabIndex = 12;
-            this.btn_Estoque_Vendas.Text = "Estoque de Vendas";
+            this.btn_Estoque_Vendas.Text = "Consultar Vendas";
             this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
             this.btn_Estoque_Vendas.Click += new System.EventHandler(this.btn_Estoque_Vendas_Click);
             this.btn_Estoque_Vendas.MouseLeave += new System.EventHandler(this.btn_Estoque_Vendas_MouseLeave);
