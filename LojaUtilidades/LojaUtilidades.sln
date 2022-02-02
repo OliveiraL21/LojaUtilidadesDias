@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aplication", "Aplication\Aplication.csproj", "{E8C6831A-135A-425E-AA73-E794A5ACA437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilidades e Cosmeticos Dias", "Aplication\Utilidades e Cosmeticos Dias.csproj", "{E8C6831A-135A-425E-AA73-E794A5ACA437}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{409B7EB1-FFC2-4A4A-AC7A-97C48109E4C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{409B7EB1-FFC2-4A4A-AC7A-97C48109E4C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{92CC161F-71D2-4CAC-85D2-E3A49414B9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{92CC161F-71D2-4CAC-85D2-E3A49414B9A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{EC373EEC-313A-435B-BB9C-BFDE7C5A5718}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{EC373EEC-313A-435B-BB9C-BFDE7C5A5718}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
