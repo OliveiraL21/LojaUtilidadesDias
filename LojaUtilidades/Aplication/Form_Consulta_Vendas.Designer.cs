@@ -181,6 +181,7 @@ namespace Aplication
             this.btn_Limpar.TabIndex = 12;
             this.btn_Limpar.Text = "Limpar Lista";
             this.btn_Limpar.UseVisualStyleBackColor = true;
+            this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
             // 
             // btn_Consultar
             // 

@@ -197,6 +197,9 @@ namespace Aplication
             
         }
 
-        
+        private void btn_Limpar_Click(object sender, EventArgs e)
+        {
+            dgv_Vendas_Consulta.Rows.Clear();
+        }
     }
 }
