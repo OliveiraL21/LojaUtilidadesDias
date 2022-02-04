@@ -134,9 +134,9 @@ namespace Aplication
                     }
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                MessageBox.Show($"Erro {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
@@ -190,9 +190,9 @@ namespace Aplication
                     DataGridViewFill(vendas);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"Erro {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

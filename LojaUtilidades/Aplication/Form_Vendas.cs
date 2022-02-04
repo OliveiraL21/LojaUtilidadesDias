@@ -121,6 +121,7 @@ namespace Aplication
         }
         #endregion
 
+        #region Funções Gerais
         private List<ProdutoEntity> GetProdutoGrid()
         {
             try
@@ -140,11 +141,51 @@ namespace Aplication
                 }
                 return produtos;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show($"Error ao tentar carregar a lista de produtos para impresão:  {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
         }
+        private double CalcularTotal()
+        {
+            int quantidade = 0;
+            double valor = 0;
+            double total = 0;
+            for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
+            {
+                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
+                total += (valor * quantidade);
+            }
+            return total;
+        }
+        private double CalcularTotal(double desconto)
+        {
+            int quantidade = 0;
+            double valor = 0;
+            double valorDesconto = 0;
+            double total = 0;
+            for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
+            {
+                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
+                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
+                total += (valor * quantidade);
+            }
+            valorDesconto = total * (desconto / 100);
+            return total - valorDesconto;
+        }
+        private void LimparCampos()
+        {
+            txt_Produto.Text = "";
+            txt_Quantidade.Text = "";
+            txt_Desconto.Text = "";
+            txt_Total.Text = "";
+            dgv_Vendas.Rows.Clear();
+            i = 0;
+        }
+        #endregion
+        #region Metodos do formulário
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
          
@@ -196,20 +237,22 @@ namespace Aplication
         {
             try
             {
-                int quantidade;
-                double valor;
-                double Total = 0;
-                for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
+                double total = 0;
+                if (checkBox_Desconto.Checked)
                 {
-                    valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
-                    quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
-                    Total += (valor * quantidade);
+                    total = CalcularTotal(Convert.ToDouble(txt_Desconto.Text));
                 }
-                txt_Total.Text = Total.ToString("C2");
+                else
+                {
+                    
+                    total = CalcularTotal();
+                }
+                
+                txt_Total.Text = total.ToString("C2");
             }
             catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"Error ao tentar calcular valor total do produto:  {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
@@ -218,13 +261,11 @@ namespace Aplication
         {
             try
             {
-                dgv_Vendas.Rows.Clear();
-                txt_Total.Text = "";
-                i = 0;
+                LimparCampos();
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"Error ao tentar Limpar a tabela de vendas:  {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
@@ -248,9 +289,9 @@ namespace Aplication
                     MessageBox.Show("Por favor calcule o valor total da venda antes !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"Erro ao deletar Produto {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -351,23 +392,36 @@ namespace Aplication
         {
             try
             {
-                List<ProdutoEntity> produtos = new List<ProdutoEntity>();
+                List<ProdutoEntity> produtos;
                 Print print = new Print();
                 produtos = GetProdutoGrid();
                 var total = txt_Total.Text.Trim('R').Trim('$');
                 print.ImprimirVenda(produtos, Convert.ToDouble(total), sender, e);
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show($"Erro ao tentar Imprimir {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
          
             
         }
-
-        private void Form_Vendas_Load(object sender, EventArgs e)
+        private void checkBox_Desconto_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (checkBox_Desconto.Checked)
+            {
+                label_Desconto.Visible = true;
+                txt_Desconto.Visible = true;
+                label_Porcentagem.Visible = true;
+            }
+            else
+            {
+                label_Desconto.Visible = false;
+                txt_Desconto.Visible = false;
+                label_Porcentagem.Visible = false;
+                txt_Desconto.Text = "";
+            }
+           
         }
+        #endregion
     }
 }
