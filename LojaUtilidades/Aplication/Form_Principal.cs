@@ -71,8 +71,17 @@ namespace Aplication
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            txt_data.Text = DateTime.Today.ToString();
-            txt_hora.Text = DateTime.Now.TimeOfDay.ToString();
+            try
+            {
+                lbl_Data.Text = DateTime.Today.Date.ToString();
+
+                lbl_Hora.Text = DateTime.Now.TimeOfDay.ToString(@"hh\:mm");
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException;
+            }
+         
 
         }
 
