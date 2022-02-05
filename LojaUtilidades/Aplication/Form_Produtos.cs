@@ -4,6 +4,7 @@ using Domain.Entidades;
 using Domain.Interfaces.Services.Produtos;
 using Domain.Repository;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,17 @@ namespace Aplication
     {
         int i = 0;
         private readonly IProdutoService _service;
+        private readonly string Path;
         public Form_Produtos()
         {
             InitializeComponent();
             _service = new ProdutoService();
+            Path = Application.StartupPath + @"\Tela-Cadastro-Produtos-";
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+            
         }
         #region Front-End
         private void btn_Sair_Click(object sender, EventArgs e)
@@ -108,6 +116,7 @@ namespace Aplication
             form_Consulta_Venda.ShowDialog();
         }
         #endregion
+        #region Metodos do formulário
         private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             try
@@ -136,14 +145,12 @@ namespace Aplication
                     dgv_Produtos.Rows[i].Cells[3].Value = result.Quantidade;
                     i++;
                 }
-                else
-                {
-                    MessageBox.Show("Erro ao cadastrar o produto ", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+               
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao cadastrar o produto {ex.Message}", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao cadastrar o produto", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao cadastrar o produto");
             }
             finally
             {
@@ -153,7 +160,6 @@ namespace Aplication
                 txt_Quantidade.Text = "";
             }
         }
-
         private async void btn_Editar_Click(object sender, EventArgs e)
         {
             
@@ -186,7 +192,8 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao tentar editar o produto {ex.Message}", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar editar o produto", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar editar o produto");
             }
             finally
             {
@@ -196,9 +203,6 @@ namespace Aplication
                 txt_Quantidade.Text = "";
             }
         }
-
-
-
         private async void btn_Deletar_Click(object sender, EventArgs e)
         {
             
@@ -215,7 +219,8 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao deletar o produto {ex.Message}", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao deletar o produto", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar deletar o produto");
             }
             finally
             {
@@ -229,12 +234,21 @@ namespace Aplication
         }
         private void dgv_Produtos_DoubleClick(object sender, EventArgs e)
         {
-            txt_Id.Text = dgv_Produtos.SelectedRows[0].Cells[0].Value.ToString();
-            txt_Produto.Text = dgv_Produtos.SelectedRows[0].Cells[1].Value.ToString();
-            txt_Valor.Text = dgv_Produtos.SelectedRows[0].Cells[2].Value.ToString();
-            txt_Quantidade.Text = dgv_Produtos.SelectedRows[0].Cells[3].Value.ToString();
+            try
+            {
+                txt_Id.Text = dgv_Produtos.SelectedRows[0].Cells[0].Value.ToString();
+                txt_Produto.Text = dgv_Produtos.SelectedRows[0].Cells[1].Value.ToString();
+                txt_Valor.Text = dgv_Produtos.SelectedRows[0].Cells[2].Value.ToString();
+                txt_Quantidade.Text = dgv_Produtos.SelectedRows[0].Cells[3].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao tentar ao transferir dados para os campos", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar transferir dados da gridview para os campos");
+            }
+            
         }
+        #endregion
 
-        
     }
 }

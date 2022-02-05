@@ -1,5 +1,6 @@
 ﻿using Domain.Entidades;
 using Domain.Interfaces.Services.Venda;
+using Serilog;
 using Service.Services.Venda;
 using System;
 using System.Collections.Generic;
@@ -16,10 +17,16 @@ namespace Aplication
     public partial class Form_Consulta_Vendas : Form
     {
         private readonly IVendaService _vendaService;
+        private readonly string Path;
         public Form_Consulta_Vendas()
         {
             InitializeComponent();
             _vendaService = new VendasService();
+            Path = Application.StartupPath + @"\Tela-Consultar-Vendas-.txt";
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
         }
 
         #region Front-End
@@ -87,9 +94,10 @@ namespace Aplication
 
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
-            Close();
+            
             Form_Estoque form_Estoque = new Form_Estoque();
             form_Estoque.ShowDialog();
+            Close();
 
         }
 
@@ -97,19 +105,14 @@ namespace Aplication
         {
             Form_Vendas formVenda = new Form_Vendas();
             formVenda.ShowDialog();
+            Close();
+        }
+        private void btn_Estoque_Vendas_Click_(object sender, EventArgs e)
+        {
+            MessageBox.Show("A pagina de Consulta de vendas já está aberta !", "Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
-
-        private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
-        {
-            Form_Consulta_Vendas form_estoque_vendas = new Form_Consulta_Vendas();
-            form_estoque_vendas.ShowDialog();
-        }
-
-        private void btn_Estoque_Vendas_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show("A pagina de vendas estoque já está aberta !", "Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        #region Metodos do formulário
 
         private void DataGridViewFill(IEnumerable<VendaEntity> vendas)
         {
@@ -136,21 +139,29 @@ namespace Aplication
             }
             catch(Exception ex)
             {
-                MessageBox.Show($"Erro {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar preencher a tabela", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar preencher o datagridview");
             }
            
         }
         private void btn_Consultar_Click(object sender, EventArgs e)
         {
-            DatagridViewCler();
-            IEnumerable<VendaEntity> vendas = _vendaService.GetVendas();
-            DataGridViewFill(vendas);
+            try
+            {
+                DatagridViewCler();
+                IEnumerable<VendaEntity> vendas = _vendaService.GetVendas();
+                DataGridViewFill(vendas);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Erro ao tentar buscar vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar buscar as vendas no banco de dados");
+            }
 
         }
 
        private void DatagridViewCler()
-        {
-           
+        { 
             dgv_Vendas_Consulta.Rows.Clear();
         }
 
@@ -160,12 +171,12 @@ namespace Aplication
             {
                 DatagridViewCler();
                 VendaEntity venda = new VendaEntity();
-                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
+                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text))
                 {
-                    MessageBox.Show("Digite uma data ou um produto para continuar com a consulta expecifica", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Digite uma data ou o código da venda para continuar com a consulta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                if (!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Produto.Text))
+                if (!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text))
                 {
                     //chama o metodo para buscar vendas por data
                     txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
@@ -177,22 +188,19 @@ namespace Aplication
                     DataGridViewFill(vendas);
                     txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 }
-                else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+                else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Codigo.Text))
                 {
                     //chama o metodo para buscar vendas pelo numero da venda
-                    venda.NumeroVenda = Convert.ToInt32(txt_Produto.Text);
+                    venda.NumeroVenda = Convert.ToInt32(txt_Codigo.Text);
                     var vendas = _vendaService.GetByNumber(venda);
                     DataGridViewFill(vendas);
                 }
-                else
-                {
-                    var vendas = _vendaService.GetVendas();
-                    DataGridViewFill(vendas);
-                }
+              
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar buscar vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar buscar venda no banco");
             }
             
         }
@@ -201,5 +209,6 @@ namespace Aplication
         {
             dgv_Vendas_Consulta.Rows.Clear();
         }
+        #endregion
     }
 }

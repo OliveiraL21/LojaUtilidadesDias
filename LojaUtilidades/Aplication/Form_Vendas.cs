@@ -5,6 +5,7 @@ using Domain.Entidades;
 using Domain.Interfaces.Services;
 using Domain.Interfaces.Services.Produtos;
 using Domain.Interfaces.Services.Venda;
+using Serilog;
 using Service.Services.ItensVendas;
 using Service.Services.Produtos;
 using Service.Services.Venda;
@@ -23,12 +24,12 @@ namespace Aplication
     public partial class Form_Vendas : Form
     {
         private int i = 0;
-        private int X = 0;
-        private int Y = 0;
         private readonly IProdutoService _produtoService;
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
         private readonly MyContext _context;
+        private readonly string Path;
+
         public Form_Vendas()
         {
             InitializeComponent();
@@ -36,6 +37,11 @@ namespace Aplication
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
             _context = new MyContext();
+            Path = Application.StartupPath + @"\Tela-de-Vendas-.txt";
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
         }
         #region Front-End
         private void btn_Produto_MouseHover(object sender, EventArgs e)
@@ -106,7 +112,7 @@ namespace Aplication
             Close();
             Form_Estoque form_Estoque = new Form_Estoque();
             form_Estoque.ShowDialog();
-           
+
         }
 
         private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
@@ -124,10 +130,10 @@ namespace Aplication
         #region Funções Gerais
         private List<ProdutoEntity> GetProdutoGrid()
         {
+
             try
             {
                 List<ProdutoEntity> produtos = new List<ProdutoEntity>();
-
                 for (int contador = 0; contador < dgv_Vendas.Rows.Count; contador++)
                 {
                     var produto = new ProdutoEntity()
@@ -143,9 +149,11 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error ao tentar carregar a lista de produtos para impresão:  {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error ao tentar carregar a lista de produtos para impresão", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentear carregar a lista de produtos para impressão");
                 throw;
             }
+
         }
         private double CalcularTotal()
         {
@@ -188,7 +196,7 @@ namespace Aplication
         #region Metodos do formulário
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
-         
+
             try
             {
 
@@ -206,30 +214,27 @@ namespace Aplication
 
 
                 var result = await _produtoService.SelectByName(nome);
-                if(result != null)
-                {
-                    dgv_Vendas.Rows.Add();
-                    dgv_Vendas.Rows[i].Cells[0].Value = result.Id;
-                    dgv_Vendas.Rows[i].Cells[1].Value = result.Nome;
-                    dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
-                    dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
-                    i++;
 
-                }
-                else
-                {
-                    MessageBox.Show("Produto não encontrado !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                dgv_Vendas.Rows.Add();
+                dgv_Vendas.Rows[i].Cells[0].Value = result.Id;
+                dgv_Vendas.Rows[i].Cells[1].Value = result.Nome;
+                dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
+                dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
+                i++;
+
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Produto não encontrado ! {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar buscar produtos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar buscar pordutos e adicionar na grid de vendas");
             }
             finally
             {
                 txt_Produto.Text = "";
                 txt_Quantidade.Text = "";
-                
+
             }
         }
 
@@ -244,17 +249,19 @@ namespace Aplication
                 }
                 else
                 {
-                    
+
                     total = CalcularTotal();
                 }
-                
+
                 txt_Total.Text = total.ToString("C2");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error ao tentar calcular valor total do produto:  {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error ao tentar calcular valor total da venda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar calcular o valor total da venda");
+
             }
-            
+
         }
 
         private void btn_Limpar_Click(object sender, EventArgs e)
@@ -265,9 +272,10 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error ao tentar Limpar a tabela de vendas:  {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error ao tentar Limpar a tabela de vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar limpar a tabela de vendas");
             }
-           
+
         }
 
         private void btn_Deletar_Click(object sender, EventArgs e)
@@ -291,7 +299,8 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao deletar Produto {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao deletar produto da tabela", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar deletar produto da tabela");
             }
         }
 
@@ -305,17 +314,16 @@ namespace Aplication
             }
             else
             {
-                VendaEntity vendaObj = new VendaEntity()
-                {
-
-                    Data_da_Venda = DateTime.Now.Date,
-                    Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
-                    Hora_Venda = DateTime.Now.TimeOfDay,
-                };
-
-                var venda = await _vendaService.PostAsync(vendaObj);
                 try
                 {
+                    VendaEntity vendaObj = new VendaEntity()
+                    {
+                        Data_da_Venda = DateTime.Now.Date,
+                        Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
+                        Hora_Venda = DateTime.Now.TimeOfDay,
+                    };
+
+                    var venda = await _vendaService.PostAsync(vendaObj);
 
                     for (int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
                     {
@@ -343,7 +351,8 @@ namespace Aplication
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Erro ao finalizar a venda {ex.InnerException.Message} !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erro ao finalizar a venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Log.Error(ex.InnerException, "\nErro ao finalizar a venda!");
 
                 }
                 finally
@@ -357,7 +366,7 @@ namespace Aplication
 
                 }
             }
-           
+
         }
 
         private void btn_Imprimir_Click(object sender, EventArgs e)
@@ -367,8 +376,7 @@ namespace Aplication
                 int largura = printDocument1.DefaultPageSettings.Bounds.Width;
                 int altura = printDocument1.DefaultPageSettings.Bounds.Width;
 
-                X = printDocument1.DefaultPageSettings.Bounds.X;
-                Y = printDocument1.DefaultPageSettings.Bounds.Y;
+
                 printDialog1.Document = printDocument1;
 
 
@@ -385,7 +393,7 @@ namespace Aplication
             {
                 throw;
             }
-            
+
         }
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -400,10 +408,11 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao tentar Imprimir {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar Imprimir os dados da venda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar imprimir os dados da venda");
             }
-         
-            
+
+
         }
         private void checkBox_Desconto_CheckedChanged(object sender, EventArgs e)
         {
@@ -420,7 +429,7 @@ namespace Aplication
                 label_Porcentagem.Visible = false;
                 txt_Desconto.Text = "";
             }
-           
+
         }
         #endregion
     }

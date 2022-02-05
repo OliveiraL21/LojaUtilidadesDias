@@ -2,6 +2,7 @@
 using Data.Implementation;
 using Domain.Interfaces.Services.Produtos;
 using Domain.Repository;
+using Serilog;
 using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,15 @@ namespace Aplication
 {
     public partial class Form_Principal : Form
     {
+        private readonly string path;
         public Form_Principal()
         { 
             InitializeComponent();
+            path = Application.StartupPath + @"\Logs\Tela-Principal-.txt";
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .WriteTo.File(path,rollingInterval: RollingInterval.Day)
+                .CreateLogger();
         }
 
         private void btn_Sair_Click(object sender, EventArgs e)
@@ -75,11 +82,13 @@ namespace Aplication
             {
                 lbl_Data.Text = DateTime.Today.Date.ToString();
 
-                lbl_Hora.Text = DateTime.Now.TimeOfDay.ToString(@"hh\:mm");
+                lbl_Hora.Text = DateTime.Now.TimeOfDay.ToString(@"hh\:MM");
             }
             catch (Exception ex)
             {
-                throw ex.InnerException;
+                MessageBox.Show("Erro ao tentar abrir a aplicação", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex, "\nErro ao carregar a aplicação");
+                
             }
          
 

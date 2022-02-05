@@ -2,6 +2,7 @@
 using Domain.Entidades;
 using Domain.Interfaces.Services.Produtos;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using Service.Services.Produtos;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,16 @@ namespace Aplication
     public partial class Form_Estoque : Form
     {
         private readonly IProdutoService _service;
-        
-        
+        private readonly string Path;
         public Form_Estoque()
         {
             InitializeComponent();
             _service = new ProdutoService();
+            Path = Application.StartupPath + @"\Tela-Estoque-de-Produtos-.txt";
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
+                .CreateLogger();
         }
         #region front-end
         private void btn_Produto_MouseHover(object sender, EventArgs e)
@@ -104,39 +109,32 @@ namespace Aplication
         {
             Form_Consulta_Vendas form_Consulta_Vendas = new Form_Consulta_Vendas();
             form_Consulta_Vendas.ShowDialog();
+            Close();
         }
         #endregion
-
+        #region Metodos do formulário
         private async void AtualizarItensGrid()
         {
             try
             {
                 var result = await _service.GetAll();
-                if (result == null)
+                int i = 0;
+                dgv_Estoque.Rows.Clear();
+                foreach (var produto in result)
                 {
-                    MessageBox.Show("Erro ao baixar a lista de produtos ", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dgv_Estoque.Rows.Add();
+                    dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
+                    dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
+                    dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
+                    dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
+
+                    i++;
                 }
-                else
-                {
-                    int i = 0;
-                    dgv_Estoque.Rows.Clear();
-                    foreach (var produto in result)
-                    {
-                        dgv_Estoque.Rows.Add();
-                        dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
-                        dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
-                        dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
-                        dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
-
-                        i++;
-                    }
-
-                }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao baixar a lista de produtos {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao baixar a lista de produtos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar atualizar itens na gridView");
             }
             finally
             {
@@ -152,8 +150,8 @@ namespace Aplication
             try
             {
                 var result = await _service.SelectByName(nome);
-                
-                
+
+
                 if (result != null)
                 {
                     dgv_Estoque.Rows.Clear();
@@ -161,12 +159,13 @@ namespace Aplication
                     dgv_Estoque.Rows[0].Cells[1].Value = result.Nome;
                     dgv_Estoque.Rows[0].Cells[2].Value = result.Valor;
                     dgv_Estoque.Rows[0].Cells[3].Value = result.Quantidade;
-                    
+
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao encontrar o produto  {ex.Message}", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao encontrar o produto", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar encontrar o produto");
             }
             txt_Id.Text = "";
             txt_Produto.Text = "";
@@ -176,12 +175,12 @@ namespace Aplication
 
         private async void btn_Deletar_Click(object sender, EventArgs e)
         {
-         
+
             try
             {
                 var id = int.Parse(dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString());
                 var result = await _service.Delete(id);
-                if(result == true)
+                if (result == true)
                 {
                     MessageBox.Show("Produto deletado com sucesso !", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -189,7 +188,8 @@ namespace Aplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao tentar excluir {ex.Message}", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar excluir um produto do Estoque ", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar excluir um produto do estoque");
             }
             finally
             {
@@ -202,10 +202,18 @@ namespace Aplication
 
         private void dgv_Estoque_DoubleClick(object sender, EventArgs e)
         {
-            txt_Id.Text = dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString();
-            txt_Produto.Text = dgv_Estoque.SelectedRows[0].Cells[1].Value.ToString();
-            txt_Valor.Text = dgv_Estoque.SelectedRows[0].Cells[2].Value.ToString();
-            txt_Quantidade.Text = dgv_Estoque.SelectedRows[0].Cells[3].Value.ToString();
+            try
+            {
+                txt_Id.Text = dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString();
+                txt_Produto.Text = dgv_Estoque.SelectedRows[0].Cells[1].Value.ToString();
+                txt_Valor.Text = dgv_Estoque.SelectedRows[0].Cells[2].Value.ToString();
+                txt_Quantidade.Text = dgv_Estoque.SelectedRows[0].Cells[3].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao tentar capturar os dados do produto", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex, "\nErro ao tentar capturar dados dos produtos na grid para os campos na tela");
+            }
         }
 
         private async void btn_Editar_Click(object sender, EventArgs e)
@@ -225,15 +233,16 @@ namespace Aplication
             try
             {
                 var result = await _service.Put(produto);
-                if(result != null)
+                if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 AtualizarItensGrid();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao tentar editar o produto {ex.Message}", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao tentar editar o produto", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar editar o produto");
             }
             finally
             {
@@ -248,41 +257,37 @@ namespace Aplication
         {
             try
             {
-                
-                var result = await _service.GetAll();
-                if(result == null)
-                {
-                    MessageBox.Show("Erro ao baixar a lista de produtos ", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    int i = 0;
-                   
-                    foreach (var produto in result)
-                    {
-                        dgv_Estoque.Rows.Add();
-                        dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
-                        dgv_Estoque.Rows[i ].Cells[1].Value = produto.Nome;
-                        dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
-                        dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
 
-                        i++;
-                    }
-                    
+                var result = await _service.GetAll();
+
+                int i = 0;
+
+                foreach (var produto in result)
+                {
+                    dgv_Estoque.Rows.Add();
+                    dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
+                    dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
+                    dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
+                    dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
+
+                    i++;
                 }
+
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao baixar a lista de produtos {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro ao baixar a lista de produtos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Error(ex.InnerException, "\nErro ao tentar baixar a lista de produtos");
             }
         }
 
-        private  void btn_Atualizar_Click(object sender, EventArgs e)
+        private void btn_Atualizar_Click(object sender, EventArgs e)
         {
             AtualizarItensGrid();
         }
+        #endregion
 
-       
-        
+
     }
 }
