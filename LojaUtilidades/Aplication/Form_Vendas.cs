@@ -37,7 +37,7 @@ namespace Aplication
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
             _context = new MyContext();
-            Path = Application.StartupPath + @"\Tela-de-Vendas-.txt";
+            Path = Application.StartupPath + @"\Logs\Tela-de-Vendas-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
@@ -228,7 +228,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar buscar produtos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar buscar pordutos e adicionar na grid de vendas");
+                Log.Error(ex, "\nErro ao tentar buscar pordutos e adicionar na grid de vendas");
             }
             finally
             {
@@ -258,7 +258,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Error ao tentar calcular valor total da venda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar calcular o valor total da venda");
+                Log.Error(ex, "\nErro ao tentar calcular o valor total da venda");
 
             }
 
@@ -273,7 +273,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Error ao tentar Limpar a tabela de vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar limpar a tabela de vendas");
+                Log.Error(ex, "\nErro ao tentar limpar a tabela de vendas");
             }
 
         }
@@ -300,7 +300,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao deletar produto da tabela", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar deletar produto da tabela");
+                Log.Error(ex, "\nErro ao tentar deletar produto da tabela");
             }
         }
 
@@ -325,7 +325,7 @@ namespace Aplication
 
                     var venda = await _vendaService.PostAsync(vendaObj);
 
-                    for (int x = 0; x < dgv_Vendas.Rows.Count - 1; x++)
+                    for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
                     {
                         var result = await _produtoService.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
                         int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
@@ -352,16 +352,14 @@ namespace Aplication
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Erro ao finalizar a venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Log.Error(ex.InnerException, "\nErro ao finalizar a venda!");
+                    Log.Error(ex, "\nErro ao finalizar a venda!");
 
                 }
                 finally
                 {
-                    txt_Produto.Text = "";
-                    txt_Quantidade.Text = "";
-                    txt_Total.Text = "";
-                    dgv_Vendas.Rows.Clear();
-                    i = 0;
+                    LimparCampos();
+                    checkBox_Desconto.Checked = false;
+                    txt_Desconto.Text = "";
 
 
                 }
@@ -409,7 +407,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar Imprimir os dados da venda", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar imprimir os dados da venda");
+                Log.Error(ex, "\nErro ao tentar imprimir os dados da venda");
             }
 
 

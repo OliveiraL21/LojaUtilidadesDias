@@ -27,7 +27,7 @@ namespace Aplication
         {
             InitializeComponent();
             _service = new ProdutoService();
-            Path = Application.StartupPath + @"\Tela-Cadastro-Produtos-";
+            Path = Application.StartupPath + @"\Logs\Tela-Cadastro-Produtos-";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
@@ -150,7 +150,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao cadastrar o produto", "Erro ao Cadastrar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao cadastrar o produto");
+                Log.Error(ex, "\nErro ao cadastrar o produto");
             }
             finally
             {
@@ -193,7 +193,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar editar o produto", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar editar o produto");
+                Log.Error(ex, "\nErro ao tentar editar o produto");
             }
             finally
             {
@@ -220,7 +220,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao deletar o produto", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar deletar o produto");
+                Log.Error(ex, "\nErro ao tentar deletar o produto");
             }
             finally
             {
@@ -244,7 +244,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar ao transferir dados para os campos", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar transferir dados da gridview para os campos");
+                Log.Error(ex, "\nErro ao tentar transferir dados da gridview para os campos");
             }
             
         }

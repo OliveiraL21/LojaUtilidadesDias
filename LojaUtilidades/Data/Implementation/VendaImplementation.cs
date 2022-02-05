@@ -43,7 +43,36 @@ namespace Data.Implementation
 
             return result;
         }
+        //public IEnumerable<VendaEntity>GetByProductName(string produto)
+        //{
+        //    var result = _dataSet.AsNoTracking().Include(v => v.ItensVenda)
+        //                         .ThenInclude(it => it.Produto).ToList();
 
+        //    List<ItemVendaEntity> lstItemVenda = new List<ItemVendaEntity>();
+
+        //    foreach(var item in result)
+        //    {
+        //        foreach(var itemVenda in item.ItensVenda)
+        //        {
+        //            if(itemVenda.Produto.Nome == produto)
+        //            {
+        //                lstItemVenda.Add( new ItemVendaEntity() 
+        //                {
+        //                    Id = itemVenda.Id,
+        //                    Produto = itemVenda.Produto,
+        //                    ProdutoId = itemVenda.ProdutoId,
+        //                    Venda = itemVenda.Venda,
+        //                    VendaId = itemVenda.VendaId,
+        //                    Quantidade = itemVenda.Quantidade
+        //                });
+        //                item.ItensVenda = (List<ItemVendaEntity>)lstItemVenda.Where(p => p.Produto.Nome == produto);
+        //            }
+        //        }
+        //    }
+
+            
+        //    return result;
+        //}
         public List<VendaEntity> GetAllNumberVenda()
         {
             try

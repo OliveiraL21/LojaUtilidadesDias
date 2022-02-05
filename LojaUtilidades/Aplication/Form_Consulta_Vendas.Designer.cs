@@ -29,11 +29,11 @@ namespace Aplication
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Consulta_Vendas));
             this.dgv_Vendas_Consulta = new System.Windows.Forms.DataGridView();
             this.Cod_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +57,8 @@ namespace Aplication
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
             this.btn_Enviar = new System.Windows.Forms.Button();
+            this.txt_Produto = new System.Windows.Forms.TextBox();
+            this.label_Produto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas_Consulta)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel_Menu.SuspendLayout();
@@ -66,19 +68,19 @@ namespace Aplication
             // dgv_Vendas_Consulta
             // 
             this.dgv_Vendas_Consulta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas_Consulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Vendas_Consulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_Vendas_Consulta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_Vendas_Consulta.BackgroundColor = System.Drawing.Color.CadetBlue;
             this.dgv_Vendas_Consulta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas_Consulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Vendas_Consulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_Vendas_Consulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Vendas_Consulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cod_Venda,
@@ -87,30 +89,30 @@ namespace Aplication
             this.Total,
             this.dataGridViewTextBoxColumn1,
             this.Hora_Da_Venda});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Vendas_Consulta.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_Vendas_Consulta.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Vendas_Consulta.GridColor = System.Drawing.Color.Black;
             this.dgv_Vendas_Consulta.Location = new System.Drawing.Point(257, 231);
             this.dgv_Vendas_Consulta.Name = "dgv_Vendas_Consulta";
             this.dgv_Vendas_Consulta.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas_Consulta.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_Vendas_Consulta.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_Vendas_Consulta.RowHeadersWidth = 51;
             this.dgv_Vendas_Consulta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas_Consulta.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgv_Vendas_Consulta.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Vendas_Consulta.RowTemplate.Height = 25;
             this.dgv_Vendas_Consulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(1129, 506);
@@ -202,42 +204,42 @@ namespace Aplication
             // Data_Da_Venda
             // 
             this.Data_Da_Venda.AutoSize = true;
-            this.Data_Da_Venda.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Data_Da_Venda.Location = new System.Drawing.Point(252, 107);
+            this.Data_Da_Venda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Data_Da_Venda.Location = new System.Drawing.Point(273, 107);
             this.Data_Da_Venda.Name = "Data_Da_Venda";
-            this.Data_Da_Venda.Size = new System.Drawing.Size(153, 23);
+            this.Data_Da_Venda.Size = new System.Drawing.Size(129, 19);
             this.Data_Da_Venda.TabIndex = 23;
             this.Data_Da_Venda.Text = "Data da Venda";
             // 
             // lbl_Produto
             // 
             this.lbl_Produto.AutoSize = true;
-            this.lbl_Produto.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Produto.Location = new System.Drawing.Point(252, 154);
+            this.lbl_Produto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Produto.Location = new System.Drawing.Point(252, 152);
             this.lbl_Produto.Name = "lbl_Produto";
-            this.lbl_Produto.Size = new System.Drawing.Size(178, 23);
+            this.lbl_Produto.Size = new System.Drawing.Size(150, 19);
             this.lbl_Produto.TabIndex = 24;
             this.lbl_Produto.Text = "Código da Venda";
             // 
             // txt_Data_Venda
             // 
-            this.txt_Data_Venda.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Data_Venda.Location = new System.Drawing.Point(432, 103);
+            this.txt_Data_Venda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Data_Venda.Location = new System.Drawing.Point(408, 103);
             this.txt_Data_Venda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Data_Venda.Mask = "00/00/0000";
             this.txt_Data_Venda.Name = "txt_Data_Venda";
-            this.txt_Data_Venda.Size = new System.Drawing.Size(161, 32);
+            this.txt_Data_Venda.Size = new System.Drawing.Size(161, 29);
             this.txt_Data_Venda.TabIndex = 25;
             this.txt_Data_Venda.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txt_Data_Venda.ValidatingType = typeof(System.DateTime);
             // 
             // txt_Codigo
             // 
-            this.txt_Codigo.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Codigo.Location = new System.Drawing.Point(432, 154);
+            this.txt_Codigo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Codigo.Location = new System.Drawing.Point(408, 147);
             this.txt_Codigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Codigo.Name = "txt_Codigo";
-            this.txt_Codigo.Size = new System.Drawing.Size(250, 32);
+            this.txt_Codigo.Size = new System.Drawing.Size(250, 29);
             this.txt_Codigo.TabIndex = 26;
             // 
             // panel_Menu
@@ -361,7 +363,7 @@ namespace Aplication
             this.btn_Enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Enviar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Enviar.ForeColor = System.Drawing.Color.White;
-            this.btn_Enviar.Location = new System.Drawing.Point(699, 149);
+            this.btn_Enviar.Location = new System.Drawing.Point(664, 141);
             this.btn_Enviar.Name = "btn_Enviar";
             this.btn_Enviar.Size = new System.Drawing.Size(119, 41);
             this.btn_Enviar.TabIndex = 28;
@@ -369,12 +371,35 @@ namespace Aplication
             this.btn_Enviar.UseVisualStyleBackColor = false;
             this.btn_Enviar.Click += new System.EventHandler(this.btn_Enviar_Click);
             // 
+            // txt_Produto
+            // 
+            this.txt_Produto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Produto.Location = new System.Drawing.Point(654, 103);
+            this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_Produto.Name = "txt_Produto";
+            this.txt_Produto.Size = new System.Drawing.Size(250, 29);
+            this.txt_Produto.TabIndex = 29;
+            this.txt_Produto.Visible = false;
+            // 
+            // label_Produto
+            // 
+            this.label_Produto.AutoSize = true;
+            this.label_Produto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Produto.Location = new System.Drawing.Point(580, 107);
+            this.label_Produto.Name = "label_Produto";
+            this.label_Produto.Size = new System.Drawing.Size(68, 19);
+            this.label_Produto.TabIndex = 30;
+            this.label_Produto.Text = "Produto";
+            this.label_Produto.Visible = false;
+            // 
             // Form_Consulta_Vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1402, 746);
+            this.Controls.Add(this.label_Produto);
+            this.Controls.Add(this.txt_Produto);
             this.Controls.Add(this.btn_Enviar);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.txt_Codigo);
@@ -420,5 +445,7 @@ namespace Aplication
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hora_Da_Venda;
+        private System.Windows.Forms.TextBox txt_Produto;
+        private System.Windows.Forms.Label label_Produto;
     }
 }

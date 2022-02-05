@@ -240,7 +240,7 @@ namespace Aplication
             this.dgv_Vendas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Vendas.RowTemplate.Height = 25;
             this.dgv_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas.Size = new System.Drawing.Size(842, 551);
+            this.dgv_Vendas.Size = new System.Drawing.Size(825, 515);
             this.dgv_Vendas.TabIndex = 12;
             // 
             // Cod_Prod
@@ -275,7 +275,7 @@ namespace Aplication
             // 
             this.label_Quantidade.AutoSize = true;
             this.label_Quantidade.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Quantidade.Location = new System.Drawing.Point(246, 193);
+            this.label_Quantidade.Location = new System.Drawing.Point(245, 162);
             this.label_Quantidade.Name = "label_Quantidade";
             this.label_Quantidade.Size = new System.Drawing.Size(104, 19);
             this.label_Quantidade.TabIndex = 18;
@@ -285,7 +285,7 @@ namespace Aplication
             // 
             this.label_Total.AutoSize = true;
             this.label_Total.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Total.Location = new System.Drawing.Point(245, 325);
+            this.label_Total.Location = new System.Drawing.Point(244, 311);
             this.label_Total.Name = "label_Total";
             this.label_Total.Size = new System.Drawing.Size(45, 19);
             this.label_Total.TabIndex = 17;
@@ -294,7 +294,7 @@ namespace Aplication
             // txt_Total
             // 
             this.txt_Total.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Total.Location = new System.Drawing.Point(245, 351);
+            this.txt_Total.Location = new System.Drawing.Point(244, 337);
             this.txt_Total.Name = "txt_Total";
             this.txt_Total.Size = new System.Drawing.Size(128, 31);
             this.txt_Total.TabIndex = 3;
@@ -302,7 +302,7 @@ namespace Aplication
             // txt_Quantidade
             // 
             this.txt_Quantidade.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Quantidade.Location = new System.Drawing.Point(246, 224);
+            this.txt_Quantidade.Location = new System.Drawing.Point(245, 193);
             this.txt_Quantidade.Name = "txt_Quantidade";
             this.txt_Quantidade.Size = new System.Drawing.Size(136, 31);
             this.txt_Quantidade.TabIndex = 2;
@@ -310,7 +310,7 @@ namespace Aplication
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Produto.Location = new System.Drawing.Point(246, 130);
+            this.txt_Produto.Location = new System.Drawing.Point(245, 99);
             this.txt_Produto.Name = "txt_Produto";
             this.txt_Produto.Size = new System.Drawing.Size(257, 31);
             this.txt_Produto.TabIndex = 1;
@@ -319,7 +319,7 @@ namespace Aplication
             // 
             this.label_Produto.AutoSize = true;
             this.label_Produto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Produto.Location = new System.Drawing.Point(246, 104);
+            this.label_Produto.Location = new System.Drawing.Point(245, 73);
             this.label_Produto.Name = "label_Produto";
             this.label_Produto.Size = new System.Drawing.Size(68, 19);
             this.label_Produto.TabIndex = 13;
@@ -331,7 +331,7 @@ namespace Aplication
             this.btn_Calcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Calcular.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Calcular.ForeColor = System.Drawing.Color.White;
-            this.btn_Calcular.Location = new System.Drawing.Point(246, 404);
+            this.btn_Calcular.Location = new System.Drawing.Point(245, 396);
             this.btn_Calcular.Name = "btn_Calcular";
             this.btn_Calcular.Size = new System.Drawing.Size(128, 50);
             this.btn_Calcular.TabIndex = 4;
@@ -343,7 +343,7 @@ namespace Aplication
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(298, 171);
+            this.label1.Location = new System.Drawing.Point(297, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 19);
             this.label1.TabIndex = 20;
@@ -465,7 +465,7 @@ namespace Aplication
             // 
             this.checkBox_Desconto.AutoSize = true;
             this.checkBox_Desconto.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_Desconto.Location = new System.Drawing.Point(246, 261);
+            this.checkBox_Desconto.Location = new System.Drawing.Point(245, 242);
             this.checkBox_Desconto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox_Desconto.Name = "checkBox_Desconto";
             this.checkBox_Desconto.Size = new System.Drawing.Size(77, 19);
@@ -478,7 +478,7 @@ namespace Aplication
             // 
             this.label_Desconto.AutoSize = true;
             this.label_Desconto.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Desconto.Location = new System.Drawing.Point(245, 289);
+            this.label_Desconto.Location = new System.Drawing.Point(244, 270);
             this.label_Desconto.Name = "label_Desconto";
             this.label_Desconto.Size = new System.Drawing.Size(72, 17);
             this.label_Desconto.TabIndex = 24;
@@ -488,7 +488,7 @@ namespace Aplication
             // txt_Desconto
             // 
             this.txt_Desconto.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Desconto.Location = new System.Drawing.Point(326, 280);
+            this.txt_Desconto.Location = new System.Drawing.Point(325, 261);
             this.txt_Desconto.Name = "txt_Desconto";
             this.txt_Desconto.Size = new System.Drawing.Size(56, 31);
             this.txt_Desconto.TabIndex = 23;
@@ -498,7 +498,7 @@ namespace Aplication
             // 
             this.label_Porcentagem.AutoSize = true;
             this.label_Porcentagem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Porcentagem.Location = new System.Drawing.Point(388, 284);
+            this.label_Porcentagem.Location = new System.Drawing.Point(387, 265);
             this.label_Porcentagem.Name = "label_Porcentagem";
             this.label_Porcentagem.Size = new System.Drawing.Size(24, 21);
             this.label_Porcentagem.TabIndex = 25;

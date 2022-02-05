@@ -24,7 +24,7 @@ namespace Aplication
         {
             InitializeComponent();
             _service = new ProdutoService();
-            Path = Application.StartupPath + @"\Tela-Estoque-de-Produtos-.txt";
+            Path = Application.StartupPath + @"\Logs\Tela-Estoque-de-Produtos-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
@@ -134,7 +134,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao baixar a lista de produtos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar atualizar itens na gridView");
+                Log.Error(ex, "\nErro ao tentar atualizar itens na gridView");
             }
             finally
             {
@@ -165,7 +165,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao encontrar o produto", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar encontrar o produto");
+                Log.Error(ex, "\nErro ao tentar encontrar o produto");
             }
             txt_Id.Text = "";
             txt_Produto.Text = "";
@@ -189,7 +189,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar excluir um produto do Estoque ", "Erro ao Excluir", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar excluir um produto do estoque");
+                Log.Error(ex, "\nErro ao tentar excluir um produto do estoque");
             }
             finally
             {
@@ -242,7 +242,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar editar o produto", "Erro ao editar o produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar editar o produto");
+                Log.Error(ex, "\nErro ao tentar editar o produto");
             }
             finally
             {
@@ -278,7 +278,7 @@ namespace Aplication
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao baixar a lista de produtos", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar baixar a lista de produtos");
+                Log.Error(ex, "\nErro ao tentar baixar a lista de produtos");
             }
         }
 

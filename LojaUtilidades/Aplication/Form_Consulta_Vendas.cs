@@ -22,7 +22,7 @@ namespace Aplication
         {
             InitializeComponent();
             _vendaService = new VendasService();
-            Path = Application.StartupPath + @"\Tela-Consultar-Vendas-.txt";
+            Path = Application.StartupPath + @"\Logs\Tela-Consultar-Vendas-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
@@ -140,7 +140,7 @@ namespace Aplication
             catch(Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar preencher a tabela", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar preencher o datagridview");
+                Log.Error(ex, "\nErro ao tentar preencher o datagridview");
             }
            
         }
@@ -155,7 +155,7 @@ namespace Aplication
             catch(Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar buscar vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar buscar as vendas no banco de dados");
+                Log.Error(ex, "\nErro ao tentar buscar as vendas no banco de dados");
             }
 
         }
@@ -173,7 +173,7 @@ namespace Aplication
                 VendaEntity venda = new VendaEntity();
                 if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text))
                 {
-                    MessageBox.Show("Digite uma data ou o código da venda para continuar com a consulta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Informe pelo menos um dos filtros para continuar com a consulta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 if (!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text))
@@ -195,12 +195,17 @@ namespace Aplication
                     var vendas = _vendaService.GetByNumber(venda);
                     DataGridViewFill(vendas);
                 }
-              
+                //else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+                //{
+                //    //chmada o metodo para buscar vendas pelo nome do produto
+                //    var vendas = _vendaService.GetByProductName(txt_Produto.Text);
+                //    DataGridViewFill(vendas);
+                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar buscar vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex.InnerException, "\nErro ao tentar buscar venda no banco");
+                Log.Error(ex, "\nErro ao tentar buscar venda no banco");
             }
             
         }
