@@ -63,9 +63,8 @@ namespace Aplication
             this.panel_Menu.Controls.Add(this.btn_Produto);
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
-            this.panel_Menu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(247, 987);
+            this.panel_Menu.Size = new System.Drawing.Size(216, 740);
             this.panel_Menu.TabIndex = 0;
             // 
             // btn_Estoque_Vendas
@@ -76,10 +75,9 @@ namespace Aplication
             this.btn_Estoque_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque_Vendas.Image")));
             this.btn_Estoque_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(5, 595);
-            this.btn_Estoque_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque_Vendas.Location = new System.Drawing.Point(4, 446);
             this.btn_Estoque_Vendas.Name = "btn_Estoque_Vendas";
-            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(242, 92);
+            this.btn_Estoque_Vendas.Size = new System.Drawing.Size(212, 69);
             this.btn_Estoque_Vendas.TabIndex = 5;
             this.btn_Estoque_Vendas.Text = "Consultar Vendas";
             this.btn_Estoque_Vendas.UseVisualStyleBackColor = true;
@@ -91,9 +89,8 @@ namespace Aplication
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(241, 235);
+            this.pictureBox1.Size = new System.Drawing.Size(213, 192);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -106,10 +103,9 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 891);
-            this.btn_Sair.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Sair.Location = new System.Drawing.Point(0, 668);
             this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(247, 92);
+            this.btn_Sair.Size = new System.Drawing.Size(216, 69);
             this.btn_Sair.TabIndex = 4;
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = true;
@@ -125,10 +121,9 @@ namespace Aplication
             this.btn_Estoque.ForeColor = System.Drawing.Color.White;
             this.btn_Estoque.Image = ((System.Drawing.Image)(resources.GetObject("btn_Estoque.Image")));
             this.btn_Estoque.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Estoque.Location = new System.Drawing.Point(1, 493);
-            this.btn_Estoque.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Estoque.Location = new System.Drawing.Point(1, 370);
             this.btn_Estoque.Name = "btn_Estoque";
-            this.btn_Estoque.Size = new System.Drawing.Size(242, 92);
+            this.btn_Estoque.Size = new System.Drawing.Size(212, 69);
             this.btn_Estoque.TabIndex = 3;
             this.btn_Estoque.Text = "Estoque";
             this.btn_Estoque.UseVisualStyleBackColor = true;
@@ -144,10 +139,9 @@ namespace Aplication
             this.btn_Vendas.ForeColor = System.Drawing.Color.White;
             this.btn_Vendas.Image = ((System.Drawing.Image)(resources.GetObject("btn_Vendas.Image")));
             this.btn_Vendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Vendas.Location = new System.Drawing.Point(3, 393);
-            this.btn_Vendas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Vendas.Location = new System.Drawing.Point(3, 295);
             this.btn_Vendas.Name = "btn_Vendas";
-            this.btn_Vendas.Size = new System.Drawing.Size(243, 92);
+            this.btn_Vendas.Size = new System.Drawing.Size(213, 69);
             this.btn_Vendas.TabIndex = 2;
             this.btn_Vendas.Text = "Vendas";
             this.btn_Vendas.UseVisualStyleBackColor = true;
@@ -163,10 +157,9 @@ namespace Aplication
             this.btn_Produto.ForeColor = System.Drawing.Color.White;
             this.btn_Produto.Image = ((System.Drawing.Image)(resources.GetObject("btn_Produto.Image")));
             this.btn_Produto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Produto.Location = new System.Drawing.Point(0, 264);
-            this.btn_Produto.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_Produto.Location = new System.Drawing.Point(0, 198);
             this.btn_Produto.Name = "btn_Produto";
-            this.btn_Produto.Size = new System.Drawing.Size(247, 92);
+            this.btn_Produto.Size = new System.Drawing.Size(216, 69);
             this.btn_Produto.TabIndex = 1;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
@@ -178,9 +171,9 @@ namespace Aplication
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(669, 132);
+            this.label1.Location = new System.Drawing.Point(243, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 27);
+            this.label1.Size = new System.Drawing.Size(55, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Data";
             // 
@@ -188,9 +181,9 @@ namespace Aplication
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(669, 203);
+            this.label2.Location = new System.Drawing.Point(243, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 27);
+            this.label2.Size = new System.Drawing.Size(54, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Hora";
             // 
@@ -201,19 +194,17 @@ namespace Aplication
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(247, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(216, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1355, 66);
+            this.panel1.Size = new System.Drawing.Size(1092, 58);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(341, -1);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(289, -1);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(89, 67);
+            this.pictureBox3.Size = new System.Drawing.Size(87, 58);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
@@ -223,9 +214,9 @@ namespace Aplication
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(437, 4);
+            this.label3.Location = new System.Drawing.Point(382, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(499, 48);
+            this.label3.Size = new System.Drawing.Size(396, 38);
             this.label3.TabIndex = 7;
             this.label3.Text = "Utilidades e Cosméticos Dias";
             // 
@@ -234,10 +225,9 @@ namespace Aplication
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(278, 291);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(243, 218);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1285, 669);
+            this.pictureBox2.Size = new System.Drawing.Size(561, 502);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -245,25 +235,25 @@ namespace Aplication
             // lbl_Data
             // 
             this.lbl_Data.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Data.Location = new System.Drawing.Point(754, 131);
+            this.lbl_Data.Location = new System.Drawing.Point(304, 91);
             this.lbl_Data.Name = "lbl_Data";
-            this.lbl_Data.Size = new System.Drawing.Size(203, 38);
+            this.lbl_Data.Size = new System.Drawing.Size(178, 28);
             this.lbl_Data.TabIndex = 7;
             // 
             // lbl_Hora
             // 
             this.lbl_Hora.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Hora.Location = new System.Drawing.Point(740, 202);
+            this.lbl_Hora.Location = new System.Drawing.Point(303, 144);
             this.lbl_Hora.Name = "lbl_Hora";
-            this.lbl_Hora.Size = new System.Drawing.Size(203, 38);
+            this.lbl_Hora.Size = new System.Drawing.Size(178, 28);
             this.lbl_Hora.TabIndex = 8;
             // 
             // Form_Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1602, 987);
+            this.ClientSize = new System.Drawing.Size(1308, 740);
             this.Controls.Add(this.lbl_Hora);
             this.Controls.Add(this.lbl_Data);
             this.Controls.Add(this.pictureBox2);
@@ -272,7 +262,6 @@ namespace Aplication
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Principal";

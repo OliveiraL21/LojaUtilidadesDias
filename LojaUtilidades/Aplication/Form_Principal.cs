@@ -82,7 +82,7 @@ namespace Aplication
             {
                 lbl_Data.Text = DateTime.Today.Date.ToString();
 
-                lbl_Hora.Text = DateTime.Now.TimeOfDay.ToString(@"hh\:MM");
+                lbl_Hora.Text = DateTime.Now.TimeOfDay.ToString(@"hh\:mm");
             }
             catch (Exception ex)
             {
