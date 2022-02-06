@@ -74,7 +74,6 @@ namespace Service.Services.Venda
         //}
         public async Task<VendaEntity> PostAsync(VendaEntity venda)
         {
-
             venda.NumeroVenda = GenerateVendaNumber();
             var result = await _repository.InsertAsync(venda);
             return result;

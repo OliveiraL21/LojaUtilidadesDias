@@ -28,6 +28,7 @@ namespace Aplication
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
         private readonly MyContext _context;
+        private  VendaEntity _venda;
         private readonly string Path;
 
         public Form_Vendas()
@@ -37,6 +38,7 @@ namespace Aplication
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
             _context = new MyContext();
+            _venda = new VendaEntity();
             Path = Application.StartupPath + @"\Logs\Tela-de-Vendas-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
@@ -343,11 +345,17 @@ namespace Aplication
                             Quantidade = quantidadeDgv
                         });
                     }
+                    _venda = venda;
                     _context.ItensVendas.AttachRange(listItens);
                     _context.ItensVendas.AddRange(listItens);
                     _context.SaveChanges();
 
-                    MessageBox.Show($"Venda Finalizada com Sucesso ! ", "Venda Finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    if(MessageBox.Show($"Venda Finalizada com Sucesso", "Venda Finalizada", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        btn_Imprimir_Click(sender, e);
+                    }
+                 
                 }
                 catch (Exception ex)
                 {
@@ -355,14 +363,7 @@ namespace Aplication
                     Log.Error(ex, "\nErro ao finalizar a venda!");
 
                 }
-                finally
-                {
-                    LimparCampos();
-                    checkBox_Desconto.Checked = false;
-                    txt_Desconto.Text = "";
 
-
-                }
             }
 
         }
@@ -402,7 +403,7 @@ namespace Aplication
                 Print print = new Print();
                 produtos = GetProdutoGrid();
                 var total = txt_Total.Text.Trim('R').Trim('$');
-                print.ImprimirVenda(produtos, Convert.ToDouble(total), sender, e);
+                print.ImprimirVenda(_venda, produtos, Convert.ToDouble(total), sender, e);
             }
             catch (Exception ex)
             {

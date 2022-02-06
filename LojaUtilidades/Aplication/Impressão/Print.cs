@@ -32,7 +32,7 @@ namespace Aplication.Impressão
             x = 100;
             y = 50;
         }
-        public void ImprimirVenda(List<ProdutoEntity> produtos, double total, object sender, PrintPageEventArgs e)
+        public void ImprimirVenda(VendaEntity venda, List<ProdutoEntity> produtos, double total, object sender, PrintPageEventArgs e)
         {
             string empresa = "Cosméticos e Utilidades Dias";
             string cnpj = "Cnpj: 29.936.014/0001-01";
@@ -46,6 +46,8 @@ namespace Aplication.Impressão
             graphics.DrawString($"Data da venda: {DateTime.Now.Date.ToString("dd/MM/yyyy")}", letraMenu, pincelPreto, x + contador, y + contador2);
             contador2 += 25;
             graphics.DrawString($"Hora da venda: {DateTime.Now.ToString("HH:mm")}", letraMenu, pincelPreto, x + contador, y + contador2);
+            contador2 += 25;
+            graphics.DrawString($"Código da Venda: {venda.NumeroVenda}", letraMenu, pincelPreto, x + contador, y + contador2);
             contador2 += 25;
             graphics.DrawLine(new Pen(pincelPreto), 200, contador2 + 50, 630, contador2 + 50);
             contador2 += 10;
