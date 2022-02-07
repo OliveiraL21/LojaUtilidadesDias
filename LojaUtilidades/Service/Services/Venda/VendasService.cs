@@ -23,9 +23,14 @@ namespace Service.Services.Venda
             _repository = new VendaImplementation(new MyContext());
         }
 
-        private int GenerateVendaNumber()
+        private int GenerateVendaNumber(VendaEntity venda)
         {
             var result = _repository.GetAllNumberVenda().Last();
+            if(result == null)
+            {
+                venda.NumeroVenda = 1000;
+                return venda.NumeroVenda;
+            }
             
             int number = result.NumeroVenda;
             number += 1;
@@ -74,7 +79,7 @@ namespace Service.Services.Venda
         //}
         public async Task<VendaEntity> PostAsync(VendaEntity venda)
         {
-            venda.NumeroVenda = GenerateVendaNumber();
+            venda.NumeroVenda = GenerateVendaNumber(venda);
             var result = await _repository.InsertAsync(venda);
             return result;
         }
