@@ -351,7 +351,7 @@ namespace Aplication
                     _context.SaveChanges();
 
                     
-                    if(MessageBox.Show($"Venda Finalizada com Sucesso", "Venda Finalizada", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if(MessageBox.Show($"Venda Finalizada com Sucesso\n deseja imprimir o comprovante da venda ?", "Venda Finalizada", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         btn_Imprimir_Click(sender, e);
                     }
@@ -363,7 +363,10 @@ namespace Aplication
                     Log.Error(ex, "\nErro ao finalizar a venda!");
 
                 }
-
+                finally
+                {
+                    LimparCampos();
+                }
             }
 
         }
