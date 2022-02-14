@@ -27,7 +27,7 @@ namespace Aplication
         {
             InitializeComponent();
             _service = new ProdutoService();
-            Path = Application.StartupPath + @"\Logs\Tela-Cadastro-Produtos-";
+            Path = Application.StartupPath + @"\Logs\Tela-Cadastro-Produtos-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .WriteTo.File(Path, rollingInterval: RollingInterval.Day)
@@ -117,6 +117,15 @@ namespace Aplication
         }
         #endregion
         #region Metodos do formulário
+        private void DatagridFill(ProdutoEntity produto)
+        {
+            dgv_Produtos.Rows.Add();
+            dgv_Produtos.Rows[i].Cells[0].Value = produto.Id;
+            dgv_Produtos.Rows[i].Cells[1].Value = produto.Nome;
+            dgv_Produtos.Rows[i].Cells[2].Value = produto.Valor;
+            dgv_Produtos.Rows[i].Cells[3].Value = produto.Quantidade;
+            i++;
+        }
         private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             try
@@ -126,7 +135,6 @@ namespace Aplication
                 var quantidade = int.Parse(txt_Quantidade.Text);
                 var produto = new ProdutoEntity()
                 {
-
                     Nome = nome,
                     Valor = valor,
                     Quantidade = quantidade
@@ -137,13 +145,8 @@ namespace Aplication
                 if (result != null)
                 {
                     MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    dgv_Produtos.Rows.Add();
-                    dgv_Produtos.Rows[i].Cells[0].Value = result.Id;
-                    dgv_Produtos.Rows[i].Cells[1].Value = result.Nome;
-                    dgv_Produtos.Rows[i].Cells[2].Value = result.Valor;
-                    dgv_Produtos.Rows[i].Cells[3].Value = result.Quantidade;
-                    i++;
+                    DatagridFill(result);
+                    
                 }
                
             }
@@ -181,12 +184,9 @@ namespace Aplication
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    var consulta = await _service.Get(result.Id);
-                    dgv_Produtos.Rows[i].Cells[0].Value = consulta.Id;
-                    dgv_Produtos.Rows[i].Cells[1].Value = consulta.Nome;
-                    dgv_Produtos.Rows[i].Cells[2].Value = consulta.Valor;
-                    dgv_Produtos.Rows[i].Cells[3].Value = consulta.Quantidade;
-                    i++;
+                    
+                    DatagridFill(result);
+
                 }
 
             }
