@@ -18,10 +18,12 @@ namespace Aplication
     {
         private readonly IVendaService _vendaService;
         private readonly string Path;
+        private FilterEntity _filter;
         public Form_Consulta_Vendas()
         {
             InitializeComponent();
             _vendaService = new VendasService();
+            _filter = new FilterEntity();
             Path = Application.StartupPath + @"\Logs\Tela-Consultar-Vendas-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
@@ -144,6 +146,50 @@ namespace Aplication
             }
            
         }
+        private int SetMonth(string month)
+        {
+            var mes = 0;
+            switch (month)
+            {
+                case "Janeiro":
+                     mes = 01;
+                    break;
+                case "Fevereiro":
+                    mes = 02;
+                    break;
+                case "Março":
+                    mes = 03;
+                    break;
+                case "Abril":
+                    mes = 04;
+                    break;
+                case "Maio":
+                    mes = 05;
+                    break;
+                case "Junho":
+                    mes = 06;
+                    break;
+                case "Julho":
+                    mes = 07;
+                    break;
+                case "Agosto":
+                    mes = 08;
+                    break;
+                case "Setembro":
+                    mes = 09;
+                    break;
+                case "Outubro":
+                    mes = 10;
+                    break;
+                case "Novembro":
+                    mes = 11;
+                    break;
+                case "Dezembro":
+                    mes = 12;
+                    break;
+            }
+            return mes;
+        }
         private void btn_Consultar_Click(object sender, EventArgs e)
         {
             try
@@ -169,31 +215,42 @@ namespace Aplication
         {
             try
             {
+                txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 DatagridViewCler();
                 VendaEntity venda = new VendaEntity();
-                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text))
+                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox1.SelectedItem == null)
                 {
+                    _filter.CodigoVenda = null;
+                    _filter.DataDaVenda = null;
+                    _filter.Mes = null;
                     MessageBox.Show("Informe pelo menos um dos filtros para continuar com a consulta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+             
 
-                if (!string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text))
+                if (txt_Data_Venda.Text != "")
                 {
                     //chama o metodo para buscar vendas por data
                     txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                    _filter.DataDaVenda = Convert.ToDateTime(txt_Data_Venda.Text);
 
-
-                    venda.Data_da_Venda = Convert.ToDateTime(txt_Data_Venda.Text);
+                    venda.Data_da_Venda = (DateTime)_filter.DataDaVenda;
 
                     var vendas = _vendaService.GetByDate(venda);
                     DataGridViewFill(vendas);
                     txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 }
-                else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && !string.IsNullOrEmpty(txt_Codigo.Text))
+                else if (!string.IsNullOrEmpty(txt_Codigo.Text))
                 {
                     //chama o metodo para buscar vendas pelo numero da venda
-                    venda.NumeroVenda = Convert.ToInt32(txt_Codigo.Text);
+                    _filter.CodigoVenda = Convert.ToInt32(txt_Codigo.Text);
+                    venda.NumeroVenda = Convert.ToInt32(_filter.CodigoVenda);
                     var vendas = _vendaService.GetByNumber(venda);
                     DataGridViewFill(vendas);
+                }
+                else if(comboBox1.SelectedItem != null)
+                {
+                    _filter.Mes = comboBox1.SelectedItem.ToString();
+                    var mes = SetMonth(_filter.Mes);
                 }
                 //else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
                 //{
