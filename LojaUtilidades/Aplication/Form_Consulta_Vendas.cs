@@ -194,7 +194,7 @@ namespace Aplication
         {
             try
             {
-                DatagridViewCler();
+                DatagridViewClear();
                 IEnumerable<VendaEntity> vendas = _vendaService.GetVendas();
                 DataGridViewFill(vendas);
             }
@@ -205,10 +205,18 @@ namespace Aplication
             }
 
         }
-
-       private void DatagridViewCler()
+        private void DatagridViewClear()
+        {
+            dgv_Vendas_Consulta.Rows.Clear();
+        }
+       private void LimparCampos()
         { 
             dgv_Vendas_Consulta.Rows.Clear();
+            txt_Codigo.Text = "";
+            txt_Data_Venda.Text = "";
+            txt_Produto.Text = "";
+            comboBox1.Text = "";
+            comboBox1.SelectedItem = "";
         }
 
         private void btn_Enviar_Click(object sender, EventArgs e)
@@ -216,9 +224,9 @@ namespace Aplication
             try
             {
                 txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                DatagridViewCler();
+                DatagridViewClear();
                 VendaEntity venda = new VendaEntity();
-                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox1.SelectedItem == null)
+                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox1.SelectedItem == null && string.IsNullOrEmpty(txt_Produto.Text))
                 {
                     _filter.CodigoVenda = null;
                     _filter.DataDaVenda = null;
@@ -251,13 +259,30 @@ namespace Aplication
                 {
                     _filter.Mes = comboBox1.SelectedItem.ToString();
                     var mes = SetMonth(_filter.Mes);
+                    List<VendaEntity> lstVendas = new List<VendaEntity>();
+                    var vendas = _vendaService.GetVendas();
+                    foreach(var item in vendas)
+                    {
+                        if(item.Data_da_Venda.Month == mes)
+                        {
+                            lstVendas.Add(item);
+                        }
+                    }
+                    if(lstVendas.Count == 0 || lstVendas == null)
+                    {
+                        MessageBox.Show("Nenhuma Venda encontrada para o mês selecionado.", "Vendas não encontradas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        DataGridViewFill(lstVendas);
+                    }
                 }
-                //else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
-                //{
-                //    //chmada o metodo para buscar vendas pelo nome do produto
-                //    var vendas = _vendaService.GetByProductName(txt_Produto.Text);
-                //    DataGridViewFill(vendas);
-                //}
+                else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+                {
+                    //chmada o metodo para buscar vendas pelo nome do produto
+                    var vendas = _vendaService.GetByProductName(txt_Produto.Text);
+                    DataGridViewFill(vendas);
+                }
             }
             catch (Exception ex)
             {
@@ -269,7 +294,9 @@ namespace Aplication
 
         private void btn_Limpar_Click(object sender, EventArgs e)
         {
-            dgv_Vendas_Consulta.Rows.Clear();
+            LimparCampos();
+            
+
         }
         #endregion
     }

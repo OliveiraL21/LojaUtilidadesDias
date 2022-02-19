@@ -72,11 +72,11 @@ namespace Service.Services.Venda
             var result = _repository.GetByNumber(venda);
             return result;
         }
-        //public List<VendaEntity> GetByProductName(string produto)
-        //{
-        //    var result = _repository.GetByProductName(produto);
-        //    return result;
-        //}
+        public IEnumerable<VendaEntity> GetByProductName(string produto)
+        {
+            var result = _repository.GetByProductName(produto);
+            return result;
+        }
         public async Task<VendaEntity> PostAsync(VendaEntity venda)
         {
             venda.NumeroVenda = GenerateVendaNumber(venda);

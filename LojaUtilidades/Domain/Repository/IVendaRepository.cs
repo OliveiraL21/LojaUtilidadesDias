@@ -12,7 +12,7 @@ namespace Domain.Repository
         public IEnumerable<VendaEntity> GetVendas();
         public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
         public IEnumerable<VendaEntity> GetByNumber(VendaEntity venda);
-        //public IEnumerable<VendaEntity> GetByProductName(string produto);
+        public IEnumerable<VendaEntity> GetByProductName(string produto);
         public List<VendaEntity> GetAllNumberVenda();
     }
 }
