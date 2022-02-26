@@ -77,7 +77,7 @@ namespace Aplication
             this.dgv_Vendas_Consulta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -100,7 +100,7 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Vendas_Consulta.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Vendas_Consulta.GridColor = System.Drawing.Color.Black;
-            this.dgv_Vendas_Consulta.Location = new System.Drawing.Point(257, 231);
+            this.dgv_Vendas_Consulta.Location = new System.Drawing.Point(224, 231);
             this.dgv_Vendas_Consulta.Name = "dgv_Vendas_Consulta";
             this.dgv_Vendas_Consulta.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -117,7 +117,7 @@ namespace Aplication
             this.dgv_Vendas_Consulta.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_Vendas_Consulta.RowTemplate.Height = 25;
             this.dgv_Vendas_Consulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(1129, 506);
+            this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(692, 430);
             this.dgv_Vendas_Consulta.TabIndex = 13;
             // 
             // Cod_Venda
@@ -167,22 +167,22 @@ namespace Aplication
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.btn_Limpar);
             this.panel1.Controls.Add(this.btn_Consultar);
-            this.panel1.Location = new System.Drawing.Point(216, 0);
+            this.panel1.Location = new System.Drawing.Point(210, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1186, 55);
+            this.panel1.Size = new System.Drawing.Size(740, 55);
             this.panel1.TabIndex = 22;
             // 
             // btn_Limpar
             // 
             this.btn_Limpar.FlatAppearance.BorderSize = 0;
             this.btn_Limpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Limpar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Limpar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Limpar.ForeColor = System.Drawing.Color.White;
             this.btn_Limpar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Limpar.Image")));
             this.btn_Limpar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Limpar.Location = new System.Drawing.Point(245, 0);
+            this.btn_Limpar.Location = new System.Drawing.Point(151, 2);
             this.btn_Limpar.Name = "btn_Limpar";
-            this.btn_Limpar.Size = new System.Drawing.Size(234, 52);
+            this.btn_Limpar.Size = new System.Drawing.Size(154, 52);
             this.btn_Limpar.TabIndex = 12;
             this.btn_Limpar.Text = "Limpar Lista";
             this.btn_Limpar.UseVisualStyleBackColor = true;
@@ -192,13 +192,13 @@ namespace Aplication
             // 
             this.btn_Consultar.FlatAppearance.BorderSize = 0;
             this.btn_Consultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Consultar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Consultar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Consultar.ForeColor = System.Drawing.Color.White;
             this.btn_Consultar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Consultar.Image")));
             this.btn_Consultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Consultar.Location = new System.Drawing.Point(21, 2);
+            this.btn_Consultar.Location = new System.Drawing.Point(14, 2);
             this.btn_Consultar.Name = "btn_Consultar";
-            this.btn_Consultar.Size = new System.Drawing.Size(205, 49);
+            this.btn_Consultar.Size = new System.Drawing.Size(152, 53);
             this.btn_Consultar.TabIndex = 9;
             this.btn_Consultar.Text = "Consultar";
             this.btn_Consultar.UseVisualStyleBackColor = true;
@@ -207,27 +207,27 @@ namespace Aplication
             // Data_Da_Venda
             // 
             this.Data_Da_Venda.AutoSize = true;
-            this.Data_Da_Venda.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Data_Da_Venda.Location = new System.Drawing.Point(257, 117);
+            this.Data_Da_Venda.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Data_Da_Venda.Location = new System.Drawing.Point(237, 119);
             this.Data_Da_Venda.Name = "Data_Da_Venda";
-            this.Data_Da_Venda.Size = new System.Drawing.Size(129, 19);
+            this.Data_Da_Venda.Size = new System.Drawing.Size(107, 16);
             this.Data_Da_Venda.TabIndex = 23;
             this.Data_Da_Venda.Text = "Data da Venda";
             // 
             // lbl_Produto
             // 
             this.lbl_Produto.AutoSize = true;
-            this.lbl_Produto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Produto.Location = new System.Drawing.Point(257, 76);
+            this.lbl_Produto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_Produto.Location = new System.Drawing.Point(237, 78);
             this.lbl_Produto.Name = "lbl_Produto";
-            this.lbl_Produto.Size = new System.Drawing.Size(150, 19);
+            this.lbl_Produto.Size = new System.Drawing.Size(124, 16);
             this.lbl_Produto.TabIndex = 24;
             this.lbl_Produto.Text = "Código da Venda";
             // 
             // txt_Data_Venda
             // 
             this.txt_Data_Venda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Data_Venda.Location = new System.Drawing.Point(425, 107);
+            this.txt_Data_Venda.Location = new System.Drawing.Point(350, 113);
             this.txt_Data_Venda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Data_Venda.Mask = "00/00/0000";
             this.txt_Data_Venda.Name = "txt_Data_Venda";
@@ -239,10 +239,10 @@ namespace Aplication
             // txt_Codigo
             // 
             this.txt_Codigo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Codigo.Location = new System.Drawing.Point(425, 71);
+            this.txt_Codigo.Location = new System.Drawing.Point(367, 71);
             this.txt_Codigo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Codigo.Name = "txt_Codigo";
-            this.txt_Codigo.Size = new System.Drawing.Size(134, 29);
+            this.txt_Codigo.Size = new System.Drawing.Size(75, 29);
             this.txt_Codigo.TabIndex = 26;
             // 
             // panel_Menu
@@ -257,7 +257,7 @@ namespace Aplication
             this.panel_Menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_Menu.Location = new System.Drawing.Point(0, 0);
             this.panel_Menu.Name = "panel_Menu";
-            this.panel_Menu.Size = new System.Drawing.Size(231, 746);
+            this.panel_Menu.Size = new System.Drawing.Size(210, 683);
             this.panel_Menu.TabIndex = 27;
             // 
             // btn_Estoque_Vendas
@@ -296,9 +296,9 @@ namespace Aplication
             this.btn_Sair.ForeColor = System.Drawing.Color.White;
             this.btn_Sair.Image = ((System.Drawing.Image)(resources.GetObject("btn_Sair.Image")));
             this.btn_Sair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Sair.Location = new System.Drawing.Point(0, 668);
+            this.btn_Sair.Location = new System.Drawing.Point(3, 626);
             this.btn_Sair.Name = "btn_Sair";
-            this.btn_Sair.Size = new System.Drawing.Size(228, 69);
+            this.btn_Sair.Size = new System.Drawing.Size(211, 57);
             this.btn_Sair.TabIndex = 4;
             this.btn_Sair.Text = "Sair";
             this.btn_Sair.UseVisualStyleBackColor = true;
@@ -364,11 +364,11 @@ namespace Aplication
             // 
             this.btn_Enviar.BackColor = System.Drawing.Color.DarkBlue;
             this.btn_Enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Enviar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Enviar.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Enviar.ForeColor = System.Drawing.Color.White;
-            this.btn_Enviar.Location = new System.Drawing.Point(425, 150);
+            this.btn_Enviar.Location = new System.Drawing.Point(350, 162);
             this.btn_Enviar.Name = "btn_Enviar";
-            this.btn_Enviar.Size = new System.Drawing.Size(119, 41);
+            this.btn_Enviar.Size = new System.Drawing.Size(92, 35);
             this.btn_Enviar.TabIndex = 28;
             this.btn_Enviar.Text = "Enviar";
             this.btn_Enviar.UseVisualStyleBackColor = false;
@@ -377,29 +377,29 @@ namespace Aplication
             // txt_Produto
             // 
             this.txt_Produto.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Produto.Location = new System.Drawing.Point(656, 71);
+            this.txt_Produto.Location = new System.Drawing.Point(510, 71);
             this.txt_Produto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_Produto.Name = "txt_Produto";
-            this.txt_Produto.Size = new System.Drawing.Size(250, 29);
+            this.txt_Produto.Size = new System.Drawing.Size(224, 29);
             this.txt_Produto.TabIndex = 29;
             // 
             // label_Produto
             // 
             this.label_Produto.AutoSize = true;
-            this.label_Produto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Produto.Location = new System.Drawing.Point(582, 75);
+            this.label_Produto.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Produto.Location = new System.Drawing.Point(448, 78);
             this.label_Produto.Name = "label_Produto";
-            this.label_Produto.Size = new System.Drawing.Size(68, 19);
+            this.label_Produto.Size = new System.Drawing.Size(56, 16);
             this.label_Produto.TabIndex = 30;
             this.label_Produto.Text = "Produto";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(586, 117);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(490, 119);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 19);
+            this.label1.Size = new System.Drawing.Size(33, 16);
             this.label1.TabIndex = 31;
             this.label1.Text = "Mês";
             // 
@@ -421,7 +421,7 @@ namespace Aplication
             "Outubro",
             "Novembro",
             "Dezembro"});
-            this.comboBox1.Location = new System.Drawing.Point(656, 113);
+            this.comboBox1.Location = new System.Drawing.Point(529, 116);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(134, 29);
@@ -432,7 +432,7 @@ namespace Aplication
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1402, 746);
+            this.ClientSize = new System.Drawing.Size(948, 683);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_Produto);

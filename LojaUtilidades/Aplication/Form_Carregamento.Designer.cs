@@ -47,7 +47,7 @@ namespace Aplication
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(829, 336);
+            this.pictureBox1.Size = new System.Drawing.Size(685, 336);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -57,7 +57,7 @@ namespace Aplication
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(4, 336);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(829, 62);
+            this.panel1.Size = new System.Drawing.Size(685, 62);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -65,7 +65,7 @@ namespace Aplication
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(316, 4);
+            this.label1.Location = new System.Drawing.Point(244, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 37);
             this.label1.TabIndex = 0;
@@ -76,7 +76,7 @@ namespace Aplication
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(0, 429);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(833, 25);
+            this.panel2.Size = new System.Drawing.Size(689, 25);
             this.panel2.TabIndex = 2;
             // 
             // panel3
@@ -98,7 +98,7 @@ namespace Aplication
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(0)))), ((int)(((byte)(39)))));
-            this.ClientSize = new System.Drawing.Size(834, 454);
+            this.ClientSize = new System.Drawing.Size(689, 454);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
