@@ -313,7 +313,7 @@ namespace Aplication
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_Produtos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_Produtos.GridColor = System.Drawing.Color.Black;
-            this.dgv_Produtos.Location = new System.Drawing.Point(386, 59);
+            this.dgv_Produtos.Location = new System.Drawing.Point(386, 69);
             this.dgv_Produtos.Name = "dgv_Produtos";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;

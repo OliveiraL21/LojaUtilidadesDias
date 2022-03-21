@@ -77,6 +77,9 @@ namespace Aplication
             this.btn_Produto.TabIndex = 6;
             this.btn_Produto.Text = "Produtos";
             this.btn_Produto.UseVisualStyleBackColor = true;
+            this.btn_Produto.Click += new System.EventHandler(this.btn_Produto_Click);
+            this.btn_Produto.MouseLeave += new System.EventHandler(this.btn_Produto_MouseLeave);
+            this.btn_Produto.MouseHover += new System.EventHandler(this.btn_Produto_MouseHover);
             // 
             // btn_Estoque_Vendas
             // 
@@ -213,6 +216,7 @@ namespace Aplication
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Principal";
