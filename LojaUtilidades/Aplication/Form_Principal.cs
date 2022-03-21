@@ -76,23 +76,7 @@ namespace Aplication
         }
         #endregion
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                lbl_Data.Text = DateTime.Today.Date.ToString();
-
-                lbl_Hora.Text = DateTime.Now.TimeOfDay.ToString(@"hh\:mm");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao tentar abrir a aplicação", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex, "\nErro ao carregar a aplicação");
-                
-            }
-         
-
-        }
+       
 
         private void btn_Produto_Click(object sender, EventArgs e)
         {
@@ -127,6 +111,5 @@ namespace Aplication
         {
             btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
         }
-
     }
 }
