@@ -80,26 +80,30 @@ namespace Aplication
 
         private void btn_Produto_Click(object sender, EventArgs e)
         {
+           
             Form_Produtos form_Produtos = new Form_Produtos();
-            form_Produtos.ShowDialog();
+            form_Produtos.Show();
         }
 
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
+           
             Form_Vendas form_Vendas = new Form_Vendas();
-            form_Vendas.ShowDialog();
+            form_Vendas.Show();
         }
 
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
+            
             Form_Estoque form_Estoque = new Form_Estoque();
-            form_Estoque.ShowDialog();
+            form_Estoque.Show();
         }
 
         private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
         {
+            
             Form_Consulta_Vendas form_estoque_vendas = new Form_Consulta_Vendas();
-            form_estoque_vendas.ShowDialog();
+            form_estoque_vendas.Show();
         }
 
         private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
@@ -110,6 +114,11 @@ namespace Aplication
         private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
         {
             btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
+
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

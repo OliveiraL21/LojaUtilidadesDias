@@ -25,17 +25,26 @@ namespace Service.Services.Venda
 
         private int GenerateVendaNumber(VendaEntity venda)
         {
-            var result = _repository.GetAllNumberVenda().Last();
-            if(result == null)
+            try
             {
-                venda.NumeroVenda = 1000;
-                return venda.NumeroVenda;
+                var result = _repository.GetAllNumberVenda();
+                if (result == null || result.Count == 0)
+                {
+                    venda.NumeroVenda = 1000;
+                    return venda.NumeroVenda;
+                }
+                var lastNumber = result.Last();
+                int number = lastNumber.NumeroVenda;
+                number += 1;
+                return number;
+
             }
-            
-            int number = result.NumeroVenda;
-            number += 1;
-            return number;
-            
+            catch 
+            {
+                throw ;
+            }
+
+
         }
         public async Task<bool> Delete(int id)
         {

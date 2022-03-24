@@ -68,6 +68,7 @@ namespace Aplication
             this.label_Desconto = new System.Windows.Forms.Label();
             this.txt_Desconto = new System.Windows.Forms.TextBox();
             this.label_Porcentagem = new System.Windows.Forms.Label();
+            this.btn_Minimizar = new System.Windows.Forms.Button();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas)).BeginInit();
@@ -352,6 +353,7 @@ namespace Aplication
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.btn_Minimizar);
             this.panel1.Controls.Add(this.btn_Deletar);
             this.panel1.Controls.Add(this.btn_Limpar);
             this.panel1.Controls.Add(this.btn_Consultar);
@@ -371,7 +373,7 @@ namespace Aplication
             this.btn_Deletar.ForeColor = System.Drawing.Color.White;
             this.btn_Deletar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Deletar.Image")));
             this.btn_Deletar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Deletar.Location = new System.Drawing.Point(625, 0);
+            this.btn_Deletar.Location = new System.Drawing.Point(599, 2);
             this.btn_Deletar.Name = "btn_Deletar";
             this.btn_Deletar.Size = new System.Drawing.Size(110, 52);
             this.btn_Deletar.TabIndex = 13;
@@ -387,9 +389,9 @@ namespace Aplication
             this.btn_Limpar.ForeColor = System.Drawing.Color.White;
             this.btn_Limpar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Limpar.Image")));
             this.btn_Limpar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Limpar.Location = new System.Drawing.Point(463, -2);
+            this.btn_Limpar.Location = new System.Drawing.Point(448, 0);
             this.btn_Limpar.Name = "btn_Limpar";
-            this.btn_Limpar.Size = new System.Drawing.Size(148, 56);
+            this.btn_Limpar.Size = new System.Drawing.Size(138, 57);
             this.btn_Limpar.TabIndex = 12;
             this.btn_Limpar.Text = "Limpar Lista";
             this.btn_Limpar.UseVisualStyleBackColor = true;
@@ -405,7 +407,7 @@ namespace Aplication
             this.btn_Consultar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Consultar.Location = new System.Drawing.Point(6, 3);
             this.btn_Consultar.Name = "btn_Consultar";
-            this.btn_Consultar.Size = new System.Drawing.Size(128, 52);
+            this.btn_Consultar.Size = new System.Drawing.Size(118, 52);
             this.btn_Consultar.TabIndex = 9;
             this.btn_Consultar.Text = "Consultar";
             this.btn_Consultar.UseVisualStyleBackColor = true;
@@ -419,7 +421,7 @@ namespace Aplication
             this.btn_Finalizar_Venda.ForeColor = System.Drawing.Color.White;
             this.btn_Finalizar_Venda.Image = ((System.Drawing.Image)(resources.GetObject("btn_Finalizar_Venda.Image")));
             this.btn_Finalizar_Venda.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Finalizar_Venda.Location = new System.Drawing.Point(289, 2);
+            this.btn_Finalizar_Venda.Location = new System.Drawing.Point(273, 2);
             this.btn_Finalizar_Venda.Name = "btn_Finalizar_Venda";
             this.btn_Finalizar_Venda.Size = new System.Drawing.Size(169, 52);
             this.btn_Finalizar_Venda.TabIndex = 11;
@@ -435,7 +437,7 @@ namespace Aplication
             this.btn_Imprimir.ForeColor = System.Drawing.Color.White;
             this.btn_Imprimir.Image = ((System.Drawing.Image)(resources.GetObject("btn_Imprimir.Image")));
             this.btn_Imprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Imprimir.Location = new System.Drawing.Point(165, 3);
+            this.btn_Imprimir.Location = new System.Drawing.Point(149, 3);
             this.btn_Imprimir.Name = "btn_Imprimir";
             this.btn_Imprimir.Size = new System.Drawing.Size(118, 52);
             this.btn_Imprimir.TabIndex = 10;
@@ -504,6 +506,17 @@ namespace Aplication
             this.label_Porcentagem.TabIndex = 25;
             this.label_Porcentagem.Text = "%";
             this.label_Porcentagem.Visible = false;
+            // 
+            // btn_Minimizar
+            // 
+            this.btn_Minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Minimizar.Image = global::Utilidades_e_Cosmeticos_Dias.Properties.Resources.minimizar;
+            this.btn_Minimizar.Location = new System.Drawing.Point(723, 11);
+            this.btn_Minimizar.Name = "btn_Minimizar";
+            this.btn_Minimizar.Size = new System.Drawing.Size(31, 31);
+            this.btn_Minimizar.TabIndex = 27;
+            this.btn_Minimizar.UseVisualStyleBackColor = true;
+            this.btn_Minimizar.Click += new System.EventHandler(this.btn_Minimizar_Click);
             // 
             // Form_Vendas
             // 
@@ -576,5 +589,6 @@ namespace Aplication
         private System.Windows.Forms.Label label_Desconto;
         private System.Windows.Forms.TextBox txt_Desconto;
         private System.Windows.Forms.Label label_Porcentagem;
+        private System.Windows.Forms.Button btn_Minimizar;
     }
 }

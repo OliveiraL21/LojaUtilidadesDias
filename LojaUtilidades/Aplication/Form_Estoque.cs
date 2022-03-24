@@ -84,8 +84,8 @@ namespace Aplication
         private void btn_Produto_Click(object sender, EventArgs e)
         {
             Form_Produtos form_Produtos = new Form_Produtos();
-            form_Produtos.ShowDialog();
-            Close();
+            form_Produtos.Show();
+            
         }
 
         private void btn_Sair_Click(object sender, EventArgs e)
@@ -96,8 +96,8 @@ namespace Aplication
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
             Form_Vendas form_Vendas = new Form_Vendas();
-            form_Vendas.ShowDialog();
-            Close();
+            form_Vendas.Show();
+           
         }
 
         private void btn_Estoque_Click(object sender, EventArgs e)
@@ -108,8 +108,8 @@ namespace Aplication
         private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
         {
             Form_Consulta_Vendas form_Consulta_Vendas = new Form_Consulta_Vendas();
-            form_Consulta_Vendas.ShowDialog();
-            Close();
+            form_Consulta_Vendas.Show();
+            
         }
         #endregion
         #region Metodos do formulário
@@ -286,8 +286,12 @@ namespace Aplication
         {
             AtualizarItensGrid();
         }
+
         #endregion
 
-
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

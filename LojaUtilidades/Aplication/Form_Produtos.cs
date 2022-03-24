@@ -95,15 +95,15 @@ namespace Aplication
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
             Form_Estoque form_Estoque = new Form_Estoque();
-            form_Estoque.ShowDialog();
-            Close();
+            form_Estoque.Show();
+          
         }
 
         private void btn_Vendas_Click(object sender, EventArgs e)
         {
             Form_Vendas form_Vendas = new Form_Vendas();
-            form_Vendas.ShowDialog();
-            Close();
+            form_Vendas.Show();
+            
         }
 
         private void btn_Produto_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace Aplication
         private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
         {
             Form_Consulta_Vendas form_Consulta_Venda = new Form_Consulta_Vendas();
-            form_Consulta_Venda.ShowDialog();
+            form_Consulta_Venda.Show();
         }
         #endregion
         #region Metodos do formulário
@@ -250,5 +250,9 @@ namespace Aplication
         }
         #endregion
 
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

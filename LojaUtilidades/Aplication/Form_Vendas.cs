@@ -89,8 +89,8 @@ namespace Aplication
         private void btn_Produto_Click(object sender, EventArgs e)
         {
             Form_Produtos form_Produtos = new();
-            form_Produtos.ShowDialog();
-            Close();
+            form_Produtos.Show();
+           
         }
 
         private void btn_Sair_Click(object sender, EventArgs e)
@@ -111,16 +111,15 @@ namespace Aplication
 
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
-            Close();
             Form_Estoque form_Estoque = new Form_Estoque();
-            form_Estoque.ShowDialog();
+            form_Estoque.Show();
 
         }
 
         private void btn_Estoque_Vendas_Click(object sender, EventArgs e)
         {
             Form_Consulta_Vendas consulta_Vendas = new Form_Consulta_Vendas();
-            consulta_Vendas.ShowDialog();
+            consulta_Vendas.Show();
         }
 
         private void btn_Vendas_Click(object sender, EventArgs e)
@@ -434,5 +433,10 @@ namespace Aplication
 
         }
         #endregion
+
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
