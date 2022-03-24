@@ -24,7 +24,14 @@ namespace Data.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=localhost;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=lucas123", new MySqlServerVersion(new Version(8, 0, 26)));
+            optionsBuilder.UseMySql("Server=127.0.0.1;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=lucas123; SSL Mode=None", new MySqlServerVersion(new Version(8, 0, 28)),
+            option => option.EnableRetryOnFailure(
+                maxRetryCount: 3,
+                maxRetryDelay: TimeSpan.FromSeconds(20),
+                errorNumbersToAdd: null
+                ));
+            //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Loja_DiasDb;Trusted_Connection=true;");
+
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
