@@ -15,7 +15,7 @@ namespace Data.Mapeamento
         {
             builder.ToTable("Venda");
             builder.HasKey(v => v.Id);
-            builder.HasIndex(v => v.NumeroVenda).IsUnique();
+            builder.HasIndex(v => v.Codigo).IsUnique();
             builder.Property(v => v.Data_da_Venda);
             builder.Property(v => v.Valor).IsRequired();
 

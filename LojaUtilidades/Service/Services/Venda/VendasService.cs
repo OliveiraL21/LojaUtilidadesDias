@@ -30,11 +30,11 @@ namespace Service.Services.Venda
                 var result = _repository.GetAllNumberVenda();
                 if (result == null || result.Count == 0)
                 {
-                    venda.NumeroVenda = 1000;
-                    return venda.NumeroVenda;
+                    venda.Codigo = 1000;
+                    return venda.Codigo;
                 }
                 var lastNumber = result.Last();
-                int number = lastNumber.NumeroVenda;
+                int number = lastNumber.Codigo;
                 number += 1;
                 return number;
 
@@ -88,7 +88,7 @@ namespace Service.Services.Venda
         }
         public async Task<Domain.Entidades.Venda> PostAsync(Domain.Entidades.Venda venda)
         {
-            venda.NumeroVenda = GenerateVendaNumber(venda);
+            venda.Codigo = GenerateVendaNumber(venda);
             var result = await _repository.InsertAsync(venda);
             return result;
         }

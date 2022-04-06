@@ -39,7 +39,7 @@ namespace Data.Implementation
         public IEnumerable<Venda> GetByNumber(Venda venda)
         {
             var result = _dataSet.AsNoTracking().Include(v => v.ItensVenda)
-                                 .ThenInclude(it => it.Produto).Where(v => v.NumeroVenda == venda.NumeroVenda).ToList();
+                                 .ThenInclude(it => it.Produto).Where(v => v.Codigo == venda.Codigo).ToList();
 
             return result;
         }

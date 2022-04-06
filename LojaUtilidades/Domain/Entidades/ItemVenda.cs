@@ -13,5 +13,19 @@ namespace Domain.Entidades
         public Produto Produto { get; set; }
         public int VendaId { get; set; }
         public Venda Venda { get; set; }
+
+        public ItemVenda()
+        {
+
+        }
+
+        public ItemVenda(int quantidade, Produto produto, Venda venda)
+        {
+            this.Quantidade = quantidade;
+            this.Produto = produto;
+            this.Venda = venda;
+        }
     }
+
+
 }

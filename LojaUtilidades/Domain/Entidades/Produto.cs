@@ -19,7 +19,9 @@ namespace Domain.Entidades
         }
         public Produto(string nome, double valor, int quantidade)
         {
-
+            this.Nome = nome;
+            this.Valor = valor;
+            this.Quantidade = quantidade;
         }
 
     }

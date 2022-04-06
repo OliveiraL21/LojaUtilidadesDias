@@ -71,10 +71,10 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Data_da_Venda")
+                    b.Property<DateTime>("Data")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<TimeSpan>("Hora_Venda")
+                    b.Property<TimeSpan>("Hora")
                         .HasColumnType("time(6)");
 
                     b.Property<double>("Valor")

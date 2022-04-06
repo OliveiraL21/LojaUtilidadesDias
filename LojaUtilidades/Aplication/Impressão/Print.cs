@@ -47,7 +47,7 @@ namespace Aplication.Impressão
             contador2 += 25;
             graphics.DrawString($"Hora da venda: {DateTime.Now.ToString("HH:mm")}", letraMenu, pincelPreto, x + contador, y + contador2);
             contador2 += 25;
-            graphics.DrawString($"Código da Venda: {venda.NumeroVenda}", letraMenu, pincelPreto, x + contador, y + contador2);
+            graphics.DrawString($"Código da Venda: {venda.Codigo}", letraMenu, pincelPreto, x + contador, y + contador2);
             contador2 += 25;
             graphics.DrawLine(new Pen(pincelPreto), 200, contador2 + 50, 630, contador2 + 50);
             contador2 += 10;

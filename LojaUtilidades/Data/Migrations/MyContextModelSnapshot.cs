@@ -70,13 +70,13 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Data_da_Venda")
+                    b.Property<DateTime>("Data")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<TimeSpan>("Hora_Venda")
+                    b.Property<TimeSpan>("Hora")
                         .HasColumnType("time(6)");
 
-                    b.Property<int>("NumeroVenda")
+                    b.Property<int>("Codigo")
                         .HasColumnType("int");
 
                     b.Property<double>("Valor")
@@ -84,7 +84,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NumeroVenda")
+                    b.HasIndex("Codigo")
                         .IsUnique();
 
                     b.ToTable("Venda");

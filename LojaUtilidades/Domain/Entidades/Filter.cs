@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Domain.Entidades
 {
-    public class FilterEntity
+    public class Filter
     {
-        public int? CodigoVenda { get; set; }
-        public DateTime? DataDaVenda { get; set; }
-        public string? Mes { get; set; }
+        //Representa o codigo de uma venda
+        public int? Codigo { get; set; }
+        public DateTime? Data { get; set; }
+        public string Mes { get; set; }
     }
 }

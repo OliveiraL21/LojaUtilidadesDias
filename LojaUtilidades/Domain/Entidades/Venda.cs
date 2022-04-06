@@ -7,7 +7,7 @@ namespace Domain.Entidades
     public class Venda : BaseEntity
     {
        
-        public int NumeroVenda { get; set; }
+        public int Codigo { get; set; }
         public DateTime Data_da_Venda { get; set; }
         public TimeSpan Hora_Venda { get; set; }
         public double Valor { get; set; }

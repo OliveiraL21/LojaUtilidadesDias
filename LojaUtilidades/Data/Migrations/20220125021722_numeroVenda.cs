@@ -9,7 +9,7 @@ namespace Data.Migrations
             
 
             migrationBuilder.AddColumn<int>(
-                name: "NumeroVenda",
+                name: "Codigo",
                 table: "Venda",
                 type: "int",
                 nullable: false,
@@ -18,7 +18,7 @@ namespace Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Venda_NumeroVenda",
                 table: "Venda",
-                column: "NumeroVenda",
+                column: "Codigo",
                 unique: true);
 
            
@@ -33,7 +33,7 @@ namespace Data.Migrations
            
 
             migrationBuilder.DropColumn(
-                name: "NumeroVenda",
+                name: "Codigo",
                 table: "Venda");
 
            

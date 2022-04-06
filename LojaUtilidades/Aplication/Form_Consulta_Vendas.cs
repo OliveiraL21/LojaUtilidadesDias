@@ -18,12 +18,12 @@ namespace Aplication
     {
         private readonly IVendaService _vendaService;
         private readonly string Path;
-        private FilterEntity _filter;
+        private readonly Filter _filter;
         public Form_Consulta_Vendas()
         {
             InitializeComponent();
             _vendaService = new VendasService();
-            _filter = new FilterEntity();
+            _filter = new Filter();
             Path = Application.StartupPath + @"\Logs\Tela-Consultar-Vendas-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
@@ -129,7 +129,7 @@ namespace Aplication
                     foreach (var item in Venda.ItensVenda)
                     {
                         dgv_Vendas_Consulta.Rows.Add();
-                        dgv_Vendas_Consulta.Rows[index].Cells[0].Value = Venda.NumeroVenda;
+                        dgv_Vendas_Consulta.Rows[index].Cells[0].Value = Venda.Codigo;
                         dgv_Vendas_Consulta.Rows[index].Cells[1].Value = item.Produto.Nome;
                         dgv_Vendas_Consulta.Rows[index].Cells[2].Value = item.Quantidade;
                         dgv_Vendas_Consulta.Rows[index].Cells[3].Value = Venda.Valor;
@@ -228,8 +228,8 @@ namespace Aplication
                 Venda venda = new Venda();
                 if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox1.SelectedItem == null && string.IsNullOrEmpty(txt_Produto.Text))
                 {
-                    _filter.CodigoVenda = null;
-                    _filter.DataDaVenda = null;
+                    _filter.Codigo = null;
+                    _filter.Data = null;
                     _filter.Mes = null;
                     MessageBox.Show("Informe pelo menos um dos filtros para continuar com a consulta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -239,9 +239,9 @@ namespace Aplication
                 {
                     //chama o metodo para buscar vendas por data
                     txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                    _filter.DataDaVenda = Convert.ToDateTime(txt_Data_Venda.Text);
+                    _filter.Data = Convert.ToDateTime(txt_Data_Venda.Text);
 
-                    venda.Data_da_Venda = (DateTime)_filter.DataDaVenda;
+                    venda.Data_da_Venda = (DateTime)_filter.Data;
 
                     var vendas = _vendaService.GetByDate(venda);
                     DataGridViewFill(vendas);
@@ -250,8 +250,8 @@ namespace Aplication
                 else if (!string.IsNullOrEmpty(txt_Codigo.Text))
                 {
                     //chama o metodo para buscar vendas pelo numero da venda
-                    _filter.CodigoVenda = Convert.ToInt32(txt_Codigo.Text);
-                    venda.NumeroVenda = Convert.ToInt32(_filter.CodigoVenda);
+                    _filter.Codigo = Convert.ToInt32(txt_Codigo.Text);
+                    venda.Codigo = Convert.ToInt32(_filter.Codigo);
                     var vendas = _vendaService.GetByNumber(venda);
                     DataGridViewFill(vendas);
                 }
