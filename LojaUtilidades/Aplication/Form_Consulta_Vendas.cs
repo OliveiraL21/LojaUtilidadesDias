@@ -116,7 +116,7 @@ namespace Aplication
         #endregion
         #region Metodos do formulário
 
-        private void DataGridViewFill(IEnumerable<VendaEntity> vendas)
+        private void DataGridViewFill(IEnumerable<Venda> vendas)
         {
             try
             {
@@ -195,7 +195,7 @@ namespace Aplication
             try
             {
                 DatagridViewClear();
-                IEnumerable<VendaEntity> vendas = _vendaService.GetVendas();
+                IEnumerable<Venda> vendas = _vendaService.GetVendas();
                 DataGridViewFill(vendas);
             }
             catch(Exception ex)
@@ -225,7 +225,7 @@ namespace Aplication
             {
                 txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 DatagridViewClear();
-                VendaEntity venda = new VendaEntity();
+                Venda venda = new Venda();
                 if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox1.SelectedItem == null && string.IsNullOrEmpty(txt_Produto.Text))
                 {
                     _filter.CodigoVenda = null;
@@ -259,7 +259,7 @@ namespace Aplication
                 {
                     _filter.Mes = comboBox1.SelectedItem.ToString();
                     var mes = SetMonth(_filter.Mes);
-                    List<VendaEntity> lstVendas = new List<VendaEntity>();
+                    List<Venda> lstVendas = new List<Venda>();
                     var vendas = _vendaService.GetVendas();
                     foreach(var item in vendas)
                     {

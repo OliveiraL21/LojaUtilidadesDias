@@ -115,9 +115,13 @@ namespace Aplication
             Form_Consulta_Vendas form_Consulta_Venda = new Form_Consulta_Vendas();
             form_Consulta_Venda.Show();
         }
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
         #endregion
         #region Metodos do formulário
-        private void DatagridFill(ProdutoEntity produto)
+        private void DatagridFill(Produto produto)
         {
             dgv_Produtos.Rows.Add();
             dgv_Produtos.Rows[i].Cells[0].Value = produto.Id;
@@ -130,23 +134,13 @@ namespace Aplication
         {
             try
             {
-                var nome = txt_Produto.Text;
-                var valor = double.Parse(txt_Valor.Text);
-                var quantidade = int.Parse(txt_Quantidade.Text);
-                var produto = new ProdutoEntity()
-                {
-                    Nome = nome,
-                    Valor = valor,
-                    Quantidade = quantidade
-                };
-
+                Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
                 var result = await _service.Post(produto);
 
                 if (result != null)
                 {
                     MessageBox.Show("Produto Cadastrado com Sucesso !", "Produto Cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DatagridFill(result);
-                    
                 }
                
             }
@@ -168,25 +162,12 @@ namespace Aplication
             
             try
             {
-                var id = int.Parse(txt_Id.Text);
-                var nome = txt_Produto.Text;
-                var valor = double.Parse(txt_Valor.Text);
-                var quantidade = int.Parse(txt_Quantidade.Text);
-                var produto = new ProdutoEntity()
-                {
-                    Id = id,
-                    Nome = nome,
-                    Valor = valor,
-                    Quantidade = quantidade
-                };
-
+                Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
                 var result = await _service.Put(produto);
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
                     DatagridFill(result);
-
                 }
 
             }
@@ -250,9 +231,6 @@ namespace Aplication
         }
         #endregion
 
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+       
     }
 }

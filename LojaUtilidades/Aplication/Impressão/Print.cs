@@ -32,7 +32,7 @@ namespace Aplication.Impressão
             x = 100;
             y = 50;
         }
-        public void ImprimirVenda(VendaEntity venda, List<ProdutoEntity> produtos, double total, object sender, PrintPageEventArgs e)
+        public void ImprimirVenda(Venda venda, List<Produto> produtos, double total, object sender, PrintPageEventArgs e)
         {
             string empresa = "Cosméticos e Utilidades Dias";
             string cnpj = "Cnpj: 29.936.014/0001-01";

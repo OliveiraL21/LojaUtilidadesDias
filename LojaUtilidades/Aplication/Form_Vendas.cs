@@ -28,7 +28,7 @@ namespace Aplication
         private readonly IVendaService _vendaService;
         private readonly IITemVendaService _itemService;
         private readonly MyContext _context;
-        private  VendaEntity _venda;
+        private  Venda _venda;
         private readonly string Path;
 
         public Form_Vendas()
@@ -38,7 +38,7 @@ namespace Aplication
             _vendaService = new VendasService();
             _itemService = new ItemsVendasService();
             _context = new MyContext();
-            _venda = new VendaEntity();
+            _venda = new Venda();
             Path = Application.StartupPath + @"\Logs\Tela-de-Vendas-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
@@ -129,15 +129,15 @@ namespace Aplication
         #endregion
 
         #region Funções Gerais
-        private List<ProdutoEntity> GetProdutoGrid()
+        private List<Produto> GetProdutoGrid()
         {
 
             try
             {
-                List<ProdutoEntity> produtos = new List<ProdutoEntity>();
+                List<Produto> produtos = new List<Produto>();
                 for (int contador = 0; contador < dgv_Vendas.Rows.Count; contador++)
                 {
-                    var produto = new ProdutoEntity()
+                    var produto = new Produto()
                     {
                         Id = Convert.ToInt32(dgv_Vendas.Rows[contador].Cells[0].Value),
                         Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString(),
@@ -307,7 +307,7 @@ namespace Aplication
 
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
-            List<ItemVendaEntity> listItens = new List<ItemVendaEntity>();
+            List<ItemVenda> listItens = new List<ItemVenda>();
             if (txt_Total.Text == "")
             {
                 MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -317,7 +317,7 @@ namespace Aplication
             {
                 try
                 {
-                    VendaEntity vendaObj = new VendaEntity()
+                    Venda vendaObj = new Venda()
                     {
                         Data_da_Venda = DateTime.Now.Date,
                         Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
@@ -335,7 +335,7 @@ namespace Aplication
                         await _produtoService.Put(result);
 
 
-                        listItens.Add(new ItemVendaEntity()
+                        listItens.Add(new ItemVenda()
                         {
                             ProdutoId = result.Id,
                             Produto = result,
@@ -401,7 +401,7 @@ namespace Aplication
         {
             try
             {
-                List<ProdutoEntity> produtos;
+                List<Produto> produtos;
                 Print print = new Print();
                 produtos = GetProdutoGrid();
                 var total = txt_Total.Text.Trim('R').Trim('$');

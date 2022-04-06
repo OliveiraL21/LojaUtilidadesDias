@@ -222,7 +222,7 @@ namespace Aplication
             var nome = txt_Produto.Text;
             var valor = double.Parse(txt_Valor.Text);
             var quantidade = int.Parse(txt_Quantidade.Text);
-            var produto = new ProdutoEntity()
+            var produto = new Produto()
             {
                 Id = id,
                 Nome = nome,
