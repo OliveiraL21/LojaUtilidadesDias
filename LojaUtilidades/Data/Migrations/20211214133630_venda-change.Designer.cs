@@ -19,7 +19,7 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.11");
 
-            modelBuilder.Entity("Domain.Entidades.ItemVendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.ItemVenda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace Data.Migrations
                     b.ToTable("ItemVenda");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.ProdutoEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,7 +65,7 @@ namespace Data.Migrations
                     b.ToTable("Produto");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.VendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.Venda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -85,15 +85,15 @@ namespace Data.Migrations
                     b.ToTable("Venda");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.ItemVendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.ItemVenda", b =>
                 {
-                    b.HasOne("Domain.Entidades.ProdutoEntity", "Produto")
+                    b.HasOne("Domain.Entidades.Produto", "Produto")
                         .WithMany()
                         .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entidades.VendaEntity", "Venda")
+                    b.HasOne("Domain.Entidades.Venda", "Venda")
                         .WithMany("ItensVenda")
                         .HasForeignKey("VendaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -104,7 +104,7 @@ namespace Data.Migrations
                     b.Navigation("Venda");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.VendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.Venda", b =>
                 {
                     b.Navigation("ItensVenda");
                 });

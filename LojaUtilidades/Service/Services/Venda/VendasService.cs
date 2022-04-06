@@ -23,7 +23,7 @@ namespace Service.Services.Venda
             _repository = new VendaImplementation(new MyContext());
         }
 
-        private int GenerateVendaNumber(VendaEntity venda)
+        private int GenerateVendaNumber(Domain.Entidades.Venda venda)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace Service.Services.Venda
             return await _repository.DeleteAsync(id);
         }
 
-        public async Task<IEnumerable<VendaEntity>> GetAllAsync()
+        public async Task<IEnumerable<Domain.Entidades.Venda>> GetAllAsync()
         {
             var result = await _repository.SelectAllAsynck();
             return result;
@@ -59,41 +59,41 @@ namespace Service.Services.Venda
         }
 
 
-        public async Task<VendaEntity> GetAsync(int id)
+        public async Task<Domain.Entidades.Venda> GetAsync(int id)
         {
             var result = await _repository.SelectAsync(id);
             return result;
         }
 
-        public IEnumerable<VendaEntity> GetVendas()
+        public IEnumerable<Domain.Entidades.Venda> GetVendas()
         {
             var result =  _repository.GetVendas();
             return result;
         }
 
-        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
+        public IEnumerable<Domain.Entidades.Venda> GetByDate(Domain.Entidades.Venda venda)
         {
             var result = _repository.GetByDate(venda);
             return result;
         }
-        public IEnumerable<VendaEntity> GetByNumber(VendaEntity venda)
+        public IEnumerable<Domain.Entidades.Venda> GetByNumber(Domain.Entidades.Venda venda)
         {
             var result = _repository.GetByNumber(venda);
             return result;
         }
-        public IEnumerable<VendaEntity> GetByProductName(string produto)
+        public IEnumerable<Domain.Entidades.Venda> GetByProductName(string produto)
         {
             var result = _repository.GetByProductName(produto);
             return result;
         }
-        public async Task<VendaEntity> PostAsync(VendaEntity venda)
+        public async Task<Domain.Entidades.Venda> PostAsync(Domain.Entidades.Venda venda)
         {
             venda.NumeroVenda = GenerateVendaNumber(venda);
             var result = await _repository.InsertAsync(venda);
             return result;
         }
 
-        public async Task<VendaEntity> PutAsync(VendaEntity venda)
+        public async Task<Domain.Entidades.Venda> PutAsync(Domain.Entidades.Venda venda)
         {
             var result = await _repository.UpdateAsync(venda);
             return result;

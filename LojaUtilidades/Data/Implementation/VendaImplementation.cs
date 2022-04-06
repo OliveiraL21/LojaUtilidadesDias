@@ -11,17 +11,17 @@ using System.Threading.Tasks;
 
 namespace Data.Implementation
 {
-    public class VendaImplementation : Repository<VendaEntity>, IVendaRepository
+    public class VendaImplementation : Repository<Venda>, IVendaRepository
     {
-        private readonly DbSet<VendaEntity> _dataSet;
+        private readonly DbSet<Venda> _dataSet;
         private readonly MyContext _context;
         public VendaImplementation(MyContext context) : base(context)
         {
             _context = context;
-            _dataSet = context.Set<VendaEntity>();
+            _dataSet = context.Set<Venda>();
         }
 
-        public IEnumerable<VendaEntity> GetVendas()
+        public IEnumerable<Venda> GetVendas()
         {
             var result = _dataSet.AsNoTracking().Include(v => v.ItensVenda)
                 .ThenInclude(it => it.Produto).ToList();
@@ -29,23 +29,23 @@ namespace Data.Implementation
             return result;
 
         }
-        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda)
+        public IEnumerable<Venda> GetByDate(Venda venda)
         {
             var result = _dataSet.Where(v => v.Data_da_Venda == venda.Data_da_Venda).Include(v => v.ItensVenda).ThenInclude(it => it.Produto).ToList();
 
             return result;
         }
 
-        public IEnumerable<VendaEntity> GetByNumber(VendaEntity venda)
+        public IEnumerable<Venda> GetByNumber(Venda venda)
         {
             var result = _dataSet.AsNoTracking().Include(v => v.ItensVenda)
                                  .ThenInclude(it => it.Produto).Where(v => v.NumeroVenda == venda.NumeroVenda).ToList();
 
             return result;
         }
-        public IEnumerable<VendaEntity> GetByProductName(string produto)
+        public IEnumerable<Venda> GetByProductName(string produto)
         {
-            IEnumerable<VendaEntity> result = from v in _context.Vendas.AsNoTracking().Include(v => v.ItensVenda).ThenInclude(iv => iv.Produto)
+            IEnumerable<Venda> result = from v in _context.Vendas.AsNoTracking().Include(v => v.ItensVenda).ThenInclude(iv => iv.Produto)
                          where v.ItensVenda.Any(iv => iv.Produto.Nome.Equals( produto)) 
                          select v;
 
@@ -53,7 +53,7 @@ namespace Data.Implementation
             
 
         }
-        public List<VendaEntity> GetAllNumberVenda()
+        public List<Venda> GetAllNumberVenda()
         {
             try
             {

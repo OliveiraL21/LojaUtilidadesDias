@@ -11,9 +11,9 @@ namespace Data.Context
 {
     public class MyContext : DbContext
     {
-        public DbSet<ProdutoEntity>Produtos { get; set; }
-        public DbSet<VendaEntity> Vendas { get; set; }
-        public DbSet<ItemVendaEntity> ItensVendas { get; set; }
+        public DbSet<Produto>Produtos { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
+        public DbSet<ItemVenda> ItensVendas { get; set; }
         public MyContext()
         {
 
@@ -24,10 +24,10 @@ namespace Data.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=127.0.0.1;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=lucas123; SSL Mode=None", new MySqlServerVersion(new Version(8, 0, 28)),
+            optionsBuilder.UseMySql("Server=localhost;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=lucas123", new MySqlServerVersion(new Version(8, 0, 26)),
             option => option.EnableRetryOnFailure(
                 maxRetryCount: 3,
-                maxRetryDelay: TimeSpan.FromSeconds(20),
+                maxRetryDelay: TimeSpan.FromSeconds(10),
                 errorNumbersToAdd: null
                 ));
             //optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=Loja_DiasDb;Trusted_Connection=true;");
@@ -35,9 +35,9 @@ namespace Data.Context
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProdutoEntity>(new ProdutoMap().Configure);
-            modelBuilder.Entity<ItemVendaEntity>(new ItemVendaMap().Configure);
-            modelBuilder.Entity<VendaEntity>(new VendaMap().Configure);
+            modelBuilder.Entity<Produto>(new ProdutoMap().Configure);
+            modelBuilder.Entity<ItemVenda>(new ItemVendaMap().Configure);
+            modelBuilder.Entity<Venda>(new VendaMap().Configure);
         }
 
        

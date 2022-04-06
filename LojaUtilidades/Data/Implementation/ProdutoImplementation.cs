@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 namespace Data.Implementation
 {
-    public class ProdutoImplementation : Repository<ProdutoEntity>, IProdutoRepository
+    public class ProdutoImplementation : Repository<Produto>, IProdutoRepository
     {
-        private readonly DbSet<ProdutoEntity> _dataSet;
+        private readonly DbSet<Produto> _dataSet;
         private readonly MyContext _context;
         public ProdutoImplementation(MyContext context) : base(context)
         {
             _context = context;
-            _dataSet = context.Set<ProdutoEntity>();
+            _dataSet = context.Set<Produto>();
         }
 
         public async Task<bool> DeleteByName(string nome)
@@ -33,7 +33,7 @@ namespace Data.Implementation
 
 
 
-        public async Task<ProdutoEntity> SelectByName(string nome)
+        public async Task<Produto> SelectByName(string nome)
         {
 
             var result = await _dataSet.SingleOrDefaultAsync(p => p.Nome == nome);

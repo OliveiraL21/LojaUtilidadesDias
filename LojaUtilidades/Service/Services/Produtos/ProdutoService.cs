@@ -39,7 +39,7 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<ProdutoEntity> Get(int id)
+        public async Task<Produto> Get(int id)
         {
             try
             {
@@ -52,7 +52,7 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<IEnumerable<ProdutoEntity>> GetAll()
+        public async Task<IEnumerable<Produto>> GetAll()
         {
             try
             {
@@ -66,7 +66,7 @@ namespace Service.Services.Produtos
         }
 
 
-        public async Task<ProdutoEntity> Post(ProdutoEntity produto)
+        public async Task<Produto> Post(Produto produto)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<ProdutoEntity> Put(ProdutoEntity produto)
+        public async Task<Produto> Put(Produto produto)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<ProdutoEntity> SelectByName(string nome)
+        public async Task<Produto> SelectByName(string nome)
         {
             try
             {

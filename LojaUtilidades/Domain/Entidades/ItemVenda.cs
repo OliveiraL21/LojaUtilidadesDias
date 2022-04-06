@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Entidades
 {
-    public class ItemVendaEntity : BaseEntity
+    public class ItemVenda : BaseEntity
     {
         public int Quantidade {get; set; }
         public int ProdutoId { get; set; }
-        public ProdutoEntity Produto { get; set; }
+        public Produto Produto { get; set; }
         public int VendaId { get; set; }
-        public VendaEntity Venda { get; set; }
+        public Venda Venda { get; set; }
     }
 }

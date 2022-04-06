@@ -38,7 +38,7 @@ namespace Service.Services.ItensVendas
             }
         }
 
-        public async Task<IEnumerable<ItemVendaEntity>> GetAll()
+        public async Task<IEnumerable<ItemVenda>> GetAll()
         {
             var result = await _repository.SelectAllAsynck();
 
@@ -49,7 +49,7 @@ namespace Service.Services.ItensVendas
 
         }
 
-        public async Task<ItemVendaEntity> GetById(int id)
+        public async Task<ItemVenda> GetById(int id)
         {
             var result = await _repository.SelectAsync(id);
             if (result == null)
@@ -58,7 +58,7 @@ namespace Service.Services.ItensVendas
             return result;
         }
    
-        public async Task<ItemVendaEntity> Post(ItemVendaEntity item)
+        public async Task<ItemVenda> Post(ItemVenda item)
         {
             var result = await _repository.InsertAsync(item);
             if (result == null)
@@ -67,7 +67,7 @@ namespace Service.Services.ItensVendas
             return result;
         }
 
-        public async Task<ItemVendaEntity> Put(ItemVendaEntity item)
+        public async Task<ItemVenda> Put(ItemVenda item)
         {
             var result = await _repository.UpdateAsync(item);
             if (result == null)

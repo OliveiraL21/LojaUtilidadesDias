@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Domain.Repository
 {
-    public interface IProdutoRepository : IRepository<ProdutoEntity>
+    public interface IProdutoRepository : IRepository<Produto>
     {
-        Task<ProdutoEntity> SelectByName(string nome);
+        Task<Produto> SelectByName(string nome);
         Task<bool> DeleteByName(string nome);
     }
 }

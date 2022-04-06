@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace Data.Implementation
 {
-    public class ITemVendaImplementation : Repository<ItemVendaEntity>, ITemVendaRepository
+    public class ITemVendaImplementation : Repository<ItemVenda>, ITemVendaRepository
     {
         private readonly MyContext _context;
-        private readonly DbSet<ItemVendaEntity> _dataSet;
+        private readonly DbSet<ItemVenda> _dataSet;
         public ITemVendaImplementation(MyContext context) : base(context)
         {
             _context = context;
-            _dataSet = context.Set<ItemVendaEntity>();
+            _dataSet = context.Set<ItemVenda>();
         }
 
         
-        public  IList<ItemVendaEntity> GetByName(ItemVendaEntity itemVenda)
+        public  IList<ItemVenda> GetByName(ItemVenda itemVenda)
         {
             var NomeProduto = itemVenda.Produto.Nome;
             var result = _context.ItensVendas.Where(i => i.Produto.Nome == NomeProduto).ToList();

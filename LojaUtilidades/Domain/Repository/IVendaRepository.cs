@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace Domain.Repository
 {
-    public interface IVendaRepository : IRepository<VendaEntity>
+    public interface IVendaRepository : IRepository<Venda>
     {
-        public IEnumerable<VendaEntity> GetVendas();
-        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
-        public IEnumerable<VendaEntity> GetByNumber(VendaEntity venda);
-        public IEnumerable<VendaEntity> GetByProductName(string produto);
-        public List<VendaEntity> GetAllNumberVenda();
+        public IEnumerable<Venda> GetVendas();
+        public IEnumerable<Venda> GetByDate(Venda venda);
+        public IEnumerable<Venda> GetByNumber(Venda venda);
+        public IEnumerable<Venda> GetByProductName(string produto);
+        public List<Venda> GetAllNumberVenda();
     }
 }

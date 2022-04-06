@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20211213221951_intial")]
-    partial class intial
+    [Migration("20220406042521_renameClasses")]
+    partial class renameClasses
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,7 +36,8 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("ProdutoId")
+                        .IsUnique();
 
                     b.HasIndex("VendaId");
 
@@ -74,7 +75,10 @@ namespace Data.Migrations
                     b.Property<DateTime>("Data_da_Venda")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Hora_Venda")
+                    b.Property<TimeSpan>("Hora_Venda")
+                        .HasColumnType("time(6)");
+
+                    b.Property<int>("NumeroVenda")
                         .HasColumnType("int");
 
                     b.Property<double>("Valor")
@@ -82,14 +86,17 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("NumeroVenda")
+                        .IsUnique();
+
                     b.ToTable("Venda");
                 });
 
             modelBuilder.Entity("Domain.Entidades.ItemVenda", b =>
                 {
                     b.HasOne("Domain.Entidades.Produto", "Produto")
-                        .WithMany()
-                        .HasForeignKey("ProdutoId")
+                        .WithOne("ItemVenda")
+                        .HasForeignKey("Domain.Entidades.ItemVenda", "ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -102,6 +109,11 @@ namespace Data.Migrations
                     b.Navigation("Produto");
 
                     b.Navigation("Venda");
+                });
+
+            modelBuilder.Entity("Domain.Entidades.Produto", b =>
+                {
+                    b.Navigation("ItemVenda");
                 });
 
             modelBuilder.Entity("Domain.Entidades.Venda", b =>

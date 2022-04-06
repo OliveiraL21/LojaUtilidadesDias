@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Mapeamento
 {
-    public class VendaMap : IEntityTypeConfiguration<VendaEntity>
+    public class VendaMap : IEntityTypeConfiguration<Venda>
     {
-        public void Configure(EntityTypeBuilder<VendaEntity> builder)
+        public void Configure(EntityTypeBuilder<Venda> builder)
         {
             builder.ToTable("Venda");
             builder.HasKey(v => v.Id);

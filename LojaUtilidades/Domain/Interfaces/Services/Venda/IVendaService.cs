@@ -9,14 +9,14 @@ namespace Domain.Interfaces.Services.Venda
 {
    public interface IVendaService
     {
-        public Task<VendaEntity> PostAsync(VendaEntity venda);
-        public Task<VendaEntity> GetAsync(int id);
-        public IEnumerable<VendaEntity> GetVendas();
-        public IEnumerable<VendaEntity> GetByDate(VendaEntity venda);
-        public IEnumerable<VendaEntity> GetByNumber(VendaEntity venda);
-        public IEnumerable<VendaEntity> GetByProductName(string produto);
-        public Task<IEnumerable<VendaEntity>> GetAllAsync();
-        public Task<VendaEntity> PutAsync(VendaEntity venda);
+        public Task<Entidades.Venda> PostAsync(Entidades.Venda venda);
+        public Task<Entidades.Venda> GetAsync(int id);
+        public IEnumerable<Entidades.Venda> GetVendas();
+        public IEnumerable<Entidades.Venda> GetByDate(Entidades.Venda venda);
+        public IEnumerable<Entidades.Venda> GetByNumber(Entidades.Venda venda);
+        public IEnumerable<Entidades.Venda> GetByProductName(string produto);
+        public Task<IEnumerable<Entidades.Venda>> GetAllAsync();
+        public Task<Entidades.Venda> PutAsync(Entidades.Venda venda);
         public Task<bool> Delete(int id);
     }
 }
