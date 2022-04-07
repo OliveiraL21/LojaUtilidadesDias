@@ -30,11 +30,11 @@ namespace Aplication
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Vendas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.btn_Estoque_Vendas = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,11 +42,7 @@ namespace Aplication
             this.btn_Estoque = new System.Windows.Forms.Button();
             this.btn_Vendas = new System.Windows.Forms.Button();
             this.btn_Produto = new System.Windows.Forms.Button();
-            this.dgv_Vendas = new System.Windows.Forms.DataGridView();
-            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGrid_Vendas = new System.Windows.Forms.DataGridView();
             this.label_Quantidade = new System.Windows.Forms.Label();
             this.label_Total = new System.Windows.Forms.Label();
             this.txt_Total = new System.Windows.Forms.TextBox();
@@ -56,6 +52,7 @@ namespace Aplication
             this.btn_Calcular = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Minimizar = new System.Windows.Forms.Button();
             this.btn_Deletar = new System.Windows.Forms.Button();
             this.btn_Limpar = new System.Windows.Forms.Button();
             this.btn_Consultar = new System.Windows.Forms.Button();
@@ -68,10 +65,13 @@ namespace Aplication
             this.label_Desconto = new System.Windows.Forms.Label();
             this.txt_Desconto = new System.Windows.Forms.TextBox();
             this.label_Porcentagem = new System.Windows.Forms.Label();
-            this.btn_Minimizar = new System.Windows.Forms.Button();
+            this.Cod_Prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Vendas)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,87 +190,59 @@ namespace Aplication
             this.btn_Produto.MouseLeave += new System.EventHandler(this.btn_Produto_MouseLeave);
             this.btn_Produto.MouseHover += new System.EventHandler(this.btn_Produto_MouseHover);
             // 
-            // dgv_Vendas
+            // dataGrid_Vendas
             // 
-            this.dgv_Vendas.AllowUserToAddRows = false;
-            this.dgv_Vendas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_Vendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Vendas.BackgroundColor = System.Drawing.Color.CadetBlue;
-            this.dgv_Vendas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgv_Vendas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_Vendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Vendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGrid_Vendas.AllowUserToAddRows = false;
+            this.dataGrid_Vendas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGrid_Vendas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGrid_Vendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGrid_Vendas.BackgroundColor = System.Drawing.Color.CadetBlue;
+            this.dataGrid_Vendas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGrid_Vendas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_Vendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGrid_Vendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_Vendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cod_Prod,
             this.Produto,
             this.Valor,
             this.Quantidade});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Vendas.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_Vendas.GridColor = System.Drawing.Color.Black;
-            this.dgv_Vendas.Location = new System.Drawing.Point(361, 77);
-            this.dgv_Vendas.Name = "dgv_Vendas";
-            this.dgv_Vendas.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.NullValue = "Error";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_Vendas.RowHeadersWidth = 51;
-            this.dgv_Vendas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_Vendas.RowTemplate.Height = 25;
-            this.dgv_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas.Size = new System.Drawing.Size(490, 303);
-            this.dgv_Vendas.TabIndex = 12;
-            // 
-            // Cod_Prod
-            // 
-            this.Cod_Prod.HeaderText = "Cod_Prod";
-            this.Cod_Prod.MinimumWidth = 6;
-            this.Cod_Prod.Name = "Cod_Prod";
-            this.Cod_Prod.ReadOnly = true;
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.MinimumWidth = 6;
-            this.Produto.Name = "Produto";
-            this.Produto.ReadOnly = true;
-            // 
-            // Valor
-            // 
-            this.Valor.HeaderText = "Valor";
-            this.Valor.MinimumWidth = 6;
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quantidade";
-            this.Quantidade.MinimumWidth = 6;
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid_Vendas.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGrid_Vendas.GridColor = System.Drawing.Color.Black;
+            this.dataGrid_Vendas.Location = new System.Drawing.Point(361, 77);
+            this.dataGrid_Vendas.Name = "dataGrid_Vendas";
+            this.dataGrid_Vendas.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.NullValue = "Error";
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_Vendas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGrid_Vendas.RowHeadersWidth = 51;
+            this.dataGrid_Vendas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGrid_Vendas.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGrid_Vendas.RowTemplate.Height = 25;
+            this.dataGrid_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid_Vendas.Size = new System.Drawing.Size(490, 303);
+            this.dataGrid_Vendas.TabIndex = 12;
             // 
             // label_Quantidade
             // 
@@ -364,6 +336,17 @@ namespace Aplication
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(778, 55);
             this.panel1.TabIndex = 21;
+            // 
+            // btn_Minimizar
+            // 
+            this.btn_Minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Minimizar.Image = global::Utilidades_e_Cosmeticos_Dias.Properties.Resources.minimizar;
+            this.btn_Minimizar.Location = new System.Drawing.Point(723, 11);
+            this.btn_Minimizar.Name = "btn_Minimizar";
+            this.btn_Minimizar.Size = new System.Drawing.Size(31, 31);
+            this.btn_Minimizar.TabIndex = 27;
+            this.btn_Minimizar.UseVisualStyleBackColor = true;
+            this.btn_Minimizar.Click += new System.EventHandler(this.btn_Minimizar_Click);
             // 
             // btn_Deletar
             // 
@@ -507,16 +490,33 @@ namespace Aplication
             this.label_Porcentagem.Text = "%";
             this.label_Porcentagem.Visible = false;
             // 
-            // btn_Minimizar
+            // Cod_Prod
             // 
-            this.btn_Minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Minimizar.Image = global::Utilidades_e_Cosmeticos_Dias.Properties.Resources.minimizar;
-            this.btn_Minimizar.Location = new System.Drawing.Point(723, 11);
-            this.btn_Minimizar.Name = "btn_Minimizar";
-            this.btn_Minimizar.Size = new System.Drawing.Size(31, 31);
-            this.btn_Minimizar.TabIndex = 27;
-            this.btn_Minimizar.UseVisualStyleBackColor = true;
-            this.btn_Minimizar.Click += new System.EventHandler(this.btn_Minimizar_Click);
+            this.Cod_Prod.HeaderText = "Código";
+            this.Cod_Prod.MinimumWidth = 6;
+            this.Cod_Prod.Name = "Cod_Prod";
+            this.Cod_Prod.ReadOnly = true;
+            // 
+            // Produto
+            // 
+            this.Produto.HeaderText = "Produto";
+            this.Produto.MinimumWidth = 6;
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            // 
+            // Valor
+            // 
+            this.Valor.HeaderText = "Valor";
+            this.Valor.MinimumWidth = 6;
+            this.Valor.Name = "Valor";
+            this.Valor.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.MinimumWidth = 6;
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
             // 
             // Form_Vendas
             // 
@@ -538,7 +538,7 @@ namespace Aplication
             this.Controls.Add(this.txt_Quantidade);
             this.Controls.Add(this.txt_Produto);
             this.Controls.Add(this.label_Produto);
-            this.Controls.Add(this.dgv_Vendas);
+            this.Controls.Add(this.dataGrid_Vendas);
             this.Controls.Add(this.panel_Menu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -547,7 +547,7 @@ namespace Aplication
             this.Text = "Form_Vendas";
             this.panel_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Vendas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -562,7 +562,7 @@ namespace Aplication
         private System.Windows.Forms.Button btn_Estoque;
         private System.Windows.Forms.Button btn_Vendas;
         private System.Windows.Forms.Button btn_Produto;
-        private System.Windows.Forms.DataGridView dgv_Vendas;
+        private System.Windows.Forms.DataGridView dataGrid_Vendas;
         private System.Windows.Forms.Label label_Quantidade;
         private System.Windows.Forms.Label label_Total;
         private System.Windows.Forms.TextBox txt_Total;
@@ -577,10 +577,6 @@ namespace Aplication
         private System.Windows.Forms.Button btn_Consultar;
         private System.Windows.Forms.Button btn_Limpar;
         private System.Windows.Forms.Button btn_Deletar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Prod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PrintDialog printDialog1;
@@ -590,5 +586,9 @@ namespace Aplication
         private System.Windows.Forms.TextBox txt_Desconto;
         private System.Windows.Forms.Label label_Porcentagem;
         private System.Windows.Forms.Button btn_Minimizar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cod_Prod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
     }
 }

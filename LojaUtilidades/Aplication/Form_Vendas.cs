@@ -126,6 +126,26 @@ namespace Aplication
         {
             MessageBox.Show("O formulário de Vendas já está aberto", "Formulario já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void checkBox_Desconto_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Desconto.Checked)
+            {
+                label_Desconto.Visible = true;
+                txt_Desconto.Visible = true;
+                label_Porcentagem.Visible = true;
+            }
+            else
+            {
+                label_Desconto.Visible = false;
+                txt_Desconto.Visible = false;
+                label_Porcentagem.Visible = false;
+                txt_Desconto.Text = "";
+            }
+        }
         #endregion
 
         #region Funções Gerais
@@ -135,14 +155,14 @@ namespace Aplication
             try
             {
                 List<Produto> produtos = new List<Produto>();
-                for (int contador = 0; contador < dgv_Vendas.Rows.Count; contador++)
+                for (int contador = 0; contador < dataGrid_Vendas.Rows.Count; contador++)
                 {
                     var produto = new Produto()
                     {
-                        Id = Convert.ToInt32(dgv_Vendas.Rows[contador].Cells[0].Value),
-                        Nome = dgv_Vendas.Rows[contador].Cells[1].Value.ToString(),
-                        Valor = Convert.ToDouble(dgv_Vendas.Rows[contador].Cells[2].Value),
-                        Quantidade = Convert.ToInt32(dgv_Vendas.Rows[contador].Cells[3].Value)
+                        Id = Convert.ToInt32(dataGrid_Vendas.Rows[contador].Cells[0].Value),
+                        Nome = dataGrid_Vendas.Rows[contador].Cells[1].Value.ToString(),
+                        Valor = Convert.ToDouble(dataGrid_Vendas.Rows[contador].Cells[2].Value),
+                        Quantidade = Convert.ToInt32(dataGrid_Vendas.Rows[contador].Cells[3].Value)
                     };
                     produtos.Add(produto);
                 }
@@ -161,46 +181,53 @@ namespace Aplication
             int quantidade = 0;
             double valor = 0;
             double total = 0;
-            for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
+            for (int x = 0; x < dataGrid_Vendas.Rows.Count; x++)
             {
-                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
-                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
+                valor = Convert.ToDouble(dataGrid_Vendas.Rows[x].Cells[2].Value.ToString());
+                quantidade = Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[3].Value.ToString());
                 total += (valor * quantidade);
             }
             return total;
         }
-        private double CalcularTotal(double desconto)
+        private double CalcularTotalDesconto(double desconto)
         {
             int quantidade = 0;
             double valor = 0;
             double valorDesconto = 0;
             double total = 0;
-            for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
+            for (int x = 0; x < dataGrid_Vendas.Rows.Count; x++)
             {
-                valor = Convert.ToDouble(dgv_Vendas.Rows[x].Cells[2].Value.ToString());
-                quantidade = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value.ToString());
+                valor = Convert.ToDouble(dataGrid_Vendas.Rows[x].Cells[2].Value.ToString());
+                quantidade = Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[3].Value.ToString());
                 total += (valor * quantidade);
             }
             valorDesconto = total * (desconto / 100);
             return total - valorDesconto;
         }
-        private void LimparCampos()
+        private void ClearFilds()
         {
             txt_Produto.Text = "";
             txt_Quantidade.Text = "";
             txt_Desconto.Text = "";
             txt_Total.Text = "";
-            dgv_Vendas.Rows.Clear();
+            dataGrid_Vendas.Rows.Clear();
             i = 0;
+        }
+        private void DatagridFillProduct(Produto produto, int quantidade)
+        {
+            dataGrid_Vendas.Rows.Add();
+            dataGrid_Vendas.Rows[i].Cells[0].Value = produto.Id;
+            dataGrid_Vendas.Rows[i].Cells[1].Value = produto.Nome;
+            dataGrid_Vendas.Rows[i].Cells[2].Value = produto.Valor.ToString();
+            dataGrid_Vendas.Rows[i].Cells[3].Value = quantidade;
+            i++;
         }
         #endregion
         #region Metodos do formulário
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
-
             try
             {
-
                 if (string.IsNullOrEmpty(txt_Produto.Text))
                 {
                     MessageBox.Show("digite o nome de um produto !", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -212,19 +239,8 @@ namespace Aplication
                 }
                 var nome = txt_Produto.Text;
                 var quantidade = int.Parse(txt_Quantidade.Text);
-
-
-                var result = await _produtoService.SelectByName(nome);
-
-                dgv_Vendas.Rows.Add();
-                dgv_Vendas.Rows[i].Cells[0].Value = result.Id;
-                dgv_Vendas.Rows[i].Cells[1].Value = result.Nome;
-                dgv_Vendas.Rows[i].Cells[2].Value = result.Valor.ToString();
-                dgv_Vendas.Rows[i].Cells[3].Value = quantidade;
-                i++;
-
-
-
+                var produto = await _produtoService.SelectByName(nome);
+                DatagridFillProduct(produto, quantidade);
             }
             catch (Exception ex)
             {
@@ -235,7 +251,6 @@ namespace Aplication
             {
                 txt_Produto.Text = "";
                 txt_Quantidade.Text = "";
-
             }
         }
 
@@ -246,7 +261,7 @@ namespace Aplication
                 double total = 0;
                 if (checkBox_Desconto.Checked)
                 {
-                    total = CalcularTotal(Convert.ToDouble(txt_Desconto.Text));
+                    total = CalcularTotalDesconto(Convert.ToDouble(txt_Desconto.Text));
                 }
                 else
                 {
@@ -269,7 +284,7 @@ namespace Aplication
         {
             try
             {
-                LimparCampos();
+                ClearFilds();
             }
             catch (Exception ex)
             {
@@ -286,12 +301,12 @@ namespace Aplication
                 if (!string.IsNullOrEmpty(txt_Total.Text))
                 {
                     var total = Convert.ToDouble(txt_Total.Text.Trim('R', '$'));
-                    var itemExcluido = Convert.ToDouble(dgv_Vendas.SelectedRows[0].Cells[2].Value.ToString());
-                    var itemExcluidoQtd = Convert.ToInt32(dgv_Vendas.SelectedRows[0].Cells[3].Value.ToString());
-                    var valorFinal = total - (itemExcluido * itemExcluidoQtd);
+                    var valorUnitario = Convert.ToDouble(dataGrid_Vendas.SelectedRows[0].Cells[2].Value.ToString());
+                    var quantidade = Convert.ToInt32(dataGrid_Vendas.SelectedRows[0].Cells[3].Value.ToString());
+                    var valorFinal = total - (valorUnitario * quantidade);
                     txt_Total.Text = valorFinal.ToString("C2");
-                    i = dgv_Vendas.SelectedRows[0].Index;
-                    dgv_Vendas.Rows.Remove(dgv_Vendas.SelectedRows[0]);
+                    i = dataGrid_Vendas.SelectedRows[0].Index;
+                    dataGrid_Vendas.Rows.Remove(dataGrid_Vendas.SelectedRows[0]);
                 }
                 else if (string.IsNullOrEmpty(txt_Total.Text))
                 {
@@ -304,67 +319,64 @@ namespace Aplication
                 Log.Error(ex, "\nErro ao tentar deletar produto da tabela");
             }
         }
+        private Produto CalcularQuantidadeEstoque(Produto produto, int x)
+        {
+            int quantidadeDatagrid = Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[3].Value);
+            int quantidade = produto.Quantidade - quantidadeDatagrid;
+            produto.Quantidade = quantidade;
+            return produto;
+        }
+        private async Task<List<ItemVenda>> CreateItemVendaCollection(Venda venda)
+        {
+            List<ItemVenda> itensVendas = new List<ItemVenda>();
+            for (int x = 0; x < dataGrid_Vendas.Rows.Count; x++)
+            {
+                var produto = await _produtoService.GetProduto(Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[0].Value));
+                var result = CalcularQuantidadeEstoque(produto, x);
+                await _produtoService.Update(result);
 
+                itensVendas.Add(new ItemVenda()
+                {
+                    ProdutoId = result.Id,
+                    Produto = result,
+                    VendaId = venda.Id,
+                    Venda = venda,
+                    Quantidade = result.Quantidade,
+                });
+            }
+            return itensVendas;
+        }
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
             List<ItemVenda> listItens = new List<ItemVenda>();
-            if (txt_Total.Text == "")
+            if (string.IsNullOrEmpty(txt_Total.Text))
             {
                 MessageBox.Show("Calcule o valor total da venda !", "Venda error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             else
             {
                 try
                 {
-                    Venda vendaObj = new Venda()
-                    {
-                        Data = DateTime.Now.Date,
-                        Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
-                        Hora = DateTime.Now.TimeOfDay,
-                    };
-
-                    var venda = await _vendaService.Insert(vendaObj);
-
-                    for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
-                    {
-                        var result = await _produtoService.GetProduto(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
-                        int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
-                        var quantidade = result.Quantidade - quantidadeDgv;
-                        result.Quantidade = quantidade;
-                        await _produtoService.Update(result);
-
-
-                        listItens.Add(new ItemVenda()
-                        {
-                            ProdutoId = result.Id,
-                            Produto = result,
-                            VendaId = venda.Id,
-                            Venda = venda,
-                            Quantidade = quantidadeDgv
-                        });
-                    }
-                    _venda = venda;
-                    _context.ItensVendas.AttachRange(listItens);
-                    _context.ItensVendas.AddRange(listItens);
+                    Venda venda = new Venda(DateTime.Now, DateTime.Now.TimeOfDay, double.Parse(txt_Total.Text.Trim('R', '$')));
+                    var result = await _vendaService.Insert(venda);
+                    var itensVendas = CreateItemVendaCollection(result);
+                    _venda = result;
+                    _context.ItensVendas.AttachRange((IEnumerable<ItemVenda>)itensVendas);
+                    _context.ItensVendas.AddRange((IEnumerable<ItemVenda>)itensVendas);
                     _context.SaveChanges();
-
-                    
                     if(MessageBox.Show($"Venda Finalizada com Sucesso\n deseja imprimir o comprovante da venda ?", "Venda Finalizada", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         btn_Imprimir_Click(sender, e);
                     }
-                 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Erro ao finalizar a venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Error(ex, "\nErro ao finalizar a venda!");
-
                 }
                 finally
                 {
-                    LimparCampos();
+                    ClearFilds();
                 }
             }
 
@@ -387,7 +399,6 @@ namespace Aplication
                     altura = printDocument1.DefaultPageSettings.Bounds.Height;
                     printPreviewDialog1.Document = printDocument1;
                     printPreviewDialog1.ShowDialog();
-
                 }
             }
             catch
@@ -415,28 +426,8 @@ namespace Aplication
 
 
         }
-        private void checkBox_Desconto_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox_Desconto.Checked)
-            {
-                label_Desconto.Visible = true;
-                txt_Desconto.Visible = true;
-                label_Porcentagem.Visible = true;
-            }
-            else
-            {
-                label_Desconto.Visible = false;
-                txt_Desconto.Visible = false;
-                label_Porcentagem.Visible = false;
-                txt_Desconto.Text = "";
-            }
-
-        }
         #endregion
 
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
+       
     }
 }
