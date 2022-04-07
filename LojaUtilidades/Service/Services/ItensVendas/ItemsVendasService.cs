@@ -38,9 +38,9 @@ namespace Service.Services.ItensVendas
             }
         }
 
-        public async Task<IEnumerable<ItemVenda>> GetAll()
+        public async Task<IEnumerable<ItemVenda>> GetItens()
         {
-            var result = await _repository.SelectAllAsynck();
+            var result = await _repository.SelectAllAsync();
 
             if (result == null)
                 return null;
@@ -58,7 +58,7 @@ namespace Service.Services.ItensVendas
             return result;
         }
    
-        public async Task<ItemVenda> Post(ItemVenda item)
+        public async Task<ItemVenda> Insert(ItemVenda item)
         {
             var result = await _repository.InsertAsync(item);
             if (result == null)
@@ -67,7 +67,7 @@ namespace Service.Services.ItensVendas
             return result;
         }
 
-        public async Task<ItemVenda> Put(ItemVenda item)
+        public async Task<ItemVenda> Update(ItemVenda item)
         {
             var result = await _repository.UpdateAsync(item);
             if (result == null)

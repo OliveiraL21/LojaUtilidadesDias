@@ -39,7 +39,7 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<Produto> Get(int id)
+        public async Task<Produto> GetProduto(int id)
         {
             try
             {
@@ -52,11 +52,11 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<IEnumerable<Produto>> GetAll()
+        public async Task<IEnumerable<Produto>> GetProdutos()
         {
             try
             {
-                var result = await _repository.SelectAllAsynck();
+                var result = await _repository.SelectAllAsync();
                 return result;
             }
             catch
@@ -66,7 +66,7 @@ namespace Service.Services.Produtos
         }
 
 
-        public async Task<Produto> Post(Produto produto)
+        public async Task<Produto> Insert(Produto produto)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<Produto> Put(Produto produto)
+        public async Task<Produto> Update(Produto produto)
         {
             try
             {

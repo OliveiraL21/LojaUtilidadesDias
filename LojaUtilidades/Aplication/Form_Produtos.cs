@@ -135,7 +135,7 @@ namespace Aplication
             try
             {
                 Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
-                var result = await _ProdutoService.Post(produto);
+                var result = await _ProdutoService.Insert(produto);
 
                 if (result != null)
                 {
@@ -163,7 +163,7 @@ namespace Aplication
             try
             {
                 Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
-                var result = await _ProdutoService.Put(produto);
+                var result = await _ProdutoService.Update(produto);
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);

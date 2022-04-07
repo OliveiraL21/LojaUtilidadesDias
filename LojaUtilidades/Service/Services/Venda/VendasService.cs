@@ -53,13 +53,10 @@ namespace Service.Services.Venda
 
         public async Task<IEnumerable<Domain.Entidades.Venda>> GetAllAsync()
         {
-            var result = await _repository.SelectAllAsynck();
-            return result;
-            
+            var result = await _repository.SelectAllAsync();
+            return result;   
         }
-
-
-        public async Task<Domain.Entidades.Venda> GetAsync(int id)
+        public async Task<Domain.Entidades.Venda> GetVendaAsync(int id)
         {
             var result = await _repository.SelectAsync(id);
             return result;
@@ -86,14 +83,14 @@ namespace Service.Services.Venda
             var result = _repository.GetByProductName(produto);
             return result;
         }
-        public async Task<Domain.Entidades.Venda> PostAsync(Domain.Entidades.Venda venda)
+        public async Task<Domain.Entidades.Venda> Insert(Domain.Entidades.Venda venda)
         {
             venda.Codigo = GenerateVendaCode(venda);
             var result = await _repository.InsertAsync(venda);
             return result;
         }
 
-        public async Task<Domain.Entidades.Venda> PutAsync(Domain.Entidades.Venda venda)
+        public async Task<Domain.Entidades.Venda> Update(Domain.Entidades.Venda venda)
         {
             var result = await _repository.UpdateAsync(venda);
             return result;

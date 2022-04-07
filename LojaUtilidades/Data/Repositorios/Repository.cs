@@ -35,15 +35,14 @@ namespace Data.Repositorios
             }
         }
 
-        public async Task<T> InsertAsync(T entidade)
+        public async Task<T> InsertAsync(T entity)
         {
-           
-            _dataSet.Add(entidade);
+            _dataSet.Add(entity);
             await _context.SaveChangesAsync();
-            return entidade;
+            return entity;
         }
 
-        public async Task<IEnumerable<T>> SelectAllAsynck()
+        public async Task<IEnumerable<T>> SelectAllAsync()
         {
             var result = await _dataSet.ToListAsync();
             return result;

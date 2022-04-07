@@ -324,15 +324,15 @@ namespace Aplication
                         Hora = DateTime.Now.TimeOfDay,
                     };
 
-                    var venda = await _vendaService.PostAsync(vendaObj);
+                    var venda = await _vendaService.Insert(vendaObj);
 
                     for (int x = 0; x < dgv_Vendas.Rows.Count; x++)
                     {
-                        var result = await _produtoService.Get(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
+                        var result = await _produtoService.GetProduto(Convert.ToInt32(dgv_Vendas.Rows[x].Cells[0].Value));
                         int quantidadeDgv = Convert.ToInt32(dgv_Vendas.Rows[x].Cells[3].Value);
                         var quantidade = result.Quantidade - quantidadeDgv;
                         result.Quantidade = quantidade;
-                        await _produtoService.Put(result);
+                        await _produtoService.Update(result);
 
 
                         listItens.Add(new ItemVenda()

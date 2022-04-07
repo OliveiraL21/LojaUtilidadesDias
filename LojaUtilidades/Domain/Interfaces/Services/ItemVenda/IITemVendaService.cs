@@ -9,10 +9,10 @@ namespace Domain.Interfaces.Services
 {
     public interface IITemVendaService 
     {
-        public Task<ItemVenda> Post(ItemVenda item);
+        public Task<ItemVenda> Insert(ItemVenda item);
         public Task<ItemVenda> GetById(int id);
-        public Task<IEnumerable<ItemVenda>> GetAll();
-        public Task<ItemVenda>Put(ItemVenda item);
+        public Task<IEnumerable<ItemVenda>> GetItens();
+        public Task<ItemVenda>Update(ItemVenda item);
         public Task<bool> Delete(int id);
 
 

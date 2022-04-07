@@ -23,24 +23,18 @@ namespace Data.Implementation
 
         public async Task<bool> DeleteByName(string nome)
         {
-
             var result = await _dataSet.SingleOrDefaultAsync(p => p.Nome == nome);
             _dataSet.Remove(result);
             await _context.SaveChangesAsync();
             return true;
-
         }
 
 
 
         public async Task<Produto> SelectByName(string nome)
         {
-
             var result = await _dataSet.SingleOrDefaultAsync(p => p.Nome == nome);
-
-
             return result;
-
         }
 
         

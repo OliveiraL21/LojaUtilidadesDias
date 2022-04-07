@@ -10,11 +10,11 @@ namespace Domain.Interfaces.Services.Produtos
 {
    public  interface IProdutoService 
     {
-        Task<Produto> Post(Produto produto);
-        Task<Produto> Get(int id);
-        Task<IEnumerable<Produto>> GetAll();
+        Task<Produto> Insert(Produto produto);
+        Task<Produto> GetProduto(int id);
+        Task<IEnumerable<Produto>> GetProdutos();
         Task<bool> Delete(int id);
-        Task<Produto> Put(Produto produto);
+        Task<Produto> Update(Produto produto);
         Task<bool> DeleteByName(string nome);
         Task<Produto> SelectByName(string nome);
     }

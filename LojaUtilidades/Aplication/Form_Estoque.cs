@@ -121,7 +121,7 @@ namespace Aplication
         {
             try
             {
-                var result = await _service.GetAll();
+                var result = await _service.GetProdutos();
                 int i = 0;
                 dataGrid_Estoque.Rows.Clear();
                 foreach (var produto in result)
@@ -236,7 +236,7 @@ namespace Aplication
 
             try
             {
-                var result = await _service.Put(produto);
+                var result = await _service.Update(produto);
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -262,7 +262,7 @@ namespace Aplication
             try
             {
 
-                var result = await _service.GetAll();
+                var result = await _service.GetProdutos();
 
                 int i = 0;
 

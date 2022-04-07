@@ -20,14 +20,10 @@ namespace Data.Implementation
             _context = context;
             _dataSet = context.Set<ItemVenda>();
         }
-
-        
         public  IList<ItemVenda> GetByName(ItemVenda itemVenda)
         {
-            var NomeProduto = itemVenda.Produto.Nome;
-            var result = _context.ItensVendas.Where(i => i.Produto.Nome == NomeProduto).ToList();
+            var result = _context.ItensVendas.Where(i => i.Produto.Nome == itemVenda.Produto.Nome).ToList();
             return result;
-            
         }
     }
 }

@@ -19,6 +19,8 @@
     <Compile Include="Migrations\20220125021722_numeroVenda.Designer.cs" />
     <Compile Include="Migrations\20220406042521_renameClasses.cs" />
     <Compile Include="Migrations\20220406042521_renameClasses.Designer.cs" />
+    <Compile Include="Migrations\20220407010251_addProduto-ItemVenda-Relation.cs" />
+    <Compile Include="Migrations\20220407010251_addProduto-ItemVenda-Relation.Designer.cs" />
     <Compile Include="Migrations\MyContextModelSnapshot.cs" />
   </ItemGroup>
 

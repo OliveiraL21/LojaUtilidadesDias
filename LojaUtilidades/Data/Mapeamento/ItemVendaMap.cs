@@ -14,10 +14,10 @@ namespace Data.Mapeamento
         public void Configure(EntityTypeBuilder<ItemVenda> builder)
         {
             builder.ToTable("ItemVenda");
-            builder.HasKey(i => i.Id);
-            builder.Property(i => i.Quantidade).IsRequired();
-            builder.HasOne(i => i.Venda).WithMany(v => v.ItensVenda).HasForeignKey(i => i.VendaId);
-            //builder.HasOne(i => i.Produto).WithOne();
+            builder.HasKey(it => it.Id);
+            builder.Property(it => it.Quantidade).IsRequired();
+            builder.HasOne(it => it.Venda).WithMany(v => v.ItensVenda).HasForeignKey(i => i.VendaId);
+            builder.HasOne(it => it.Produto).WithOne(p => p.ItemVenda);
         }
     }
 }
