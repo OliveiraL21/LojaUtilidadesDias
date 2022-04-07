@@ -319,9 +319,9 @@ namespace Aplication
                 {
                     Venda vendaObj = new Venda()
                     {
-                        Data_da_Venda = DateTime.Now.Date,
+                        Data = DateTime.Now.Date,
                         Valor = double.Parse(txt_Total.Text.Trim('R', '$')),
-                        Hora_Venda = DateTime.Now.TimeOfDay,
+                        Hora = DateTime.Now.TimeOfDay,
                     };
 
                     var venda = await _vendaService.PostAsync(vendaObj);

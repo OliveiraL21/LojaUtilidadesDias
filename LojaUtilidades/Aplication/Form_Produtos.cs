@@ -20,13 +20,13 @@ namespace Aplication
 {
     public partial class Form_Produtos : Form
     {
-        int i = 0;
-        private readonly IProdutoService _service;
+        int datagridRowIndex = 0;
+        private readonly IProdutoService _ProdutoService;
         private readonly string Path;
         public Form_Produtos()
         {
             InitializeComponent();
-            _service = new ProdutoService();
+            _ProdutoService = new ProdutoService();
             Path = Application.StartupPath + @"\Logs\Tela-Cadastro-Produtos-.txt";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
@@ -123,19 +123,19 @@ namespace Aplication
         #region Metodos do formulário
         private void DatagridFill(Produto produto)
         {
-            dgv_Produtos.Rows.Add();
-            dgv_Produtos.Rows[i].Cells[0].Value = produto.Id;
-            dgv_Produtos.Rows[i].Cells[1].Value = produto.Nome;
-            dgv_Produtos.Rows[i].Cells[2].Value = produto.Valor;
-            dgv_Produtos.Rows[i].Cells[3].Value = produto.Quantidade;
-            i++;
+            dataGrid_Produtos.Rows.Add();
+            dataGrid_Produtos.Rows[datagridRowIndex].Cells[0].Value = produto.Id;
+            dataGrid_Produtos.Rows[datagridRowIndex].Cells[1].Value = produto.Nome;
+            dataGrid_Produtos.Rows[datagridRowIndex].Cells[2].Value = produto.Valor;
+            dataGrid_Produtos.Rows[datagridRowIndex].Cells[3].Value = produto.Quantidade;
+            datagridRowIndex++;
         }
         private async void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             try
             {
                 Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
-                var result = await _service.Post(produto);
+                var result = await _ProdutoService.Post(produto);
 
                 if (result != null)
                 {
@@ -151,7 +151,7 @@ namespace Aplication
             }
             finally
             {
-                txt_Id.Text = "";
+                txt_Codigo.Text = "";
                 txt_Produto.Text = "";
                 txt_Valor.Text = "";
                 txt_Quantidade.Text = "";
@@ -163,7 +163,7 @@ namespace Aplication
             try
             {
                 Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
-                var result = await _service.Put(produto);
+                var result = await _ProdutoService.Put(produto);
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -178,7 +178,7 @@ namespace Aplication
             }
             finally
             {
-                txt_Id.Text = "";
+                txt_Codigo.Text = "";
                 txt_Produto.Text = "";
                 txt_Valor.Text = "";
                 txt_Quantidade.Text = "";
@@ -189,38 +189,36 @@ namespace Aplication
             
             try
             {
-                var nome = dgv_Produtos.SelectedRows[0].Cells[1].Value.ToString();
-                dgv_Produtos.Rows.Remove(dgv_Produtos.SelectedRows[0]);
-                i = dgv_Produtos.Rows.Count;
+                var produto = dataGrid_Produtos.SelectedRows[0].Cells[1].Value.ToString();
+                dataGrid_Produtos.Rows.Remove(dataGrid_Produtos.SelectedRows[0]);
+                datagridRowIndex = dataGrid_Produtos.Rows.Count;
              
-                var result = await _service.DeleteByName(nome);
+                var result = await _ProdutoService.DeleteByName(produto);
                 
                 MessageBox.Show("Produto deletado com sucesso", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            catch (Exception ex)
+            catch (Exception exception)
             {
                 MessageBox.Show($"Erro ao deletar o produto", "Erro ao Deletar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Log.Error(ex, "\nErro ao tentar deletar o produto");
+                Log.Error(exception, "\nErro ao tentar deletar o produto");
             }
             finally
             {
-
-                txt_Id.Text = "";
+                txt_Codigo.Text = "";
                 txt_Produto.Text = "";
                 txt_Valor.Text = "";
                 txt_Quantidade.Text = "";
-
             }
         }
         private void dgv_Produtos_DoubleClick(object sender, EventArgs e)
         {
             try
             {
-                txt_Id.Text = dgv_Produtos.SelectedRows[0].Cells[0].Value.ToString();
-                txt_Produto.Text = dgv_Produtos.SelectedRows[0].Cells[1].Value.ToString();
-                txt_Valor.Text = dgv_Produtos.SelectedRows[0].Cells[2].Value.ToString();
-                txt_Quantidade.Text = dgv_Produtos.SelectedRows[0].Cells[3].Value.ToString();
+                txt_Codigo.Text = dataGrid_Produtos.SelectedRows[0].Cells[0].Value.ToString();
+                txt_Produto.Text = dataGrid_Produtos.SelectedRows[0].Cells[1].Value.ToString();
+                txt_Valor.Text = dataGrid_Produtos.SelectedRows[0].Cells[2].Value.ToString();
+                txt_Quantidade.Text = dataGrid_Produtos.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch (Exception ex)
             {

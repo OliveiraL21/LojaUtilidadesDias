@@ -111,22 +111,26 @@ namespace Aplication
             form_Consulta_Vendas.Show();
             
         }
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
         #endregion
         #region Metodos do formulário
-        private async void AtualizarItensGrid()
+        private async void UpdateDatagridView()
         {
             try
             {
                 var result = await _service.GetAll();
                 int i = 0;
-                dgv_Estoque.Rows.Clear();
+                dataGrid_Estoque.Rows.Clear();
                 foreach (var produto in result)
                 {
-                    dgv_Estoque.Rows.Add();
-                    dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
-                    dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
-                    dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
-                    dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
+                    dataGrid_Estoque.Rows.Add();
+                    dataGrid_Estoque.Rows[i].Cells[0].Value = produto.Id;
+                    dataGrid_Estoque.Rows[i].Cells[1].Value = produto.Nome;
+                    dataGrid_Estoque.Rows[i].Cells[2].Value = produto.Valor;
+                    dataGrid_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
 
                     i++;
                 }
@@ -138,7 +142,7 @@ namespace Aplication
             }
             finally
             {
-                txt_Id.Text = "";
+                txt_Codigo.Text = "";
                 txt_Produto.Text = "";
                 txt_Valor.Text = "";
                 txt_Quantidade.Text = "";
@@ -146,19 +150,19 @@ namespace Aplication
         }
         private async void btn_Consultar_Click(object sender, EventArgs e)
         {
-            var nome = txt_Produto.Text;
+            var produto = txt_Produto.Text;
             try
             {
-                var result = await _service.SelectByName(nome);
+                var result = await _service.SelectByName(produto);
 
 
                 if (result != null)
                 {
-                    dgv_Estoque.Rows.Clear();
-                    dgv_Estoque.Rows[0].Cells[0].Value = result.Id;
-                    dgv_Estoque.Rows[0].Cells[1].Value = result.Nome;
-                    dgv_Estoque.Rows[0].Cells[2].Value = result.Valor;
-                    dgv_Estoque.Rows[0].Cells[3].Value = result.Quantidade;
+                    dataGrid_Estoque.Rows.Clear();
+                    dataGrid_Estoque.Rows[0].Cells[0].Value = result.Id;
+                    dataGrid_Estoque.Rows[0].Cells[1].Value = result.Nome;
+                    dataGrid_Estoque.Rows[0].Cells[2].Value = result.Valor;
+                    dataGrid_Estoque.Rows[0].Cells[3].Value = result.Quantidade;
 
                 }
             }
@@ -167,7 +171,7 @@ namespace Aplication
                 MessageBox.Show($"Erro ao encontrar o produto", "Erro de busca", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error(ex, "\nErro ao tentar encontrar o produto");
             }
-            txt_Id.Text = "";
+            txt_Codigo.Text = "";
             txt_Produto.Text = "";
             txt_Valor.Text = "";
             txt_Quantidade.Text = "";
@@ -178,13 +182,13 @@ namespace Aplication
 
             try
             {
-                var id = int.Parse(dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString());
+                var id = int.Parse(dataGrid_Estoque.SelectedRows[0].Cells[0].Value.ToString());
                 var result = await _service.Delete(id);
                 if (result == true)
                 {
                     MessageBox.Show("Produto deletado com sucesso !", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                AtualizarItensGrid();
+                UpdateDatagridView();
             }
             catch (Exception ex)
             {
@@ -193,7 +197,7 @@ namespace Aplication
             }
             finally
             {
-                txt_Id.Text = "";
+                txt_Codigo.Text = "";
                 txt_Produto.Text = "";
                 txt_Valor.Text = "";
                 txt_Quantidade.Text = "";
@@ -204,10 +208,10 @@ namespace Aplication
         {
             try
             {
-                txt_Id.Text = dgv_Estoque.SelectedRows[0].Cells[0].Value.ToString();
-                txt_Produto.Text = dgv_Estoque.SelectedRows[0].Cells[1].Value.ToString();
-                txt_Valor.Text = dgv_Estoque.SelectedRows[0].Cells[2].Value.ToString();
-                txt_Quantidade.Text = dgv_Estoque.SelectedRows[0].Cells[3].Value.ToString();
+                txt_Codigo.Text = dataGrid_Estoque.SelectedRows[0].Cells[0].Value.ToString();
+                txt_Produto.Text = dataGrid_Estoque.SelectedRows[0].Cells[1].Value.ToString();
+                txt_Valor.Text = dataGrid_Estoque.SelectedRows[0].Cells[2].Value.ToString();
+                txt_Quantidade.Text = dataGrid_Estoque.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -218,7 +222,7 @@ namespace Aplication
 
         private async void btn_Editar_Click(object sender, EventArgs e)
         {
-            var id = int.Parse(txt_Id.Text);
+            var id = int.Parse(txt_Codigo.Text);
             var nome = txt_Produto.Text;
             var valor = double.Parse(txt_Valor.Text);
             var quantidade = int.Parse(txt_Quantidade.Text);
@@ -237,7 +241,7 @@ namespace Aplication
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                AtualizarItensGrid();
+                UpdateDatagridView();
             }
             catch (Exception ex)
             {
@@ -246,7 +250,7 @@ namespace Aplication
             }
             finally
             {
-                txt_Id.Text = "";
+                txt_Codigo.Text = "";
                 txt_Produto.Text = "";
                 txt_Valor.Text = "";
                 txt_Quantidade.Text = "";
@@ -264,11 +268,11 @@ namespace Aplication
 
                 foreach (var produto in result)
                 {
-                    dgv_Estoque.Rows.Add();
-                    dgv_Estoque.Rows[i].Cells[0].Value = produto.Id;
-                    dgv_Estoque.Rows[i].Cells[1].Value = produto.Nome;
-                    dgv_Estoque.Rows[i].Cells[2].Value = produto.Valor;
-                    dgv_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
+                    dataGrid_Estoque.Rows.Add();
+                    dataGrid_Estoque.Rows[i].Cells[0].Value = produto.Id;
+                    dataGrid_Estoque.Rows[i].Cells[1].Value = produto.Nome;
+                    dataGrid_Estoque.Rows[i].Cells[2].Value = produto.Valor;
+                    dataGrid_Estoque.Rows[i].Cells[3].Value = produto.Quantidade;
 
                     i++;
                 }
@@ -284,14 +288,8 @@ namespace Aplication
 
         private void btn_Atualizar_Click(object sender, EventArgs e)
         {
-            AtualizarItensGrid();
+            UpdateDatagridView();
         }
-
         #endregion
-
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
     }
 }

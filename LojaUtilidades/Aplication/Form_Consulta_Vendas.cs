@@ -86,7 +86,7 @@ namespace Aplication
         {
             Form_Produtos form_Produtos = new();
             form_Produtos.Show();
-            
+
         }
 
         private void btn_Sair_Click(object sender, EventArgs e)
@@ -96,10 +96,10 @@ namespace Aplication
 
         private void btn_Estoque_Click(object sender, EventArgs e)
         {
-            
+
             Form_Estoque form_Estoque = new Form_Estoque();
             form_Estoque.Show();
-            
+
 
         }
 
@@ -107,20 +107,29 @@ namespace Aplication
         {
             Form_Vendas formVenda = new Form_Vendas();
             formVenda.Show();
-            
+
         }
         private void btn_Estoque_Vendas_Click_(object sender, EventArgs e)
         {
             MessageBox.Show("A pagina de Consulta de vendas já está aberta !", "Janela ja aberta", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void btn_Limpar_Click(object sender, EventArgs e)
+        {
+            ClearFilds();
+        }
+        private void btn_Minimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
         #endregion
+
         #region Metodos do formulário
 
         private void DataGridViewFill(IEnumerable<Venda> vendas)
         {
             try
             {
-                dgv_Vendas_Consulta.Rows.Clear();
+                dataGrid_Vendas.Rows.Clear();
                 int index = 0;
 
                 foreach (var Venda in vendas)
@@ -128,67 +137,67 @@ namespace Aplication
 
                     foreach (var item in Venda.ItensVenda)
                     {
-                        dgv_Vendas_Consulta.Rows.Add();
-                        dgv_Vendas_Consulta.Rows[index].Cells[0].Value = Venda.Codigo;
-                        dgv_Vendas_Consulta.Rows[index].Cells[1].Value = item.Produto.Nome;
-                        dgv_Vendas_Consulta.Rows[index].Cells[2].Value = item.Quantidade;
-                        dgv_Vendas_Consulta.Rows[index].Cells[3].Value = Venda.Valor;
-                        dgv_Vendas_Consulta.Rows[index].Cells[4].Value = Venda.Data_da_Venda.ToString("dd/MM/yyyy");
-                        dgv_Vendas_Consulta.Rows[index].Cells[5].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
+                        dataGrid_Vendas.Rows.Add();
+                        dataGrid_Vendas.Rows[index].Cells[0].Value = Venda.Codigo;
+                        dataGrid_Vendas.Rows[index].Cells[1].Value = item.Produto.Nome;
+                        dataGrid_Vendas.Rows[index].Cells[2].Value = item.Quantidade;
+                        dataGrid_Vendas.Rows[index].Cells[3].Value = Venda.Valor;
+                        dataGrid_Vendas.Rows[index].Cells[4].Value = Venda.Data.ToString("dd/MM/yyyy");
+                        dataGrid_Vendas.Rows[index].Cells[5].Value = Venda.Hora.ToString(@"hh\:mm");
                         index++;
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar preencher a tabela", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error(ex, "\nErro ao tentar preencher o datagridview");
             }
-           
+
         }
-        private int SetMonth(string month)
+        private int GetMonthSelected(string month)
         {
-            var mes = 0;
+            var SelectedMonth = 0;
             switch (month)
             {
                 case "Janeiro":
-                     mes = 01;
+                    SelectedMonth = 01;
                     break;
                 case "Fevereiro":
-                    mes = 02;
+                    SelectedMonth = 02;
                     break;
                 case "Março":
-                    mes = 03;
+                    SelectedMonth = 03;
                     break;
                 case "Abril":
-                    mes = 04;
+                    SelectedMonth = 04;
                     break;
                 case "Maio":
-                    mes = 05;
+                    SelectedMonth = 05;
                     break;
                 case "Junho":
-                    mes = 06;
+                    SelectedMonth = 06;
                     break;
                 case "Julho":
-                    mes = 07;
+                    SelectedMonth = 07;
                     break;
                 case "Agosto":
-                    mes = 08;
+                    SelectedMonth = 08;
                     break;
                 case "Setembro":
-                    mes = 09;
+                    SelectedMonth = 09;
                     break;
                 case "Outubro":
-                    mes = 10;
+                    SelectedMonth = 10;
                     break;
                 case "Novembro":
-                    mes = 11;
+                    SelectedMonth = 11;
                     break;
                 case "Dezembro":
-                    mes = 12;
+                    SelectedMonth = 12;
                     break;
             }
-            return mes;
+            return SelectedMonth;
         }
         private void btn_Consultar_Click(object sender, EventArgs e)
         {
@@ -198,7 +207,7 @@ namespace Aplication
                 IEnumerable<Venda> vendas = _vendaService.GetVendas();
                 DataGridViewFill(vendas);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Erro ao tentar buscar vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error(ex, "\nErro ao tentar buscar as vendas no banco de dados");
@@ -207,77 +216,76 @@ namespace Aplication
         }
         private void DatagridViewClear()
         {
-            dgv_Vendas_Consulta.Rows.Clear();
+            dataGrid_Vendas.Rows.Clear();
         }
-       private void LimparCampos()
-        { 
-            dgv_Vendas_Consulta.Rows.Clear();
+        private void ClearFilds()
+        {
+            dataGrid_Vendas.Rows.Clear();
             txt_Codigo.Text = "";
-            txt_Data_Venda.Text = "";
+            txt_Data.Text = "";
             txt_Produto.Text = "";
-            comboBox1.Text = "";
-            comboBox1.SelectedItem = "";
+            comboBox_Mes.Text = "";
+            comboBox_Mes.SelectedItem = "";
         }
 
         private void btn_Enviar_Click(object sender, EventArgs e)
         {
             try
             {
-                txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                txt_Data.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 DatagridViewClear();
                 Venda venda = new Venda();
-                if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox1.SelectedItem == null && string.IsNullOrEmpty(txt_Produto.Text))
+                if (string.IsNullOrEmpty(txt_Data.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && comboBox_Mes.SelectedItem == null && string.IsNullOrEmpty(txt_Produto.Text))
                 {
                     _filter.Codigo = null;
                     _filter.Data = null;
                     _filter.Mes = null;
                     MessageBox.Show("Informe pelo menos um dos filtros para continuar com a consulta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-             
 
-                if (txt_Data_Venda.Text != "")
+                else if (txt_Data.Text != "")
                 {
                     //chama o metodo para buscar vendas por data
-                    txt_Data_Venda.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
-                    _filter.Data = Convert.ToDateTime(txt_Data_Venda.Text);
+                    txt_Data.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+                    _filter.Data = Convert.ToDateTime(txt_Data.Text);
 
-                    venda.Data_da_Venda = (DateTime)_filter.Data;
+                    venda.Data = (DateTime)_filter.Data;
 
                     var vendas = _vendaService.GetByDate(venda);
                     DataGridViewFill(vendas);
-                    txt_Data_Venda.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                    txt_Data.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
                 }
                 else if (!string.IsNullOrEmpty(txt_Codigo.Text))
                 {
                     //chama o metodo para buscar vendas pelo numero da venda
                     _filter.Codigo = Convert.ToInt32(txt_Codigo.Text);
                     venda.Codigo = Convert.ToInt32(_filter.Codigo);
-                    var vendas = _vendaService.GetByNumber(venda);
+                    var vendas = _vendaService.GetByCodigo(venda);
                     DataGridViewFill(vendas);
                 }
-                else if(comboBox1.SelectedItem != null)
+                else if (comboBox_Mes.SelectedItem != null)
                 {
-                    _filter.Mes = comboBox1.SelectedItem.ToString();
-                    var mes = SetMonth(_filter.Mes);
-                    List<Venda> lstVendas = new List<Venda>();
+                    _filter.Mes = comboBox_Mes.SelectedItem.ToString();
+                    var mes = GetMonthSelected(_filter.Mes);
+                    List<Venda> listVendas = new List<Venda>();
                     var vendas = _vendaService.GetVendas();
-                    foreach(var item in vendas)
+                    foreach (var Venda in vendas)
                     {
-                        if(item.Data_da_Venda.Month == mes)
+                        if (Venda.Data.Month == mes)
                         {
-                            lstVendas.Add(item);
+                            listVendas.Add(Venda);
                         }
                     }
-                    if(lstVendas.Count == 0 || lstVendas == null)
+                    if (listVendas.Count == 0 || listVendas == null)
                     {
                         MessageBox.Show("Nenhuma Venda encontrada para o mês selecionado.", "Vendas não encontradas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        DataGridViewFill(lstVendas);
+                        DataGridViewFill(listVendas);
                     }
                 }
-                else if (string.IsNullOrEmpty(txt_Data_Venda.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
+                else if (string.IsNullOrEmpty(txt_Data.Text) && string.IsNullOrEmpty(txt_Codigo.Text) && !string.IsNullOrEmpty(txt_Produto.Text))
                 {
                     //chmada o metodo para buscar vendas pelo nome do produto
                     var vendas = _vendaService.GetByProductName(txt_Produto.Text);
@@ -289,20 +297,8 @@ namespace Aplication
                 MessageBox.Show($"Erro ao tentar buscar vendas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log.Error(ex, "\nErro ao tentar buscar venda no banco");
             }
-            
-        }
-
-        private void btn_Limpar_Click(object sender, EventArgs e)
-        {
-            LimparCampos();
-            
 
         }
         #endregion
-
-        private void btn_Minimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
     }
 }

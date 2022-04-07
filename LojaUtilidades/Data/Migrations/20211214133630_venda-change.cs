@@ -8,7 +8,7 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<TimeSpan>(
-                name: "Hora_Venda",
+                name: "Hora",
                 table: "Venda",
                 type: "time(6)",
                 nullable: false,
@@ -22,7 +22,7 @@ namespace Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Hora_Venda",
+                name: "Hora",
                 table: "Venda",
                 type: "longtext",
                 nullable: true,

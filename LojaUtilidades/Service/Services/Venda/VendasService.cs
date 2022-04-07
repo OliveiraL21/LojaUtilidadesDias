@@ -23,7 +23,7 @@ namespace Service.Services.Venda
             _repository = new VendaImplementation(new MyContext());
         }
 
-        private int GenerateVendaNumber(Domain.Entidades.Venda venda)
+        private int GenerateVendaCode(Domain.Entidades.Venda venda)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Service.Services.Venda
             var result = _repository.GetByDate(venda);
             return result;
         }
-        public IEnumerable<Domain.Entidades.Venda> GetByNumber(Domain.Entidades.Venda venda)
+        public IEnumerable<Domain.Entidades.Venda> GetByCodigo(Domain.Entidades.Venda venda)
         {
             var result = _repository.GetByNumber(venda);
             return result;
@@ -88,7 +88,7 @@ namespace Service.Services.Venda
         }
         public async Task<Domain.Entidades.Venda> PostAsync(Domain.Entidades.Venda venda)
         {
-            venda.Codigo = GenerateVendaNumber(venda);
+            venda.Codigo = GenerateVendaCode(venda);
             var result = await _repository.InsertAsync(venda);
             return result;
         }

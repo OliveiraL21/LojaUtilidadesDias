@@ -33,8 +33,7 @@ namespace Aplication
         {
             Application.Exit();
         }
-
-        #region cores-Houver-btn-menu
+        #region change-Background-Butons
         private void btn_Produto_MouseHover(object sender, EventArgs e)
         {
             btn_Produto.BackColor = Color.DarkMagenta;
@@ -74,10 +73,16 @@ namespace Aplication
         {
             btn_Sair.BackColor = Color.FromArgb(41, 0, 39);
         }
+        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
+        }
+
+        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
+        {
+            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
+        }
         #endregion
-
-       
-
         private void btn_Produto_Click(object sender, EventArgs e)
         {
            
@@ -105,17 +110,6 @@ namespace Aplication
             Form_Consulta_Vendas form_estoque_vendas = new Form_Consulta_Vendas();
             form_estoque_vendas.Show();
         }
-
-        private void btn_Estoque_Vendas_MouseHover(object sender, EventArgs e)
-        {
-            btn_Estoque_Vendas.BackColor = Color.DarkMagenta;
-        }
-
-        private void btn_Estoque_Vendas_MouseLeave(object sender, EventArgs e)
-        {
-            btn_Estoque_Vendas.BackColor = Color.FromArgb(41, 0, 39);
-        }
-
         private void btn_Minimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

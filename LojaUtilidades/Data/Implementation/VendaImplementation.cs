@@ -31,7 +31,7 @@ namespace Data.Implementation
         }
         public IEnumerable<Venda> GetByDate(Venda venda)
         {
-            var result = _dataSet.Where(v => v.Data_da_Venda == venda.Data_da_Venda).Include(v => v.ItensVenda).ThenInclude(it => it.Produto).ToList();
+            var result = _dataSet.Where(v => v.Data == venda.Data).Include(v => v.ItensVenda).ThenInclude(it => it.Produto).ToList();
 
             return result;
         }

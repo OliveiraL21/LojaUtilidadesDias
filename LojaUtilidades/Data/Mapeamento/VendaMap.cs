@@ -16,7 +16,7 @@ namespace Data.Mapeamento
             builder.ToTable("Venda");
             builder.HasKey(v => v.Id);
             builder.HasIndex(v => v.Codigo).IsUnique();
-            builder.Property(v => v.Data_da_Venda);
+            builder.Property(v => v.Data);
             builder.Property(v => v.Valor).IsRequired();
 
             builder.HasMany(v => v.ItensVenda).WithOne(i => i.Venda).HasForeignKey(i => i.VendaId);

@@ -8,8 +8,8 @@ namespace Domain.Entidades
     {
        
         public int Codigo { get; set; }
-        public DateTime Data_da_Venda { get; set; }
-        public TimeSpan Hora_Venda { get; set; }
+        public DateTime Data { get; set; }
+        public TimeSpan Hora { get; set; }
         public double Valor { get; set; }
         public List<ItemVenda> ItensVenda { get; set; }
     }

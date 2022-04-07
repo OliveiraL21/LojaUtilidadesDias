@@ -29,13 +29,13 @@ namespace Aplication
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Consulta_Vendas));
-            this.dgv_Vendas_Consulta = new System.Windows.Forms.DataGridView();
+            this.dataGrid_Vendas = new System.Windows.Forms.DataGridView();
             this.Cod_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,11 +43,12 @@ namespace Aplication
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hora_Da_Venda = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_Minimizar = new System.Windows.Forms.Button();
             this.btn_Limpar = new System.Windows.Forms.Button();
             this.btn_Consultar = new System.Windows.Forms.Button();
             this.Data_Da_Venda = new System.Windows.Forms.Label();
             this.lbl_Produto = new System.Windows.Forms.Label();
-            this.txt_Data_Venda = new System.Windows.Forms.MaskedTextBox();
+            this.txt_Data = new System.Windows.Forms.MaskedTextBox();
             this.txt_Codigo = new System.Windows.Forms.TextBox();
             this.panel_Menu = new System.Windows.Forms.Panel();
             this.btn_Estoque_Vendas = new System.Windows.Forms.Button();
@@ -60,66 +61,65 @@ namespace Aplication
             this.txt_Produto = new System.Windows.Forms.TextBox();
             this.label_Produto = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btn_Minimizar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas_Consulta)).BeginInit();
+            this.comboBox_Mes = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Vendas)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel_Menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgv_Vendas_Consulta
+            // dataGrid_Vendas
             // 
-            this.dgv_Vendas_Consulta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas_Consulta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_Vendas_Consulta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Vendas_Consulta.BackgroundColor = System.Drawing.Color.CadetBlue;
-            this.dgv_Vendas_Consulta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas_Consulta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_Vendas_Consulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Vendas_Consulta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGrid_Vendas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGrid_Vendas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGrid_Vendas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGrid_Vendas.BackgroundColor = System.Drawing.Color.CadetBlue;
+            this.dataGrid_Vendas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_Vendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGrid_Vendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid_Vendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cod_Venda,
             this.Produto,
             this.Quantidade,
             this.Total,
             this.dataGridViewTextBoxColumn1,
             this.Hora_Da_Venda});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_Vendas_Consulta.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_Vendas_Consulta.GridColor = System.Drawing.Color.Black;
-            this.dgv_Vendas_Consulta.Location = new System.Drawing.Point(151, 214);
-            this.dgv_Vendas_Consulta.Name = "dgv_Vendas_Consulta";
-            this.dgv_Vendas_Consulta.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_Vendas_Consulta.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_Vendas_Consulta.RowHeadersWidth = 51;
-            this.dgv_Vendas_Consulta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_Vendas_Consulta.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_Vendas_Consulta.RowTemplate.Height = 25;
-            this.dgv_Vendas_Consulta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_Vendas_Consulta.Size = new System.Drawing.Size(709, 314);
-            this.dgv_Vendas_Consulta.TabIndex = 13;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid_Vendas.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGrid_Vendas.GridColor = System.Drawing.Color.Black;
+            this.dataGrid_Vendas.Location = new System.Drawing.Point(151, 214);
+            this.dataGrid_Vendas.Name = "dataGrid_Vendas";
+            this.dataGrid_Vendas.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_Vendas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGrid_Vendas.RowHeadersWidth = 51;
+            this.dataGrid_Vendas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGrid_Vendas.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGrid_Vendas.RowTemplate.Height = 25;
+            this.dataGrid_Vendas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid_Vendas.Size = new System.Drawing.Size(709, 314);
+            this.dataGrid_Vendas.TabIndex = 13;
             // 
             // Cod_Venda
             // 
@@ -174,6 +174,17 @@ namespace Aplication
             this.panel1.Size = new System.Drawing.Size(813, 55);
             this.panel1.TabIndex = 22;
             // 
+            // btn_Minimizar
+            // 
+            this.btn_Minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Minimizar.Image = global::Utilidades_e_Cosmeticos_Dias.Properties.Resources.minimizar;
+            this.btn_Minimizar.Location = new System.Drawing.Point(756, 13);
+            this.btn_Minimizar.Name = "btn_Minimizar";
+            this.btn_Minimizar.Size = new System.Drawing.Size(31, 31);
+            this.btn_Minimizar.TabIndex = 33;
+            this.btn_Minimizar.UseVisualStyleBackColor = true;
+            this.btn_Minimizar.Click += new System.EventHandler(this.btn_Minimizar_Click);
+            // 
             // btn_Limpar
             // 
             this.btn_Limpar.FlatAppearance.BorderSize = 0;
@@ -226,17 +237,17 @@ namespace Aplication
             this.lbl_Produto.TabIndex = 24;
             this.lbl_Produto.Text = "Código da Venda";
             // 
-            // txt_Data_Venda
+            // txt_Data
             // 
-            this.txt_Data_Venda.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_Data_Venda.Location = new System.Drawing.Point(255, 122);
-            this.txt_Data_Venda.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txt_Data_Venda.Mask = "00/00/0000";
-            this.txt_Data_Venda.Name = "txt_Data_Venda";
-            this.txt_Data_Venda.Size = new System.Drawing.Size(134, 29);
-            this.txt_Data_Venda.TabIndex = 25;
-            this.txt_Data_Venda.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txt_Data_Venda.ValidatingType = typeof(System.DateTime);
+            this.txt_Data.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txt_Data.Location = new System.Drawing.Point(255, 122);
+            this.txt_Data.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_Data.Mask = "00/00/0000";
+            this.txt_Data.Name = "txt_Data";
+            this.txt_Data.Size = new System.Drawing.Size(134, 29);
+            this.txt_Data.TabIndex = 25;
+            this.txt_Data.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txt_Data.ValidatingType = typeof(System.DateTime);
             // 
             // txt_Codigo
             // 
@@ -405,12 +416,12 @@ namespace Aplication
             this.label1.TabIndex = 31;
             this.label1.Text = "Mês";
             // 
-            // comboBox1
+            // comboBox_Mes
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBox1.ForeColor = System.Drawing.Color.Black;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBox_Mes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox_Mes.ForeColor = System.Drawing.Color.Black;
+            this.comboBox_Mes.FormattingEnabled = true;
+            this.comboBox_Mes.Items.AddRange(new object[] {
             "Janeiro",
             "Fevereiro",
             "Março",
@@ -423,22 +434,11 @@ namespace Aplication
             "Outubro",
             "Novembro",
             "Dezembro"});
-            this.comboBox1.Location = new System.Drawing.Point(434, 125);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(134, 29);
-            this.comboBox1.TabIndex = 32;
-            // 
-            // btn_Minimizar
-            // 
-            this.btn_Minimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Minimizar.Image = global::Utilidades_e_Cosmeticos_Dias.Properties.Resources.minimizar;
-            this.btn_Minimizar.Location = new System.Drawing.Point(756, 13);
-            this.btn_Minimizar.Name = "btn_Minimizar";
-            this.btn_Minimizar.Size = new System.Drawing.Size(31, 31);
-            this.btn_Minimizar.TabIndex = 33;
-            this.btn_Minimizar.UseVisualStyleBackColor = true;
-            this.btn_Minimizar.Click += new System.EventHandler(this.btn_Minimizar_Click);
+            this.comboBox_Mes.Location = new System.Drawing.Point(434, 125);
+            this.comboBox_Mes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox_Mes.Name = "comboBox_Mes";
+            this.comboBox_Mes.Size = new System.Drawing.Size(134, 29);
+            this.comboBox_Mes.TabIndex = 32;
             // 
             // Form_Consulta_Vendas
             // 
@@ -446,25 +446,25 @@ namespace Aplication
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(949, 592);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_Mes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label_Produto);
             this.Controls.Add(this.txt_Produto);
             this.Controls.Add(this.btn_Enviar);
             this.Controls.Add(this.panel_Menu);
             this.Controls.Add(this.txt_Codigo);
-            this.Controls.Add(this.txt_Data_Venda);
+            this.Controls.Add(this.txt_Data);
             this.Controls.Add(this.lbl_Produto);
             this.Controls.Add(this.Data_Da_Venda);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgv_Vendas_Consulta);
+            this.Controls.Add(this.dataGrid_Vendas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form_Consulta_Vendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Consulta_Vendas";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Vendas_Consulta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_Vendas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel_Menu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -474,13 +474,13 @@ namespace Aplication
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dgv_Vendas_Consulta;
+        private System.Windows.Forms.DataGridView dataGrid_Vendas;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Limpar;
         private System.Windows.Forms.Button btn_Consultar;
         private System.Windows.Forms.Label Data_Da_Venda;
         private System.Windows.Forms.Label lbl_Produto;
-        private System.Windows.Forms.MaskedTextBox txt_Data_Venda;
+        private System.Windows.Forms.MaskedTextBox txt_Data;
         private System.Windows.Forms.TextBox txt_Codigo;
         private System.Windows.Forms.Panel panel_Menu;
         private System.Windows.Forms.Button btn_Estoque_Vendas;
@@ -499,7 +499,7 @@ namespace Aplication
         private System.Windows.Forms.TextBox txt_Produto;
         private System.Windows.Forms.Label label_Produto;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox_Mes;
         private System.Windows.Forms.Button btn_Minimizar;
     }
 }
