@@ -344,7 +344,7 @@ namespace Aplication
                     Quantidade = result.Quantidade,
                 });
             }
-            return itensVendas;
+            return (List<ItemVenda>)(IEnumerable<ItemVenda>)itensVendas ;
         }
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
@@ -371,7 +371,7 @@ namespace Aplication
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Erro ao finalizar a venda!", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erro ao finalizar a venda!\n {ex.Message}", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Log.Error(ex, "\nErro ao finalizar a venda!");
                 }
                 finally

@@ -142,8 +142,8 @@ namespace Aplication
                         dataGrid_Vendas.Rows[index].Cells[1].Value = item.Produto.Nome;
                         dataGrid_Vendas.Rows[index].Cells[2].Value = item.Quantidade;
                         dataGrid_Vendas.Rows[index].Cells[3].Value = Venda.Valor;
-                        dataGrid_Vendas.Rows[index].Cells[4].Value = Venda.Data.ToString("dd/MM/yyyy");
-                        dataGrid_Vendas.Rows[index].Cells[5].Value = Venda.Hora.ToString(@"hh\:mm");
+                        dataGrid_Vendas.Rows[index].Cells[4].Value = Venda.Data_da_Venda.ToString("dd/MM/yyyy");
+                        dataGrid_Vendas.Rows[index].Cells[5].Value = Venda.Hora_Venda.ToString(@"hh\:mm");
                         index++;
                     }
                 }
@@ -249,7 +249,7 @@ namespace Aplication
                     txt_Data.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
                     _filter.Data = Convert.ToDateTime(txt_Data.Text);
 
-                    venda.Data = (DateTime)_filter.Data;
+                    venda.Data_da_Venda = (DateTime)_filter.Data;
 
                     var vendas = _vendaService.GetByDate(venda);
                     DataGridViewFill(vendas);
@@ -271,7 +271,7 @@ namespace Aplication
                     var vendas = _vendaService.GetVendas();
                     foreach (var Venda in vendas)
                     {
-                        if (Venda.Data.Month == mes)
+                        if (Venda.Data_da_Venda.Month == mes)
                         {
                             listVendas.Add(Venda);
                         }

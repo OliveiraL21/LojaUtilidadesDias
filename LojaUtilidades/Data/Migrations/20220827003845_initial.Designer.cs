@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20211201003501_removendo-idItemVenda-vendas")]
-    partial class removendoidItemVendavendas
+    [Migration("20220827003845_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,7 +19,7 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.11");
 
-            modelBuilder.Entity("Domain.Entidades.ItemVendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.ItemVenda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,14 +36,15 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("ProdutoId")
+                        .IsUnique();
 
                     b.HasIndex("VendaId");
 
-                    b.ToTable("Item-Venda");
+                    b.ToTable("ItemVenda");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.ProdutoEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,10 +66,13 @@ namespace Data.Migrations
                     b.ToTable("Produto");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.VendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.Venda", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Codigo")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Data_da_Venda")
@@ -82,18 +86,21 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Codigo")
+                        .IsUnique();
+
                     b.ToTable("Venda");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.ItemVendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.ItemVenda", b =>
                 {
-                    b.HasOne("Domain.Entidades.ProdutoEntity", "Produto")
-                        .WithMany()
-                        .HasForeignKey("ProdutoId")
+                    b.HasOne("Domain.Entidades.Produto", "Produto")
+                        .WithOne("ItemVenda")
+                        .HasForeignKey("Domain.Entidades.ItemVenda", "ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entidades.VendaEntity", "Venda")
+                    b.HasOne("Domain.Entidades.Venda", "Venda")
                         .WithMany("ItensVenda")
                         .HasForeignKey("VendaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -104,7 +111,12 @@ namespace Data.Migrations
                     b.Navigation("Venda");
                 });
 
-            modelBuilder.Entity("Domain.Entidades.VendaEntity", b =>
+            modelBuilder.Entity("Domain.Entidades.Produto", b =>
+                {
+                    b.Navigation("ItemVenda");
+                });
+
+            modelBuilder.Entity("Domain.Entidades.Venda", b =>
                 {
                     b.Navigation("ItensVenda");
                 });

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class intial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,8 +34,9 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Codigo = table.Column<int>(type: "int", nullable: false),
                     Data_da_Venda = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Hora_Venda = table.Column<int>(type: "int", nullable: false),
+                    Hora_Venda = table.Column<TimeSpan>(type: "time(6)", nullable: false),
                     Valor = table.Column<double>(type: "double", nullable: false)
                 },
                 constraints: table =>
@@ -75,12 +76,19 @@ namespace Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ItemVenda_ProdutoId",
                 table: "ItemVenda",
-                column: "ProdutoId");
+                column: "ProdutoId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItemVenda_VendaId",
                 table: "ItemVenda",
                 column: "VendaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Venda_Codigo",
+                table: "Venda",
+                column: "Codigo",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
