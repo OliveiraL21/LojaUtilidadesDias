@@ -42,15 +42,16 @@ namespace Data.Repositorios
             return entity;
         }
 
-        public async Task<IEnumerable<T>> SelectAllAsync()
+        public  IEnumerable<T> SelectAllAsync()
         {
-            var result = await _dataSet.ToListAsync();
+            var result =  _dataSet.ToList();
             return result;
         }
 
-        public async Task<T> SelectAsync(int id)
+        public T SelectAsync(int id)
         {
-            var result = await _dataSet.SingleOrDefaultAsync(p => p.Id == id);
+            var result =  _dataSet.SingleOrDefault(p => p.Id == id);
+            _context.SaveChangesAsync();
             return result;
         }
 

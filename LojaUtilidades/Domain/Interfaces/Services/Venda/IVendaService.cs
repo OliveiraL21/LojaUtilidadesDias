@@ -10,12 +10,12 @@ namespace Domain.Interfaces.Services.Venda
    public interface IVendaService
     {
         public Task<Entidades.Venda> Insert(Entidades.Venda venda);
-        public Task<Entidades.Venda> GetVendaAsync(int id);
+        public Entidades.Venda GetVendaAsync(int id);
         public IEnumerable<Entidades.Venda> GetVendas();
         public IEnumerable<Entidades.Venda> GetByDate(Entidades.Venda venda);
         public IEnumerable<Entidades.Venda> GetByCodigo(Entidades.Venda venda);
         public IEnumerable<Entidades.Venda> GetByProductName(string produto);
-        public Task<IEnumerable<Entidades.Venda>> GetAllAsync();
+        public IEnumerable<Entidades.Venda> GetAllAsync();
         public Task<Entidades.Venda> Update(Entidades.Venda venda);
         public Task<bool> Delete(int id);
     }

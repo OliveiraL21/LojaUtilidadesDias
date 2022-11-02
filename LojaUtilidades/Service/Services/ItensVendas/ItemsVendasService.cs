@@ -38,9 +38,9 @@ namespace Service.Services.ItensVendas
             }
         }
 
-        public async Task<IEnumerable<ItemVenda>> GetItens()
+        public IEnumerable<ItemVenda> GetItens()
         {
-            var result = await _repository.SelectAllAsync();
+            var result =  _repository.SelectAllAsync();
 
             if (result == null)
                 return null;
@@ -49,9 +49,9 @@ namespace Service.Services.ItensVendas
 
         }
 
-        public async Task<ItemVenda> GetById(int id)
+        public  ItemVenda GetById(int id)
         {
-            var result = await _repository.SelectAsync(id);
+            var result =  _repository.SelectAsync(id);
             if (result == null)
                 return null;
 

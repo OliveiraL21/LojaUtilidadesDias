@@ -34,8 +34,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoId")
-                        .IsUnique();
+                    b.HasIndex("ProdutoId");
 
                     b.HasIndex("VendaId");
 
@@ -93,8 +92,8 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.Entidades.ItemVenda", b =>
                 {
                     b.HasOne("Domain.Entidades.Produto", "Produto")
-                        .WithOne("ItemVenda")
-                        .HasForeignKey("Domain.Entidades.ItemVenda", "ProdutoId")
+                        .WithMany("ItensVenda")
+                        .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -111,7 +110,7 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Domain.Entidades.Produto", b =>
                 {
-                    b.Navigation("ItemVenda");
+                    b.Navigation("ItensVenda");
                 });
 
             modelBuilder.Entity("Domain.Entidades.Venda", b =>
