@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Service.Services.Venda
@@ -51,14 +52,14 @@ namespace Service.Services.Venda
             return await _repository.DeleteAsync(id);
         }
 
-        public async Task<IEnumerable<Domain.Entidades.Venda>> GetAllAsync()
+        public  IEnumerable<Domain.Entidades.Venda> GetAllAsync()
         {
-            var result = await _repository.SelectAllAsync();
+            var result =  _repository.SelectAllAsync();
             return result;   
         }
-        public async Task<Domain.Entidades.Venda> GetVendaAsync(int id)
+        public Domain.Entidades.Venda GetVendaAsync(int id)
         {
-            var result = await _repository.SelectAsync(id);
+            var result =  _repository.SelectAsync(id);
             return result;
         }
 
@@ -87,6 +88,7 @@ namespace Service.Services.Venda
         {
             venda.Codigo = GenerateVendaCode(venda);
             var result = await _repository.InsertAsync(venda);
+            
             return result;
         }
 

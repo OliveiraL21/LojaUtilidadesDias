@@ -12,7 +12,7 @@ namespace Domain.Entidades
         public double Valor { get; set; }
         public int Quantidade { get; set; }
 
-        public virtual ItemVenda ItemVenda { get; set; }
+        public virtual List<ItemVenda> ItensVenda { get; set; }
         public Produto()
         {
 

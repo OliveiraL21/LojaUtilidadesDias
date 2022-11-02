@@ -117,11 +117,11 @@ namespace Aplication
         }
         #endregion
         #region Metodos do formulário
-        private async void UpdateDatagridView()
+        private  void UpdateDatagridView()
         {
             try
             {
-                var result = await _service.GetProdutos();
+                var result =  _service.GetProdutos();
                 int i = 0;
                 dataGrid_Estoque.Rows.Clear();
                 foreach (var produto in result)
@@ -257,12 +257,12 @@ namespace Aplication
             }
         }
 
-        private async void Form_Estoque_Load(object sender, EventArgs e)
+        private  void Form_Estoque_Load(object sender, EventArgs e)
         {
             try
             {
 
-                var result = await _service.GetProdutos();
+                var result =  _service.GetProdutos();
 
                 int i = 0;
 

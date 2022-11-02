@@ -39,11 +39,11 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<Produto> GetProduto(int id)
+        public Produto GetProduto(int id)
         {
             try
             {
-                var result = await _repository.SelectAsync(id);
+                var result =  _repository.SelectAsync(id);
                 return result;
             }
             catch
@@ -52,11 +52,11 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<IEnumerable<Produto>> GetProdutos()
+        public IEnumerable<Produto> GetProdutos()
         {
             try
             {
-                var result = await _repository.SelectAllAsync();
+                var result =  _repository.SelectAllAsync();
                 return result;
             }
             catch

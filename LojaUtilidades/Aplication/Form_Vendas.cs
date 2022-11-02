@@ -16,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -195,8 +196,10 @@ namespace Aplication
             double valor = 0;
             double valorDesconto = 0;
             double total = 0;
+            
             for (int x = 0; x < dataGrid_Vendas.Rows.Count; x++)
             {
+               
                 valor = Convert.ToDouble(dataGrid_Vendas.Rows[x].Cells[2].Value.ToString());
                 quantidade = Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[3].Value.ToString());
                 total += (valor * quantidade);
@@ -215,6 +218,7 @@ namespace Aplication
         }
         private void DatagridFillProduct(Produto produto, int quantidade)
         {
+           
             dataGrid_Vendas.Rows.Add();
             dataGrid_Vendas.Rows[i].Cells[0].Value = produto.Id;
             dataGrid_Vendas.Rows[i].Cells[1].Value = produto.Nome;
@@ -326,25 +330,28 @@ namespace Aplication
             produto.Quantidade = quantidade;
             return produto;
         }
-        private async Task<List<ItemVenda>> CreateItemVendaCollection(Venda venda)
+        private  List<ItemVenda> CreateItemVendaCollection(Venda venda)
         {
             List<ItemVenda> itensVendas = new List<ItemVenda>();
             for (int x = 0; x < dataGrid_Vendas.Rows.Count; x++)
             {
-                var produto = await _produtoService.GetProduto(Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[0].Value));
+                var produto = _produtoService.GetProduto(Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[0].Value));
+
                 var result = CalcularQuantidadeEstoque(produto, x);
-                await _produtoService.Update(result);
+                Thread.Sleep(500);
+                 _produtoService.Update(result);
+                _context.SaveChanges();
 
                 itensVendas.Add(new ItemVenda()
-                {
+                {   
                     ProdutoId = result.Id,
                     Produto = result,
                     VendaId = venda.Id,
                     Venda = venda,
-                    Quantidade = result.Quantidade,
+                    Quantidade = int.Parse(dataGrid_Vendas.Rows[x].Cells[3].Value.ToString()),
                 });
             }
-            return (List<ItemVenda>)(IEnumerable<ItemVenda>)itensVendas ;
+            return itensVendas ;
         }
         private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
@@ -359,10 +366,12 @@ namespace Aplication
                 {
                     Venda venda = new Venda(DateTime.Now, DateTime.Now.TimeOfDay, double.Parse(txt_Total.Text.Trim('R', '$')));
                     var result = await _vendaService.Insert(venda);
+                    Thread.Sleep(500);
                     var itensVendas = CreateItemVendaCollection(result);
+                    Thread.Sleep(500);
                     _venda = result;
-                    _context.ItensVendas.AttachRange((IEnumerable<ItemVenda>)itensVendas);
-                    _context.ItensVendas.AddRange((IEnumerable<ItemVenda>)itensVendas);
+                    _context.ItensVendas.AttachRange(itensVendas);
+                    _context.ItensVendas.AddRange(itensVendas);
                     _context.SaveChanges();
                     if(MessageBox.Show($"Venda Finalizada com Sucesso\n deseja imprimir o comprovante da venda ?", "Venda Finalizada", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {

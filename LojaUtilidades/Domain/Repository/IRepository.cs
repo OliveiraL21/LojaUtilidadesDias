@@ -11,8 +11,8 @@ namespace Domain.Repository
     {
         Task<T> InsertAsync(T entidade);
         Task<T> UpdateAsync(T entidade);
-        Task<T> SelectAsync(int id);
-        Task<IEnumerable<T>> SelectAllAsync();
+       T SelectAsync(int id);
+      IEnumerable<T> SelectAllAsync();
         Task<bool> DeleteAsync(int id);
     }
 }

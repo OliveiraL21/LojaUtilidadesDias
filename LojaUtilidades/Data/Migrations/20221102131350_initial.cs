@@ -77,7 +77,7 @@ namespace Data.Migrations
                 name: "IX_ItemVenda_ProdutoId",
                 table: "ItemVenda",
                 column: "ProdutoId",
-                unique: true);
+                unique: false);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItemVenda_VendaId",
