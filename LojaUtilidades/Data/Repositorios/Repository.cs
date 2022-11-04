@@ -20,9 +20,9 @@ namespace Data.Repositorios
             _context = context;
             _dataSet = context.Set<T>();
         }
-        public async Task<bool> DeleteAsync(int id)
+        public bool DeleteAsync(int id)
         {
-            var result = await _dataSet.SingleOrDefaultAsync(p => p.Id == id);
+            var result =  _dataSet.SingleOrDefault(p => p.Id == id);
             if (result != null)
             {
                 _dataSet.Remove(result);
@@ -35,10 +35,10 @@ namespace Data.Repositorios
             }
         }
 
-        public async Task<T> InsertAsync(T entity)
+        public T InsertAsync(T entity)
         {
             _dataSet.Add(entity);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
             return entity;
         }
 
@@ -51,19 +51,18 @@ namespace Data.Repositorios
         public T SelectAsync(int id)
         {
             var result =  _dataSet.SingleOrDefault(p => p.Id == id);
-            _context.SaveChangesAsync();
             return result;
         }
 
-        public async Task<T> UpdateAsync(T entidade)
+        public T UpdateAsync(T entidade)
         {
-            var result = await _dataSet.SingleOrDefaultAsync(p => p.Id.Equals(entidade.Id));
+            var result =  _dataSet.SingleOrDefault(p => p.Id.Equals(entidade.Id));
             if (result == null)
             {
                 return null;
             }
             _context.Entry(result).CurrentValues.SetValues(entidade);
-            await _context.SaveChangesAsync();
+             _context.SaveChanges();
             return entidade;
         }
     }

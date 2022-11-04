@@ -24,7 +24,7 @@ namespace Data.Context
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("Server=localhost;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=Lucas98971;SSL Mode=None", new MySqlServerVersion(new Version(8, 0, 30)),
+            optionsBuilder.UseMySql("Server=localhost;Port=3306;DataBase=Loja_DiasDb;Uid=root;Pwd=2701;SSL Mode=None", new MySqlServerVersion(new Version(8, 0, 30)),
             option => option.EnableRetryOnFailure(
                 maxRetryCount: 3,
                 maxRetryDelay: TimeSpan.FromSeconds(10),

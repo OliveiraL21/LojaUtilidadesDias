@@ -130,12 +130,12 @@ namespace Aplication
             dataGrid_Produtos.Rows[datagridRowIndex].Cells[3].Value = produto.Quantidade;
             datagridRowIndex++;
         }
-        private async void btn_Cadastrar_Click(object sender, EventArgs e)
+        private  void btn_Cadastrar_Click(object sender, EventArgs e)
         {
             try
             {
                 Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
-                var result = await _ProdutoService.Insert(produto);
+                var result =  _ProdutoService.Insert(produto);
 
                 if (result != null)
                 {
@@ -157,13 +157,13 @@ namespace Aplication
                 txt_Quantidade.Text = "";
             }
         }
-        private async void btn_Editar_Click(object sender, EventArgs e)
+        private  void btn_Editar_Click(object sender, EventArgs e)
         {
             
             try
             {
                 Produto produto = new Produto(txt_Produto.Text, double.Parse(txt_Valor.Text), int.Parse(txt_Quantidade.Text));
-                var result = await _ProdutoService.Update(produto);
+                var result =  _ProdutoService.Update(produto);
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -184,7 +184,7 @@ namespace Aplication
                 txt_Quantidade.Text = "";
             }
         }
-        private async void btn_Deletar_Click(object sender, EventArgs e)
+        private  void btn_Deletar_Click(object sender, EventArgs e)
         {
             
             try
@@ -193,7 +193,7 @@ namespace Aplication
                 dataGrid_Produtos.Rows.Remove(dataGrid_Produtos.SelectedRows[0]);
                 datagridRowIndex = dataGrid_Produtos.Rows.Count;
              
-                var result = await _ProdutoService.DeleteByName(produto);
+                var result =  _ProdutoService.DeleteByName(produto);
                 
                 MessageBox.Show("Produto deletado com sucesso", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

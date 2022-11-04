@@ -148,12 +148,12 @@ namespace Aplication
                 txt_Quantidade.Text = "";
             }
         }
-        private async void btn_Consultar_Click(object sender, EventArgs e)
+        private  void btn_Consultar_Click(object sender, EventArgs e)
         {
             var produto = txt_Produto.Text;
             try
             {
-                var result = await _service.SelectByName(produto);
+                var result =  _service.SelectByName(produto);
 
 
                 if (result != null)
@@ -177,13 +177,13 @@ namespace Aplication
             txt_Quantidade.Text = "";
         }
 
-        private async void btn_Deletar_Click(object sender, EventArgs e)
+        private  void btn_Deletar_Click(object sender, EventArgs e)
         {
 
             try
             {
                 var id = int.Parse(dataGrid_Estoque.SelectedRows[0].Cells[0].Value.ToString());
-                var result = await _service.Delete(id);
+                var result =  _service.Delete(id);
                 if (result == true)
                 {
                     MessageBox.Show("Produto deletado com sucesso !", "Produto Excluido", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -220,7 +220,7 @@ namespace Aplication
             }
         }
 
-        private async void btn_Editar_Click(object sender, EventArgs e)
+        private  void btn_Editar_Click(object sender, EventArgs e)
         {
             var id = int.Parse(txt_Codigo.Text);
             var nome = txt_Produto.Text;
@@ -236,7 +236,7 @@ namespace Aplication
 
             try
             {
-                var result = await _service.Update(produto);
+                var result =  _service.Update(produto);
                 if (result != null)
                 {
                     MessageBox.Show("Produto editado com sucesso !", "Produto editado", MessageBoxButtons.OK, MessageBoxIcon.Information);

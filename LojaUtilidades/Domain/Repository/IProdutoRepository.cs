@@ -9,7 +9,7 @@ namespace Domain.Repository
 {
     public interface IProdutoRepository : IRepository<Produto>
     {
-        Task<Produto> SelectByName(string nome);
-        Task<bool> DeleteByName(string nome);
+       Produto SelectByName(string nome);
+       bool DeleteByName(string nome);
     }
 }

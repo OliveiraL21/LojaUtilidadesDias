@@ -25,11 +25,11 @@ namespace Service.Services.Produtos
             _repository = new ProdutoImplementation(new MyContext(new DbContextOptions<MyContext>()));
         }
 
-        public async Task<bool> Delete(int id)
+        public bool Delete(int id)
         {
             try
             {
-                var result = await _repository.DeleteAsync(id);
+                var result =  _repository.DeleteAsync(id);
 
                 return true;
             }
@@ -66,11 +66,11 @@ namespace Service.Services.Produtos
         }
 
 
-        public async Task<Produto> Insert(Produto produto)
+        public Produto Insert(Produto produto)
         {
             try
             {
-                var result = await _repository.InsertAsync(produto);
+                var result =  _repository.InsertAsync(produto);
                 return result;
             }
             catch
@@ -79,11 +79,11 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<Produto> Update(Produto produto)
+        public Produto Update(Produto produto)
         {
             try
             {
-                var result = await _repository.UpdateAsync(produto);
+                var result =  _repository.UpdateAsync(produto);
                 return result;
 
             }
@@ -93,11 +93,11 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<bool> DeleteByName(string nome)
+        public bool DeleteByName(string nome)
         {
             try
             {
-                var result = await _repository.DeleteByName(nome);
+                var result =  _repository.DeleteByName(nome);
                 if(result == true)
                 {
                     return true;
@@ -114,11 +114,11 @@ namespace Service.Services.Produtos
             }
         }
 
-        public async Task<Produto> SelectByName(string nome)
+        public Produto SelectByName(string nome)
         {
             try
             {
-                var result = await _repository.SelectByName(nome);
+                var result =  _repository.SelectByName(nome);
                 if(result != null)
                 {
                     return result;
