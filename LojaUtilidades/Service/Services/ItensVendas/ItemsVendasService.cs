@@ -25,11 +25,11 @@ namespace Service.Services.ItensVendas
         {
             _repository = new ITemVendaImplementation(new MyContext(new DbContextOptions<MyContext>()));
         }
-        public async Task<bool> Delete(int id)
+        public bool Delete(int id)
         {
             try
             {
-                var result = await _repository.DeleteAsync(id);
+                var result =  _repository.DeleteAsync(id);
                 return false;
             }
             catch
@@ -58,18 +58,18 @@ namespace Service.Services.ItensVendas
             return result;
         }
    
-        public async Task<ItemVenda> Insert(ItemVenda item)
+        public  ItemVenda Insert(ItemVenda item)
         {
-            var result = await _repository.InsertAsync(item);
+            var result =  _repository.InsertAsync(item);
             if (result == null)
                 return null;
 
             return result;
         }
 
-        public async Task<ItemVenda> Update(ItemVenda item)
+        public ItemVenda Update(ItemVenda item)
         {
-            var result = await _repository.UpdateAsync(item);
+            var result =  _repository.UpdateAsync(item);
             if (result == null)
                 return null;
 

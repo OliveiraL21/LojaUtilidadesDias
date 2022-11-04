@@ -228,7 +228,7 @@ namespace Aplication
         }
         #endregion
         #region Metodos do formulário
-        private async void btn_Consultar_Click(object sender, EventArgs e)
+        private  void btn_Consultar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -243,7 +243,7 @@ namespace Aplication
                 }
                 var nome = txt_Produto.Text;
                 var quantidade = int.Parse(txt_Quantidade.Text);
-                var produto = await _produtoService.SelectByName(nome);
+                var produto =  _produtoService.SelectByName(nome);
                 DatagridFillProduct(produto, quantidade);
             }
             catch (Exception ex)
@@ -338,7 +338,7 @@ namespace Aplication
                 var produto = _produtoService.GetProduto(Convert.ToInt32(dataGrid_Vendas.Rows[x].Cells[0].Value));
 
                 var result = CalcularQuantidadeEstoque(produto, x);
-                Thread.Sleep(500);
+                Thread.Sleep(1000);
                  _produtoService.Update(result);
                 _context.SaveChanges();
 
@@ -353,7 +353,7 @@ namespace Aplication
             }
             return itensVendas ;
         }
-        private async void btn_Finalizar_Venda_Click(object sender, EventArgs e)
+        private  void btn_Finalizar_Venda_Click(object sender, EventArgs e)
         {
             List<ItemVenda> listItens = new List<ItemVenda>();
             if (string.IsNullOrEmpty(txt_Total.Text))
@@ -365,10 +365,11 @@ namespace Aplication
                 try
                 {
                     Venda venda = new Venda(DateTime.Now, DateTime.Now.TimeOfDay, double.Parse(txt_Total.Text.Trim('R', '$')));
-                    var result = await _vendaService.Insert(venda);
-                    Thread.Sleep(500);
+                    var result =  _vendaService.Insert(venda);
+                    _context.SaveChanges();
+                    
                     var itensVendas = CreateItemVendaCollection(result);
-                    Thread.Sleep(500);
+                    
                     _venda = result;
                     _context.ItensVendas.AttachRange(itensVendas);
                     _context.ItensVendas.AddRange(itensVendas);
@@ -386,6 +387,7 @@ namespace Aplication
                 finally
                 {
                     ClearFilds();
+                    dataGrid_Vendas.Rows.Clear();
                 }
             }
 

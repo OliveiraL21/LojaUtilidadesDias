@@ -47,9 +47,9 @@ namespace Service.Services.Venda
 
 
         }
-        public async Task<bool> Delete(int id)
+        public  bool Delete(int id)
         {
-            return await _repository.DeleteAsync(id);
+            return  _repository.DeleteAsync(id);
         }
 
         public  IEnumerable<Domain.Entidades.Venda> GetAllAsync()
@@ -84,17 +84,17 @@ namespace Service.Services.Venda
             var result = _repository.GetByProductName(produto);
             return result;
         }
-        public async Task<Domain.Entidades.Venda> Insert(Domain.Entidades.Venda venda)
+        public Domain.Entidades.Venda Insert(Domain.Entidades.Venda venda)
         {
             venda.Codigo = GenerateVendaCode(venda);
-            var result = await _repository.InsertAsync(venda);
+            var result =  _repository.InsertAsync(venda);
             
             return result;
         }
 
-        public async Task<Domain.Entidades.Venda> Update(Domain.Entidades.Venda venda)
+        public Domain.Entidades.Venda Update(Domain.Entidades.Venda venda)
         {
-            var result = await _repository.UpdateAsync(venda);
+            var result =  _repository.UpdateAsync(venda);
             return result;
          }
 

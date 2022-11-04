@@ -9,10 +9,10 @@ namespace Domain.Repository
 {
     public interface IRepository <T> where T : BaseEntity
     {
-        Task<T> InsertAsync(T entidade);
-        Task<T> UpdateAsync(T entidade);
+        T InsertAsync(T entidade);
+        T UpdateAsync(T entidade);
        T SelectAsync(int id);
       IEnumerable<T> SelectAllAsync();
-        Task<bool> DeleteAsync(int id);
+        bool DeleteAsync(int id);
     }
 }

@@ -21,19 +21,19 @@ namespace Data.Implementation
             _dataSet = context.Set<Produto>();
         }
 
-        public async Task<bool> DeleteByName(string nome)
+        public  bool DeleteByName(string nome)
         {
-            var result = await _dataSet.SingleOrDefaultAsync(p => p.Nome == nome);
+            var result =  _dataSet.SingleOrDefault(p => p.Nome == nome);
             _dataSet.Remove(result);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
             return true;
         }
 
 
 
-        public async Task<Produto> SelectByName(string nome)
+        public Produto SelectByName(string nome)
         {
-            var result = await _dataSet.SingleOrDefaultAsync(p => p.Nome == nome);
+            var result =  _dataSet.SingleOrDefault(p => p.Nome == nome);
             return result;
         }
 
